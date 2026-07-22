@@ -1,0 +1,1 @@
+*.blend,*.kra,*.wav,*.mp3,*.aup3 filter=lfs diff=lfs merge=lfs -text
