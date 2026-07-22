@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cfyq6frjkratq"]
+
+[ext_resource type="PackedScene" uid="uid://cxolkbtjsajlb" path="res://assets/models/water_for_waves.blend" id="1_1jnvm"]
+
+[node name="Node3D" type="Node3D" unique_id=193407043]
+
+[node name="water_for_waves" parent="." unique_id=373780516 instance=ExtResource("1_1jnvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24735594, 0, -0.0074789524)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=958560104]
+transform = Transform3D(-0.612216, 0.44132376, -0.65606785, -0.4856692, 0.44487903, 0.7524681, 0.62395287, 0.7793048, -0.058024727, 0, 2.735652, 0)
