@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode cull_disabled;
 
 void vertex() {
 	vec3 pos = VERTEX + NODE_POSITION_WORLD*0.25;
@@ -28,6 +29,10 @@ void fragment() {
 	alpha = clamp(alpha, 0, 1);
 	if (alpha < 0.001 || alpha < fract(ign.z * fract(dot(FRAGCOORD.xy, ign.xy)))) {
 		discard;
+	}
+	
+	if (!FRONT_FACING) {
+		NORMAL = -NORMAL;
 	}
 }
 
