@@ -16,7 +16,7 @@ float get_height(vec3 pos)
 	//z += magic_number*0.01;
 	float z = 1.0 - texture(heightmap, pos.xz*1.0 + vec2(0, TIME*0.018)).r;
 	z *= 1.0 - texture(heightmap, pos.xz/1.3 + vec2(TIME*0.01, 0)).r;
-	return pow(z, 0.6)*0.3-0.1;
+	return pow(z, 0.6)*0.15-0.05;
 }
 
 

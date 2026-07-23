@@ -8,5 +8,5 @@ shader = ExtResource("1_nq21p")
 shader_parameter/color = Color(8.1822276e-07, 0.51495653, 0.37301278, 1)
 shader_parameter/sway_factor = 0.315
 shader_parameter/sway_scale = 1.73
-shader_parameter/roughness = 0.555
+shader_parameter/roughness = 0.245
 shader_parameter/metalic = 0.45

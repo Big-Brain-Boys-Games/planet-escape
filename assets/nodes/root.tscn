@@ -43,7 +43,7 @@ script = ExtResource("3_decpy")
 environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec")])
 
 [node name="Player" parent="." unique_id=1546401736 node_paths=PackedStringArray("world_environment", "water_waves") instance=ExtResource("2_yo1ht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8976176, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 108.4656, 0)
 world_environment = NodePath("../WorldEnvironment")
 water_waves = NodePath("../water_for_waves")
 
