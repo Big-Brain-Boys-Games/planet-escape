@@ -6,7 +6,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
 radius = 0.7
 
-[node name="Ore1" type="RigidBody3D" unique_id=1852222799 groups=["rock"]]
+[node name="Ironium" type="RigidBody3D" unique_id=1852222799 groups=["rock"]]
 linear_damp = 2.015
 script = ExtResource("1_aiab0")
 oretype = 1

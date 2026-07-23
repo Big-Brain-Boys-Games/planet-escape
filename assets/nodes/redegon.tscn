@@ -6,7 +6,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
 radius = 0.7
 
-[node name="Ore4" type="RigidBody3D" unique_id=1179103699 groups=["rock"]]
+[node name="Redegon" type="RigidBody3D" unique_id=1179103699 groups=["rock"]]
 linear_damp = 2.015
 script = ExtResource("1_nf56m")
 oretype = 4
