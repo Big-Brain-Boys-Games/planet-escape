@@ -3,10 +3,11 @@ render_mode cull_disabled;
 render_mode depth_draw_always;
 //render_mode diffuse_burley;
 
-uniform sampler2D heightmap;
+uniform sampler2D heightmap : filter_linear_mipmap_anisotropic;
 
 float get_height(vec3 pos)
 {
+	pos *= 0.01;
 	//float magic_number = sin(pos.x * 1.6) + cos(pos.z * 1.2);
 	//float z = sin(pos.z*14.0+magic_number+pos.z*9.0+sin(pos.z*20.0)*cos(TIME*0.37)+sin(pos.x*17.0)*cos(TIME*0.4)+sin(TIME*1.2) +TIME*1.6);
 	//z *= 0.1;
@@ -18,15 +19,17 @@ float get_height(vec3 pos)
 	return pow(z, 0.6)*0.05;
 }
 
+
 void vertex() {
-	VERTEX.y += get_height(VERTEX + NODE_POSITION_WORLD*0.25);
+	vec3 wrld_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	VERTEX.y += get_height(wrld_position);
 	
-	float texel_size = 0.01;
+	float texel_size = 1.0;
 	
-	float h_l = get_height(VERTEX + NODE_POSITION_WORLD*0.25 + vec3(-texel_size, 0.0, 0.0));
-    float h_r = get_height(VERTEX + NODE_POSITION_WORLD*0.25 + vec3(texel_size, 0.0, 0.0));
-    float h_d = get_height(VERTEX + NODE_POSITION_WORLD*0.25 + vec3(0.0, 0.0, -texel_size));
-    float h_u = get_height(VERTEX + NODE_POSITION_WORLD*0.25 + vec3(0.0, 0.0, texel_size));
+	float h_l = get_height(wrld_position + vec3(-texel_size, 0.0, 0.0));
+    float h_r = get_height(wrld_position + vec3(texel_size, 0.0, 0.0));
+    float h_d = get_height(wrld_position + vec3(0.0, 0.0, -texel_size));
+    float h_u = get_height(wrld_position + vec3(0.0, 0.0, texel_size));
 
 	float height_scale = 1.0;
 	float terrain_size = 1.0;
@@ -52,7 +55,8 @@ const vec3 ign = vec3(0.06711056f, 0.00583715f, 52.9829189f);
 
 void fragment() {
 	vec3 wrld_vertex = vec4(INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	ALBEDO = mix(vec3(4, 8, 61)/255.0, vec3(59.0/255.0, 222.0/255.0, 247.0/255.0), wrld_vertex.y-NODE_POSITION_WORLD.y);
+	float height = get_height(wrld_vertex);
+	ALBEDO = mix(vec3(4, 8, 61)/255.0, vec3(59.0/255.0, 222.0/255.0, 247.0/255.0), height*20.0);
 	ALBEDO.r = clamp(ALBEDO.r, 0, 1);
 	ALBEDO.g = clamp(ALBEDO.g, 0, 1);
 	ALBEDO.b = clamp(ALBEDO.b, 0, 1);
@@ -67,7 +71,7 @@ void fragment() {
 		//discard;
 	//}
 	
-	ALPHA = alpha;
+	//ALPHA = alpha;
 	
 	SPECULAR = 0.7;
 	ROUGHNESS = 0.3;

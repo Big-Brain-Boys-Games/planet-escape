@@ -1,0 +1,5 @@
+[gd_resource type="CameraAttributesPractical" format=3 uid="uid://107xh7h4w42s"]
+
+[resource]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 12.99

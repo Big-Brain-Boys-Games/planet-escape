@@ -105,7 +105,7 @@ vertical_alignment = 1
 [node name="environment" parent="." unique_id=163372752 instance=ExtResource("4_ohwjy")]
 
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
-transform = Transform3D(2.0768404, 0, 0, 0, 2.0097613, 0, 0, 0, 2.0768404, 0, 122.02768, 0)
+transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
 
 [node name="air_spewer" parent="." unique_id=311264186 instance=ExtResource("9_decpy")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 47.020718, 57.59915, 16.33197)
