@@ -3,15 +3,23 @@ extends CharacterBody3D
 ## Implements the player controller.
 
 ## Player movement speed.
-@export var speed : float = 5.0
+@export var speed : float = 2.0
 @export var acceleration : float = 4.0
 ## Player camera (gets automatically set in _ready()).
 @export var camera : Camera3D
 @export var ray : RayCast3D
 @export var collect_rock_label : Label
+
 var current_rock : Ore
-@export var mouse_speed : float = 1.0
+@export var mouse_speed : float = 0.2
 var inventory : Array = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+
+@export var world_environment : Node;
+@export var water_waves : Node3D;
+
+@export var _air_reset : float = 75;
+var _air_meter : float = _air_reset;
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -25,10 +33,33 @@ func _ready() -> void:
 			continue
 
 func _physics_process(delta: float) -> void:
+	if(global_position.y > water_waves.global_position.y-0.1):
+		#above water
+		world_environment.set_env(1)
+		
+		_air_meter = move_toward(_air_meter, _air_reset, delta*14)
+		
+		if(global_position.y > water_waves.global_position.y+0.2+sin(Time.get_ticks_msec()/1000.0)*0.3):
+			global_position.y = water_waves.global_position.y+0.2+sin(Time.get_ticks_msec()/1000.0)*0.3
+	else:
+		#under water
+		world_environment.set_env(0)
+		_air_meter -= delta
+		
+	$Control/blackening.color.a = clamp(1-_air_meter/10.0, 0, 1);
+	$Control/Air.text = "Air: " + str(_air_meter).pad_decimals(1)
+	if(_air_meter > 10):
+		$Control/Air.text = "Air: " + str(_air_meter).pad_decimals(0)
+	
+	#make water follow player
+	water_waves.global_position.x = global_position.x;
+	water_waves.global_position.z = global_position.z;
+		
+	
 	# Movement code
 	var direction : Vector3 = Vector3(0,0,0)
 	camera.rotation_degrees.z = 0
-	
+
 	var tilt : int = 0
 	if (Input.is_action_pressed("forward")):
 		direction -= camera.global_transform.basis.z.normalized()
@@ -42,18 +73,20 @@ func _physics_process(delta: float) -> void:
 		tilt = -1
 		direction += camera.global_transform.basis.x.normalized()
 	if(Input.is_action_pressed("up")):
-		direction += camera.global_transform.basis.y.normalized()
+		direction += Vector3.UP; #camera.global_transform.basis.y.normalized()
 	if(Input.is_action_pressed("down")):
-		direction -= camera.global_transform.basis.y.normalized()
-	velocity = direction * speed
+		direction -= Vector3.UP; #camera.global_transform.basis.y.normalized()
+	velocity = velocity.lerp(direction * speed + Vector3.UP*-0.2, 0.05)
 	
 	# Camera tilt
+	var wanted_rotation : float = 0
 	if(tilt == 1):
-		camera.rotation_degrees.z = 0
+		wanted_rotation = 7
 	if(tilt == -1):
-		camera.rotation_degrees.z = -0
-	if(direction == Vector3(0,0,0)):
-		camera.rotation_degrees.z = 0
+		wanted_rotation = -7
+	#if(direction == Vector3(0,0,0)):
+		#camera.rotation_degrees.z = 0
+	camera.rotation_degrees.z = lerpf(camera.rotation_degrees.z, wanted_rotation, 0.07)
 	move_and_slide()
 
 	# Check for rock and then set rock
@@ -66,7 +99,11 @@ func _physics_process(delta: float) -> void:
 		current_rock = null
 		collect_rock_label.visible = false
 		
-	
+
+func give_air(air : float):
+	_air_meter += air
+	_air_meter = min(_air_meter, _air_reset)
+
 func _input(event: InputEvent) -> void:
 	# Rotate the camera view
 	if (event is InputEventMouseMotion):

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://85vcl354qh4v"]
+
+[ext_resource type="Material" uid="uid://3eohl4sb78x" path="res://Shaders/air_bubble.tres" id="1_66fmj"]
+[ext_resource type="Script" uid="uid://cs8esk6yxvp4w" path="res://assets/scripts/underwater_things/air_bubble.gd" id="1_g48ec"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_khlrb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_khlrb"]
+
+[node name="bubble" type="Node3D" unique_id=2116741340]
+script = ExtResource("1_g48ec")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2086390227]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1764947775]
+shape = SubResource("SphereShape3D_khlrb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1880100383]
+mesh = SubResource("SphereMesh_khlrb")
+surface_material_override/0 = ExtResource("1_66fmj")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

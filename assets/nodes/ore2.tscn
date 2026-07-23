@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://254bq0vnnork"]
+
+[ext_resource type="Script" uid="uid://cp110278tkhih" path="res://assets/scripts/ore.gd" id="1_3o86h"]
+[ext_resource type="PackedScene" uid="uid://w233288xakq7" path="res://assets/models/ores/ore2.blend" id="2_vxj6f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
+radius = 0.82
+
+[node name="Ore2" type="RigidBody3D" unique_id=2074309254 groups=["rock"]]
+linear_damp = 2.015
+script = ExtResource("1_3o86h")
+oretype = 2
+
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=417953792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24049252, 0)
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="model" parent="." unique_id=714335062 instance=ExtResource("2_vxj6f")]
