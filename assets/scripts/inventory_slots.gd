@@ -7,4 +7,7 @@ var item : Ore.Ores :
 		set_item(value)
 		
 func set_item(value : Ore.Ores):
-	get_child(0).text = Ore.Ores.keys()[value]
+	if(value == 0):
+		get_child(0).text = ""
+	else:
+		get_child(0).text = Ore.Ores.keys()[value]

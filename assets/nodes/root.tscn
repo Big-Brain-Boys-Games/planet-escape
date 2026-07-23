@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dka4l3vrvmloo" path="res://assets/nodes/ironium.tscn" id="9_vy1b6"]
 [ext_resource type="PackedScene" uid="uid://ch7rs5nhrwkmu" path="res://assets/nodes/tarn.tscn" id="11_msuym"]
 [ext_resource type="PackedScene" uid="uid://duynw0xavhi65" path="res://assets/nodes/redegon.tscn" id="12_30aiw"]
+[ext_resource type="PackedScene" uid="uid://pjr2qdlaqa61" path="res://assets/nodes/crusher.tscn" id="15_i03b5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_41hqj"]
 
@@ -43,7 +44,7 @@ script = ExtResource("3_decpy")
 environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec")])
 
 [node name="Player" parent="." unique_id=1546401736 node_paths=PackedStringArray("world_environment", "water_waves") instance=ExtResource("2_yo1ht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 108.4656, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9349785, 0)
 world_environment = NodePath("../WorldEnvironment")
 water_waves = NodePath("../water_for_waves")
 
@@ -73,7 +74,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CollectRockLabel" type="Label" parent="Control" unique_id=1822180079 groups=["collect_rock_label"]]
+[node name="InteractLabelText" type="Label" parent="Control" unique_id=1822180079 groups=["collect_rock_label"]]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -93,7 +94,8 @@ label_settings = SubResource("LabelSettings_41f5n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InventoryRow1" type="VBoxContainer" parent="Control" unique_id=1709308828 groups=["inventory"]]
+[node name="InventoryRow1" type="VBoxContainer" parent="Control" unique_id=1709308828 node_paths=PackedStringArray("total_text") groups=["inventory"]]
+visible = false
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 1
 anchors_preset = 8
@@ -108,6 +110,7 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_msuym")
+total_text = NodePath("TotalItems")
 
 [node name="TotalItems" type="RichTextLabel" parent="Control/InventoryRow1" unique_id=184027516]
 layout_mode = 2
@@ -141,7 +144,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -164,7 +166,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -187,7 +188,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -210,7 +210,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -233,7 +232,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -256,7 +254,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -279,7 +276,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -302,7 +298,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -325,7 +320,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -348,7 +342,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -371,7 +364,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -394,7 +386,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -417,7 +408,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -440,7 +430,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -463,7 +452,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -486,7 +474,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -514,3 +501,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8491554, 1.4033074, -5.7002
 
 [node name="Ore4" parent="." unique_id=1179103699 instance=ExtResource("12_30aiw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.131324, 1.1238548, -6.220414)
+
+[node name="crusher" parent="." unique_id=343286013 instance=ExtResource("15_i03b5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.674262, 2.951121, -2.7335758)

@@ -8,7 +8,7 @@ extends CharacterBody3D
 ## Player camera (gets automatically set in _ready()).
 @export var camera : Camera3D
 @export var ray : RayCast3D
-@export var collect_rock_label : Label
+@export var interact_label : Label
 
 var current_rock : Ore
 @export var mouse_speed : float = 0.2
@@ -28,7 +28,7 @@ func _ready() -> void:
 	Input.use_accumulated_input = false
 	ray = get_tree().get_first_node_in_group("raycast")
 	inventory = get_tree().get_first_node_in_group("inventory")
-	collect_rock_label = get_tree().get_first_node_in_group("collect_rock_label")
+	interact_label = get_tree().get_first_node_in_group("collect_rock_label")
 	for child in get_children():
 		print(child)
 		if(child.is_in_group("camera")):
@@ -96,16 +96,20 @@ func _physics_process(delta: float) -> void:
 	camera.rotation_degrees.z = lerpf(camera.rotation_degrees.z, wanted_rotation, 0.07)
 	move_and_slide()
 
-	# Check for rock and then set rock
-	var collider : Object = ray.get_collider()
-	if(is_instance_of(collider,RigidBody3D)):
+	# Check raycast collisions
+	var collider : CollisionObject3D = ray.get_collider()
+	if(collider != null):
 		if (collider.is_in_group("rock")):
 			current_rock = collider
-			collect_rock_label.text = "Collect rock " + collider.Ores.find_key(collider.oretype) + "\n [E]"
-			collect_rock_label.visible = true
+			interact_label.text = "Collect rock " + collider.Ores.find_key(collider.oretype) + "\n [E]"
+			interact_label.visible = true
+		if(collider.is_in_group("crusher")):
+			interact_label.text = "Crush ores in inventory\n [E]"
+			interact_label.visible = true
 	else:
 		current_rock = null
-		collect_rock_label.visible = false
+		interact_label.visible = false
+		
 		
 
 func give_air(air : float):
@@ -133,9 +137,9 @@ func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("escape")):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
-	# Collect rock
+	# Run interact
 	if(event.is_action_pressed("use")):
-		if(collect_rock_label.visible):
+		if(interact_label.visible):
 			if(current_rock != null):
 				var success : bool = false
 				for slot in range(0,inventory.inventory_slots.size()):
@@ -145,6 +149,19 @@ func _input(event: InputEvent) -> void:
 						break
 				if(success):
 					current_rock.free()
+			# Interacting with crusher
+			else:
+				for slot in range(0,inventory.inventory_slots.size()):
+					match inventory.inventory_slots[slot].item:
+						Ore.Ores.IRONIUM:
+							inventory.ironium_count += 1
+						Ore.Ores.QUARTZ:
+							inventory.quartz_count += 1
+						Ore.Ores.TARN:
+							inventory.tarn_count += 1
+						Ore.Ores.REDOGON:
+							inventory.redagon_count += 1
+					inventory.inventory_slots[slot].item = Ore.Ores.INVALID
 	if(event.is_action_pressed("view_inventory")):
 		inventory.visible = true
 	if(event.is_action_released("view_inventory")):
