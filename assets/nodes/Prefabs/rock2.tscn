@@ -5,3 +5,4 @@
 [node name="Rock2" type="Node3D" unique_id=2029043633]
 
 [node name="rock2" parent="." unique_id=1347003297 instance=ExtResource("1_xqnqj")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
