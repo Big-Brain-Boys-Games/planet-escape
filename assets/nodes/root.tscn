@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dguq1btrwrija" path="res://assets/scripts/day_night_cycle.gd" id="1_yo1ht"]
 [ext_resource type="PackedScene" uid="uid://2xrx1jtq3gqf" path="res://assets/nodes/player.tscn" id="2_yo1ht"]
-[ext_resource type="Script" uid="uid://cp110278tkhih" path="res://assets/scripts/resource.gd" id="3_yo1ht"]
+[ext_resource type="Script" uid="uid://cp110278tkhih" path="res://assets/scripts/ore.gd" id="3_yo1ht"]
 [ext_resource type="PackedScene" uid="uid://e3ltekag20oj" path="res://assets/models/environment.blend" id="4_ohwjy"]
+[ext_resource type="PackedScene" uid="uid://i2ubnm1kj64w" path="res://assets/models/ores/ore1.blend" id="5_decpy"]
+[ext_resource type="PackedScene" uid="uid://w233288xakq7" path="res://assets/models/ores/ore2.blend" id="7_vyrl2"]
+[ext_resource type="PackedScene" uid="uid://cpdn6qeiqd6rb" path="res://assets/models/ores/ore3.blend" id="8_vy1b6"]
+[ext_resource type="PackedScene" uid="uid://duvbm0s413cb0" path="res://assets/models/ores/ore4.blend" id="9_msuym"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_41hqj"]
 sky_top_color = Color(0.5366627, 0.3843941, 0.5667443, 1)
@@ -39,14 +43,27 @@ size = Vector3(1, 0.0496582, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_41f5n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_vjr50"]
+radius = 0.698
 
 [sub_resource type="LabelSettings" id="LabelSettings_41f5n"]
 font_size = 32
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(1, 1, 1, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_41f5n"]
+top_radius = 3.2089844
+bottom_radius = 3.2089844
+height = 24.365967
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_41f5n"]
+radius = 1.0668945
+height = 6.265625
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vjr50"]
+radius = 2.4199219
+height = 9.083
+radial_segments = 16
 
 [node name="Root" type="Node3D" unique_id=38485686]
 
@@ -59,7 +76,7 @@ script = ExtResource("1_yo1ht")
 environment = SubResource("Environment_41f5n")
 
 [node name="Player" parent="." unique_id=1546401736 instance=ExtResource("2_yo1ht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 98.15775, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1528974, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1346774517]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
@@ -82,12 +99,202 @@ mesh = SubResource("SphereMesh_41f5n")
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1618891108 groups=["rock"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4005685, -2.4601836)
 script = ExtResource("3_yo1ht")
+oretype = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=334528549]
 shape = SubResource("SphereShape3D_41f5n")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="RigidBody3D" unique_id=919368661]
-mesh = SubResource("SphereMesh_vjr50")
+[node name="ore1" parent="RigidBody3D" unique_id=1224174157 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=1036005521 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8755255, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=1984609437]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D2" unique_id=1786998502 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="." unique_id=35062144 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.554349, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3" unique_id=157413564]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D3" unique_id=2124788392 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="." unique_id=1617437217 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.04822, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4" unique_id=397364960]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D4" unique_id=313420630 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D5" type="RigidBody3D" parent="." unique_id=248769253 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.848334, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D5" unique_id=82649814]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D5" unique_id=1878435366 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D6" type="RigidBody3D" parent="." unique_id=1568881932 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.202421, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D6" unique_id=2064508832]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D6" unique_id=1013698440 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D7" type="RigidBody3D" parent="." unique_id=496732671 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.085031, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D7" unique_id=1080610171]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D7" unique_id=998409400 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D8" type="RigidBody3D" parent="." unique_id=540865532 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.09587, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D8" unique_id=784918]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D8" unique_id=339146343 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D9" type="RigidBody3D" parent="." unique_id=1823331011 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.748669, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D9" unique_id=178683159]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D9" unique_id=1953835809 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D10" type="RigidBody3D" parent="." unique_id=1872182373 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.192196, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D10" unique_id=704782786]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D10" unique_id=1596123514 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D11" type="RigidBody3D" parent="." unique_id=1014958205 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.867376, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D11" unique_id=478583331]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D11" unique_id=1287313558 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D12" type="RigidBody3D" parent="." unique_id=844584885 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.503656, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D12" unique_id=1413722746]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D12" unique_id=466958832 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D13" type="RigidBody3D" parent="." unique_id=1182424635 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.015306, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D13" unique_id=973789935]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D13" unique_id=2056108792 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D14" type="RigidBody3D" parent="." unique_id=1461504994 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.481043, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D14" unique_id=526881961]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D14" unique_id=574484695 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D15" type="RigidBody3D" parent="." unique_id=1307785590 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.20115, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D15" unique_id=1899506580]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D15" unique_id=417743308 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D16" type="RigidBody3D" parent="." unique_id=53131506 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.985119, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D16" unique_id=604437502]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D16" unique_id=657417135 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D17" type="RigidBody3D" parent="." unique_id=142510020 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.383915, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D17" unique_id=1366377401]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D17" unique_id=1041866845 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D18" type="RigidBody3D" parent="." unique_id=1767028628 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.768116, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D18" unique_id=1292813913]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D18" unique_id=2062186269 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D19" type="RigidBody3D" parent="." unique_id=151398642 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.20511, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D19" unique_id=595473353]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D19" unique_id=856268908 instance=ExtResource("5_decpy")]
+
+[node name="RigidBody3D20" type="RigidBody3D" parent="." unique_id=1401555208 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.554455, -2.4601836)
+script = ExtResource("3_yo1ht")
+oretype = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D20" unique_id=973083559]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="ore1" parent="RigidBody3D20" unique_id=919616948 instance=ExtResource("5_decpy")]
 
 [node name="Control" type="Control" parent="." unique_id=870832432]
 layout_mode = 3
@@ -118,3 +325,40 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="environment" parent="." unique_id=163372752 instance=ExtResource("4_ohwjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008396149, 0, -0.0042533875)
+
+[node name="Rocket" type="Node3D" parent="." unique_id=1187248752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.041498, 93.34067, 0)
+
+[node name="Body" type="MeshInstance3D" parent="Rocket" unique_id=1752855016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.475637, 0)
+mesh = SubResource("CylinderMesh_41f5n")
+
+[node name="RocketBooster" type="MeshInstance3D" parent="Rocket/Body" unique_id=2143260885]
+transform = Transform3D(0.9961639, -0.087507136, 0, 0.087507136, 0.9961639, 0, 0, 0, 1, 2.1159916, -13.442642, 0)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="RocketBooster2" type="MeshInstance3D" parent="Rocket/Body" unique_id=1139642879]
+transform = Transform3D(0.9961947, 0.08715574, 0, -0.08715574, 0.9961947, 0, 0, 0, 1, -2.116, -13.443, 0)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="RocketBooster3" type="MeshInstance3D" parent="Rocket/Body" unique_id=46126161]
+transform = Transform3D(-4.348665e-08, 4.474537e-09, 0.99999994, 0.087507136, 0.9961639, -6.51979e-10, -0.99616385, 0.08750714, -4.3711385e-08, 0.19691753, -13.442642, -2.1068125)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="RocketBooster4" type="MeshInstance3D" parent="Rocket/Body" unique_id=1018668287]
+transform = Transform3D(-4.3464194e-08, -4.733946e-09, 0.99999994, -0.08715573, 0.9961947, 9.2777863e-10, -0.9961947, -0.08715573, -4.3711385e-08, -0.19692516, -13.443, 2.1068134)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="Tip" type="MeshInstance3D" parent="Rocket/Body" unique_id=820621335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.80216, 0)
+mesh = SubResource("CapsuleMesh_vjr50")
+
+[node name="ore2" parent="." unique_id=455688031 instance=ExtResource("7_vyrl2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.020814, 1.5783916, -11.262142)
+
+[node name="ore3" parent="." unique_id=1257356610 instance=ExtResource("8_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.055812, 2.2785213, -11.15845)
+
+[node name="ore4" parent="." unique_id=284012505 instance=ExtResource("9_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1757195, 2.3630352, -11.151472)
