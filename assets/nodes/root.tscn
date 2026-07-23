@@ -4,11 +4,14 @@
 [ext_resource type="Environment" uid="uid://csepf61phwt38" path="res://assets/worldEnvironments/abovewater_environment.tres" id="2_8adec"]
 [ext_resource type="PackedScene" uid="uid://2xrx1jtq3gqf" path="res://assets/nodes/player.tscn" id="2_yo1ht"]
 [ext_resource type="Script" uid="uid://he5j1ywl8t8c" path="res://assets/scripts/environment_manager.gd" id="3_decpy"]
-[ext_resource type="Script" uid="uid://cp110278tkhih" path="res://assets/scripts/resource.gd" id="3_yo1ht"]
 [ext_resource type="PackedScene" uid="uid://e3ltekag20oj" path="res://assets/models/environment.blend" id="4_ohwjy"]
 [ext_resource type="Environment" uid="uid://byvfmbtn1pj28" path="res://assets/worldEnvironments/underwater_environment.tres" id="4_yria1"]
 [ext_resource type="PackedScene" uid="uid://cxolkbtjsajlb" path="res://assets/models/water_for_waves.blend" id="5_iaj12"]
+[ext_resource type="PackedScene" uid="uid://254bq0vnnork" path="res://assets/nodes/ore2.tscn" id="6_decpy"]
 [ext_resource type="PackedScene" uid="uid://cu4ed0cwsrf31" path="res://assets/nodes/Prefabs/air_spewer.tscn" id="9_decpy"]
+[ext_resource type="PackedScene" uid="uid://dka4l3vrvmloo" path="res://assets/nodes/ore1.tscn" id="9_vy1b6"]
+[ext_resource type="PackedScene" uid="uid://ch7rs5nhrwkmu" path="res://assets/nodes/ore3.tscn" id="11_msuym"]
+[ext_resource type="PackedScene" uid="uid://duynw0xavhi65" path="res://assets/nodes/ore4.tscn" id="12_30aiw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_41hqj"]
 
@@ -18,10 +21,6 @@ size = Vector3(1, 0.0496582, 1)
 [sub_resource type="PrismMesh" id="PrismMesh_vjr50"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_41f5n"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_vjr50"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_41f5n"]
 font_size = 32
@@ -42,7 +41,7 @@ script = ExtResource("3_decpy")
 environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec")])
 
 [node name="Player" parent="." unique_id=1546401736 node_paths=PackedStringArray("world_environment", "water_waves") instance=ExtResource("2_yo1ht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 98.15775, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8976176, 0)
 world_environment = NodePath("../WorldEnvironment")
 water_waves = NodePath("../water_for_waves")
 
@@ -63,16 +62,6 @@ mesh = SubResource("PrismMesh_vjr50")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1658791165]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7197895, 1.437264, 5.841941)
 mesh = SubResource("SphereMesh_41f5n")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1618891108 groups=["rock"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4005685, -2.4601836)
-script = ExtResource("3_yo1ht")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=334528549]
-shape = SubResource("SphereShape3D_41f5n")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="RigidBody3D" unique_id=919368661]
-mesh = SubResource("SphereMesh_vjr50")
 
 [node name="Control" type="Control" parent="." unique_id=870832432]
 layout_mode = 3
@@ -96,7 +85,7 @@ offset_right = 45.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Collect rock
+text = "Collect rock (NAME)
 [E]"
 label_settings = SubResource("LabelSettings_41f5n")
 horizontal_alignment = 1
@@ -109,3 +98,15 @@ transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122
 
 [node name="air_spewer" parent="." unique_id=311264186 instance=ExtResource("9_decpy")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 47.020718, 57.59915, 16.33197)
+
+[node name="Ore1" parent="." unique_id=1852222799 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5215063, 0.515674, -5.4994197)
+
+[node name="Ore2" parent="." unique_id=2074309254 instance=ExtResource("6_decpy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5122447, 0.9437669, -5.122834)
+
+[node name="Ore3" parent="." unique_id=1616129071 instance=ExtResource("11_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8491554, 1.4033074, -5.700264)
+
+[node name="Ore4" parent="." unique_id=1179103699 instance=ExtResource("12_30aiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.131324, 1.1238548, -6.220414)
