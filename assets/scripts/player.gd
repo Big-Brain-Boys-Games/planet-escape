@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 		direction += Vector3.UP; #camera.global_transform.basis.y.normalized()
 	if(Input.is_action_pressed("down")):
 		direction -= Vector3.UP; #camera.global_transform.basis.y.normalized()
-	velocity = velocity.lerp(direction * speed + Vector3.UP*-0.2, 0.05)
+	velocity = velocity.lerp(direction * speed, 0.05)
 	
 	# Camera tilt
 	var wanted_rotation : float = 0
@@ -139,3 +139,7 @@ func _input(event: InputEvent) -> void:
 						break
 				if(success):
 					current_rock.free()
+	if(event.is_action_pressed("view_inventory")):
+		inventory.visible = true
+	if(event.is_action_released("view_inventory")):
+		inventory.visible = false
