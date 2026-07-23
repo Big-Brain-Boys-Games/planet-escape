@@ -36,14 +36,14 @@ func _ready() -> void:
 			continue
 
 func _physics_process(delta: float) -> void:
-	if(global_position.y > water_waves.global_position.y+0.7):
+	if(global_position.y > water_waves.global_position.y+3.8):
 		#above water
 		world_environment.set_env(1)
 		
 		_air_meter = move_toward(_air_meter, _air_reset, delta*14)
 		
-		if(global_position.y > water_waves.global_position.y+1.8+sin(Time.get_ticks_msec()/1000.0)*0.2):
-			global_position.y = water_waves.global_position.y+1.8+sin(Time.get_ticks_msec()/1000.0)*0.2
+		if(global_position.y > water_waves.global_position.y+4.9+sin(Time.get_ticks_msec()/1000.0)*0.2):
+			global_position.y = water_waves.global_position.y+4.9+sin(Time.get_ticks_msec()/1000.0)*0.2
 		
 		camera.attributes = camera_attributes[1];
 	else:

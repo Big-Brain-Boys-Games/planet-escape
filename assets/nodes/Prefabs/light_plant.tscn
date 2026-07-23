@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://y1xxmxroq2hw"]
+
+[ext_resource type="PackedScene" uid="uid://wwce0xvsq7y0" path="res://assets/models/underwater_things/light_plant.blend" id="1_arqmi"]
+
+[node name="LightPlant" type="Node3D" unique_id=881689650]
+
+[node name="light_plant" parent="." unique_id=613839088 instance=ExtResource("1_arqmi")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="light_plant" unique_id=1191693819]
+light_color = Color(0.9322993, 0.90094113, 0.6638889, 1)
+omni_range = 18.491512
