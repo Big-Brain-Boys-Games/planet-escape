@@ -3,4 +3,4 @@ extends RigidBody3D
 
 enum Ores {INVALID,IRONIUM,QUARTZ,TARN,REDOGON}
 
-@export var oretype : Ores
+@export var oretype : int

@@ -8,6 +8,8 @@
 [ext_resource type="Environment" uid="uid://byvfmbtn1pj28" path="res://assets/worldEnvironments/underwater_environment.tres" id="4_yria1"]
 [ext_resource type="PackedScene" uid="uid://cxolkbtjsajlb" path="res://assets/models/water_for_waves.blend" id="5_iaj12"]
 [ext_resource type="PackedScene" uid="uid://254bq0vnnork" path="res://assets/nodes/ore2.tscn" id="6_decpy"]
+[ext_resource type="Script" uid="uid://dgv4yy48f4ena" path="res://assets/scripts/inventory.gd" id="6_msuym"]
+[ext_resource type="Script" uid="uid://3kv8eskft0iw" path="res://assets/scripts/inventory_slots.gd" id="7_30aiw"]
 [ext_resource type="PackedScene" uid="uid://cu4ed0cwsrf31" path="res://assets/nodes/Prefabs/air_spewer.tscn" id="9_decpy"]
 [ext_resource type="PackedScene" uid="uid://dka4l3vrvmloo" path="res://assets/nodes/ore1.tscn" id="9_vy1b6"]
 [ext_resource type="PackedScene" uid="uid://ch7rs5nhrwkmu" path="res://assets/nodes/ore3.tscn" id="11_msuym"]
@@ -90,6 +92,398 @@ text = "Collect rock (NAME)
 label_settings = SubResource("LabelSettings_41f5n")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="InventoryRow1" type="VBoxContainer" parent="Control" unique_id=1709308828 groups=["inventory"]]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -25.0
+offset_right = 250.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_msuym")
+
+[node name="HBoxContainer" type="FlowContainer" parent="Control/InventoryRow1" unique_id=1993596030]
+custom_maximum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+last_wrap_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=1506337929]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect" unique_id=1785529989]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=1014110726]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=780052325]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect2" unique_id=1152921523]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=2041092820]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect3" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=1452046113]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect3" unique_id=1501747942]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=189437534]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect4" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=786489404]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect4" unique_id=1896061616]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control4" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=1317788719]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect5" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=356492877]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect5" unique_id=1165671289]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control5" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=732207246]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect6" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=1822700455]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect6" unique_id=1324583185]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control6" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=1717745689]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect7" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=484994022]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect7" unique_id=40132156]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control7" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=648353054]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect8" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=487013269]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect8" unique_id=898997021]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control8" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=167116781]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect9" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=382710737]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect9" unique_id=1732005975]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control9" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=1306386427]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect10" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=478542636]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect10" unique_id=80753864]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control10" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=494069446]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect11" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=1071047541]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect11" unique_id=1240019806]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control11" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=1183938479]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect12" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=1621925100]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect12" unique_id=2020665289]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control12" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=673388237]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect13" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=5274204]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect13" unique_id=1558021324]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control13" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=1618960064]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect14" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=378361042]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect14" unique_id=610684501]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control14" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=93112166]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect15" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=1293737516]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect15" unique_id=575572100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control15" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=247955918]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect16" type="ColorRect" parent="Control/InventoryRow1/HBoxContainer" unique_id=1965315498]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="Control/InventoryRow1/HBoxContainer/ColorRect16" unique_id=2098287958]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control16" type="Control" parent="Control/InventoryRow1/HBoxContainer" unique_id=1156951091]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="environment" parent="." unique_id=163372752 instance=ExtResource("4_ohwjy")]
 transform = Transform3D(1.0191008, 0, 0, 0, 1.0191008, 0, 0, 0, 1.0191008, 0, 0, 0)

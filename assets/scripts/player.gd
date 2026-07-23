@@ -12,7 +12,7 @@ extends CharacterBody3D
 
 var current_rock : Ore
 @export var mouse_speed : float = 0.2
-var inventory : Array = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+var inventory : Inventory
 
 @export var camera_attributes : Array[CameraAttributes];
 
@@ -27,6 +27,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Input.use_accumulated_input = false
 	ray = get_tree().get_first_node_in_group("raycast")
+	inventory = get_tree().get_first_node_in_group("inventory")
 	collect_rock_label = get_tree().get_first_node_in_group("collect_rock_label")
 	for child in get_children():
 		print(child)
@@ -82,7 +83,7 @@ func _physics_process(delta: float) -> void:
 		direction += Vector3.UP; #camera.global_transform.basis.y.normalized()
 	if(Input.is_action_pressed("down")):
 		direction -= Vector3.UP; #camera.global_transform.basis.y.normalized()
-	velocity = velocity.lerp(direction * speed + Vector3.UP*-0.2, 0.05)
+	velocity = velocity.lerp(direction * speed, 0.05)
 	
 	# Camera tilt
 	var wanted_rotation : float = 0
@@ -137,10 +138,14 @@ func _input(event: InputEvent) -> void:
 		if(collect_rock_label.visible):
 			if(current_rock != null):
 				var success : bool = false
-				for slot in range(0,inventory.size()):
-					if(inventory[slot] == null):
-						inventory[slot] = current_rock.oretype
+				for slot in range(0,inventory.inventory_slots.size()):
+					if(inventory.inventory_slots[slot].item == 0):
+						inventory.inventory_slots[slot].item = current_rock.oretype
 						success = true
 						break
 				if(success):
 					current_rock.free()
+	if(event.is_action_pressed("view_inventory")):
+		inventory.visible = true
+	if(event.is_action_released("view_inventory")):
+		inventory.visible = false
