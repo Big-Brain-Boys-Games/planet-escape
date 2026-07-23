@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dguq1btrwrija" path="res://assets/scripts/day_night_cycle.gd" id="1_yo1ht"]
 [ext_resource type="PackedScene" uid="uid://2xrx1jtq3gqf" path="res://assets/nodes/player.tscn" id="2_yo1ht"]
 [ext_resource type="Script" uid="uid://cp110278tkhih" path="res://assets/scripts/resource.gd" id="3_yo1ht"]
+[ext_resource type="PackedScene" uid="uid://e3ltekag20oj" path="res://assets/models/environment.blend" id="4_ohwjy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_41hqj"]
 sky_top_color = Color(0.5366627, 0.3843941, 0.5667443, 1)
@@ -58,7 +59,7 @@ script = ExtResource("1_yo1ht")
 environment = SubResource("Environment_41f5n")
 
 [node name="Player" parent="." unique_id=1546401736 instance=ExtResource("2_yo1ht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3629851, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 98.15775, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1346774517]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
@@ -115,3 +116,5 @@ text = "Collect rock
 label_settings = SubResource("LabelSettings_41f5n")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="environment" parent="." unique_id=163372752 instance=ExtResource("4_ohwjy")]
