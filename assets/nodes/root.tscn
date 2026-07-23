@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dl5dfkrnbshg6"]
 
-[ext_resource type="Script" uid="uid://cfrp6ywdeo8l6" path="res://assets/scripts/player.gd" id="1_5film"]
-[ext_resource type="Script" uid="uid://dguq1btrwrija" path="res://assets/nodes/day_night_cycle.gd" id="1_yo1ht"]
+[ext_resource type="Script" uid="uid://dguq1btrwrija" path="res://assets/scripts/day_night_cycle.gd" id="1_yo1ht"]
+[ext_resource type="PackedScene" uid="uid://2xrx1jtq3gqf" path="res://assets/nodes/player.tscn" id="2_yo1ht"]
+[ext_resource type="Script" uid="uid://cp110278tkhih" path="res://assets/scripts/resource.gd" id="3_yo1ht"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_41hqj"]
 sky_top_color = Color(0.5366627, 0.3843941, 0.5667443, 1)
@@ -27,8 +28,6 @@ volumetric_fog_albedo = Color(0, 0.9784731, 0.9825049, 1)
 volumetric_fog_emission = Color(0.016748713, 0.12049455, 0.13447726, 1)
 adjustment_brightness = 0.88
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_41f5n"]
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_41hqj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vjr50"]
@@ -37,6 +36,16 @@ size = Vector3(1, 0.0496582, 1)
 [sub_resource type="PrismMesh" id="PrismMesh_vjr50"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_41f5n"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vjr50"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_41f5n"]
+font_size = 32
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(1, 1, 1, 0)
 
 [node name="Root" type="Node3D" unique_id=38485686]
 
@@ -48,17 +57,8 @@ script = ExtResource("1_yo1ht")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1426847499]
 environment = SubResource("Environment_41f5n")
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=73405981]
+[node name="Player" parent="." unique_id=1546401736 instance=ExtResource("2_yo1ht")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3629851, 0)
-input_ray_pickable = false
-motion_mode = 1
-script = ExtResource("1_5film")
-
-[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1985606969 groups=["camera"]]
-current = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=903609932]
-shape = SubResource("CapsuleShape3D_41f5n")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1346774517]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
@@ -77,3 +77,41 @@ mesh = SubResource("PrismMesh_vjr50")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1658791165]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7197895, 1.437264, 5.841941)
 mesh = SubResource("SphereMesh_41f5n")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1618891108 groups=["rock"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4005685, -2.4601836)
+script = ExtResource("3_yo1ht")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=334528549]
+shape = SubResource("SphereShape3D_41f5n")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="RigidBody3D" unique_id=919368661]
+mesh = SubResource("SphereMesh_vjr50")
+
+[node name="Control" type="Control" parent="." unique_id=870832432]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollectRockLabel" type="Label" parent="Control" unique_id=1822180079 groups=["collect_rock_label"]]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -11.5
+offset_right = 45.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Collect rock
+[E]"
+label_settings = SubResource("LabelSettings_41f5n")
+horizontal_alignment = 1
+vertical_alignment = 1
