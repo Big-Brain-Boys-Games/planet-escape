@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cm4hbctm6ikrc"]
+
+[ext_resource type="Shader" uid="uid://c8a43g3esreel" path="res://Shaders/plant_water_wave_effect.gdshader" id="1_sylk8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_sylk8")
+shader_parameter/color = Color(0.4450975, 0.47347647, 0.1309717, 1)
+shader_parameter/sway_factor = 1.07
+shader_parameter/sway_scale = 0.23

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dglx415h5lgjn"]
+
+[ext_resource type="PackedScene" uid="uid://d54pf4j0f3uu" path="res://assets/models/underwater_things/sponge.blend" id="1_mjeha"]
+
+[node name="Sponge" type="Node3D" unique_id=671850953]
+
+[node name="sponge" parent="." unique_id=2141419565 instance=ExtResource("1_mjeha")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

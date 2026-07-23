@@ -1,7 +1,9 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://vwhk2rfspahx"]
 
 [ext_resource type="Shader" uid="uid://dsmijtuhuwqqr" path="res://Shaders/waves.gdshader" id="1_goiiq"]
+[ext_resource type="Texture2D" uid="uid://b4ycms5hr6b3n" path="res://assets/textures/wave_heightmap.png" id="2_t05bm"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_goiiq")
+shader_parameter/heightmap = ExtResource("2_t05bm")

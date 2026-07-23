@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://2xrx1jtq3gqf"]
 
 [ext_resource type="Script" uid="uid://cfrp6ywdeo8l6" path="res://assets/scripts/player.gd" id="1_wj3lj"]
+[ext_resource type="CameraAttributesPractical" uid="uid://107xh7h4w42s" path="res://assets/camera_attributes/underwater_attributes.tres" id="2_sysx0"]
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yo1ht"]
-dof_blur_far_enabled = true
-dof_blur_far_distance = 12.99
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_41f5n"]
 
@@ -12,10 +11,11 @@ dof_blur_far_distance = 12.99
 input_ray_pickable = false
 motion_mode = 1
 script = ExtResource("1_wj3lj")
+camera_attributes = Array[CameraAttributes]([ExtResource("2_sysx0"), null])
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=594912348 groups=["camera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5870034, 0)
-attributes = SubResource("CameraAttributesPractical_yo1ht")
+attributes = SubResource("CameraAttributesPractical_3aupp")
 current = true
 fov = 90.0
 
