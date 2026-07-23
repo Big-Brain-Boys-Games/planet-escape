@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://d1aoamchqjhc3" path="res://assets/nodes/Prefabs/bundle_of_plants.tscn" id="21_lkfgh"]
 [ext_resource type="PackedScene" uid="uid://oo225bxpayeh" path="res://assets/nodes/Prefabs/small_plant.tscn" id="22_hq3qs"]
 [ext_resource type="PackedScene" uid="uid://dglx415h5lgjn" path="res://assets/nodes/Prefabs/sponge.tscn" id="23_mmfph"]
+[ext_resource type="PackedScene" uid="uid://y1xxmxroq2hw" path="res://assets/nodes/Prefabs/light_plant.tscn" id="24_vo174"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_41hqj"]
 
@@ -52,7 +53,7 @@ script = ExtResource("3_4l3su")
 environments = Array[Environment]([ExtResource("4_168ei"), ExtResource("2_obpmw")])
 
 [node name="Player" parent="." unique_id=1546401736 node_paths=PackedStringArray("world_environment", "water_waves") instance=ExtResource("5_mntdq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.581856, 18.494698, 109.500435)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.441856, 65.1966, 31.851486)
 world_environment = NodePath("../WorldEnvironment")
 water_waves = NodePath("../water_for_waves")
 
@@ -863,18 +864,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6111877, 87.31664, -55.7545
 [node name="Rock18" parent="." unique_id=1545788231 instance=ExtResource("17_mntdq")]
 transform = Transform3D(0.86913764, -0.49457029, 0, 0.49457029, 0.86913764, 0, 0, 0, 1, 15.847026, 87.64246, -65.29734)
 
-[node name="Ore5" parent="." unique_id=438419437 instance=ExtResource("14_hq3qs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.97945, 0.82339466, 107.06801)
-freeze = true
-
-[node name="Ore6" parent="." unique_id=94650377 instance=ExtResource("14_hq3qs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.003407, 0.57487285, 115.453804)
-freeze = true
-
-[node name="Ore7" parent="." unique_id=2040348540 instance=ExtResource("14_hq3qs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.422413, 21.53805, 113.54234)
-freeze = true
-
 [node name="Rock19" parent="." unique_id=1752994559 instance=ExtResource("20_vfsgw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.19806, 15.130911, 110.17615)
 
@@ -892,9 +881,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.399265, 60.358074, 19.4022
 
 [node name="Sponge" parent="." unique_id=671850953 instance=ExtResource("23_mmfph")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.113003, 60.631447, 13.402252)
-
-[node name="Ore8" parent="." unique_id=1674712636 instance=ExtResource("12_vfsgw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.61099, 58.87813, 17.058544)
 
 [node name="Rock20" parent="." unique_id=1499724935 instance=ExtResource("17_mntdq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.365124, 60.990257, 21.636005)
@@ -916,3 +902,9 @@ transform = Transform3D(0.18516119, 0.07559978, 0, -0.07559978, 0.18516119, 0, 0
 
 [node name="air_spewer5" parent="." unique_id=1559247611 instance=ExtResource("10_l3p62")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 40.326843, 18.113384, 108.29377)
+
+[node name="LightPlant" parent="." unique_id=881689650 instance=ExtResource("24_vo174")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9421, 65.40111, 18.160358)
+
+[node name="Ore5" parent="." unique_id=741452918 instance=ExtResource("12_vfsgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.112934, 58.732456, 16.599037)
