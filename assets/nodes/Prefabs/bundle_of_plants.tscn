@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://d1aoamchqjhc3"]
+
+[ext_resource type="PackedScene" uid="uid://oo225bxpayeh" path="res://assets/nodes/Prefabs/small_plant.tscn" id="1_d2crf"]
+
+[node name="bundle of plants" type="Node3D" unique_id=1040139149]
+
+[node name="SmallPlant" parent="." unique_id=358686886 instance=ExtResource("1_d2crf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18448389, -0.119324684, -0.90903664)
+
+[node name="SmallPlant2" parent="." unique_id=6001833 instance=ExtResource("1_d2crf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.227956, -1.105195, 1.4517117)
+
+[node name="SmallPlant3" parent="." unique_id=2001793902 instance=ExtResource("1_d2crf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.445882, 0.14531392, -3.0004826)
+
+[node name="SmallPlant4" parent="." unique_id=195147155 instance=ExtResource("1_d2crf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3883337, -0.37573242, 4.245779)
+
+[node name="SmallPlant5" parent="." unique_id=1142980640 instance=ExtResource("1_d2crf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.807902, -0.5861063, 1.5238857)
+
+[node name="SmallPlant6" parent="." unique_id=1404030624 instance=ExtResource("1_d2crf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33228, 0.4945097, -7.398844)
+
+[node name="SmallPlant7" parent="." unique_id=2061590184 instance=ExtResource("1_d2crf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4152782, -0.058724403, -2.5398502)
+
+[node name="SmallPlant8" parent="." unique_id=537844316 instance=ExtResource("1_d2crf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052792907, 0.10427642, -5.2308292)
+
+[node name="SmallPlant9" parent="." unique_id=808124452 instance=ExtResource("1_d2crf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3596373, -1.3790293, 4.7218533)
+
+[node name="SmallPlant10" parent="." unique_id=836361795 instance=ExtResource("1_d2crf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0229597, -0.78197575, 1.9704494)
+
+[node name="SmallPlant11" parent="." unique_id=1571395577 instance=ExtResource("1_d2crf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8874006, -0.9204645, -0.9813938)

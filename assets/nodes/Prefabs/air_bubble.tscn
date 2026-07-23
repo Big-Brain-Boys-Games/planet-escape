@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://85vcl354qh4v"]
 
-[ext_resource type="Material" uid="uid://3eohl4sb78x" path="res://Shaders/air_bubble.tres" id="1_66fmj"]
+[ext_resource type="Material" uid="uid://3eohl4sb78x" path="res://assets/Shaders/air_bubble.tres" id="1_66fmj"]
 [ext_resource type="Script" uid="uid://cs8esk6yxvp4w" path="res://assets/scripts/underwater_things/air_bubble.gd" id="1_g48ec"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_khlrb"]

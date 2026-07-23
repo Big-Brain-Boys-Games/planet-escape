@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://q3vtkei8r23b"]
+
+[ext_resource type="PackedScene" uid="uid://ba23bs6sorns" path="res://assets/models/underwater_things/rock1.blend" id="1_hd4mx"]
+
+[node name="Rock1" type="Node3D" unique_id=861591082]
+
+[node name="rock1" parent="." unique_id=50300 instance=ExtResource("1_hd4mx")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
