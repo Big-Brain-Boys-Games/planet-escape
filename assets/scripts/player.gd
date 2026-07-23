@@ -94,6 +94,7 @@ func _physics_process(delta: float) -> void:
 	if(is_instance_of(collider,RigidBody3D)):
 		if (collider.is_in_group("rock")):
 			current_rock = collider
+			collect_rock_label.text = "Collect rock " + collider.Ores.find_key(collider.oretype) + "\n [E]"
 			collect_rock_label.visible = true
 	else:
 		current_rock = null
