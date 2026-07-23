@@ -8,7 +8,7 @@ dof_blur_far_distance = 12.99
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_41f5n"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1546401736]
+[node name="Player" type="CharacterBody3D" unique_id=1546401736 groups=["player"]]
 input_ray_pickable = false
 motion_mode = 1
 script = ExtResource("1_wj3lj")
@@ -26,3 +26,29 @@ debug_shape_thickness = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1980606818]
 shape = SubResource("CapsuleShape3D_41f5n")
+
+[node name="Control" type="Control" parent="." unique_id=1785599207]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Air" type="Label" parent="Control" unique_id=148198309]
+layout_mode = 1
+offset_left = 58.0
+offset_top = 25.0
+offset_right = 98.0
+offset_bottom = 48.0
+text = "Air: "
+
+[node name="blackening" type="ColorRect" parent="Control" unique_id=643188861]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -17.8
+anchor_top = -15.675
+anchor_right = 49.9
+anchor_bottom = 32.175
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true

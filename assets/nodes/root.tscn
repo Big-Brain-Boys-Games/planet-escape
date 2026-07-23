@@ -1,33 +1,14 @@
 [gd_scene format=3 uid="uid://dl5dfkrnbshg6"]
 
 [ext_resource type="Script" uid="uid://dguq1btrwrija" path="res://assets/scripts/day_night_cycle.gd" id="1_yo1ht"]
+[ext_resource type="Environment" uid="uid://csepf61phwt38" path="res://assets/worldEnvironments/abovewater_environment.tres" id="2_8adec"]
 [ext_resource type="PackedScene" uid="uid://2xrx1jtq3gqf" path="res://assets/nodes/player.tscn" id="2_yo1ht"]
+[ext_resource type="Script" uid="uid://he5j1ywl8t8c" path="res://assets/scripts/environment_manager.gd" id="3_decpy"]
 [ext_resource type="Script" uid="uid://cp110278tkhih" path="res://assets/scripts/resource.gd" id="3_yo1ht"]
 [ext_resource type="PackedScene" uid="uid://e3ltekag20oj" path="res://assets/models/environment.blend" id="4_ohwjy"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_41hqj"]
-sky_top_color = Color(0.5366627, 0.3843941, 0.5667443, 1)
-sky_horizon_color = Color(0.7821884, 0.60348326, 0.6060631, 1)
-sky_curve = 0.19118394
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.58859324, 0.39072108, 0.47187805, 1)
-ground_curve = 0.060628984
-
-[sub_resource type="Sky" id="Sky_vjr50"]
-sky_material = SubResource("ProceduralSkyMaterial_41hqj")
-radiance_size = 2
-
-[sub_resource type="Environment" id="Environment_41f5n"]
-background_mode = 2
-sky = SubResource("Sky_vjr50")
-ambient_light_source = 3
-tonemap_mode = 2
-fog_enabled = true
-fog_light_color = Color(0.14279449, 0.5339022, 0.7121845, 1)
-volumetric_fog_enabled = true
-volumetric_fog_albedo = Color(0, 0.9784731, 0.9825049, 1)
-volumetric_fog_emission = Color(0.016748713, 0.12049455, 0.13447726, 1)
-adjustment_brightness = 0.88
+[ext_resource type="Environment" uid="uid://byvfmbtn1pj28" path="res://assets/worldEnvironments/underwater_environment.tres" id="4_yria1"]
+[ext_resource type="PackedScene" uid="uid://cxolkbtjsajlb" path="res://assets/models/water_for_waves.blend" id="5_iaj12"]
+[ext_resource type="PackedScene" uid="uid://cu4ed0cwsrf31" path="res://assets/nodes/Prefabs/air_spewer.tscn" id="9_decpy"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_41hqj"]
 
@@ -51,15 +32,19 @@ shadow_color = Color(1, 1, 1, 0)
 [node name="Root" type="Node3D" unique_id=38485686]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1754267840]
-transform = Transform3D(1, 0, 0, 0, -0.39463016, 0.91883993, 0, -0.91884017, -0.39463016, 2.5431213, 6.627857, -4.5085964)
+transform = Transform3D(1, 0, 0, 0, -0.39463013, 0.9188401, 0, -0.9188401, -0.39463013, 2.5431213, 146.16304, -4.5085964)
 shadow_enabled = true
 script = ExtResource("1_yo1ht")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1426847499]
-environment = SubResource("Environment_41f5n")
+environment = ExtResource("2_8adec")
+script = ExtResource("3_decpy")
+environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec")])
 
-[node name="Player" parent="." unique_id=1546401736 instance=ExtResource("2_yo1ht")]
+[node name="Player" parent="." unique_id=1546401736 node_paths=PackedStringArray("world_environment", "water_waves") instance=ExtResource("2_yo1ht")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 98.15775, 0)
+world_environment = NodePath("../WorldEnvironment")
+water_waves = NodePath("../water_for_waves")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1346774517]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
@@ -118,3 +103,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="environment" parent="." unique_id=163372752 instance=ExtResource("4_ohwjy")]
+
+[node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
+transform = Transform3D(2.0768404, 0, 0, 0, 2.0097613, 0, 0, 0, 2.0768404, 0, 122.02768, 0)
+
+[node name="air_spewer" parent="." unique_id=311264186 instance=ExtResource("9_decpy")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 47.020718, 57.59915, 16.33197)

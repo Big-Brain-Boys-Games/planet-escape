@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://3eohl4sb78x"]
+
+[ext_resource type="Shader" uid="uid://y5taq3x3mq3m" path="res://Shaders/air_bubble.gdshader" id="1_b635g"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_b635g")

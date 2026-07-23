@@ -25,6 +25,7 @@ window/stretch/aspect="expand"
 [global_group]
 
 collect_rock_label="The label that appears when looking at a rock"
+player="player"
 
 [input]
 

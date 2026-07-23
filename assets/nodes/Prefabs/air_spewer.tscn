@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cu4ed0cwsrf31"]
+
+[ext_resource type="PackedScene" uid="uid://d3mswkn62oooj" path="res://assets/models/underwater_things/bubble_maker.blend" id="1_h1lq1"]
+[ext_resource type="Script" uid="uid://dvevrn7ucvj2v" path="res://assets/scripts/underwater_things/air_spewer.gd" id="1_v35he"]
+[ext_resource type="PackedScene" uid="uid://85vcl354qh4v" path="res://assets/nodes/Prefabs/air_bubble.tscn" id="2_3rrir"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_khlrb"]
+radius = 3.4427958
+
+[node name="air_spewer" type="Node3D" unique_id=311264186]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+script = ExtResource("1_v35he")
+_air_bubble_prefab = ExtResource("2_3rrir")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=908437370]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=919046785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.81381774, 0)
+shape = SubResource("SphereShape3D_khlrb")
+
+[node name="bubble_maker" parent="." unique_id=573821723 instance=ExtResource("1_h1lq1")]
