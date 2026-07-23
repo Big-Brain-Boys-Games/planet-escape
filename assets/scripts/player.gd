@@ -3,7 +3,7 @@ extends CharacterBody3D
 ## Implements the player controller.
 
 ## Player movement speed.
-@export var speed : float = 2.0
+@export var speed : float = 4.0
 @export var acceleration : float = 4.0
 ## Player camera (gets automatically set in _ready()).
 @export var camera : Camera3D

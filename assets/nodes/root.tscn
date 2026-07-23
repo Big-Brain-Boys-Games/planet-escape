@@ -32,6 +32,24 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(1, 1, 1, 0)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_41f5n"]
+top_radius = 5.4404297
+bottom_radius = 5.4404297
+height = 28.187744
+
+[sub_resource type="TorusMesh" id="TorusMesh_41f5n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4iriu"]
+size = Vector3(5, 12.225, 5)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_41f5n"]
+radius = 1.9960938
+height = 11.880127
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fn7jt"]
+radius = 5.0
+height = 15.0
+
 [node name="Root" type="Node3D" unique_id=38485686]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1754267840]
@@ -879,3 +897,53 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 40.326843, 18.113384, 1
 
 [node name="LightPlant" parent="decoration" unique_id=881689650 instance=ExtResource("25_rwp4k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9421, 65.40111, 18.160358)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=627676775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6544504, 103.30859, -43.114155)
+
+[node name="Body" type="MeshInstance3D" parent="Node3D" unique_id=2125883252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.047684, 0)
+mesh = SubResource("CylinderMesh_41f5n")
+
+[node name="Window" type="MeshInstance3D" parent="Node3D/Body" unique_id=1254239612]
+transform = Transform3D(-1.3113416e-07, -3, 0, 3, -1.3113416e-07, 0, 0, 0, 3, -5.5, 1.699, 0)
+mesh = SubResource("TorusMesh_41f5n")
+
+[node name="Window2" type="MeshInstance3D" parent="Node3D/Body" unique_id=1657572846]
+transform = Transform3D(-1.3113416e-07, -3, 0, 3, -1.3113416e-07, 0, 0, 0, 3, 5.5, 1.698, 0)
+mesh = SubResource("TorusMesh_41f5n")
+
+[node name="Window3" type="MeshInstance3D" parent="Node3D/Body" unique_id=1994576617]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, 0, 1.698, 5.5)
+mesh = SubResource("TorusMesh_41f5n")
+
+[node name="Window4" type="MeshInstance3D" parent="Node3D/Body" unique_id=478345697]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, 0, 1.698, -5.5)
+mesh = SubResource("TorusMesh_41f5n")
+
+[node name="Engine" type="MeshInstance3D" parent="Node3D/Body" unique_id=2111384621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.900574, 0)
+mesh = SubResource("BoxMesh_4iriu")
+
+[node name="Boosters" type="Node3D" parent="Node3D/Body" unique_id=655748082]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -12.69239, 0)
+
+[node name="Booster" type="MeshInstance3D" parent="Node3D/Body/Boosters" unique_id=8789476]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, -4.9400635, 4.09869)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="Booster2" type="MeshInstance3D" parent="Node3D/Body/Boosters" unique_id=887076536]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, -4.94, -4.099)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="Booster3" type="MeshInstance3D" parent="Node3D/Body/Boosters" unique_id=1058168741]
+transform = Transform3D(0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, 0, 0, 1, -4.099, -4.94, 0)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="Booster4" type="MeshInstance3D" parent="Node3D/Body/Boosters" unique_id=867360404]
+transform = Transform3D(0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, 0, 0, 1, 4.099, -4.94, 0)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="Cockpit" type="MeshInstance3D" parent="Node3D/Body" unique_id=316435994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.413788, 0)
+mesh = SubResource("CapsuleMesh_fn7jt")
