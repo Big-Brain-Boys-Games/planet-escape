@@ -6,7 +6,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
 radius = 0.89
 
-[node name="Ore3" type="RigidBody3D" unique_id=1616129071 groups=["rock"]]
+[node name="Tarn" type="RigidBody3D" unique_id=1616129071 groups=["rock"]]
 linear_damp = 2.015
 script = ExtResource("1_v1dna")
 oretype = 3
