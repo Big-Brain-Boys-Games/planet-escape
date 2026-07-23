@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://oqx1a5vogsuo"]
+
+[ext_resource type="PackedScene" uid="uid://c46m56g4lqo0m" path="res://assets/models/underwater_things/rock2.blend" id="1_xqnqj"]
+
+[node name="Rock2" type="Node3D" unique_id=2029043633]
+
+[node name="rock2" parent="." unique_id=1347003297 instance=ExtResource("1_xqnqj")]

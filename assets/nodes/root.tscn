@@ -31,7 +31,7 @@ shadow_color = Color(1, 1, 1, 0)
 [node name="Root" type="Node3D" unique_id=38485686]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1754267840]
-transform = Transform3D(1, 0, 0, 0, -0.39463013, 0.9188401, 0, -0.9188401, -0.39463013, 2.5431213, 146.16304, -4.5085964)
+transform = Transform3D(1, 0, 0, 0, -0.8519441, 0.52363276, 0, -0.52363276, -0.8519441, 2.5431213, 146.16304, -4.5085964)
 shadow_enabled = true
 script = ExtResource("1_yo1ht")
 
@@ -92,6 +92,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="environment" parent="." unique_id=163372752 instance=ExtResource("4_ohwjy")]
+transform = Transform3D(1.0191008, 0, 0, 0, 1.0191008, 0, 0, 0, 1.0191008, 0, 0, 0)
 
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)

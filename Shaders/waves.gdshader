@@ -16,7 +16,7 @@ float get_height(vec3 pos)
 	//z += magic_number*0.01;
 	float z = 1.0 - texture(heightmap, pos.xz*1.0 + vec2(0, TIME*0.018)).r;
 	z *= 1.0 - texture(heightmap, pos.xz/1.3 + vec2(TIME*0.01, 0)).r;
-	return pow(z, 0.6)*0.05;
+	return pow(z, 0.6)*0.3-0.1;
 }
 
 
@@ -24,28 +24,7 @@ void vertex() {
 	vec3 wrld_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	VERTEX.y += get_height(wrld_position);
 	
-	float texel_size = 1.0;
 	
-	float h_l = get_height(wrld_position + vec3(-texel_size, 0.0, 0.0));
-    float h_r = get_height(wrld_position + vec3(texel_size, 0.0, 0.0));
-    float h_d = get_height(wrld_position + vec3(0.0, 0.0, -texel_size));
-    float h_u = get_height(wrld_position + vec3(0.0, 0.0, texel_size));
-
-	float height_scale = 1.0;
-	float terrain_size = 1.0;
-	
-    // Normal calculation (Model Space)
-    vec3 n = normalize(vec3((h_l - h_r) * height_scale, 2.0 * (terrain_size * texel_size), (h_d - h_u) * height_scale));
-    
-    // Derive Tangent and Bitangent based on the calculated Normal
-    vec3 t = normalize(vec3(1.0, 0.0, 0.0)); 
-    t = normalize(cross(t, n));
-    vec3 b = cross(n, t);
-
-
-    NORMAL = n;
-    //TANGENT = (VIEW_MATRIX * (MODEL_MATRIX * vec4(t, 0.0))).xyz;
-    //BINORMAL = (VIEW_MATRIX * (MODEL_MATRIX * vec4(b, 0.0))).xyz;
 	//VERTEX.y += 0.05;~
 	
 	// Called for every vertex the material is visible on.
@@ -71,15 +50,40 @@ void fragment() {
 		//discard;
 	//}
 	
+	ALBEDO *= alpha;
 	//ALPHA = alpha;
 	
 	SPECULAR = 0.7;
 	ROUGHNESS = 0.3;
 	METALLIC = 0.4;
-	RIM = 0.5;
-	CLEARCOAT = 0.9;
-	ANISOTROPY = -0.5;
-	SSS_STRENGTH = 0.5;
+	//RIM = 0.5;
+	//CLEARCOAT = 0.9;
+	//ANISOTROPY = -0.5;
+	//SSS_STRENGTH = 0.5;
+	
+	
+	float texel_size = 4.0;
+	
+	float h_l = get_height(wrld_vertex + vec3(-texel_size, 0.0, 0.0));
+    float h_r = get_height(wrld_vertex + vec3(texel_size, 0.0, 0.0));
+    float h_d = get_height(wrld_vertex + vec3(0.0, 0.0, -texel_size));
+    float h_u = get_height(wrld_vertex + vec3(0.0, 0.0, texel_size));
+
+	float height_scale = 20.0;
+	float terrain_size = 0.2;
+	
+    // Normal calculation (Model Space)
+    vec3 n = normalize(vec3((h_l - h_r) * height_scale, 2.0 * (terrain_size * texel_size), (h_d - h_u) * height_scale));
+    
+    // Derive Tangent and Bitangent based on the calculated Normal
+    vec3 t = normalize(vec3(1.0, 0.0, 0.0)); 
+    t = normalize(cross(t, n));
+    vec3 b = cross(n, t);
+
+
+    NORMAL = (VIEW_MATRIX * (MODEL_MATRIX * vec4(n, 0.0))).xyz;
+    TANGENT = (VIEW_MATRIX * (MODEL_MATRIX * vec4(t, 0.0))).xyz;
+    BINORMAL = (VIEW_MATRIX * (MODEL_MATRIX * vec4(b, 0.0))).xyz;
 	
     
     // Use a small offset for better precision
