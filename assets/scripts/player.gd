@@ -23,6 +23,10 @@ var inventory : Inventory
 @export var _air_reset : float = 75;
 var _air_meter : float = _air_reset;
 
+@export var waves_heightmap : Image;
+
+var _fade_in : float = 3;
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -36,15 +40,50 @@ func _ready() -> void:
 			camera = child
 			continue
 
+func _process(delta : float) -> void:
+	if _fade_in > 0:
+		$Control/blackening.color.a = _fade_in/3.0
+		_fade_in -= min(delta, 0.02)
+	
+	RenderingServer.global_shader_parameter_set("wave_time", Time.get_ticks_msec() / 1000.0)
+
+func read_wave_image(v : Vector2i) -> float:
+	v.x %= waves_heightmap.get_width()
+	v.y %= waves_heightmap.get_height()
+	
+	if v.x < 0:
+		v.x = waves_heightmap.get_width() - (-v.x) % waves_heightmap.get_width()
+	
+	if v.y < 0:
+		v.y = waves_heightmap.get_height() - (-v.y) % waves_heightmap.get_height()
+	
+	return waves_heightmap.get_pixelv(v).r
+
+func get_waves_height() -> float:
+	var pos : Vector3 = global_position * 0.01
+	var uv : Vector2i = Vector2(pos.x, pos.z) * Vector2(waves_heightmap.get_size())
+	
+	var time : float = Time.get_ticks_msec() / 1000.0
+	var z : float = 1.0 - read_wave_image(uv*1.0 + Vector2(0, time*0.018));
+	z *= 1.0 - read_wave_image(uv/1.3 + Vector2(time*0.01, 0));
+	return (pow(z, 0.6)*0.15-0.05) * water_waves.scale.y * 103;
+
+func die():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().change_scene_to_file("res://assets/nodes/death_menu.tscn");
+
 func _physics_process(delta: float) -> void:
-	if(global_position.y > water_waves.global_position.y+3.8):
+	var wave_height = water_waves.global_position.y+get_waves_height();
+	#print("wave height ", wave_height)
+	#print("player height ", global_position.y)
+	if(global_position.y > wave_height-1.5):
 		#above water
 		world_environment.set_env(1)
 		
 		_air_meter = move_toward(_air_meter, _air_reset, delta*14)
 		
-		if(global_position.y > water_waves.global_position.y+4.9+sin(Time.get_ticks_msec()/1000.0)*0.2):
-			global_position.y = water_waves.global_position.y+4.9+sin(Time.get_ticks_msec()/1000.0)*0.2
+		if(global_position.y > wave_height+0.8):
+			global_position.y = wave_height+0.8
 		
 		camera.attributes = camera_attributes[1];
 	else:
@@ -52,6 +91,9 @@ func _physics_process(delta: float) -> void:
 		world_environment.set_env(0)
 		_air_meter -= delta
 		camera.attributes = camera_attributes[0];
+		
+		if _air_meter < 0:
+			die()
 		
 		
 	$Control/blackening.color.a = clamp(1-_air_meter/10.0, 0, 1);

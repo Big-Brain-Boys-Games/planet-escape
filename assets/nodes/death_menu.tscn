@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://0iatpanpca0w"]
+
+[ext_resource type="Texture2D" uid="uid://b8oqm2078eeuk" path="res://assets/textures/skull.png" id="1_vlsro"]
+[ext_resource type="Script" uid="uid://cxqgx13fdg8oe" path="res://assets/scripts/start_button.gd" id="2_b6sen"]
+
+[node name="Control" type="Control" unique_id=1228615092]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="ColorRect" parent="." unique_id=407430460]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="skull" type="TextureRect" parent="." unique_id=379279582]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = 182.0
+offset_right = 360.0
+offset_bottom = -420.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vlsro")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=1430177036]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -64.0
+offset_right = 60.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "You Died"
+
+[node name="retry_button" type="Button" parent="." unique_id=1786401957]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = 124.0
+offset_right = 25.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Retry"
+flat = true
+script = ExtResource("2_b6sen")
+scene = "res://assets/nodes/root.tscn"
+
+[node name="fadeout" type="ColorRect" parent="." unique_id=1183165165]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="retry_button" to="retry_button" method="_on_pressed"]

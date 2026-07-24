@@ -3,6 +3,8 @@ render_mode cull_disabled;
 render_mode depth_draw_always;
 //render_mode diffuse_burley;
 
+global uniform float wave_time;
+
 uniform sampler2D heightmap : filter_linear_mipmap_anisotropic;
 
 float get_height(vec3 pos)
@@ -14,8 +16,8 @@ float get_height(vec3 pos)
 	//z += sin(pos.x*20.0+magic_number+pos.z*12.2+sin(TIME*0.7)*0.4+TIME*2.0+pos.z*1.4)*0.05;
 	//z += sin(pos.x*1.5*pos.z*1.0+sin(TIME*1.26)*0.4+TIME*2.0)*0.1;
 	//z += magic_number*0.01;
-	float z = 1.0 - texture(heightmap, pos.xz*1.0 + vec2(0, TIME*0.018)).r;
-	z *= 1.0 - texture(heightmap, pos.xz/1.3 + vec2(TIME*0.01, 0)).r;
+	float z = 1.0 - texture(heightmap, pos.xz*1.0 + vec2(0, wave_time*0.018)).r;
+	z *= 1.0 - texture(heightmap, pos.xz/1.3 + vec2(wave_time*0.01, 0)).r;
 	return pow(z, 0.6)*0.15-0.05;
 }
 
@@ -92,6 +94,13 @@ void fragment() {
 	if (!FRONT_FACING) {
 		//ALPHA = 0.4;
 		NORMAL = -NORMAL;
+		
+		float f = dot(normalize(NORMAL), normalize(VIEW));
+		
+		if(f > 0.3 - (CAMERA_POSITION_WORLD.y-128.0)/80.0)
+		{
+			EMISSION = ALBEDO;
+		}
 	}
 }
 
