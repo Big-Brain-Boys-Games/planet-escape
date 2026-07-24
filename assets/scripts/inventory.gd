@@ -34,6 +34,17 @@ func get_resource_total (ore : Ore.Ores) -> int:
 			return redagon_count
 	return 0
 
+func set_new_resource_total (ore : Ore.Ores, value : int) -> void:
+	match ore:
+		1:
+			ironium_count = value
+		2:
+			quartz_count = value
+		3:
+			tarn_count = value
+		4:
+			redagon_count = value
+	
 func _ready() -> void:
 	var current_item : int = 0
 	for child in get_child(1).get_children():

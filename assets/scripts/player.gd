@@ -184,13 +184,20 @@ func _input(event: InputEvent) -> void:
 					else:
 						success.append(false)
 				var missing_items : String = ""
+				var all_clear : bool = true
 				for i in success.size():
 					if (!success[i]):
 						missing_items += Ore.Ores.keys()[build_array[0][i]] + " " + str(build_array[1][i]) + "\n"
 						inventory.missing_item_label.text = "Missing resource:\n" + missing_items
-						#inventory.missing_item_label.visible = true
 						inventory.get_parent().visible = true
 						inventory.missing_item_label.get_child(0).start()
+						all_clear = false
+				if (all_clear):
+					print("New gamestate")
+					inventory.missing_item_label.text = ""
+					GameManager.world_state += 1
+					for i in success.size():
+						inventory.set_new_resource_total(build_array[0][i], inventory.get_resource_total(build_array[0][i]) - build_array[1][i])
 						
 	if(event.is_action_pressed("view_inventory")):
 		inventory.get_parent().visible = true

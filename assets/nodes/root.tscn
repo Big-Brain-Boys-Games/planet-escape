@@ -77,7 +77,7 @@ script = ExtResource("3_decpy")
 environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec")])
 
 [node name="Player" parent="." unique_id=1546401736 node_paths=PackedStringArray("world_environment", "water_waves") instance=ExtResource("2_yo1ht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.52442, 73.209305, 15.448013)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3312321, 100.04038, -25.35457)
 world_environment = NodePath("../WorldEnvironment")
 water_waves = NodePath("../water_for_waves")
 
@@ -531,7 +531,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="environment" parent="Control" unique_id=928948361 instance=ExtResource("4_ohwjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29903793, -0.4991722, 1.1252651)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36738205, 0.51129913, 0.51258755)
+
+[node name="Tarn" parent="Control" unique_id=1616129071 instance=ExtResource("11_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.258059, 92.49758, -27.16459)
+
+[node name="Tarn2" parent="Control" unique_id=1094305308 instance=ExtResource("11_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.838842, 92.381195, -24.328018)
+
+[node name="Tarn3" parent="Control" unique_id=201596883 instance=ExtResource("11_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.234348, 91.93553, -23.643866)
 
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
@@ -542,7 +551,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.285332, 93.39846, -28.974
 [node name="Ore2" parent="." unique_id=2074309254 instance=ExtResource("6_decpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.276072, 93.82655, -28.59809)
 
-[node name="Ore3" parent="." unique_id=1616129071 instance=ExtResource("11_msuym")]
+[node name="Ore3" parent="." unique_id=733089361 instance=ExtResource("11_msuym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.91467, 94.286095, -29.175518)
 
 [node name="Ore4" parent="." unique_id=1179103699 instance=ExtResource("12_30aiw")]
