@@ -1,0 +1,10 @@
+[gd_resource type="Sky" format=3 uid="uid://bvdt8or8u2hn3"]
+
+[ext_resource type="Texture2D" uid="uid://ddh32kcrbruh7" path="res://assets/textures/space_skybox.png" id="1_llg1k"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dvyo1"]
+panorama = ExtResource("1_llg1k")
+energy_multiplier = 0.5
+
+[resource]
+sky_material = SubResource("PanoramaSkyMaterial_dvyo1")

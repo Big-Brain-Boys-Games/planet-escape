@@ -1,20 +1,10 @@
 [gd_resource type="Environment" format=3 uid="uid://byvfmbtn1pj28"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_41hqj"]
-sky_top_color = Color(0.5366627, 0.3843941, 0.5667443, 1)
-sky_horizon_color = Color(0.7821884, 0.60348326, 0.6060631, 1)
-sky_curve = 0.19118394
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.58859324, 0.39072108, 0.47187805, 1)
-ground_curve = 0.060628984
-
-[sub_resource type="Sky" id="Sky_vjr50"]
-sky_material = SubResource("ProceduralSkyMaterial_41hqj")
-radiance_size = 2
+[ext_resource type="Sky" uid="uid://dgd0jo10vakiu" path="res://assets/worldEnvironments/Skies/underwater_sky.tres" id="1_ep61s"]
 
 [resource]
 background_mode = 2
-sky = SubResource("Sky_vjr50")
+sky = ExtResource("1_ep61s")
 ambient_light_source = 3
 tonemap_mode = 2
 fog_enabled = true

@@ -1,19 +1,13 @@
 [gd_resource type="Environment" format=3 uid="uid://b4yj4uqw5nfgr"]
 
-[ext_resource type="Texture2D" uid="uid://ddh32kcrbruh7" path="res://assets/textures/space_skybox.png" id="1_81c8p"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dvyo1"]
-panorama = ExtResource("1_81c8p")
-energy_multiplier = 0.5
-
-[sub_resource type="Sky" id="Sky_f4hk2"]
-sky_material = SubResource("PanoramaSkyMaterial_dvyo1")
+[ext_resource type="Sky" uid="uid://bvdt8or8u2hn3" path="res://assets/worldEnvironments/Skies/space_sky.tres" id="1_81c8p"]
 
 [resource]
 background_mode = 2
 background_color = Color(0.0022227534, 0.0123358825, 0.05847176, 1)
-sky = SubResource("Sky_f4hk2")
+sky = ExtResource("1_81c8p")
 tonemap_mode = 2
 fog_enabled = true
 fog_light_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
 fog_density = 0.0
+fog_sky_affect = 0.0
