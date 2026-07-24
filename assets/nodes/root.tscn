@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dguq1btrwrija" path="res://assets/scripts/day_night_cycle.gd" id="1_yo1ht"]
 [ext_resource type="Environment" uid="uid://csepf61phwt38" path="res://assets/worldEnvironments/abovewater_environment.tres" id="2_8adec"]
 [ext_resource type="PackedScene" uid="uid://2xrx1jtq3gqf" path="res://assets/nodes/player.tscn" id="2_yo1ht"]
+[ext_resource type="Texture2D" uid="uid://dlyjiuudv7vrn" path="res://assets/textures/notification_icon.png" id="3_1b4ng"]
 [ext_resource type="Script" uid="uid://he5j1ywl8t8c" path="res://assets/scripts/environment_manager.gd" id="3_decpy"]
 [ext_resource type="PackedScene" uid="uid://e3ltekag20oj" path="res://assets/models/environment.blend" id="4_ohwjy"]
 [ext_resource type="Environment" uid="uid://byvfmbtn1pj28" path="res://assets/worldEnvironments/underwater_environment.tres" id="4_yria1"]
@@ -628,13 +629,37 @@ custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 color = Color(0.3403393, 0.34033933, 0.3403393, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/CenterContainer/ColorRect" unique_id=939132305 groups=["notification"]]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer/ColorRect" unique_id=493603347]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Control" type="Control" parent="Control/CenterContainer/ColorRect/HBoxContainer" unique_id=1295836018]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/CenterContainer/ColorRect/HBoxContainer/Control" unique_id=762239844]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.625
+offset_top = -17.625
+offset_right = 17.625
+offset_bottom = 17.625
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1b4ng")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/CenterContainer/ColorRect/HBoxContainer" unique_id=939132305 groups=["notification"]]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEES"
 horizontal_alignment = 1
 vertical_alignment = 1
