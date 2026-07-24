@@ -9,7 +9,7 @@ extends CharacterBody3D
 @export var camera : Camera3D
 @export var ray : RayCast3D
 @export var interact_label : Label
-
+@export var notification_node : notification
 var current_rock : Ore
 var interacting_with : String
 @export var mouse_speed : float = 0.2
@@ -30,11 +30,13 @@ func _ready() -> void:
 	ray = get_tree().get_first_node_in_group("raycast")
 	inventory = get_tree().get_first_node_in_group("inventory")
 	interact_label = get_tree().get_first_node_in_group("collect_rock_label")
+	notification_node = get_tree().get_first_node_in_group("notification")
 	for child in get_children():
 		print(child)
 		if(child.is_in_group("camera")):
 			camera = child
 			continue
+	notification_node.play_notification("Yes")
 
 func _physics_process(delta: float) -> void:
 	if(global_position.y > water_waves.global_position.y+3.8):
