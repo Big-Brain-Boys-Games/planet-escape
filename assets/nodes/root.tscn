@@ -1034,7 +1034,7 @@ mesh = SubResource("BoxMesh_4iriu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.413788, 0)
 mesh = SubResource("CapsuleMesh_fn7jt")
 
-[node name="SeatLocation" type="Node3D" parent="Rocket/Body/Cockpit" unique_id=1871916474]
+[node name="SeatLocation" type="Node3D" parent="Rocket/Body/Cockpit" unique_id=1871916474 groups=["seat_location"]]
 
 [node name="Boosters" type="Node3D" parent="Rocket/Body" unique_id=655748082 groups=["rocket_boosters"]]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -12.69239, 0)

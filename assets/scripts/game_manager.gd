@@ -14,6 +14,7 @@ extends Node
 ## state 10: the end
 
 var notification_node : notification
+var player : Player
 
 # ALL VARIABLES FOR STAGE 1
 
@@ -29,12 +30,17 @@ var rocket_cockpit : MeshInstance3D
 # ALL VARIABLES FOR STAGE 5
 var rocket_boosters : Node3D
 
+# ALL VARIABLES FOR STAGE 6
+var seat_location : Node3D
+
 func _ready() -> void:
 	notification_node = get_tree().get_first_node_in_group("notification")
 	rocket_body = get_tree().get_first_node_in_group("rocket_body")
 	rocket_engine = get_tree().get_first_node_in_group("rocket_engine")
 	rocket_cockpit = get_tree().get_first_node_in_group("rocket_cockpit")
 	rocket_boosters = get_tree().get_first_node_in_group("rocket_boosters")
+	player = get_tree().get_first_node_in_group("player")
+	seat_location = get_tree().get_first_node_in_group("seat_location")
 
 var world_state : int = 1
 
@@ -60,6 +66,11 @@ func advanced_state() -> void:
 			rocket_boosters.visible = true
 		6:
 			notification_node.play_notification("Lift off!")
+			player.player_movement_enabled = false
+			print(player.global_position)
+			print(seat_location.global_position)
+			player.global_position = seat_location.global_position
+			print(player.global_position)
 		7:
 			pass
 		8:
