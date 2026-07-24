@@ -1,0 +1,16 @@
+[gd_resource type="Environment" format=3 uid="uid://b4yj4uqw5nfgr"]
+
+[ext_resource type="Texture2D" uid="uid://ddh32kcrbruh7" path="res://assets/textures/space_skybox.png" id="1_81c8p"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dvyo1"]
+panorama = ExtResource("1_81c8p")
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_f4hk2"]
+sky_material = SubResource("PanoramaSkyMaterial_dvyo1")
+
+[resource]
+background_mode = 2
+background_color = Color(0.0022227534, 0.0123358825, 0.05847176, 1)
+sky = SubResource("Sky_f4hk2")
+tonemap_mode = 2

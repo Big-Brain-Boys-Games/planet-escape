@@ -32,6 +32,8 @@ var rocket_boosters : Node3D
 
 # ALL VARIABLES FOR STAGE 6
 var seat_location : Node3D
+var planet_environment : Node3D
+var liftoff_animation : AnimationPlayer
 
 func _ready() -> void:
 	notification_node = get_tree().get_first_node_in_group("notification")
@@ -41,6 +43,8 @@ func _ready() -> void:
 	rocket_boosters = get_tree().get_first_node_in_group("rocket_boosters")
 	player = get_tree().get_first_node_in_group("player")
 	seat_location = get_tree().get_first_node_in_group("seat_location")
+	planet_environment = get_tree().get_first_node_in_group("planet_environment")
+	liftoff_animation = get_tree().get_first_node_in_group("liftoff_animation")
 
 var world_state : int = 1
 
@@ -67,10 +71,8 @@ func advanced_state() -> void:
 		6:
 			notification_node.play_notification("Lift off!")
 			player.player_movement_enabled = false
-			print(player.global_position)
-			print(seat_location.global_position)
 			player.global_position = seat_location.global_position
-			print(player.global_position)
+			planet_environment.visible = false
 		7:
 			pass
 		8:
