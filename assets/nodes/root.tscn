@@ -530,18 +530,6 @@ label_settings = SubResource("LabelSettings_41f5n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="environment" parent="Control" unique_id=928948361 instance=ExtResource("4_ohwjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36738205, 0.51129913, 0.51258755)
-
-[node name="Tarn" parent="Control" unique_id=1616129071 instance=ExtResource("11_msuym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.258059, 92.49758, -27.16459)
-
-[node name="Tarn2" parent="Control" unique_id=1094305308 instance=ExtResource("11_msuym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.838842, 92.381195, -24.328018)
-
-[node name="Tarn3" parent="Control" unique_id=201596883 instance=ExtResource("11_msuym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.234348, 91.93553, -23.643866)
-
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
 
@@ -556,6 +544,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.91467, 94.286095, -29.175
 
 [node name="Ore4" parent="." unique_id=1179103699 instance=ExtResource("12_30aiw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.632504, 94.006645, -29.69567)
+
+[node name="Tarn" parent="." unique_id=1616129071 instance=ExtResource("11_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.258059, 92.49758, -27.16459)
+
+[node name="Tarn2" parent="." unique_id=1094305308 instance=ExtResource("11_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.838842, 92.381195, -24.328018)
+
+[node name="Tarn3" parent="." unique_id=201596883 instance=ExtResource("11_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.234348, 91.93553, -23.643866)
 
 [node name="crusher" parent="." unique_id=343286013 instance=ExtResource("15_i03b5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.674262, 94.630615, -36.078613)
@@ -1037,5 +1034,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.817245, 91.41282, -27.680
 
 [node name="Ironium4" parent="." unique_id=1883930213 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.005543, 91.68624, -28.848598)
+
+[node name="environment" parent="." unique_id=928948361 instance=ExtResource("4_ohwjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36738205, 0.51129913, 0.51258755)
 
 [connection signal="timeout" from="Control/InventoryHolder/InventoryRow1/HBoxContainer2/MissingItem/Timer" to="Control/InventoryHolder/InventoryRow1" method="_missing_item_text_timeout"]

@@ -13,7 +13,7 @@ extends Node
 ## state 9: travel gameplay
 ## state 10: the end
 
-var world_state : int = 0
+var world_state : int = 1
 
 func advanced_state() -> void:
 	world_state += 1
