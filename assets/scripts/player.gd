@@ -15,6 +15,9 @@ var interacting_with : String
 @export var mouse_speed : float = 0.2
 var inventory : Inventory
 
+var player_movement_enabled : bool = true
+var camera_movement_enabled : bool = true
+
 @export var camera_attributes : Array[CameraAttributes];
 
 @export var world_environment : Node;
@@ -113,33 +116,34 @@ func _physics_process(delta: float) -> void:
 	camera.rotation_degrees.z = 0
 
 	var tilt : int = 0
-	if (Input.is_action_pressed("forward")):
-		direction -= camera.global_transform.basis.z.normalized()
-	if (Input.is_action_pressed("backwards")):
-		direction += camera.global_transform.basis.z.normalized()
-	if (Input.is_action_pressed("left")):
-		# 1 is left, -1 is right
-		tilt = 1
-		direction -= camera.global_transform.basis.x.normalized()
-	if (Input.is_action_pressed("right")):
-		tilt = -1
-		direction += camera.global_transform.basis.x.normalized()
-	if(Input.is_action_pressed("up")):
-		direction += Vector3.UP; #camera.global_transform.basis.y.normalized()
-	if(Input.is_action_pressed("down")):
-		direction -= Vector3.UP; #camera.global_transform.basis.y.normalized()
-	velocity = velocity.lerp(direction * speed, 0.05)
-	
-	# Camera tilt
-	var wanted_rotation : float = 0
-	if(tilt == 1):
-		wanted_rotation = 7
-	if(tilt == -1):
-		wanted_rotation = -7
-	#if(direction == Vector3(0,0,0)):
-		#camera.rotation_degrees.z = 0
-	camera.rotation_degrees.z = lerpf(camera.rotation_degrees.z, wanted_rotation, 0.07)
-	move_and_slide()
+	if (player_movement_enabled):
+		if (Input.is_action_pressed("forward")):
+			direction -= camera.global_transform.basis.z.normalized()
+		if (Input.is_action_pressed("backwards")):
+			direction += camera.global_transform.basis.z.normalized()
+		if (Input.is_action_pressed("left")):
+			# 1 is left, -1 is right
+			tilt = 1
+			direction -= camera.global_transform.basis.x.normalized()
+		if (Input.is_action_pressed("right")):
+			tilt = -1
+			direction += camera.global_transform.basis.x.normalized()
+		if(Input.is_action_pressed("up")):
+			direction += Vector3.UP; #camera.global_transform.basis.y.normalized()
+		if(Input.is_action_pressed("down")):
+			direction -= Vector3.UP; #camera.global_transform.basis.y.normalized()
+		velocity = velocity.lerp(direction * speed, 0.05)
+		
+		# Camera tilt
+		var wanted_rotation : float = 0
+		if(tilt == 1):
+			wanted_rotation = 7
+		if(tilt == -1):
+			wanted_rotation = -7
+		#if(direction == Vector3(0,0,0)):
+			#camera.rotation_degrees.z = 0
+		camera.rotation_degrees.z = lerpf(camera.rotation_degrees.z, wanted_rotation, 0.07)
+		move_and_slide()
 
 	# Check raycast collisions
 	var collider : CollisionObject3D = ray.get_collider()
@@ -157,6 +161,13 @@ func _physics_process(delta: float) -> void:
 			interacting_with = "computer"
 			interact_label.text = "Submit resources\n [E]"
 			interact_label.visible = true
+		if (collider.is_in_group("rocket_door")):
+			interacting_with = "rocket_door"
+			if(GameManager.world_state == 5):
+				interact_label.text = "Enter rocket\n [E]"
+			else:
+				interact_label.text = "Rocket not ready"
+			interact_label.visible = true
 	else:
 		interacting_with = ""
 		current_rock = null
@@ -170,14 +181,15 @@ func give_air(air : float):
 
 func _input(event: InputEvent) -> void:
 	# Rotate the camera view
-	if (event is InputEventMouseMotion):
-		if(Input.mouse_mode != 0):
-			var new_rot : float = camera.rotation_degrees.x + -event.screen_relative.y * mouse_speed
-			if(new_rot < 90 && new_rot > -90):
-				camera.rotation_degrees.x = new_rot
-			camera.rotation_degrees.y += -event.screen_relative.x * mouse_speed
-		return
-		
+	if(camera_movement_enabled):
+		if (event is InputEventMouseMotion):
+			if(Input.mouse_mode != 0):
+				var new_rot : float = camera.rotation_degrees.x + -event.screen_relative.y * mouse_speed
+				if(new_rot < 90 && new_rot > -90):
+					camera.rotation_degrees.x = new_rot
+				camera.rotation_degrees.y += -event.screen_relative.x * mouse_speed
+			return
+			
 	# Capture mouse if not captured and clicking the window
 	if (event is InputEventMouseButton):
 		if (event.pressed && event.button_index == 1):
@@ -245,7 +257,11 @@ func _input(event: InputEvent) -> void:
 					GameManager.advanced_state()
 					for i in success.size():
 						inventory.set_new_resource_total(build_array[0][i], inventory.get_resource_total(build_array[0][i]) - build_array[1][i])
-						
+			
+			if (interacting_with == "rocket_door"):
+				if (GameManager.world_state == 5):
+					GameManager.advanced_state()
+					
 	if(event.is_action_pressed("view_inventory")):
 		inventory.get_parent().visible = true
 	if(event.is_action_released("view_inventory")):
