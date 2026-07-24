@@ -11,6 +11,7 @@ sky_material = SubResource("ProceduralSkyMaterial_8adec")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_4pc67")
+tonemap_mode = 2
 fog_light_color = Color(0.055717386, 0.29415643, 0.4024785, 1)
 fog_density = 0.1
 fog_sky_affect = 0.0

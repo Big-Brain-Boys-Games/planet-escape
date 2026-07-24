@@ -11,6 +11,7 @@ extends CharacterBody3D
 @export var interact_label : Label
 
 var current_rock : Ore
+var interacting_with : String
 @export var mouse_speed : float = 0.2
 var inventory : Inventory
 
@@ -100,13 +101,20 @@ func _physics_process(delta: float) -> void:
 	var collider : CollisionObject3D = ray.get_collider()
 	if(collider != null):
 		if (collider.is_in_group("rock")):
+			interacting_with = "rock"
 			current_rock = collider
 			interact_label.text = "Collect rock " + collider.Ores.find_key(collider.oretype) + "\n [E]"
 			interact_label.visible = true
-		if(collider.is_in_group("crusher")):
+		if (collider.is_in_group("crusher")):
+			interacting_with = "crusher"
 			interact_label.text = "Crush ores in inventory\n [E]"
 			interact_label.visible = true
+		if (collider.is_in_group("computer")):
+			interacting_with = "computer"
+			interact_label.text = "Submit resources\n [E]"
+			interact_label.visible = true
 	else:
+		interacting_with = ""
 		current_rock = null
 		interact_label.visible = false
 		
@@ -149,8 +157,8 @@ func _input(event: InputEvent) -> void:
 						break
 				if(success):
 					current_rock.free()
-			# Interacting with crusher
-			else:
+			if	(interacting_with == "crusher"):
+				# Go through all inventory slots and process them
 				for slot in range(0,inventory.inventory_slots.size()):
 					match inventory.inventory_slots[slot].item:
 						Ore.Ores.IRONIUM:
@@ -161,8 +169,30 @@ func _input(event: InputEvent) -> void:
 							inventory.tarn_count += 1
 						Ore.Ores.REDOGON:
 							inventory.redagon_count += 1
+					# Set inventory to empty
 					inventory.inventory_slots[slot].item = Ore.Ores.INVALID
+					
+			if (interacting_with == "computer"):
+				var rocket : Rocket = get_tree().get_first_node_in_group("rocket")
+				# build_array[0] is the Ore.Ores resource and build_array[1] is the total
+				var build_array : Array = rocket.get_rocket_world_state_variable()
+				var success : Array[bool]
+				for i in range(0,build_array[0].size()):
+					print(inventory.get_resource_total(build_array[0][i]))
+					if(build_array[1][i] <= inventory.get_resource_total(build_array[0][i])):
+						success.append(true)
+					else:
+						success.append(false)
+				var missing_items : String = ""
+				for i in success.size():
+					if (!success[i]):
+						missing_items += Ore.Ores.keys()[build_array[0][i]] + " " + str(build_array[1][i]) + "\n"
+						inventory.missing_item_label.text = "Missing resource:\n" + missing_items
+						#inventory.missing_item_label.visible = true
+						inventory.get_parent().visible = true
+						inventory.missing_item_label.get_child(0).start()
+						
 	if(event.is_action_pressed("view_inventory")):
-		inventory.visible = true
+		inventory.get_parent().visible = true
 	if(event.is_action_released("view_inventory")):
-		inventory.visible = false
+		inventory.get_parent().visible = false

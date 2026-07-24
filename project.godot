@@ -15,6 +15,10 @@ run/main_scene="res://assets/nodes/root.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://blmt4f2cqpqji"
+
 [display]
 
 window/size/viewport_width=1280
@@ -28,6 +32,7 @@ collect_rock_label="The label that appears when looking at a rock"
 player="player"
 inventory="The main inventory"
 crusher="The crusher group"
+missing_item_label=""
 
 [input]
 
