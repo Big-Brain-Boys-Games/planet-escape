@@ -21,12 +21,6 @@
 [ext_resource type="Script" uid="uid://q5h6x3l8qblq" path="res://assets/scripts/rocket.gd" id="26_pcorw"]
 [ext_resource type="PackedScene" uid="uid://b6qrxe2l3engi" path="res://assets/models/scifi_screen.blend" id="27_ip4mf"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_41f5n"]
-font_size = 32
-outline_size = 3
-outline_color = Color(0, 0, 0, 1)
-shadow_color = Color(1, 1, 1, 0)
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_41f5n"]
 top_radius = 5.4404297
 bottom_radius = 5.4404297
@@ -55,6 +49,12 @@ albedo_color = Color(0.7411765, 0, 0, 1)
 material = SubResource("StandardMaterial3D_fn7jt")
 size = Vector3(1, 5, 2)
 
+[sub_resource type="LabelSettings" id="LabelSettings_41f5n"]
+font_size = 32
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(1, 1, 1, 0)
+
 [sub_resource type="BoxMesh" id="BoxMesh_41f5n"]
 size = Vector3(1, 1.97, 1)
 
@@ -66,518 +66,11 @@ size = Vector3(1, 0.18, 2.075)
 
 [node name="Root" type="Node3D" unique_id=38485686]
 
-[node name="fish_design_2" parent="." unique_id=942352189 instance=ExtResource("1_dg37v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.315329, 105.00783, -21.089983)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1754267840]
-transform = Transform3D(1, 0, 0, 0, 0.045397967, 0.99896896, 0, -0.99896896, 0.045397967, 2.5431213, 146.16304, -4.5085964)
-shadow_enabled = true
-script = ExtResource("1_yo1ht")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1426847499]
-environment = ExtResource("2_8adec")
-script = ExtResource("3_decpy")
-environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec")])
-
 [node name="Player" parent="." unique_id=1546401736 node_paths=PackedStringArray("world_environment", "water_waves") instance=ExtResource("2_yo1ht")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.45132, 105.505104, -45.482273)
-world_environment = NodePath("../WorldEnvironment")
-water_waves = NodePath("../water_for_waves")
+world_environment = NodePath("../planet_environment/WorldEnvironment")
+water_waves = NodePath("../planet_environment/water_for_waves")
 waves_heightmap = ExtResource("7_3hs2x")
-
-[node name="plants and rocks" parent="." unique_id=1959867297 instance=ExtResource("8_ffh1o")]
-
-[node name="Control" type="Control" parent="." unique_id=870832432]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 12.0
-offset_right = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="InventoryHolder" type="Control" parent="Control" unique_id=1234163766]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Control/InventoryHolder" unique_id=1528976498]
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.17641908, 0.17641911, 0.17641902, 0.6039216)
-
-[node name="InventoryRow1" type="VBoxContainer" parent="Control/InventoryHolder" unique_id=1709308828 node_paths=PackedStringArray("total_text", "missing_item_label") groups=["inventory"]]
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_msuym")
-total_text = NodePath("HBoxContainer2/TotalItems")
-missing_item_label = NodePath("HBoxContainer2/MissingItem")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/InventoryHolder/InventoryRow1" unique_id=904517816]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TotalItems" type="RichTextLabel" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer2" unique_id=184027516]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Resources:
-
-Ironium: {0}
-Quartz: {0}
-Tarn: {0}
-Redagon: {0}"
-
-[node name="MissingItem" type="RichTextLabel" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer2" unique_id=222581822 groups=["missing_item_label"]]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "Missing resource"
-horizontal_alignment = 1
-
-[node name="Timer" type="Timer" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer2/MissingItem" unique_id=919004848]
-wait_time = 3.0
-one_shot = true
-
-[node name="HBoxContainer" type="FlowContainer" parent="Control/InventoryHolder/InventoryRow1" unique_id=1993596030]
-layout_mode = 2
-size_flags_vertical = 6
-alignment = 1
-last_wrap_alignment = 2
-
-[node name="ColorRect" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1506337929]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect" unique_id=1785529989]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1014110726]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect2" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=780052325]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect2" unique_id=1152921523]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control2" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=2041092820]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect3" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1452046113]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect3" unique_id=1501747942]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control3" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=189437534]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect4" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=786489404]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect4" unique_id=1896061616]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control4" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1317788719]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect5" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=356492877]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect5" unique_id=1165671289]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control5" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=732207246]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect6" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1822700455]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect6" unique_id=1324583185]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control6" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1717745689]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect7" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=484994022]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect7" unique_id=40132156]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control7" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=648353054]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect8" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=487013269]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect8" unique_id=898997021]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control8" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=167116781]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect9" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=382710737]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect9" unique_id=1732005975]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control9" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1306386427]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect10" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=478542636]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect10" unique_id=80753864]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control10" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=494069446]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect11" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1071047541]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect11" unique_id=1240019806]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control11" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1183938479]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect12" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1621925100]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect12" unique_id=2020665289]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control12" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=673388237]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect13" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=5274204]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect13" unique_id=1558021324]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control13" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1618960064]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect14" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=378361042]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect14" unique_id=610684501]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control14" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=93112166]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect15" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1293737516]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect15" unique_id=575572100]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control15" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=247955918]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect16" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1965315498]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.2509804)
-script = ExtResource("7_30aiw")
-
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect16" unique_id=2098287958]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control16" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1156951091]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="InteractLabelText" type="Label" parent="Control" unique_id=1822180079 groups=["collect_rock_label"]]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.5
-offset_top = -11.5
-offset_right = 45.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Collect rock (NAME)
-[E]"
-label_settings = SubResource("LabelSettings_41f5n")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=2146664376]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(500, 100)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -500.0
-offset_bottom = 100.0
-grow_horizontal = 0
-
-[node name="ColorRect" type="ColorRect" parent="Control/CenterContainer" unique_id=1116509583]
-custom_minimum_size = Vector2(500, 100)
-layout_mode = 2
-color = Color(0.3403393, 0.34033933, 0.3403393, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/CenterContainer/ColorRect" unique_id=939132305 groups=["notification"]]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEES"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("9_ip4mf")
-
-[node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
-transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
-
-[node name="Plane_001" parent="water_for_waves" index="1" unique_id=1333601245]
-visible = false
-
-[node name="Ore1" parent="." unique_id=1852222799 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.285332, 93.39846, -28.974674)
-
-[node name="Ore2" parent="." unique_id=2074309254 instance=ExtResource("6_decpy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.276072, 93.82655, -28.59809)
-
-[node name="Ore3" parent="." unique_id=733089361 instance=ExtResource("11_msuym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.91467, 94.286095, -29.175518)
-
-[node name="Ore4" parent="." unique_id=1179103699 instance=ExtResource("12_30aiw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.632504, 94.006645, -29.69567)
-
-[node name="Tarn" parent="." unique_id=1616129071 instance=ExtResource("11_msuym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.258059, 92.49758, -27.16459)
-
-[node name="Tarn2" parent="." unique_id=1094305308 instance=ExtResource("11_msuym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.838842, 92.381195, -24.328018)
-
-[node name="Tarn3" parent="." unique_id=201596883 instance=ExtResource("11_msuym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.234348, 91.93553, -23.643866)
-
-[node name="crusher" parent="." unique_id=343286013 instance=ExtResource("15_i03b5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.674262, 94.630615, -36.078613)
 
 [node name="Rocket" type="Node3D" parent="." unique_id=627676775 groups=["rocket"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6544504, 103.30859, -43.114155)
@@ -585,6 +78,7 @@ script = ExtResource("26_pcorw")
 
 [node name="Body" type="MeshInstance3D" parent="Rocket" unique_id=2125883252 groups=["rocket_body"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.047684, 0)
+visible = false
 mesh = SubResource("CylinderMesh_41f5n")
 
 [node name="Windows" type="Node3D" parent="Rocket/Body" unique_id=119382809]
@@ -612,6 +106,7 @@ mesh = SubResource("BoxMesh_4iriu")
 
 [node name="Cockpit" type="MeshInstance3D" parent="Rocket/Body" unique_id=316435994 groups=["rocket_cockpit"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.413788, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_fn7jt")
 
 [node name="SeatLocation" type="Node3D" parent="Rocket/Body/Cockpit" unique_id=1871916474 groups=["seat_location"]]
@@ -646,39 +141,548 @@ shape = SubResource("BoxShape3D_vjr50")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5587177, -5.700966, 0)
 mesh = SubResource("BoxMesh_41hqj")
 
-[node name="Computer" type="MeshInstance3D" parent="." unique_id=563045820]
+[node name="planet_environment" type="Node3D" parent="." unique_id=530091447]
+
+[node name="fish_design_2" parent="planet_environment" unique_id=942352189 instance=ExtResource("1_dg37v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.315329, 105.00783, -21.089983)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="planet_environment" unique_id=1754267840]
+transform = Transform3D(1, 0, 0, 0, 0.04539797, 0.998969, 0, -0.998969, 0.04539797, 2.5431213, 146.16304, -4.5085964)
+shadow_enabled = true
+script = ExtResource("1_yo1ht")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="planet_environment" unique_id=1426847499]
+environment = ExtResource("2_8adec")
+script = ExtResource("3_decpy")
+environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec")])
+
+[node name="plants and rocks" parent="planet_environment" unique_id=1959867297 instance=ExtResource("8_ffh1o")]
+
+[node name="Control" type="Control" parent="planet_environment" unique_id=870832432]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_right = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryHolder" type="Control" parent="planet_environment/Control" unique_id=1234163766]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="planet_environment/Control/InventoryHolder" unique_id=1528976498]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17641908, 0.17641911, 0.17641902, 0.6039216)
+
+[node name="InventoryRow1" type="VBoxContainer" parent="planet_environment/Control/InventoryHolder" unique_id=1709308828 node_paths=PackedStringArray("total_text", "missing_item_label") groups=["inventory"]]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_msuym")
+total_text = NodePath("HBoxContainer2/TotalItems")
+missing_item_label = NodePath("HBoxContainer2/MissingItem")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="planet_environment/Control/InventoryHolder/InventoryRow1" unique_id=904517816]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TotalItems" type="RichTextLabel" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer2" unique_id=184027516]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Resources:
+
+Ironium: {0}
+Quartz: {0}
+Tarn: {0}
+Redagon: {0}"
+
+[node name="MissingItem" type="RichTextLabel" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer2" unique_id=222581822 groups=["missing_item_label"]]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Missing resource"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer2/MissingItem" unique_id=919004848]
+wait_time = 3.0
+one_shot = true
+
+[node name="HBoxContainer" type="FlowContainer" parent="planet_environment/Control/InventoryHolder/InventoryRow1" unique_id=1993596030]
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+last_wrap_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1506337929]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect" unique_id=1785529989]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1014110726]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect2" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=780052325]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect2" unique_id=1152921523]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=2041092820]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect3" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1452046113]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect3" unique_id=1501747942]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=189437534]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect4" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=786489404]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect4" unique_id=1896061616]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control4" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1317788719]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect5" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=356492877]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect5" unique_id=1165671289]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control5" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=732207246]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect6" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1822700455]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect6" unique_id=1324583185]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control6" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1717745689]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect7" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=484994022]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect7" unique_id=40132156]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control7" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=648353054]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect8" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=487013269]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect8" unique_id=898997021]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control8" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=167116781]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect9" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=382710737]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect9" unique_id=1732005975]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control9" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1306386427]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect10" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=478542636]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect10" unique_id=80753864]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control10" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=494069446]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect11" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1071047541]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect11" unique_id=1240019806]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control11" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1183938479]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect12" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1621925100]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect12" unique_id=2020665289]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control12" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=673388237]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect13" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=5274204]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect13" unique_id=1558021324]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control13" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1618960064]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect14" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=378361042]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect14" unique_id=610684501]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control14" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=93112166]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect15" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1293737516]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect15" unique_id=575572100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control15" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=247955918]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect16" type="ColorRect" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1965315498]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.2509804)
+script = ExtResource("7_30aiw")
+
+[node name="Label" type="Label" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect16" unique_id=2098287958]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control16" type="Control" parent="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1156951091]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InteractLabelText" type="Label" parent="planet_environment/Control" unique_id=1822180079 groups=["collect_rock_label"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -11.5
+offset_right = 45.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Collect rock (NAME)
+[E]"
+label_settings = SubResource("LabelSettings_41f5n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="planet_environment/Control" unique_id=2146664376]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -500.0
+offset_bottom = 100.0
+grow_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="planet_environment/Control/CenterContainer" unique_id=1116509583]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+color = Color(0.3403393, 0.34033933, 0.3403393, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="planet_environment/Control/CenterContainer/ColorRect" unique_id=939132305 groups=["notification"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEES"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_ip4mf")
+
+[node name="water_for_waves" parent="planet_environment" unique_id=805049837 instance=ExtResource("5_iaj12")]
+transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
+
+[node name="Plane_001" parent="planet_environment/water_for_waves" index="1" unique_id=1595864485]
+visible = false
+
+[node name="Ore1" parent="planet_environment" unique_id=1852222799 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.285332, 93.39846, -28.974674)
+
+[node name="Ore2" parent="planet_environment" unique_id=2074309254 instance=ExtResource("6_decpy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.276072, 93.82655, -28.59809)
+
+[node name="Ore3" parent="planet_environment" unique_id=733089361 instance=ExtResource("11_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.91467, 94.286095, -29.175518)
+
+[node name="Ore4" parent="planet_environment" unique_id=1179103699 instance=ExtResource("12_30aiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.632504, 94.006645, -29.69567)
+
+[node name="Tarn" parent="planet_environment" unique_id=1616129071 instance=ExtResource("11_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.258059, 92.49758, -27.16459)
+
+[node name="Tarn2" parent="planet_environment" unique_id=1094305308 instance=ExtResource("11_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.838842, 92.381195, -24.328018)
+
+[node name="Tarn3" parent="planet_environment" unique_id=201596883 instance=ExtResource("11_msuym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.234348, 91.93553, -23.643866)
+
+[node name="crusher" parent="planet_environment" unique_id=343286013 instance=ExtResource("15_i03b5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.674262, 94.630615, -36.078613)
+
+[node name="Computer" type="MeshInstance3D" parent="planet_environment" unique_id=563045820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0145373, 94.174904, -30.355042)
 mesh = SubResource("BoxMesh_41f5n")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Computer" unique_id=1138177675 groups=["computer"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="planet_environment/Computer" unique_id=1138177675 groups=["computer"]]
 
-[node name="scifi_screen" parent="Computer/StaticBody3D" unique_id=1096540437 instance=ExtResource("27_ip4mf")]
+[node name="scifi_screen" parent="planet_environment/Computer/StaticBody3D" unique_id=1096540437 instance=ExtResource("27_ip4mf")]
 transform = Transform3D(-0.70710677, 0.70710677, -6.181724e-08, 0.70710677, 0.70710677, 6.181724e-08, 8.742278e-08, 0, -1, -0.50486326, 0.92915344, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Computer/StaticBody3D" unique_id=1317960291]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="planet_environment/Computer/StaticBody3D" unique_id=1317960291]
 transform = Transform3D(0.72644264, -0.68722713, 0, 0.68722713, 0.72644264, 0, 0, 0, 1, -0.52934885, 0.8738327, 0)
 visible = false
 mesh = SubResource("BoxMesh_vjr50")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Computer/StaticBody3D" unique_id=974595365 groups=["computer"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planet_environment/Computer/StaticBody3D" unique_id=974595365 groups=["computer"]]
 transform = Transform3D(0.72644264, -0.68722713, 0, 0.68722713, 0.72644264, 0, 0, 0, 1, -0.52934885, 0.8738327, 0)
 shape = SubResource("BoxShape3D_41f5n")
 
-[node name="Ironium" parent="." unique_id=1817212896 instance=ExtResource("9_vy1b6")]
+[node name="Ironium" parent="planet_environment" unique_id=1817212896 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.864761, 91.78404, -30.173769)
 
-[node name="Ironium2" parent="." unique_id=386212879 instance=ExtResource("9_vy1b6")]
+[node name="Ironium2" parent="planet_environment" unique_id=386212879 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0249, 92.09262, -29.546581)
 
-[node name="Ironium3" parent="." unique_id=1123470999 instance=ExtResource("9_vy1b6")]
+[node name="Ironium3" parent="planet_environment" unique_id=1123470999 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.817245, 91.41282, -27.680195)
 
-[node name="Ironium4" parent="." unique_id=1883930213 instance=ExtResource("9_vy1b6")]
+[node name="Ironium4" parent="planet_environment" unique_id=1883930213 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.005543, 91.68624, -28.848598)
 
-[node name="environment" parent="." unique_id=928948361 instance=ExtResource("4_ohwjy")]
+[node name="environment" parent="planet_environment" unique_id=928948361 instance=ExtResource("4_ohwjy")]
 transform = Transform3D(1.0191008, 0, 0, 0, 1.0191008, 0, 0, 0, 1.0191008, -0.8835449, -0.26218414, -0.22976685)
 
-[connection signal="timeout" from="Control/InventoryHolder/InventoryRow1/HBoxContainer2/MissingItem/Timer" to="Control/InventoryHolder/InventoryRow1" method="_missing_item_text_timeout"]
+[connection signal="timeout" from="planet_environment/Control/InventoryHolder/InventoryRow1/HBoxContainer2/MissingItem/Timer" to="planet_environment/Control/InventoryHolder/InventoryRow1" method="_missing_item_text_timeout"]
 
-[editable path="water_for_waves"]
+[editable path="planet_environment/water_for_waves"]
