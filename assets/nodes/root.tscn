@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dl5dfkrnbshg6"]
 
-[ext_resource type="PackedScene" uid="uid://dd8oplb2cle02" path="res://assets/models/underwater_things/enemies/fish_design_2.blend" id="1_dg37v"]
 [ext_resource type="Script" uid="uid://dguq1btrwrija" path="res://assets/scripts/day_night_cycle.gd" id="1_yo1ht"]
 [ext_resource type="Environment" uid="uid://csepf61phwt38" path="res://assets/worldEnvironments/abovewater_environment.tres" id="2_8adec"]
 [ext_resource type="PackedScene" uid="uid://2xrx1jtq3gqf" path="res://assets/nodes/player.tscn" id="2_yo1ht"]
@@ -30,6 +29,9 @@
 [ext_resource type="PackedScene" uid="uid://y1xxmxroq2hw" path="res://assets/nodes/Prefabs/light_plant.tscn" id="25_rwp4k"]
 [ext_resource type="Script" uid="uid://q5h6x3l8qblq" path="res://assets/scripts/rocket.gd" id="26_pcorw"]
 [ext_resource type="PackedScene" uid="uid://b6qrxe2l3engi" path="res://assets/models/scifi_screen.blend" id="27_ip4mf"]
+[ext_resource type="PackedScene" uid="uid://bjdrfqik7dd6s" path="res://assets/nodes/small_fish_school.tscn" id="31_22e5b"]
+[ext_resource type="PackedScene" uid="uid://doy0bxstqqlwi" path="res://assets/nodes/Prefabs/pathing_node.tscn" id="32_awsm5"]
+[ext_resource type="PackedScene" uid="uid://bp0gjrub55te5" path="res://assets/nodes/Prefabs/fish/fish_1_type.tscn" id="32_uv5v8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_41f5n"]
 font_size = 32
@@ -66,9 +68,6 @@ size = Vector3(1, 0.18, 2.075)
 
 [node name="Root" type="Node3D" unique_id=38485686]
 
-[node name="fish_design_2" parent="." unique_id=942352189 instance=ExtResource("1_dg37v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.315329, 105.00783, -21.089983)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1754267840]
 transform = Transform3D(1, 0, 0, 0, 0.045397967, 0.99896896, 0, -0.99896896, 0.045397967, 2.5431213, 146.16304, -4.5085964)
 shadow_enabled = true
@@ -77,7 +76,7 @@ script = ExtResource("1_yo1ht")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1426847499]
 environment = ExtResource("2_8adec")
 script = ExtResource("3_decpy")
-environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec")])
+environments = Array[Environment]([ExtResource("2_8adec"), ExtResource("4_yria1")])
 
 [node name="Player" parent="." unique_id=1546401736 node_paths=PackedStringArray("world_environment", "water_waves") instance=ExtResource("2_yo1ht")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3312321, 100.04038, -25.35457)
@@ -1077,7 +1076,75 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.817245, 91.41282, -27.680
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.005543, 91.68624, -28.848598)
 
 [node name="environment" parent="." unique_id=928948361 instance=ExtResource("4_ohwjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36738205, 0.51129913, 0.51258755)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367, 0.8, 0.513)
+
+[node name="fish" type="Node3D" parent="." unique_id=49585309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.65063, 96.34411, -45.01071)
+
+[node name="small_fish_school" parent="fish" unique_id=1537799404 instance=ExtResource("31_22e5b")]
+
+[node name="Node3D" type="Node3D" parent="fish/small_fish_school" unique_id=1332290179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.905412, 3.164528, -19.576057)
+
+[node name="Node3D2" type="Node3D" parent="fish/small_fish_school" unique_id=769221215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.587617, -0.6388321, 2.1117172)
+
+[node name="small_fish_school2" parent="fish" unique_id=101788898 instance=ExtResource("31_22e5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.06329, 0, 53.356514)
+amount = 13
+
+[node name="PathingNode" parent="fish/small_fish_school2" unique_id=1240535761 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.419922, 3.053131, 19.034943)
+
+[node name="PathingNode2" parent="fish/small_fish_school2" unique_id=930695148 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.25678, 9.4121475, -4.6314545)
+
+[node name="PathingNode3" parent="fish/small_fish_school2" unique_id=1606059044 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.799396, 2.6516113, 5.558502)
+
+[node name="PathingNode4" parent="fish/small_fish_school2" unique_id=1909059152 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0734832, 4.969185, 39.64995)
+
+[node name="PathingNode5" parent="fish/small_fish_school2" unique_id=537281817 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.392105, -1.2365189, -21.892471)
+
+[node name="small_fish_school3" parent="fish" unique_id=1310739283 instance=ExtResource("31_22e5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.13697, 0, 18.767782)
+
+[node name="PathingNode" parent="fish/small_fish_school3" unique_id=214473471 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.361244, 2.6271667, -8.196405)
+
+[node name="PathingNode2" parent="fish/small_fish_school3" unique_id=1596555142 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.073097, -7.562378, 14.631273)
+
+[node name="PathingNode3" parent="fish/small_fish_school3" unique_id=1147142790 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.534615, -8.635445, 32.256786)
+
+[node name="PathingNode4" parent="fish/small_fish_school3" unique_id=666331159 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.543777, -1.3483124, 7.136816)
+
+[node name="PathingNode5" parent="fish/small_fish_school3" unique_id=1887087930 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1807785, -2.8082275, 11.436603)
+
+[node name="small_fish_school4" parent="fish" unique_id=364430690 instance=ExtResource("31_22e5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.49235, -8.551811, 84.16806)
+small_fish = ExtResource("32_uv5v8")
+amount = 1
+
+[node name="PathingNode" parent="fish/small_fish_school4" unique_id=1685032851 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.190594, 2.6271667, -31.022257)
+
+[node name="PathingNode2" parent="fish/small_fish_school4" unique_id=724104783 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.073097, -2.690651, 14.631271)
+
+[node name="PathingNode3" parent="fish/small_fish_school4" unique_id=866417695 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.66926, -8.635445, 47.569405)
+
+[node name="PathingNode4" parent="fish/small_fish_school4" unique_id=1849079610 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.893974, 7.981041, 4.083683)
+
+[node name="PathingNode5" parent="fish/small_fish_school4" unique_id=1881604124 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.25667, -11.235016, 9.696129)
 
 [connection signal="timeout" from="Control/InventoryHolder/InventoryRow1/HBoxContainer2/MissingItem/Timer" to="Control/InventoryHolder/InventoryRow1" method="_missing_item_text_timeout"]
 

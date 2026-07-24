@@ -92,7 +92,7 @@ func _physics_process(delta: float) -> void:
 		#under water
 		world_environment.set_env(0)
 		_air_meter -= delta
-		camera.attributes = camera_attributes[0];
+		camera.attributes = camera_attributes[1];
 		
 		if _air_meter < 0:
 			die()
