@@ -50,5 +50,6 @@ anchor_right = 49.9
 anchor_bottom = 32.175
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true

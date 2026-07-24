@@ -11,3 +11,15 @@ sky_material = SubResource("ProceduralSkyMaterial_8adec")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_4pc67")
+tonemap_mode = 2
+fog_light_color = Color(0.055717386, 0.29415643, 0.4024785, 1)
+fog_density = 0.1
+fog_sky_affect = 0.0
+fog_depth_curve = 0.5946074
+fog_depth_begin = 0.0
+fog_depth_end = 47.2
+volumetric_fog_density = 0.08
+volumetric_fog_albedo = Color(0, 0.9784731, 0.9825049, 1)
+volumetric_fog_emission = Color(0.016748713, 0.12049455, 0.13447726, 1)
+volumetric_fog_sky_affect = 0.0
+volumetric_fog_temporal_reprojection_enabled = false

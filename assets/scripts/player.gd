@@ -3,14 +3,15 @@ extends CharacterBody3D
 ## Implements the player controller.
 
 ## Player movement speed.
-@export var speed : float = 2.0
+@export var speed : float = 4.0
 @export var acceleration : float = 4.0
 ## Player camera (gets automatically set in _ready()).
 @export var camera : Camera3D
 @export var ray : RayCast3D
-@export var collect_rock_label : Label
-
+@export var interact_label : Label
+@export var notification_node : notification
 var current_rock : Ore
+var interacting_with : String
 @export var mouse_speed : float = 0.2
 var inventory : Inventory
 
@@ -22,28 +23,69 @@ var inventory : Inventory
 @export var _air_reset : float = 75;
 var _air_meter : float = _air_reset;
 
+@export var waves_heightmap : Image;
+
+var _fade_in : float = 3;
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Input.use_accumulated_input = false
 	ray = get_tree().get_first_node_in_group("raycast")
 	inventory = get_tree().get_first_node_in_group("inventory")
-	collect_rock_label = get_tree().get_first_node_in_group("collect_rock_label")
+	interact_label = get_tree().get_first_node_in_group("collect_rock_label")
+	notification_node = get_tree().get_first_node_in_group("notification")
 	for child in get_children():
 		print(child)
 		if(child.is_in_group("camera")):
 			camera = child
 			continue
+	notification_node.play_notification("Yes")
+
+func _process(delta : float) -> void:
+	if _fade_in > 0:
+		$Control/blackening.color.a = _fade_in/3.0
+		_fade_in -= min(delta, 0.02)
+	
+	RenderingServer.global_shader_parameter_set("wave_time", Time.get_ticks_msec() / 1000.0)
+
+func read_wave_image(v : Vector2i) -> float:
+	v.x %= waves_heightmap.get_width()
+	v.y %= waves_heightmap.get_height()
+	
+	if v.x < 0:
+		v.x = waves_heightmap.get_width() - (-v.x) % waves_heightmap.get_width()
+	
+	if v.y < 0:
+		v.y = waves_heightmap.get_height() - (-v.y) % waves_heightmap.get_height()
+	
+	return waves_heightmap.get_pixelv(v).r
+
+func get_waves_height() -> float:
+	var pos : Vector3 = global_position * 0.01
+	var uv : Vector2i = Vector2(pos.x, pos.z) * Vector2(waves_heightmap.get_size())
+	
+	var time : float = Time.get_ticks_msec() / 1000.0
+	var z : float = 1.0 - read_wave_image(uv*1.0 + Vector2(0, time*0.018));
+	z *= 1.0 - read_wave_image(uv/1.3 + Vector2(time*0.01, 0));
+	return (pow(z, 0.6)*0.15-0.05) * water_waves.scale.y * 103;
+
+func die():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().change_scene_to_file("res://assets/nodes/death_menu.tscn");
 
 func _physics_process(delta: float) -> void:
-	if(global_position.y > water_waves.global_position.y+3.8):
+	var wave_height = water_waves.global_position.y+get_waves_height();
+	#print("wave height ", wave_height)
+	#print("player height ", global_position.y)
+	if(global_position.y > wave_height-1.5):
 		#above water
 		world_environment.set_env(1)
 		
 		_air_meter = move_toward(_air_meter, _air_reset, delta*14)
 		
-		if(global_position.y > water_waves.global_position.y+4.9+sin(Time.get_ticks_msec()/1000.0)*0.2):
-			global_position.y = water_waves.global_position.y+4.9+sin(Time.get_ticks_msec()/1000.0)*0.2
+		if(global_position.y > wave_height+0.8):
+			global_position.y = wave_height+0.8
 		
 		camera.attributes = camera_attributes[1];
 	else:
@@ -51,6 +93,9 @@ func _physics_process(delta: float) -> void:
 		world_environment.set_env(0)
 		_air_meter -= delta
 		camera.attributes = camera_attributes[0];
+		
+		if _air_meter < 0:
+			die()
 		
 		
 	$Control/blackening.color.a = clamp(1-_air_meter/10.0, 0, 1);
@@ -96,16 +141,27 @@ func _physics_process(delta: float) -> void:
 	camera.rotation_degrees.z = lerpf(camera.rotation_degrees.z, wanted_rotation, 0.07)
 	move_and_slide()
 
-	# Check for rock and then set rock
-	var collider : Object = ray.get_collider()
-	if(is_instance_of(collider,RigidBody3D)):
+	# Check raycast collisions
+	var collider : CollisionObject3D = ray.get_collider()
+	if(collider != null):
 		if (collider.is_in_group("rock")):
+			interacting_with = "rock"
 			current_rock = collider
-			collect_rock_label.text = "Collect rock " + collider.Ores.find_key(collider.oretype) + "\n [E]"
-			collect_rock_label.visible = true
+			interact_label.text = "Collect rock " + collider.Ores.find_key(collider.oretype) + "\n [E]"
+			interact_label.visible = true
+		if (collider.is_in_group("crusher")):
+			interacting_with = "crusher"
+			interact_label.text = "Crush ores in inventory\n [E]"
+			interact_label.visible = true
+		if (collider.is_in_group("computer")):
+			interacting_with = "computer"
+			interact_label.text = "Submit resources\n [E]"
+			interact_label.visible = true
 	else:
+		interacting_with = ""
 		current_rock = null
-		collect_rock_label.visible = false
+		interact_label.visible = false
+		
 		
 
 func give_air(air : float):
@@ -133,9 +189,9 @@ func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("escape")):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
-	# Collect rock
+	# Run interact
 	if(event.is_action_pressed("use")):
-		if(collect_rock_label.visible):
+		if(interact_label.visible):
 			if(current_rock != null):
 				var success : bool = false
 				for slot in range(0,inventory.inventory_slots.size()):
@@ -145,7 +201,52 @@ func _input(event: InputEvent) -> void:
 						break
 				if(success):
 					current_rock.free()
+			if	(interacting_with == "crusher"):
+				# Go through all inventory slots and process them
+				for slot in range(0,inventory.inventory_slots.size()):
+					match inventory.inventory_slots[slot].item:
+						Ore.Ores.IRONIUM:
+							inventory.ironium_count += 1
+						Ore.Ores.QUARTZ:
+							inventory.quartz_count += 1
+						Ore.Ores.TARN:
+							inventory.tarn_count += 1
+						Ore.Ores.REDOGON:
+							inventory.redagon_count += 1
+					# Set inventory to empty
+					inventory.inventory_slots[slot].item = Ore.Ores.INVALID
+					
+			if (interacting_with == "computer"):
+				var rocket : Rocket = get_tree().get_first_node_in_group("rocket")
+				# build_array[0] is the Ore.Ores resource and build_array[1] is the total
+				var build_array : Array = rocket.get_rocket_world_state_variable()
+				if (build_array.size() == 0):
+					print("Nothing to build")
+					return
+				var success : Array[bool]
+				for i in range(0,build_array[0].size()):
+					print(inventory.get_resource_total(build_array[0][i]))
+					if(build_array[1][i] <= inventory.get_resource_total(build_array[0][i])):
+						success.append(true)
+					else:
+						success.append(false)
+				var missing_items : String = ""
+				var all_clear : bool = true
+				for i in success.size():
+					if (!success[i]):
+						missing_items += Ore.Ores.keys()[build_array[0][i]] + " " + str(build_array[1][i]) + "\n"
+						inventory.missing_item_label.text = "Missing resource:\n" + missing_items
+						inventory.get_parent().visible = true
+						inventory.missing_item_label.get_child(0).start()
+						all_clear = false
+				if (all_clear):
+					print("New gamestate")
+					inventory.missing_item_label.text = ""
+					GameManager.advanced_state()
+					for i in success.size():
+						inventory.set_new_resource_total(build_array[0][i], inventory.get_resource_total(build_array[0][i]) - build_array[1][i])
+						
 	if(event.is_action_pressed("view_inventory")):
-		inventory.visible = true
+		inventory.get_parent().visible = true
 	if(event.is_action_released("view_inventory")):
-		inventory.visible = false
+		inventory.get_parent().visible = false

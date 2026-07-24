@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dsbjpycyfq5es"]
+
+[ext_resource type="Texture2D" uid="uid://ddh32kcrbruh7" path="res://assets/textures/space_skybox.png" id="1_ep65y"]
+[ext_resource type="Texture2D" uid="uid://c3ij2mgdvfbps" path="res://assets/textures/clouds.png" id="2_ep65y"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dvyo1"]
+panorama = ExtResource("1_ep65y")
+
+[sub_resource type="Sky" id="Sky_f4hk2"]
+sky_material = SubResource("PanoramaSkyMaterial_dvyo1")
+
+[sub_resource type="Environment" id="Environment_khlrb"]
+background_mode = 2
+background_color = Color(0.0022227534, 0.0123358825, 0.05847176, 1)
+sky = SubResource("Sky_f4hk2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_khlrb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4hk2"]
+albedo_color = Color(0, 0.33433327, 0.59, 1)
+metallic = 0.15
+metallic_specular = 0.58
+roughness = 0.51
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86oiv"]
+transparency = 1
+albedo_texture = ExtResource("2_ep65y")
+metallic = 0.08
+metallic_specular = 0.59
+roughness = 0.94
+subsurf_scatter_strength = 0.35
+uv1_scale = Vector3(3, 3, 3)
+uv2_scale = Vector3(2, 2, 2)
+
+[node name="space" type="Node3D" unique_id=461983772]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=836674963]
+environment = SubResource("Environment_khlrb")
+
+[node name="planet" type="MeshInstance3D" parent="." unique_id=713553263]
+mesh = SubResource("SphereMesh_khlrb")
+surface_material_override/0 = SubResource("StandardMaterial3D_f4hk2")
+
+[node name="clouds" type="MeshInstance3D" parent="." unique_id=1415294662]
+transform = Transform3D(1.07, 0, 0, 0, 1.07, 0, 0, 0, 1.07, 0, 0, 0)
+mesh = SubResource("SphereMesh_khlrb")
+surface_material_override/0 = SubResource("StandardMaterial3D_86oiv")

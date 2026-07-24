@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://li2cpguce6p4"]
+
+[ext_resource type="Texture2D" uid="uid://mw5aui078wgm" path="res://assets/Screens/title_screen.png" id="1_vn2oh"]
+[ext_resource type="Script" uid="uid://cxqgx13fdg8oe" path="res://assets/scripts/start_button.gd" id="2_eti06"]
+
+[node name="Control" type="Control" unique_id=767313994]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="." unique_id=1291014777]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vn2oh")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="start_button" type="Button" parent="." unique_id=1762838532]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = 39.0
+offset_right = -33.0
+offset_bottom = 89.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Start Game"
+flat = true
+script = ExtResource("2_eti06")
+scene = "res://assets/nodes/root.tscn"
+
+[node name="fadeout" type="ColorRect" parent="." unique_id=412628748]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="start_button" to="start_button" method="_on_pressed"]
