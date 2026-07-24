@@ -15,4 +15,3 @@ func get_rocket_world_state_variable() -> Array:
 			return [engine_parts, engine_count]
 		_:
 			return []
-			

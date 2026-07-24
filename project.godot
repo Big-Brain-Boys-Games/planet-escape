@@ -33,6 +33,7 @@ player="player"
 inventory="The main inventory"
 crusher="The crusher group"
 missing_item_label=""
+notification=""
 
 [input]
 
