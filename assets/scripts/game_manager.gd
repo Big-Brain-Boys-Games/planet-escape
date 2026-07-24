@@ -59,7 +59,7 @@ func advanced_state() -> void:
 			notification_node.play_notification("fourth stage build, rocket ready for lift-off")
 			rocket_boosters.visible = true
 		6:
-			pass
+			notification_node.play_notification("Lift off!")
 		7:
 			pass
 		8:

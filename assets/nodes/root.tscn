@@ -8,15 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://e3ltekag20oj" path="res://assets/models/environment.blend" id="4_ohwjy"]
 [ext_resource type="Environment" uid="uid://byvfmbtn1pj28" path="res://assets/worldEnvironments/underwater_environment.tres" id="4_yria1"]
 [ext_resource type="PackedScene" uid="uid://cxolkbtjsajlb" path="res://assets/models/water_for_waves.blend" id="5_iaj12"]
-[ext_resource type="PackedScene" uid="uid://254bq0vnnork" path="res://assets/nodes/quartz.tscn" id="6_decpy"]
+[ext_resource type="PackedScene" uid="uid://254bq0vnnork" path="res://assets/nodes/Prefabs/quartz.tscn" id="6_decpy"]
 [ext_resource type="Script" uid="uid://dgv4yy48f4ena" path="res://assets/scripts/inventory.gd" id="6_msuym"]
 [ext_resource type="Image" uid="uid://01bi6euxlamm" path="res://assets/textures/wave_heightmap_image.png" id="7_3hs2x"]
 [ext_resource type="Script" uid="uid://3kv8eskft0iw" path="res://assets/scripts/inventory_slots.gd" id="7_30aiw"]
 [ext_resource type="PackedScene" uid="uid://cu4ed0cwsrf31" path="res://assets/nodes/Prefabs/air_spewer.tscn" id="9_decpy"]
 [ext_resource type="Script" uid="uid://dkrco57shy8gj" path="res://assets/scripts/notification.gd" id="9_ip4mf"]
-[ext_resource type="PackedScene" uid="uid://dka4l3vrvmloo" path="res://assets/nodes/ironium.tscn" id="9_vy1b6"]
-[ext_resource type="PackedScene" uid="uid://ch7rs5nhrwkmu" path="res://assets/nodes/tarn.tscn" id="11_msuym"]
-[ext_resource type="PackedScene" uid="uid://duynw0xavhi65" path="res://assets/nodes/redegon.tscn" id="12_30aiw"]
+[ext_resource type="PackedScene" uid="uid://dka4l3vrvmloo" path="res://assets/nodes/Prefabs/ironium.tscn" id="9_vy1b6"]
+[ext_resource type="PackedScene" uid="uid://ch7rs5nhrwkmu" path="res://assets/nodes/Prefabs/tarn.tscn" id="11_msuym"]
+[ext_resource type="PackedScene" uid="uid://duynw0xavhi65" path="res://assets/nodes/Prefabs/redegon.tscn" id="12_30aiw"]
 [ext_resource type="PackedScene" uid="uid://pjr2qdlaqa61" path="res://assets/nodes/crusher.tscn" id="15_i03b5"]
 [ext_resource type="PackedScene" uid="uid://cp8ne4tlnapro" path="res://assets/nodes/Prefabs/big_plant.tscn" id="16_paggm"]
 [ext_resource type="PackedScene" uid="uid://ujw2khhpemqf" path="res://assets/nodes/Prefabs/rock1.tscn" id="17_pcorw"]
@@ -54,6 +54,16 @@ height = 15.0
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_41f5n"]
 radius = 1.9960938
 height = 11.880127
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vjr50"]
+size = Vector3(1, 4.995, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fn7jt"]
+albedo_color = Color(0.7411765, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_41hqj"]
+material = SubResource("StandardMaterial3D_fn7jt")
+size = Vector3(1, 5, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_41f5n"]
 size = Vector3(1, 1.97, 1)
@@ -995,7 +1005,6 @@ script = ExtResource("26_pcorw")
 
 [node name="Body" type="MeshInstance3D" parent="Rocket" unique_id=2125883252 groups=["rocket_body"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.047684, 0)
-visible = false
 mesh = SubResource("CylinderMesh_41f5n")
 
 [node name="Windows" type="Node3D" parent="Rocket/Body" unique_id=119382809]
@@ -1023,8 +1032,9 @@ mesh = SubResource("BoxMesh_4iriu")
 
 [node name="Cockpit" type="MeshInstance3D" parent="Rocket/Body" unique_id=316435994 groups=["rocket_cockpit"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.413788, 0)
-visible = false
 mesh = SubResource("CapsuleMesh_fn7jt")
+
+[node name="SeatLocation" type="Node3D" parent="Rocket/Body/Cockpit" unique_id=1871916474]
 
 [node name="Boosters" type="Node3D" parent="Rocket/Body" unique_id=655748082 groups=["rocket_boosters"]]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -12.69239, 0)
@@ -1045,6 +1055,16 @@ mesh = SubResource("CapsuleMesh_41f5n")
 [node name="Booster4" type="MeshInstance3D" parent="Rocket/Body/Boosters" unique_id=867360404]
 transform = Transform3D(0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, 0, 0, 1, 4.099, -4.94, 0)
 mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="Door" type="StaticBody3D" parent="Rocket/Body" unique_id=966591887 groups=["rocket_door"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/Body/Door" unique_id=2129136450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5587177, -5.700966, 0)
+shape = SubResource("BoxShape3D_vjr50")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket/Body/Door" unique_id=2043585332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5587177, -5.700966, 0)
+mesh = SubResource("BoxMesh_41hqj")
 
 [node name="Computer" type="MeshInstance3D" parent="." unique_id=563045820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0145373, 94.174904, -30.355042)
