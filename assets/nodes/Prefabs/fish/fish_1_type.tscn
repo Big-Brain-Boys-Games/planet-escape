@@ -6,6 +6,7 @@
 
 [node name="fish_1_type" type="Node3D" unique_id=1499224752]
 script = ExtResource("1_br73j")
+speed = 1.3
 rotating = 0.7
 target_area = 3.0
 

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://box2lvd8smvg6"]
+
+[ext_resource type="PackedScene" uid="uid://cwhpa08eb53mm" path="res://assets/models/underwater_things/coral.blend" id="1_8jj6a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvnea"]
+albedo_color = Color(0.94044423, 0.4489162, 0.51763463, 1)
+metallic_specular = 0.3
+
+[node name="Coral" type="Node3D" unique_id=2093548426]
+
+[node name="coral" parent="." unique_id=1169417364 instance=ExtResource("1_8jj6a")]
+transform = Transform3D(0.3, 0, 0, 0, 0.42, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="Sphere_001" parent="coral" index="0" unique_id=417875809]
+surface_material_override/0 = SubResource("StandardMaterial3D_nvnea")
+
+[editable path="coral"]

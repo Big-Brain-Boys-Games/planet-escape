@@ -1,18 +1,7 @@
 [gd_scene format=3 uid="uid://dsbjpycyfq5es"]
 
-[ext_resource type="Texture2D" uid="uid://ddh32kcrbruh7" path="res://assets/textures/space_skybox.png" id="1_ep65y"]
+[ext_resource type="Environment" uid="uid://b4yj4uqw5nfgr" path="res://assets/worldEnvironments/space.tres" id="1_ep65y"]
 [ext_resource type="Texture2D" uid="uid://c3ij2mgdvfbps" path="res://assets/textures/clouds.png" id="2_ep65y"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dvyo1"]
-panorama = ExtResource("1_ep65y")
-
-[sub_resource type="Sky" id="Sky_f4hk2"]
-sky_material = SubResource("PanoramaSkyMaterial_dvyo1")
-
-[sub_resource type="Environment" id="Environment_khlrb"]
-background_mode = 2
-background_color = Color(0.0022227534, 0.0123358825, 0.05847176, 1)
-sky = SubResource("Sky_f4hk2")
 
 [sub_resource type="SphereMesh" id="SphereMesh_khlrb"]
 
@@ -35,7 +24,7 @@ uv2_scale = Vector3(2, 2, 2)
 [node name="space" type="Node3D" unique_id=461983772]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=836674963]
-environment = SubResource("Environment_khlrb")
+environment = ExtResource("1_ep65y")
 
 [node name="planet" type="MeshInstance3D" parent="." unique_id=713553263]
 mesh = SubResource("SphereMesh_khlrb")
@@ -45,3 +34,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f4hk2")
 transform = Transform3D(1.07, 0, 0, 0, 1.07, 0, 0, 0, 1.07, 0, 0, 0)
 mesh = SubResource("SphereMesh_khlrb")
 surface_material_override/0 = SubResource("StandardMaterial3D_86oiv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1315415423]
+transform = Transform3D(-0.72726595, 0, 0.68635577, 0.16838722, 0.9694383, 0.17842393, -0.6653796, 0.24533519, -0.7050395, 8.803839, 0, -6.0261693)
