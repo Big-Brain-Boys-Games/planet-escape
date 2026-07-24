@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bjdrfqik7dd6s"]
+
+[ext_resource type="Script" uid="uid://btdpx762w6iwn" path="res://assets/scripts/underwater_things/small_fish_school.gd" id="1_3at6h"]
+[ext_resource type="PackedScene" uid="uid://bd2ni5nbq5g5d" path="res://assets/nodes/Prefabs/fish/small_fish.tscn" id="2_glt47"]
+[ext_resource type="Script" uid="uid://d0ns1jj4brgdn" path="res://assets/scripts/hide_on_ready.gd" id="3_ddi5y"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_khlrb"]
+
+[node name="small_fish_school" type="Node3D" unique_id=1537799404]
+script = ExtResource("1_3at6h")
+small_fish = ExtResource("2_glt47")
+
+[node name="fish_target" type="Node3D" parent="." unique_id=824568578]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="fish_target" unique_id=1794620433]
+mesh = SubResource("CapsuleMesh_khlrb")
+script = ExtResource("3_ddi5y")

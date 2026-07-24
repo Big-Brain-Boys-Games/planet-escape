@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bd2ni5nbq5g5d"]
+
+[ext_resource type="Script" uid="uid://b05pw8xd3cxui" path="res://assets/scripts/underwater_things/small_fish.gd" id="1_1tb2d"]
+[ext_resource type="PackedScene" uid="uid://ccb3nydi1oa67" path="res://assets/models/underwater_things/small_fish.blend" id="2_l0hjp"]
+
+[node name="SmallFish" type="Node3D" unique_id=1226676134]
+script = ExtResource("1_1tb2d")
+
+[node name="small_fish" parent="." unique_id=1736616827 instance=ExtResource("2_l0hjp")]
+transform = Transform3D(-0.355, 0, -5.3603507e-08, 0, 0.355, 0, 5.3603507e-08, 0, -0.355, 0, 0, -0.05456209)
+
+[node name="target" type="Node3D" parent="." unique_id=512585967]
+top_level = true

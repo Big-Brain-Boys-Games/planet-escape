@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://doy0bxstqqlwi"]
+
+[ext_resource type="Script" uid="uid://d0ns1jj4brgdn" path="res://assets/scripts/hide_on_ready.gd" id="1_hfmcl"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_khlrb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4hk2"]
+albedo_color = Color(1, 0.90000004, 0, 1)
+
+[node name="PathingNode" type="Node3D" unique_id=1240535761]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=417012487]
+mesh = SubResource("SphereMesh_khlrb")
+surface_material_override/0 = SubResource("StandardMaterial3D_f4hk2")
+script = ExtResource("1_hfmcl")
