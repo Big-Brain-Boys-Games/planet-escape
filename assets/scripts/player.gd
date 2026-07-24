@@ -220,6 +220,9 @@ func _input(event: InputEvent) -> void:
 				var rocket : Rocket = get_tree().get_first_node_in_group("rocket")
 				# build_array[0] is the Ore.Ores resource and build_array[1] is the total
 				var build_array : Array = rocket.get_rocket_world_state_variable()
+				if (build_array.size() == 0):
+					print("Nothing to build")
+					return
 				var success : Array[bool]
 				for i in range(0,build_array[0].size()):
 					print(inventory.get_resource_total(build_array[0][i]))
@@ -239,7 +242,7 @@ func _input(event: InputEvent) -> void:
 				if (all_clear):
 					print("New gamestate")
 					inventory.missing_item_label.text = ""
-					GameManager.world_state += 1
+					GameManager.advanced_state()
 					for i in success.size():
 						inventory.set_new_resource_total(build_array[0][i], inventory.get_resource_total(build_array[0][i]) - build_array[1][i])
 						

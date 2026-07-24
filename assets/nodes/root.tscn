@@ -567,7 +567,7 @@ script = ExtResource("9_ip4mf")
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
 
-[node name="Plane_001" parent="water_for_waves" index="1" unique_id=826907273]
+[node name="Plane_001" parent="water_for_waves" index="1" unique_id=1595864485]
 visible = false
 
 [node name="Ore1" parent="." unique_id=1852222799 instance=ExtResource("9_vy1b6")]
@@ -993,7 +993,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9421, 65.40111, 18.160358)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6544504, 103.30859, -43.114155)
 script = ExtResource("26_pcorw")
 
-[node name="Body" type="MeshInstance3D" parent="Rocket" unique_id=2125883252]
+[node name="Body" type="MeshInstance3D" parent="Rocket" unique_id=2125883252 groups=["rocket_body"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.047684, 0)
 visible = false
 mesh = SubResource("CylinderMesh_41f5n")
@@ -1016,17 +1016,17 @@ mesh = SubResource("TorusMesh_41f5n")
 transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, 0, 1.697998, -5.5)
 mesh = SubResource("TorusMesh_41f5n")
 
-[node name="Engine" type="MeshInstance3D" parent="Rocket/Body" unique_id=2111384621]
+[node name="Engine" type="MeshInstance3D" parent="Rocket/Body" unique_id=2111384621 groups=["rocket_engine"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.900574, 0)
 visible = false
 mesh = SubResource("BoxMesh_4iriu")
 
-[node name="Cockpit" type="MeshInstance3D" parent="Rocket/Body" unique_id=316435994]
+[node name="Cockpit" type="MeshInstance3D" parent="Rocket/Body" unique_id=316435994 groups=["rocket_cockpit"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.413788, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_fn7jt")
 
-[node name="Boosters" type="Node3D" parent="Rocket/Body" unique_id=655748082]
+[node name="Boosters" type="Node3D" parent="Rocket/Body" unique_id=655748082 groups=["rocket_boosters"]]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -12.69239, 0)
 visible = false
 
