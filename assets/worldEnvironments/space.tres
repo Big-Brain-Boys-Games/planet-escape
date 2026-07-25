@@ -6,6 +6,7 @@
 background_mode = 2
 background_color = Color(0.0022227534, 0.0123358825, 0.05847176, 1)
 sky = ExtResource("1_81c8p")
+ambient_light_color = Color(0.19394687, 0.19394687, 0.19394687, 1)
 tonemap_mode = 2
 fog_enabled = true
 fog_light_color = Color(0.28118682, 0.28118688, 0.28118682, 1)

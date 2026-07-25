@@ -38,6 +38,8 @@ var liftoff_animation : AnimationPlayer
 var transition_environment : Environment = preload("res://assets/worldEnvironments/transition_to_space.tres") as Environment
 var space_sky : Sky = preload("res://assets/worldEnvironments/Skies/space_sky.tres") as Sky
 
+# ALL VARIABLES FOR STAGE 7
+var space_environment : Environment = preload("res://assets/worldEnvironments/space.tres") as Environment
 func _ready() -> void:
 	notification_node = get_tree().get_first_node_in_group("notification")
 	rocket_body = get_tree().get_first_node_in_group("rocket_body")
@@ -82,7 +84,7 @@ func advanced_state() -> void:
 			world_environment.environment = transition_environment
 			liftoff_animation.play("leaving_planet")
 		States.SPACE:
-			pass
+			world_environment.environment = space_environment
 		States.GOING:
 			pass
 		States.TRAVEL:
