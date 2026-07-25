@@ -19,8 +19,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_vn2oh")
-expand_mode = 3
-stretch_mode = 5
+expand_mode = 5
+stretch_mode = 6
 metadata/_edit_use_anchors_ = true
 
 [node name="start_button" type="Button" parent="." unique_id=1762838532]
