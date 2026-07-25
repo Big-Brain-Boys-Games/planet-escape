@@ -9,5 +9,7 @@ func _ready():
 	
 	if "position" in result:
 		global_position.y = result["position"].y
+	else:
+		queue_free()
 	
 	scale *= randf_range(0.5, 1.05)

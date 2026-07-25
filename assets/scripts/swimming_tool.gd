@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	if visible:
 		velocity = velocity.lerp(-$"../../..".global_basis.z * speed, delta)
 		propellors.rotate_z(delta * speed*2.5)
-		$"../../../..".velocity = $"../../../..".velocity.lerp(velocity, delta * 2)
+		$"../../../..".velocity = $"../../../..".velocity.lerp(velocity, delta * velocity.length()/2.0)
 	else:
 		velocity = velocity.lerp(Vector3.ZERO, delta)
 	

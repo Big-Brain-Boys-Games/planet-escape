@@ -29,7 +29,9 @@ var camera_shake : float = 0
 var _air_meter : float = _air_reset;
 
 @export var waves_heightmap : Image;
-@export var planet_exploding_timer : float = 60*9
+@export var planet_exploding_timer : float = 60*15
+
+@export var meteor_prefab : PackedScene
 
 var background_sfx : AudioStreamPlayer
 @onready var background_abovewater : AudioStreamWAV = preload("res://assets/audio/sfx/777277__yannsauvin__ocean-close.wav")
@@ -82,6 +84,7 @@ func _process(delta : float) -> void:
 	RenderingServer.global_shader_parameter_set("wave_time", Time.get_ticks_msec() / 1000.0)
 
 func read_wave_image(v : Vector2i) -> float:
+	#v.y *= -1
 	v.x %= waves_heightmap.get_width()
 	v.y %= waves_heightmap.get_height()
 	
@@ -102,8 +105,20 @@ func get_waves_height() -> float:
 	z *= 1.0 - read_wave_image(uv/1.3 + Vector2(time*0.01, 0));
 	return (pow(z, 0.6)*0.15-0.05) * water_waves.scale.y * 103;
 
+var _health : float = 100
+
+func take_damage(damage : float):
+	print("take damage(",damage,")")
+	if _health < 0:
+		return
+	
+	_health -= damage
+	
+	if _health < 0:
+		_health = 0
+
 func die():
-	if	(GameManager.world_state < GameManager.States.LIFTOFF):
+	if (GameManager.world_state < GameManager.States.LIFTOFF):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		get_tree().change_scene_to_file("res://assets/nodes/death_menu.tscn");
 
@@ -112,13 +127,40 @@ var magma_geiser_spawn_time = 1
 
 @export var magma_geiser : PackedScene
 
+var rng_timer_rumbling : float = 10
+
+var allow_meteor_spawn : bool = true
+
 func _physics_process(delta: float) -> void:
 	var wave_height = water_waves.global_position.y+get_waves_height();
+	
+	if _health > 0:
+		_health = move_toward(_health, 100, delta*3)
+	else:
+		_health -= delta
+		$Control/blackening.color.a = -_health/2
+		if _health < -2:
+			die()
 	
 	if GameManager.world_state < GameManager.States.LIFTOFF:
 		planet_exploding_timer -= delta
 		$Control/planet_text.text = "[font_size=20] Planet explodes in " + str(planet_exploding_timer).pad_decimals(0)
 		
+		if rng_timer_rumbling > 0:
+			
+			rng_timer_rumbling -= delta
+			
+			if rng_timer_rumbling <= 0:
+				rng_timer_rumbling = randf_range(5, 25)
+				camera_shake = 0.6
+				
+				if allow_meteor_spawn:
+					#spawn meteor
+					var new_meteor = meteor_prefab.instantiate()
+					get_node("../water_for_waves").add_child(new_meteor)
+					new_meteor.global_position = global_position + Vector3.UP * 200
+					new_meteor.global_position.x += randf_range(-1,1)*100
+					new_meteor.global_position.z += randf_range(-1,1)*100
 		
 		if planet_exploding_timer < 0:
 			$Control/planet_text.text = ""
@@ -154,9 +196,8 @@ func _physics_process(delta: float) -> void:
 			velocity.z = lerpf(velocity.z, -10, delta*4)
 	
 	
-	if global_position.y > wave_height + camera.global_basis.z.dot(Vector3.UP):
+	if camera.global_position.y + 0.2 > wave_height + camera.global_basis.z.dot(Vector3.UP):
 		#above water
-		print(camera.global_basis.z.dot(Vector3.UP))
 		if (GameManager.world_state < GameManager.States.LIFTOFF):
 			world_environment.set_env(1)
 			if (playing_sound == "underwater"):
@@ -164,7 +205,7 @@ func _physics_process(delta: float) -> void:
 				background_sfx.stream = background_abovewater
 				background_sfx.play()
 		
-		_air_meter = move_toward(_air_meter, _air_reset, delta*14)
+		_air_meter = move_toward(_air_meter, _air_reset, delta* _air_reset / 1.5)
 		if (GameManager.world_state != 6):
 			if(global_position.y > wave_height+0.8):
 				global_position.y = wave_height+0.8
@@ -230,6 +271,8 @@ func _physics_process(delta: float) -> void:
 			#camera.rotation_degrees.z = 0
 		camera.rotation_degrees.z = lerpf(camera.rotation_degrees.z, wanted_rotation, 0.07)
 		move_and_slide()
+	
+	
 
 	# Check raycast collisions
 	var collider : CollisionObject3D = ray.get_collider()
@@ -243,6 +286,17 @@ func _physics_process(delta: float) -> void:
 			interacting_with = "rock"
 			current_rock = collider
 			interact_label.visible = true
+			
+			var found_empty = false
+			for slot in range(0,inventory.inventory_slots.size()):
+				match inventory.inventory_slots[slot].item:
+					Ore.Ores.INVALID:
+						found_empty = true
+			
+			if !found_empty:
+				interact_label.visible = true
+				interact_label.text = "Inventory full"
+			
 		if (collider.is_in_group("crusher")):
 			interacting_with = "crusher"
 			interact_label.text = "Crush ores in inventory\n [E]"
@@ -279,8 +333,6 @@ func _physics_process(delta: float) -> void:
 		interacting_with = ""
 		current_rock = null
 		interact_label.visible = false
-		
-		
 
 func give_air(air : float):
 	_air_meter += air
@@ -322,8 +374,11 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	# Escape mouse capture
-	if (event.is_action_pressed("escape")):
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#if (event.is_action_pressed("escape")):
+		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		#get_tree().paused = !get_tree().paused
+		#print("paused: ", get_tree().paused)
+		#$Control/pause.visible = get_tree().paused
 	
 	# Run interact
 	if(event.is_action_pressed("use")):
@@ -362,7 +417,7 @@ func _input(event: InputEvent) -> void:
 					return
 				var success : Array[bool]
 				for i in range(0,build_array[0].size()):
-					print(inventory.get_resource_total(build_array[0][i]))
+					#print(inventory.get_resource_total(build_array[0][i]))
 					if(build_array[1][i] <= inventory.get_resource_total(build_array[0][i])):
 						success.append(true)
 					else:
