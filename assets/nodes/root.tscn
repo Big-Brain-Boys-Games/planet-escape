@@ -47,6 +47,8 @@
 [ext_resource type="PackedScene" uid="uid://y1xxmxroq2hw" path="res://assets/nodes/Prefabs/light_plant.tscn" id="34_ptueq"]
 [ext_resource type="PackedScene" uid="uid://ch7rs5nhrwkmu" path="res://assets/nodes/Prefabs/tarn.tscn" id="35_j4knf"]
 [ext_resource type="PackedScene" uid="uid://box2lvd8smvg6" path="res://assets/nodes/Prefabs/coral.tscn" id="35_y5i4j"]
+[ext_resource type="AudioStream" uid="uid://cactol0x3mvnr" path="res://assets/audio/sfx/243355__vumseplutten1709__stonemachine.wav" id="41_1uluy"]
+[ext_resource type="AudioStream" uid="uid://dfgvsv7jomryk" path="res://assets/audio/sfx/361331__spoonsandlessspoons__computer-beeps.wav" id="43_o1vpn"]
 [ext_resource type="PackedScene" uid="uid://usda1em8x36c" path="res://assets/models/flag.blend" id="46_1uluy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_41f5n"]
@@ -1924,6 +1926,12 @@ transform = Transform3D(0.96314377, 0.26898706, 0, -0.26898706, 0.96314377, 0, 0
 [node name="crusher" parent="planet_environment" unique_id=343286013 instance=ExtResource("15_i03b5")]
 transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, -11.674262, 95.4298, -36.078613)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="planet_environment/crusher" unique_id=1005594149]
+stream = ExtResource("41_1uluy")
+volume_db = -16.0
+autoplay = true
+max_distance = 15.0
+
 [node name="Computer" type="MeshInstance3D" parent="planet_environment" unique_id=563045820]
 transform = Transform3D(-0.061349154, 0, 0.9981164, 0, 1, 0, -0.9981164, 0, -0.061349154, 1.1579213, 94.174904, -36.004868)
 mesh = SubResource("BoxMesh_41f5n")
@@ -1941,6 +1949,14 @@ mesh = SubResource("BoxMesh_vjr50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="planet_environment/Computer/StaticBody3D" unique_id=974595365 groups=["computer"]]
 transform = Transform3D(0.72644264, -0.68722713, 0, 0.68722713, 0.72644264, 0, 0, 0, 1, -0.52934885, 0.8738327, 0)
 shape = SubResource("BoxShape3D_41f5n")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="planet_environment/Computer/StaticBody3D" unique_id=182624360]
+stream = ExtResource("43_o1vpn")
+volume_db = -26.0
+max_db = 0.0
+pitch_scale = 0.1
+autoplay = true
+max_distance = 10.0
 
 [node name="environment" parent="planet_environment" unique_id=928948361 instance=ExtResource("4_ohwjy")]
 transform = Transform3D(1.0191008, 0, 0, 0, 1.0191008, 0, 0, 0, 1.0191008, -0.82450867, -0.26218414, -0.23015785)

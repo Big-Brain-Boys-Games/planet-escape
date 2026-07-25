@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://dt7uam413xtk4" path="res://assets/scripts/swimming_tool.gd" id="8_ut8nu"]
 [ext_resource type="Texture2D" uid="uid://db5qsld260dyi" path="res://assets/textures/air_meter.png" id="11_t1i24"]
 [ext_resource type="Texture2D" uid="uid://dhyowwjd533td" path="res://assets/textures/air_meter_filler.png" id="12_ejbuc"]
+[ext_resource type="AudioStream" uid="uid://ba1ba2tfa3qqh" path="res://assets/audio/sfx/366159__dcsfx__underwater-loop-amb.wav" id="13_ejbuc"]
+[ext_resource type="Script" uid="uid://mdlw20awx73q" path="res://assets/scripts/pause.gd" id="13_hme1o"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
 
@@ -134,3 +136,38 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="pause" type="ColorRect" parent="Control" unique_id=1311971175]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.36862746)
+script = ExtResource("13_hme1o")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control/pause" unique_id=1130632733]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 41
+text = "Pause"
+
+[node name="background_sfx" type="AudioStreamPlayer" parent="." unique_id=479740980 groups=["background_sfx"]]
+stream = ExtResource("13_ejbuc")
+volume_db = -8.0
+autoplay = true
