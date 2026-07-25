@@ -20,7 +20,6 @@ func change_music(music : AudioStream, fade_out_duration : float, fade_in_durati
 func _process(delta: float) -> void:
 	if (old_music_transition > 0):
 		volume_linear = old_music_transition / music_out_time
-		print(old_music_transition / music_out_time)
 		old_music_transition -= delta
 		if (old_music_transition <= 0):
 			stream = new_song

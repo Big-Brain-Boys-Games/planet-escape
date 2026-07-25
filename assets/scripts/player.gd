@@ -51,7 +51,6 @@ func _ready() -> void:
 	interact_label = get_tree().get_first_node_in_group("collect_rock_label")
 	notification_node = get_tree().get_first_node_in_group("notification")
 	for child in get_children():
-		print(child)
 		if(child.is_in_group("camera")):
 			camera = child
 			continue

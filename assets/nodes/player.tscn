@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dhyowwjd533td" path="res://assets/textures/air_meter_filler.png" id="12_ejbuc"]
 [ext_resource type="AudioStream" uid="uid://ba1ba2tfa3qqh" path="res://assets/audio/sfx/366159__dcsfx__underwater-loop-amb.wav" id="13_ejbuc"]
 [ext_resource type="Script" uid="uid://mdlw20awx73q" path="res://assets/scripts/pause.gd" id="13_hme1o"]
+[ext_resource type="Script" uid="uid://x03qikh8c1c4" path="res://assets/nodes/audio_slider.gd" id="15_ywewf"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
 
@@ -70,6 +71,7 @@ script = ExtResource("8_ut8nu")
 stream = ExtResource("11_6olem")
 volume_db = -32.0
 autoplay = true
+bus = &"SFX"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1980606818]
 shape = SubResource("CapsuleShape3D_41f5n")
@@ -145,7 +147,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="pause" type="ColorRect" parent="Control" unique_id=1311971175]
 process_mode = 3
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -173,7 +174,62 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 41
 text = "Pause"
 
+[node name="Control" type="Control" parent="Control/pause" unique_id=1158325546]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/pause/Control" unique_id=1994127730]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/pause/Control/VBoxContainer" unique_id=1123092773]
+layout_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="Control/pause/Control/VBoxContainer/HBoxContainer" unique_id=773391810]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("15_ywewf")
+
+[node name="Label" type="Label" parent="Control/pause/Control/VBoxContainer/HBoxContainer" unique_id=1268172098]
+layout_mode = 2
+text = "Music"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/pause/Control/VBoxContainer" unique_id=1258197243]
+layout_mode = 2
+
+[node name="SFXSlider" type="HSlider" parent="Control/pause/Control/VBoxContainer/HBoxContainer2" unique_id=1402302778]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("15_ywewf")
+
+[node name="Label2" type="Label" parent="Control/pause/Control/VBoxContainer/HBoxContainer2" unique_id=1789945989]
+layout_mode = 2
+text = "SFX    "
+
 [node name="background_sfx" type="AudioStreamPlayer" parent="." unique_id=479740980 groups=["background_sfx"]]
 stream = ExtResource("13_ejbuc")
 volume_db = -8.0
 autoplay = true
+
+[connection signal="value_changed" from="Control/pause/Control/VBoxContainer/HBoxContainer/MusicSlider" to="Control/pause/Control/VBoxContainer/HBoxContainer/MusicSlider" method="_on_value_changed" binds= ["music"]]
+[connection signal="value_changed" from="Control/pause/Control/VBoxContainer/HBoxContainer2/SFXSlider" to="Control/pause/Control/VBoxContainer/HBoxContainer2/SFXSlider" method="_on_value_changed" binds= ["SFX"]]
