@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://oo225bxpayeh"]
 
 [ext_resource type="PackedScene" uid="uid://46mcgk2xwryd" path="res://assets/models/underwater_things/seaweed.blend" id="1_prmxl"]
+[ext_resource type="Script" uid="uid://ddpyhahnhlw15" path="res://assets/scripts/snap_down.gd" id="1_tlq5m"]
 
 [node name="SmallPlant" type="Node3D" unique_id=358686886]
+script = ExtResource("1_tlq5m")
 
 [node name="seaweed" parent="." unique_id=128958523 instance=ExtResource("1_prmxl")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

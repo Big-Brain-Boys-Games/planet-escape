@@ -9,6 +9,7 @@ var item : Ore.Ores :
 func set_item(value : Ore.Ores):
 	if(value == 0):
 		get_node("Label").text = ""
+		get_node("TextureRect").texture = null
 	else:
 		get_node("Label").text = Ore.Ores.keys()[value]
 		get_node("TextureRect").texture = get_parent().get_parent().ore_icons[value-1]

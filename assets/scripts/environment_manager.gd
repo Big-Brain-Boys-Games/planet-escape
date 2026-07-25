@@ -1,3 +1,4 @@
+class_name EnvironmentManager
 extends WorldEnvironment
 
 @export var environments : Array[Environment];

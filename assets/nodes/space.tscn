@@ -10,6 +10,7 @@ albedo_color = Color(0, 0.33433327, 0.59, 1)
 metallic = 0.15
 metallic_specular = 0.58
 roughness = 0.51
+disable_receive_shadows = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86oiv"]
 transparency = 1
@@ -20,6 +21,7 @@ roughness = 0.94
 subsurf_scatter_strength = 0.35
 uv1_scale = Vector3(3, 3, 3)
 uv2_scale = Vector3(2, 2, 2)
+disable_receive_shadows = true
 
 [node name="space" type="Node3D" unique_id=461983772]
 

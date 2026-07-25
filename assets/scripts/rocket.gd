@@ -25,3 +25,6 @@ func get_rocket_world_state_variable() -> Array:
 			return [booster_parts,booster_count]
 		_:
 			return []
+
+func launch_finished() -> void:
+	GameManager.advanced_state()
