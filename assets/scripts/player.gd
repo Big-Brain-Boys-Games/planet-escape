@@ -123,7 +123,7 @@ func _physics_process(delta: float) -> void:
 				camera_shake = 0.8
 				
 				var new_geiser = magma_geiser.instantiate()
-				get_node("../planet_environment").add_child(new_geiser)
+				get_node("../water_for_waves").add_child(new_geiser)
 				
 				new_geiser.global_position.y = 100
 				new_geiser.global_position.x = randf_range(-250, 250)
