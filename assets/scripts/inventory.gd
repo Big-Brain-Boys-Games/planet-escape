@@ -48,7 +48,7 @@ func set_new_resource_total (ore : Ore.Ores, value : int) -> void:
 	
 func _ready() -> void:
 	var current_item : int = 0
-	for child in get_child(1).get_children():
+	for child in $InventoryItems.get_children():
 		if (is_instance_of(child,ColorRect)):
 			inventory_slots[current_item] = child
 			current_item += 1

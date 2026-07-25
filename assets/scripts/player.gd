@@ -29,7 +29,7 @@ var camera_shake : float = 0
 var _air_meter : float = _air_reset;
 
 @export var waves_heightmap : Image;
-@export var planet_exploding_timer : float = 60*3
+@export var planet_exploding_timer : float = 60*9
 
 var _selected_tool : int = 0
 
