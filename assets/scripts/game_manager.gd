@@ -17,11 +17,14 @@ var notification_node : notification
 var player : Player
 var world_environment : EnvironmentManager
 var objective_text : RichTextLabel
+var music_player : MusicManager
 
 # ALL VARIABLES FOR STAGE 1
+var music1 : AudioStreamOggVorbis = preload("res://assets/audio/music/ambient2(Nautilus).ogg")
 
 # ALL VARIABLES FOR STAGE 2
 var rocket_body : MeshInstance3D
+var music2 : AudioStreamOggVorbis = preload("res://assets/audio/music/Exploration Theme.ogg")
 
 # ALL VARIABLES FOR STAGE 3
 var rocket_engine : MeshInstance3D
@@ -41,6 +44,7 @@ var space_sky : Sky = preload("res://assets/worldEnvironments/Skies/space_sky.tr
 
 # ALL VARIABLES FOR STAGE 7
 var space_environment : Environment = preload("res://assets/worldEnvironments/space.tres") as Environment
+var music7 : AudioStreamOggVorbis = preload("res://assets/audio/music/ville_seppanen-1_g.ogg")
 
 func _ready() -> void:
 	get_tree().scene_changed.connect(_setup_world)
@@ -58,6 +62,7 @@ func _setup_world() -> void:
 		liftoff_animation = get_tree().get_first_node_in_group("liftoff_animation")
 		world_environment = get_tree().get_first_node_in_group("world_environment")
 		objective_text = get_tree().get_first_node_in_group("objective")
+		music_player = get_tree().get_first_node_in_group("music_manager")
 		advanced_state()
 		
 var world_state : States = 0
@@ -70,9 +75,11 @@ func advanced_state() -> void:
 		States.WAKEUP:
 			pass
 		States.OCEAN:
+			music_player.change_music(music1)
 			objective_text.text = "[font_size=23]Current objective[/font_size]\nBuild the rocket using the computer"
 			pass
 		States.ROCKET_BODY:
+			music_player.change_music(music2)
 			objective_text.text = "[font_size=23]Current objective[/font_size]\nBuild the rocket engine"
 			notification_node.play_notification("First stage build, commence second stage.")
 			rocket_body.visible = true
@@ -98,6 +105,7 @@ func advanced_state() -> void:
 			liftoff_animation.play("leaving_planet")
 		States.SPACE:
 			objective_text.text = "[font_size=23]Current objective[/font_size]\n You Win!"
+			notification_node.play_notification("The game has been won. Congratulations!")
 			world_environment.environment = space_environment
 		States.GOING:
 			pass

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/ville_seppanen-1_g.ogg-db8c90d6b3cb2016951c4f
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
