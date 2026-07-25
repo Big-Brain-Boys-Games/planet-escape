@@ -154,7 +154,7 @@ func _physics_process(delta: float) -> void:
 		if (GameManager.world_state < GameManager.States.LIFTOFF):
 			world_environment.set_env(1)
 		
-		_air_meter = move_toward(_air_meter, _air_reset, delta*14)
+		_air_meter = move_toward(_air_meter, _air_reset, delta* _air_reset / 1.5)
 		if (GameManager.world_state != 6):
 			if(global_position.y > wave_height+0.8):
 				global_position.y = wave_height+0.8
