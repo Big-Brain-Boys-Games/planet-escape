@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dt7uam413xtk4" path="res://assets/scripts/swimming_tool.gd" id="8_ut8nu"]
 [ext_resource type="Texture2D" uid="uid://db5qsld260dyi" path="res://assets/textures/air_meter.png" id="11_t1i24"]
 [ext_resource type="Texture2D" uid="uid://dhyowwjd533td" path="res://assets/textures/air_meter_filler.png" id="12_ejbuc"]
+[ext_resource type="AudioStream" uid="uid://ba1ba2tfa3qqh" path="res://assets/audio/sfx/366159__dcsfx__underwater-loop-amb.wav" id="13_ejbuc"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
 
@@ -134,3 +135,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="background_sfx" type="AudioStreamPlayer" parent="." unique_id=479740980 groups=["background_sfx"]]
+stream = ExtResource("13_ejbuc")
+volume_db = -8.0
+autoplay = true

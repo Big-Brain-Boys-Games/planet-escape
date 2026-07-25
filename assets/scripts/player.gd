@@ -31,6 +31,11 @@ var _air_meter : float = _air_reset;
 @export var waves_heightmap : Image;
 @export var planet_exploding_timer : float = 60*9
 
+var background_sfx : AudioStreamPlayer
+@onready var background_abovewater : AudioStreamWAV = preload("res://assets/audio/sfx/777277__yannsauvin__ocean-close.wav")
+@onready var background_underwater : AudioStreamWAV = preload("res://assets/audio/sfx/366159__dcsfx__underwater-loop-amb.wav")
+var playing_sound : String = "underwater"
+
 var _selected_tool : int = 0
 
 var _fade_in : float = 3;
@@ -48,6 +53,7 @@ func _ready() -> void:
 		if(child.is_in_group("camera")):
 			camera = child
 			continue
+	background_sfx = get_tree().get_first_node_in_group("background_sfx")
 	select_tool(0)
 
 func select_tool(tool : int):
@@ -153,6 +159,10 @@ func _physics_process(delta: float) -> void:
 		print(camera.global_basis.z.dot(Vector3.UP))
 		if (GameManager.world_state < GameManager.States.LIFTOFF):
 			world_environment.set_env(1)
+			if (playing_sound == "underwater"):
+				playing_sound = "abovewater"
+				background_sfx.stream = background_abovewater
+				background_sfx.play()
 		
 		_air_meter = move_toward(_air_meter, _air_reset, delta*14)
 		if (GameManager.world_state != 6):
@@ -164,6 +174,10 @@ func _physics_process(delta: float) -> void:
 		#under water
 		if (GameManager.world_state < GameManager.States.LIFTOFF):
 			world_environment.set_env(0)
+			if (playing_sound == "abovewater"):
+				playing_sound = "underwater"
+				background_sfx.stream = background_underwater
+				background_sfx.play()
 		_air_meter -= delta
 		camera.attributes = camera_attributes[1];
 		
