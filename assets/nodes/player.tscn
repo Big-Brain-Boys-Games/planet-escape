@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cfrp6ywdeo8l6" path="res://assets/scripts/player.gd" id="1_wj3lj"]
 [ext_resource type="CameraAttributesPractical" uid="uid://107xh7h4w42s" path="res://assets/camera_attributes/underwater_attributes.tres" id="2_sysx0"]
+[ext_resource type="Script" uid="uid://ugymbtta8gj7" path="res://assets/scripts/sway.gd" id="3_rhuuy"]
+[ext_resource type="PackedScene" uid="uid://cht6j5by3yydj" path="res://assets/models/mining_tool.blend" id="3_y07ac"]
+[ext_resource type="Script" uid="uid://hvujfog57bgq" path="res://assets/scripts/mining_tool.gd" id="4_tb2t1"]
+[ext_resource type="PackedScene" uid="uid://elf2sqhmlqg2" path="res://assets/models/flashlight_tool.blend" id="5_mn4l5"]
+[ext_resource type="Script" uid="uid://dx2qpohy00yqp" path="res://assets/scripts/flashlight_tool.gd" id="6_rho1b"]
+[ext_resource type="PackedScene" uid="uid://cicgjk6gab5jd" path="res://assets/models/swimming_tool.blend" id="7_kcpvn"]
+[ext_resource type="Script" uid="uid://dt7uam413xtk4" path="res://assets/scripts/swimming_tool.gd" id="8_ut8nu"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
 
@@ -23,6 +30,34 @@ fov = 90.0
 target_position = Vector3(0, 0, -2.5)
 debug_shape_custom_color = Color(1, 1, 1, 1)
 debug_shape_thickness = 5
+
+[node name="sway" type="Node3D" parent="Camera3D" unique_id=514683967]
+script = ExtResource("3_rhuuy")
+
+[node name="light" type="SpotLight3D" parent="Camera3D/sway" unique_id=1318178441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5870034, 0.025102615)
+visible = false
+light_color = Color(0.77407944, 0.7203191, 0.5403079, 1)
+light_energy = 1.5
+spot_range = 10.963722
+spot_angle = 39.249252
+
+[node name="tools" type="Node3D" parent="Camera3D/sway" unique_id=438216568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5870034, 0)
+
+[node name="none" type="Node3D" parent="Camera3D/sway/tools" unique_id=1540846642]
+
+[node name="mining_tool" parent="Camera3D/sway/tools" unique_id=956213280 instance=ExtResource("3_y07ac")]
+transform = Transform3D(-0.076120555, 0, 0.41855264, 0, 0.4254182, 0, -0.41855264, 0, -0.076120555, 0.6987856, 0.09037268, -0.9871203)
+script = ExtResource("4_tb2t1")
+
+[node name="flashlight_tool" parent="Camera3D/sway/tools" unique_id=1067516877 instance=ExtResource("5_mn4l5")]
+transform = Transform3D(0.01166458, 0.0018522162, -0.093443274, -0.014770834, 0.093021296, 0, 0.09228705, 0.014654242, 0.01181072, 0.98696315, -0.321012, -0.9945115)
+script = ExtResource("6_rho1b")
+
+[node name="swimming_tool" parent="Camera3D/sway/tools" unique_id=809923857 instance=ExtResource("7_kcpvn")]
+transform = Transform3D(0.4024414, 0, 0, 0, 0.4024414, 0, 0, 0, 0.4024414, 0, -0.13765232, -1.3788813)
+script = ExtResource("8_ut8nu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1980606818]
 shape = SubResource("CapsuleShape3D_41f5n")
