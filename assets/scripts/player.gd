@@ -31,6 +31,8 @@ var _air_meter : float = _air_reset;
 @export var waves_heightmap : Image;
 @export var planet_exploding_timer : float = 60*15
 
+@export var meteor_prefab : PackedScene
+
 var _selected_tool : int = 0
 
 var _fade_in : float = 3;
@@ -97,8 +99,20 @@ func get_waves_height() -> float:
 	z *= 1.0 - read_wave_image(uv/1.3 + Vector2(time*0.01, 0));
 	return (pow(z, 0.6)*0.15-0.05) * water_waves.scale.y * 103;
 
+var _health : float = 100
+
+func take_damage(damage : float):
+	print("take damage(",damage,")")
+	if _health < 0:
+		return
+	
+	_health -= damage
+	
+	if _health < 0:
+		_health = 0
+
 func die():
-	if	(GameManager.world_state < GameManager.States.LIFTOFF):
+	if (GameManager.world_state < GameManager.States.LIFTOFF):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		get_tree().change_scene_to_file("res://assets/nodes/death_menu.tscn");
 
@@ -107,13 +121,40 @@ var magma_geiser_spawn_time = 1
 
 @export var magma_geiser : PackedScene
 
+var rng_timer_rumbling : float = 10
+
+var allow_meteor_spawn : bool = true
+
 func _physics_process(delta: float) -> void:
 	var wave_height = water_waves.global_position.y+get_waves_height();
+	
+	if _health > 0:
+		_health = move_toward(_health, 100, delta*3)
+	else:
+		_health -= delta
+		$Control/blackening.color.a = -_health/2
+		if _health < -2:
+			die()
 	
 	if GameManager.world_state < GameManager.States.LIFTOFF:
 		planet_exploding_timer -= delta
 		$Control/planet_text.text = "[font_size=20] Planet explodes in " + str(planet_exploding_timer).pad_decimals(0)
 		
+		if rng_timer_rumbling > 0:
+			
+			rng_timer_rumbling -= delta
+			
+			if rng_timer_rumbling <= 0:
+				rng_timer_rumbling = randf_range(5, 25)
+				camera_shake = 0.6
+				
+				if allow_meteor_spawn:
+					#spawn meteor
+					var new_meteor = meteor_prefab.instantiate()
+					get_node("../water_for_waves").add_child(new_meteor)
+					new_meteor.global_position = global_position + Vector3.UP * 200
+					new_meteor.global_position.x += randf_range(-1,1)*100
+					new_meteor.global_position.z += randf_range(-1,1)*100
 		
 		if planet_exploding_timer < 0:
 			$Control/planet_text.text = ""
@@ -151,7 +192,6 @@ func _physics_process(delta: float) -> void:
 	
 	if camera.global_position.y + 0.2 > wave_height + camera.global_basis.z.dot(Vector3.UP):
 		#above water
-		print(camera.global_basis.z.dot(Vector3.UP))
 		if (GameManager.world_state < GameManager.States.LIFTOFF):
 			world_environment.set_env(1)
 		
@@ -360,7 +400,7 @@ func _input(event: InputEvent) -> void:
 					return
 				var success : Array[bool]
 				for i in range(0,build_array[0].size()):
-					print(inventory.get_resource_total(build_array[0][i]))
+					#print(inventory.get_resource_total(build_array[0][i]))
 					if(build_array[1][i] <= inventory.get_resource_total(build_array[0][i])):
 						success.append(true)
 					else:

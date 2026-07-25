@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ceh2xlkt7gda4"]
+
+[ext_resource type="Script" uid="uid://giyp65l6rt81" path="res://assets/scripts/meteor.gd" id="1_eqv6b"]
+[ext_resource type="PackedScene" uid="uid://ba23bs6sorns" path="res://assets/models/underwater_things/rock1.blend" id="2_ijryo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_khlrb"]
+radius = 5.8561077
+
+[node name="meteor" type="Node3D" unique_id=444348826]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_eqv6b")
+
+[node name="rock1" parent="." unique_id=674707448 instance=ExtResource("2_ijryo")]
+transform = Transform3D(6.4417863, 0, 0, 0, 11.230279, 0, 0, 0, 6.4417863, 0, 0, 0)
+
+[node name="rock2" parent="rock1" unique_id=833533439 instance=ExtResource("2_ijryo")]
+transform = Transform3D(0.15523644, 0, 0, 0, 0.14783502, 0, 0, 0, 0.15523644, -0.76230377, 0, -0.0016652843)
+
+[node name="rock3" parent="rock1" unique_id=1760803363 instance=ExtResource("2_ijryo")]
+transform = Transform3D(0.15523644, 0, 0, 0, 0.14783502, 0, 0, 0, 0.15523644, 0.34248197, 0.2518548, -0.33588102)
+
+[node name="rock4" parent="rock1" unique_id=576028641 instance=ExtResource("2_ijryo")]
+transform = Transform3D(0.15523644, 0, 0, 0, 0.14783502, 0, 0, 0, 0.15523644, 0.34248197, -0.16892582, 0.42616308)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1980640455]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1352878256]
+shape = SubResource("SphereShape3D_khlrb")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
