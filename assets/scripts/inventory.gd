@@ -6,19 +6,19 @@ extends Control
 @export var missing_item_label : RichTextLabel
 @export var ore_icons : Array[Texture2D]
 
-var ironium_count : int = 99 :
+var ironium_count : int = 0:
 	set(value):
 		ironium_count = value
 		update_text()
-var quartz_count : int = 99:
+var quartz_count : int = 0:
 	set(value):
 		quartz_count = value
 		update_text()
-var tarn_count : int = 99:
+var tarn_count : int = 0:
 	set(value):
 		tarn_count = value
 		update_text()
-var redagon_count : int = 99:
+var redagon_count : int = 0:
 	set(value):
 		redagon_count = value
 		update_text()

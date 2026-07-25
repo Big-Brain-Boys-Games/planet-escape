@@ -48,7 +48,6 @@ func _ready() -> void:
 		if(child.is_in_group("camera")):
 			camera = child
 			continue
-	notification_node.play_notification("Yes")
 	select_tool(0)
 
 func select_tool(tool : int):
@@ -358,6 +357,7 @@ func _input(event: InputEvent) -> void:
 						inventory.get_parent().visible = true
 						inventory.missing_item_label.get_child(0).start()
 						all_clear = false
+						notification_node.play_notification("Not enough resources")
 				if (all_clear):
 					print("New gamestate")
 					inventory.missing_item_label.text = ""
