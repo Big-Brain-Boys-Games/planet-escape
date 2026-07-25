@@ -875,7 +875,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.838842, 92.381195, -24.32
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.234348, 91.93553, -23.643866)
 
 [node name="crusher" parent="planet_environment" unique_id=343286013 instance=ExtResource("15_i03b5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.674262, 94.630615, -36.078613)
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, -11.674262, 95.4298, -36.078613)
 
 [node name="Computer" type="MeshInstance3D" parent="planet_environment" unique_id=563045820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0145373, 94.174904, -30.355042)
