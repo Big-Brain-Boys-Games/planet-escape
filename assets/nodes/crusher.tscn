@@ -1,91 +1,9 @@
 [gd_scene format=3 uid="uid://pjr2qdlaqa61"]
 
 [ext_resource type="PackedScene" uid="uid://4gfwk4x6hqt8" path="res://assets/models/crusher.blend" id="1_qtepc"]
-
-[sub_resource type="Animation" id="Animation_qtepc"]
-resource_name = "Crushing"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cube/Cube_009:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.5707964, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cube/Cube_003:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.5707964, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_qjvbt"]
-length = 0.001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cube/Cube_009:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cube/Cube_003:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-3.1415927, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vexx6"]
-_data = {
-&"Crushing": SubResource("Animation_qtepc"),
-&"RESET": SubResource("Animation_qjvbt")
-}
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qtepc"]
-animation = &"Crushing"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vjr50"]
-graph_offset = Vector2(-2.8439941, 36.042023)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_qtepc")
-nodes/Animation/position = Vector2(100, 140)
-node_connections = [&"output", 0, &"Animation"]
+[ext_resource type="Script" uid="uid://bq4ghhp15q7qx" path="res://assets/scripts/crusher.gd" id="2_qjvbt"]
 
 [node name="crusher" unique_id=343286013 instance=ExtResource("1_qtepc")]
+script = ExtResource("2_qjvbt")
 
-[node name="Cube_003" parent="Cube" parent_id_path=PackedInt32Array(1708709886) index="0" unique_id=1611070432]
-transform = Transform3D(0.15278839, 0, 0, 0, -0.3349746, -2.9284408e-08, 0, 2.9284408e-08, -0.3349746, 0.83743656, 1.0049238, -0.3852208)
-
-[node name="Cube_009" parent="Cube" parent_id_path=PackedInt32Array(1708709886) index="1" unique_id=2099345412]
-transform = Transform3D(0.15278839, 0, 0, 0, -1.4642204e-08, 0.3349746, 0, -0.3349746, -1.4642204e-08, -0.5862056, 1.0049238, 0.40196955)
-
-[node name="StaticBody3D" parent="Cube" parent_id_path=PackedInt32Array(1708709886) index="2" unique_id=1944141355 groups=["crusher"]]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=132902588]
-libraries/ = SubResource("AnimationLibrary_vexx6")
-
-[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=1822277092]
-tree_root = SubResource("AnimationNodeBlendTree_vjr50")
-anim_player = NodePath("../AnimationPlayer")
+[node name="StaticBody3D" parent="Cube" parent_id_path=PackedInt32Array(847067468) index="0" unique_id=836791107 groups=["crusher"]]

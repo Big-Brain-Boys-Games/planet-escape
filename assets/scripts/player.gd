@@ -81,18 +81,37 @@ func _physics_process(delta: float) -> void:
 	var wave_height = water_waves.global_position.y+get_waves_height();
 	#print("wave height ", wave_height)
 	#print("player height ", global_position.y)
-	if(global_position.y > wave_height-1.5):
-		
-		_air_meter = move_toward(_air_meter, _air_reset, delta*14)
+	
+	#pushback force
+	if abs(global_position.x) > 200:
+		if velocity.x < 0:
+			velocity.x = lerpf(velocity.x, 10, delta*4)
+		else:
+			velocity.x = lerpf(velocity.x, -10, delta*4)
+	
+	if abs(global_position.z) > 200:
+		if velocity.z < 0:
+			velocity.z = lerpf(velocity.z, 10, delta*4)
+		else:
+			velocity.z = lerpf(velocity.z, -10, delta*4)
+	
+	
+	if global_position.y > wave_height + camera.global_basis.z.dot(Vector3.UP):
+		#above water
+		print(camera.global_basis.z.dot(Vector3.UP))
 		if (GameManager.world_state < GameManager.States.LIFTOFF):
 			world_environment.set_env(1)
+		
+		_air_meter = move_toward(_air_meter, _air_reset, delta*14)
+		if (GameManager.world_state != 6):
 			if(global_position.y > wave_height+0.8):
 				global_position.y = wave_height+0.8
 		
 		camera.attributes = camera_attributes[1];
 	else:
 		#under water
-		world_environment.set_env(0)
+		if (GameManager.world_state < GameManager.States.LIFTOFF):
+			world_environment.set_env(0)
 		_air_meter -= delta
 		camera.attributes = camera_attributes[1];
 		

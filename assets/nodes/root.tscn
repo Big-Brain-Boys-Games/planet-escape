@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://ch7rs5nhrwkmu" path="res://assets/nodes/Prefabs/tarn.tscn" id="11_msuym"]
 [ext_resource type="PackedScene" uid="uid://duynw0xavhi65" path="res://assets/nodes/Prefabs/redegon.tscn" id="12_30aiw"]
 [ext_resource type="Environment" uid="uid://b4yj4uqw5nfgr" path="res://assets/worldEnvironments/space.tres" id="13_1b4ng"]
+[ext_resource type="Sky" uid="uid://d3sk18u2jtco0" path="res://assets/skies/day_night_sky.tres" id="14_kh2ao"]
 [ext_resource type="PackedScene" uid="uid://pjr2qdlaqa61" path="res://assets/nodes/crusher.tscn" id="15_i03b5"]
 [ext_resource type="PackedScene" uid="uid://dsbjpycyfq5es" path="res://assets/nodes/space.tscn" id="25_dg37v"]
 [ext_resource type="Sky" uid="uid://b8vb2g0miif26" path="res://assets/worldEnvironments/Skies/above_water_sky.tres" id="25_pcorw"]
@@ -36,22 +37,49 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sritj"]
-albedo_color = Color(0.30238748, 0.56442213, 0.63766515, 1)
-heightmap_scale = 2.346
+[sub_resource type="CylinderMesh" id="CylinderMesh_41f5n"]
+top_radius = 5.4404297
+bottom_radius = 5.4404297
+height = 28.187744
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_01x2u"]
-material = SubResource("StandardMaterial3D_sritj")
+[sub_resource type="TorusMesh" id="TorusMesh_41f5n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4iriu"]
+size = Vector3(5, 12.225, 5)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fn7jt"]
+radius = 5.0
+height = 15.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_41f5n"]
+radius = 1.9960938
+height = 11.880127
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vjr50"]
-size = Vector3(0.695, 6.93, 1.16)
+size = Vector3(1, 4.995, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fn7jt"]
 albedo_color = Color(0.7411765, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_41hqj"]
 material = SubResource("StandardMaterial3D_fn7jt")
-size = Vector3(7.075, 6.99, 1.175)
+size = Vector3(1, 5, 2)
+
+[sub_resource type="Environment" id="Environment_22e5b"]
+background_mode = 2
+sky = ExtResource("14_kh2ao")
+tonemap_mode = 2
+fog_light_color = Color(0.055717386, 0.29415643, 0.4024785, 1)
+fog_density = 0.0
+fog_sky_affect = 0.0
+fog_depth_curve = 0.5946074
+fog_depth_begin = 0.0
+fog_depth_end = 47.2
+volumetric_fog_density = 0.08
+volumetric_fog_albedo = Color(0, 0.9784731, 0.9825049, 1)
+volumetric_fog_emission = Color(0.016748713, 0.12049455, 0.13447726, 1)
+volumetric_fog_sky_affect = 0.0
+volumetric_fog_temporal_reprojection_enabled = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_41f5n"]
 size = Vector3(1, 1.97, 1)
@@ -148,66 +176,6 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(1.5707964, 0, 0)]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("DirectionalLight3D:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("spacelight:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("spacelight:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.3795233, -2.0820174, 2.3736596)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("water_for_waves/Plane:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("water_for_waves/Plane_001:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_l7i30"]
 resource_name = "leaving_planet"
@@ -282,7 +250,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(14.700001, 23.000002, 25.000002, 30),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(10.481, -23.279, -43.913), Vector3(10.481403, -118.66449, -43.913254), Vector3(10.481403, -55.48593, 91.426926), Vector3(10.481403, 102.46047, 174.39233)]
+"values": [Vector3(10.481403, 20.360619, -43.913254), Vector3(10.481403, -118.66449, -43.913254), Vector3(10.481403, -55.48593, 91.426926), Vector3(10.481403, 102.46047, 174.39233)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -295,80 +263,6 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(1.5707964, 0, 0), Vector3(1.5707964, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("DirectionalLight3D:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(14.7),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("spacelight:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(14.700001),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("spacelight:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(23.000002, 24.966667, 30),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.3788102, 2.0821779, 2.3736477), Vector3(-0.88662726, 3.0752702, -2.0158553), Vector3(0.025157277, 3.00677, -2.5905979)]
-}
-tracks/10/type = "method"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("spaceship")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(30),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"launch_finished"
-}]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("water_for_waves/Plane:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(14.700001),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("water_for_waves/Plane_001:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(14.700001),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lov7v"]
@@ -872,57 +766,88 @@ water_waves = NodePath("../water_for_waves")
 waves_heightmap = ExtResource("7_3hs2x")
 
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
-transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 122.02768, 0)
+transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
 
-[node name="Plane_001" parent="water_for_waves" index="1" unique_id=1595864485]
-transform = Transform3D(2143.275, 0, 0, 0, 0.99882865, 0, 0, 0, 2143.275, 0, 0, 0)
-mesh = SubResource("PlaneMesh_01x2u")
+[node name="Plane_001" parent="water_for_waves" index="1" unique_id=2049881502]
+visible = false
 
-[node name="spaceship" parent="." unique_id=370931199 groups=["rocket"] instance=ExtResource("8_paggm")]
-transform = Transform3D(1.614469, 0, 3.290245, 0, 3.6649997, 0, -3.290245, 0, 1.614469, 4.609688, 115.83204, -42.697662)
+[node name="spaceship" parent="." unique_id=370931199 instance=ExtResource("8_paggm")]
+transform = Transform3D(3.665, 0, 0, 0, 3.665, 0, 0, 0, 3.665, 4.609688, 115.83204, -42.697662)
+
+[node name="Rocket" type="Node3D" parent="." unique_id=627676775 groups=["rocket"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6544504, 103.30859, -43.114155)
 script = ExtResource("26_pcorw")
 
-[node name="body" parent="spaceship" index="0" unique_id=2144437079 groups=["rocket_body"]]
-visible = false
+[node name="Body" type="MeshInstance3D" parent="Rocket" unique_id=2125883252 groups=["rocket_body"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.047684, 0)
+mesh = SubResource("CylinderMesh_41f5n")
 
-[node name="Door" type="StaticBody3D" parent="spaceship/body" index="0" unique_id=966591887 groups=["rocket_door"]]
-transform = Transform3D(0.027590476, 0, -0.12565205, 0, 0.02, 0, 0.011779881, 0, 0.2942984, -0.870141, -0.54356766, -0.27135372)
+[node name="Windows" type="Node3D" parent="Rocket/Body" unique_id=119382809]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="spaceship/body/Door" unique_id=2129136450]
-transform = Transform3D(0.9999999, 0, -4.7683716e-07, 0, 1, 0, 0, 0, 0.99999976, -6.8160095, -5.7100067, -0.21677017)
+[node name="Window" type="MeshInstance3D" parent="Rocket/Body/Windows" unique_id=1254239612]
+transform = Transform3D(-1.3113416e-07, -3, 0, 3, -1.3113416e-07, 0, 0, 0, 3, -5.5, 1.6989975, 0)
+mesh = SubResource("TorusMesh_41f5n")
+
+[node name="Window2" type="MeshInstance3D" parent="Rocket/Body/Windows" unique_id=1657572846]
+transform = Transform3D(-1.3113416e-07, -3, 0, 3, -1.3113416e-07, 0, 0, 0, 3, 5.5, 1.697998, 0)
+mesh = SubResource("TorusMesh_41f5n")
+
+[node name="Window3" type="MeshInstance3D" parent="Rocket/Body/Windows" unique_id=1994576617]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, 0, 1.697998, 5.5)
+mesh = SubResource("TorusMesh_41f5n")
+
+[node name="Window4" type="MeshInstance3D" parent="Rocket/Body/Windows" unique_id=478345697]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, 0, 1.697998, -5.5)
+mesh = SubResource("TorusMesh_41f5n")
+
+[node name="Engine" type="MeshInstance3D" parent="Rocket/Body" unique_id=2111384621 groups=["rocket_engine"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.900574, 0)
+mesh = SubResource("BoxMesh_4iriu")
+
+[node name="Cockpit" type="MeshInstance3D" parent="Rocket/Body" unique_id=316435994 groups=["rocket_cockpit"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.413788, 0)
+mesh = SubResource("CapsuleMesh_fn7jt")
+
+[node name="SeatLocation" type="Node3D" parent="Rocket/Body/Cockpit" unique_id=1871916474 groups=["seat_location"]]
+
+[node name="Boosters" type="Node3D" parent="Rocket/Body" unique_id=655748082 groups=["rocket_boosters"]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -12.69239, 0)
+
+[node name="Booster" type="MeshInstance3D" parent="Rocket/Body/Boosters" unique_id=8789476]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, -4.9400635, 4.09869)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="Booster2" type="MeshInstance3D" parent="Rocket/Body/Boosters" unique_id=887076536]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, -4.94, -4.099)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="Booster3" type="MeshInstance3D" parent="Rocket/Body/Boosters" unique_id=1058168741]
+transform = Transform3D(0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, 0, 0, 1, -4.099, -4.94, 0)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="Booster4" type="MeshInstance3D" parent="Rocket/Body/Boosters" unique_id=867360404]
+transform = Transform3D(0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, 0, 0, 1, 4.099, -4.94, 0)
+mesh = SubResource("CapsuleMesh_41f5n")
+
+[node name="Door" type="StaticBody3D" parent="Rocket/Body" unique_id=966591887 groups=["rocket_door"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/Body/Door" unique_id=2129136450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5587177, -5.700966, 0)
 shape = SubResource("BoxShape3D_vjr50")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="spaceship/body/Door" unique_id=2043585332]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, -3.7252903e-09, 0, 0.99999994, -3.6035004, -5.7009735, -0.2127819)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket/Body/Door" unique_id=2043585332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5587177, -5.700966, 0)
 mesh = SubResource("BoxMesh_41hqj")
 
-[node name="engine" parent="spaceship" index="1" unique_id=1384920499 groups=["rocket_engine"]]
-visible = false
-
-[node name="head" parent="spaceship" index="2" unique_id=2144386129 groups=["rocket_cockpit"]]
-visible = false
-
-[node name="SeatLocation" type="Node3D" parent="spaceship/head" index="0" unique_id=1871916474 groups=["seat_location"]]
-transform = Transform3D(0.27285126, 0, 0, 0, 0.04095596, 0, 0, 0, 0.27285126, 0.012213588, 1.2238588, -0.113640785)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="spaceship/head" index="5" unique_id=999642767]
-transform = Transform3D(0.27285132, 0, 0, 0, 0.04095599, 0, 0, 0, 0.27285132, 0, 1.4802241, 0)
-light_color = Color(1.3166134, 0.9187788, 0, 1)
-omni_range = 7.871
-omni_attenuation = 1.454
-
-[node name="legs" parent="spaceship" index="3" unique_id=444148235 groups=["rocket_boosters"]]
-visible = false
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1754267840]
-transform = Transform3D(1, 0, 0, 0, 0.04539796, 0.99896896, 0, -0.99896896, 0.04539796, 2.5431213, 146.16304, -168.75757)
+transform = Transform3D(1, 0, 0, 0, 0.04539797, 0.998969, 0, -0.998969, 0.04539797, 2.5431213, 146.16304, -4.5085964)
 shadow_enabled = true
 script = ExtResource("1_yo1ht")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1426847499 groups=["world_environment"]]
 environment = ExtResource("2_8adec")
 script = ExtResource("3_decpy")
-environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec"), ExtResource("9_l7i30"), ExtResource("13_1b4ng")])
+environments = Array[Environment]([ExtResource("4_yria1"), SubResource("Environment_22e5b"), ExtResource("9_l7i30"), ExtResource("13_1b4ng")])
 
 [node name="planet_environment" type="Node3D" parent="." unique_id=530091447 groups=["planet_environment"]]
 
@@ -950,7 +875,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.838842, 92.381195, -24.32
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.234348, 91.93553, -23.643866)
 
 [node name="crusher" parent="planet_environment" unique_id=343286013 instance=ExtResource("15_i03b5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.674262, 94.630615, -36.078613)
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, -11.674262, 95.4298, -36.078613)
 
 [node name="Computer" type="MeshInstance3D" parent="planet_environment" unique_id=563045820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0145373, 94.174904, -30.355042)
@@ -1060,11 +985,6 @@ visible = false
 [node name="LiftoffAnimation" type="AnimationPlayer" parent="." unique_id=1496739584 groups=["liftoff_animation"]]
 libraries/ = SubResource("AnimationLibrary_lov7v")
 
-[node name="spacelight" type="DirectionalLight3D" parent="." unique_id=100991971]
-transform = Transform3D(0.9467243, -0.2760839, -0.16580302, 0.1320591, -0.13675442, 0.9817629, -0.2937233, -0.9513546, -0.09300935, 0, 309.81653, -36.401337)
-visible = false
-
 [connection signal="timeout" from="Control/InventoryHolder/InventoryRow1/HBoxContainer2/MissingItem/Timer" to="Control/InventoryHolder/InventoryRow1" method="_missing_item_text_timeout"]
 
 [editable path="water_for_waves"]
-[editable path="spaceship"]

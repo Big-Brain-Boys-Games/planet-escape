@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://yr4t3c2hreek"
+path="res://.godot/imported/Exploration Theme.ogg-c35f9159b6dcfb99949b86ac48c8e2c5.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/Exploration Theme.ogg"
+dest_files=["res://.godot/imported/Exploration Theme.ogg-c35f9159b6dcfb99949b86ac48c8e2c5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
