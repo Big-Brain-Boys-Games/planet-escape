@@ -171,9 +171,10 @@ func _physics_process(delta: float) -> void:
 		
 		
 	$Control/blackening.color.a = clamp(1-_air_meter/10.0, 0, 1);
-	$Control/Air.text = "Air: " + str(_air_meter).pad_decimals(1)
+	$Control/Control/Air.text = "Air: " + str(_air_meter).pad_decimals(1)
+	$Control/Control/TextureProgressBar.value = _air_meter/_air_reset * 100.0
 	if(_air_meter > 10):
-		$Control/Air.text = "Air: " + str(_air_meter).pad_decimals(0)
+		$Control/Control/Air.text = "Air: " + str(_air_meter).pad_decimals(0)
 	
 	#make water follow player
 	water_waves.global_position.x = global_position.x;

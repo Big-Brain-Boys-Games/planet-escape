@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://dx2qpohy00yqp" path="res://assets/scripts/flashlight_tool.gd" id="6_rho1b"]
 [ext_resource type="PackedScene" uid="uid://cicgjk6gab5jd" path="res://assets/models/swimming_tool.blend" id="7_kcpvn"]
 [ext_resource type="Script" uid="uid://dt7uam413xtk4" path="res://assets/scripts/swimming_tool.gd" id="8_ut8nu"]
+[ext_resource type="Texture2D" uid="uid://db5qsld260dyi" path="res://assets/textures/air_meter.png" id="11_t1i24"]
+[ext_resource type="Texture2D" uid="uid://dhyowwjd533td" path="res://assets/textures/air_meter_filler.png" id="12_ejbuc"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
 
@@ -72,14 +74,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Air" type="Label" parent="Control" unique_id=148198309]
-layout_mode = 1
-offset_left = 58.0
-offset_top = 25.0
-offset_right = 98.0
-offset_bottom = 48.0
-text = "Air: "
-
 [node name="planet_text" type="RichTextLabel" parent="Control" unique_id=1040993616]
 layout_mode = 1
 anchors_preset = 5
@@ -95,6 +89,40 @@ text = "[font_size=20]
 Planet explodes in"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Control" unique_id=165984688]
+anchors_preset = 0
+offset_right = 190.0
+offset_bottom = 523.0
+
+[node name="Air" type="Label" parent="Control/Control" unique_id=148198309]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 39.0
+offset_top = -131.5
+offset_right = 79.0
+offset_bottom = -108.5
+grow_vertical = 2
+text = "Air: "
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/Control" unique_id=790495460]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 27.0
+offset_top = -101.5
+offset_right = 155.0
+offset_bottom = 410.5
+grow_vertical = 2
+scale = Vector2(0.495, 0.495)
+step = 0.01
+value = 99.0
+fill_mode = 3
+texture_under = ExtResource("11_t1i24")
+texture_progress = ExtResource("12_ejbuc")
 
 [node name="blackening" type="ColorRect" parent="Control" unique_id=643188861]
 layout_mode = 1
