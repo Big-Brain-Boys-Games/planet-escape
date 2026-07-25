@@ -40,19 +40,23 @@ var space_sky : Sky = preload("res://assets/worldEnvironments/Skies/space_sky.tr
 
 # ALL VARIABLES FOR STAGE 7
 var space_environment : Environment = preload("res://assets/worldEnvironments/space.tres") as Environment
-func _ready() -> void:
-	notification_node = get_tree().get_first_node_in_group("notification")
-	rocket_body = get_tree().get_first_node_in_group("rocket_body")
-	rocket_engine = get_tree().get_first_node_in_group("rocket_engine")
-	rocket_cockpit = get_tree().get_first_node_in_group("rocket_cockpit")
-	rocket_boosters = get_tree().get_first_node_in_group("rocket_boosters")
-	player = get_tree().get_first_node_in_group("player")
-	seat_location = get_tree().get_first_node_in_group("seat_location")
-	planet_environment = get_tree().get_first_node_in_group("planet_environment")
-	liftoff_animation = get_tree().get_first_node_in_group("liftoff_animation")
-	world_environment = get_tree().get_first_node_in_group("world_environment")
-	
 
+func _ready() -> void:
+	get_tree().scene_changed.connect(_setup_world)
+	
+func _setup_world() -> void:
+	if (get_tree().get_first_node_in_group("player")):
+		notification_node = get_tree().get_first_node_in_group("notification")
+		rocket_body = get_tree().get_first_node_in_group("rocket_body")
+		rocket_engine = get_tree().get_first_node_in_group("rocket_engine")
+		rocket_cockpit = get_tree().get_first_node_in_group("rocket_cockpit")
+		rocket_boosters = get_tree().get_first_node_in_group("rocket_boosters")
+		player = get_tree().get_first_node_in_group("player")
+		seat_location = get_tree().get_first_node_in_group("seat_location")
+		planet_environment = get_tree().get_first_node_in_group("planet_environment")
+		liftoff_animation = get_tree().get_first_node_in_group("liftoff_animation")
+		world_environment = get_tree().get_first_node_in_group("world_environment")
+	
 var world_state : States = 1
 enum States {WAKEUP,OCEAN,ROCKET_BODY,ROCKET_ENGINE,ROCKET_COCKPIT,ROCKET_BOOSTERS,LIFTOFF,SPACE,GOING,TRAVEL,END}
 
