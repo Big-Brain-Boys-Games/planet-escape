@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var _air_bubble_prefab : PackedScene;
-@export var _spawn_time = 15;
+@export var _spawn_time = 10;
 var _spawn_timer = 0
 
 func _ready():

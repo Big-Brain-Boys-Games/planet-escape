@@ -29,7 +29,7 @@ var camera_shake : float = 0
 var _air_meter : float = _air_reset;
 
 @export var waves_heightmap : Image;
-@export var planet_exploding_timer : float = 60*9
+@export var planet_exploding_timer : float = 60*15
 
 var _selected_tool : int = 0
 
@@ -76,6 +76,7 @@ func _process(delta : float) -> void:
 	RenderingServer.global_shader_parameter_set("wave_time", Time.get_ticks_msec() / 1000.0)
 
 func read_wave_image(v : Vector2i) -> float:
+	#v.y *= -1
 	v.x %= waves_heightmap.get_width()
 	v.y %= waves_heightmap.get_height()
 	
@@ -148,7 +149,7 @@ func _physics_process(delta: float) -> void:
 			velocity.z = lerpf(velocity.z, -10, delta*4)
 	
 	
-	if global_position.y > wave_height + camera.global_basis.z.dot(Vector3.UP):
+	if camera.global_position.y + 0.2 > wave_height + camera.global_basis.z.dot(Vector3.UP):
 		#above water
 		print(camera.global_basis.z.dot(Vector3.UP))
 		if (GameManager.world_state < GameManager.States.LIFTOFF):
@@ -216,6 +217,8 @@ func _physics_process(delta: float) -> void:
 			#camera.rotation_degrees.z = 0
 		camera.rotation_degrees.z = lerpf(camera.rotation_degrees.z, wanted_rotation, 0.07)
 		move_and_slide()
+	
+	
 
 	# Check raycast collisions
 	var collider : CollisionObject3D = ray.get_collider()
@@ -229,6 +232,17 @@ func _physics_process(delta: float) -> void:
 			interacting_with = "rock"
 			current_rock = collider
 			interact_label.visible = true
+			
+			var found_empty = false
+			for slot in range(0,inventory.inventory_slots.size()):
+				match inventory.inventory_slots[slot].item:
+					Ore.Ores.INVALID:
+						found_empty = true
+			
+			if !found_empty:
+				interact_label.visible = true
+				interact_label.text = "Inventory full"
+			
 		if (collider.is_in_group("crusher")):
 			interacting_with = "crusher"
 			interact_label.text = "Crush ores in inventory\n [E]"
@@ -265,8 +279,6 @@ func _physics_process(delta: float) -> void:
 		interacting_with = ""
 		current_rock = null
 		interact_label.visible = false
-		
-		
 
 func give_air(air : float):
 	_air_meter += air

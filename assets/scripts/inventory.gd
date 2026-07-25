@@ -1,7 +1,7 @@
 class_name Inventory
 extends Control
 
-@export var inventory_slots : Array[Node] = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+@export var inventory_slots : Array[Node] = []
 @export var total_text : RichTextLabel
 @export var missing_item_label : RichTextLabel
 @export var ore_icons : Array[Texture2D]
@@ -47,11 +47,9 @@ func set_new_resource_total (ore : Ore.Ores, value : int) -> void:
 			redagon_count = value
 	
 func _ready() -> void:
-	var current_item : int = 0
 	for child in $InventoryItems.get_children():
 		if (is_instance_of(child,ColorRect)):
-			inventory_slots[current_item] = child
-			current_item += 1
+			inventory_slots.append(child)
 
 func update_text() -> void:
 	total_text.text = "Resources:

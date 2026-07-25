@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 		is_active = false
 	
 	if is_active:
-		speed = move_toward(speed, 13, delta*5.5)
+		speed = move_toward(speed, 10, delta*5.5)
 	else:
 		speed = move_toward(speed, 0, delta*5.5)
 	
