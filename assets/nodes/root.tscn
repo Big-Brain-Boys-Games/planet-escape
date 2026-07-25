@@ -49,8 +49,8 @@
 [ext_resource type="PackedScene" uid="uid://box2lvd8smvg6" path="res://assets/nodes/Prefabs/coral.tscn" id="35_y5i4j"]
 [ext_resource type="AudioStream" uid="uid://cactol0x3mvnr" path="res://assets/audio/sfx/243355__vumseplutten1709__stonemachine.wav" id="41_1uluy"]
 [ext_resource type="AudioStream" uid="uid://dfgvsv7jomryk" path="res://assets/audio/sfx/361331__spoonsandlessspoons__computer-beeps.wav" id="43_o1vpn"]
-[ext_resource type="Script" uid="uid://bbu13bhltn4p1" path="res://assets/scripts/music_manager.gd" id="49_wr76h"]
 [ext_resource type="PackedScene" uid="uid://usda1em8x36c" path="res://assets/models/flag.blend" id="46_1uluy"]
+[ext_resource type="Script" uid="uid://bbu13bhltn4p1" path="res://assets/scripts/music_manager.gd" id="49_wr76h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_41f5n"]
 font_size = 32
@@ -688,32 +688,32 @@ meteor_prefab = ExtResource("14_o1vpn")
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
 
-[node name="Plane_001" parent="water_for_waves" index="1" unique_id=2049881502]
+[node name="Plane_001" parent="water_for_waves" index="1" unique_id=1610940029]
 visible = false
 
 [node name="spaceship" parent="." unique_id=370931199 groups=["rocket"] instance=ExtResource("8_paggm")]
 transform = Transform3D(3.665, 0, 0, 0, 3.665, 0, 0, 0, 3.665, 4.609688, 115.83204, -42.697662)
 script = ExtResource("16_22e5b")
 
-[node name="body" parent="spaceship" index="0" unique_id=1357966671 groups=["rocket_body"]]
+[node name="body" parent="spaceship" index="0" unique_id=1205751851 groups=["rocket_body"]]
 visible = false
 
-[node name="StaticBody3D" type="StaticBody3D" parent="spaceship/body/door" parent_id_path=PackedInt32Array(370931199, 198762357) index="1" unique_id=1031059832 groups=["rocket_door"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="spaceship/body/door" parent_id_path=PackedInt32Array(370931199, 2113303876) index="1" unique_id=1031059832 groups=["rocket_door"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="spaceship/body/door/StaticBody3D" unique_id=1354652375]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663563, -0.07388306, 0.059906006)
 shape = SubResource("BoxShape3D_41hqj")
 
-[node name="engine" parent="spaceship" index="1" unique_id=2131401066 groups=["rocket_engine"]]
+[node name="engine" parent="spaceship" index="1" unique_id=24999757 groups=["rocket_engine"]]
 visible = false
 
-[node name="head" parent="spaceship" index="2" unique_id=1131475679 groups=["rocket_cockpit"]]
+[node name="head" parent="spaceship" index="2" unique_id=803472364 groups=["rocket_cockpit"]]
 visible = false
 
 [node name="SeatLocation" type="Node3D" parent="spaceship/head" index="5" unique_id=1871916474 groups=["seat_location"]]
 transform = Transform3D(0.27285126, 0, 0, 0, 0.040955972, 0, 0, 0, 0.27285126, 0.012213588, 1.224606, -0.113640785)
 
-[node name="legs" parent="spaceship" index="3" unique_id=1777601442 groups=["rocket_boosters"]]
+[node name="legs" parent="spaceship" index="3" unique_id=1913086705 groups=["rocket_boosters"]]
 visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1754267840]
@@ -1932,6 +1932,7 @@ stream = ExtResource("41_1uluy")
 volume_db = -16.0
 autoplay = true
 max_distance = 15.0
+bus = &"SFX"
 
 [node name="Computer" type="MeshInstance3D" parent="planet_environment" unique_id=563045820]
 transform = Transform3D(-0.061349154, 0, 0.9981164, 0, 1, 0, -0.9981164, 0, -0.061349154, 1.1579213, 94.174904, -36.004868)
@@ -1958,6 +1959,7 @@ max_db = 0.0
 pitch_scale = 0.1
 autoplay = true
 max_distance = 10.0
+bus = &"SFX"
 
 [node name="environment" parent="planet_environment" unique_id=928948361 instance=ExtResource("4_ohwjy")]
 transform = Transform3D(1.0191008, 0, 0, 0, 1.0191008, 0, 0, 0, 1.0191008, -0.82450867, -0.26218414, -0.23015785)
@@ -2262,34 +2264,35 @@ visible = false
 [node name="LiftoffAnimation" type="AnimationPlayer" parent="." unique_id=1496739584 groups=["liftoff_animation"]]
 libraries/ = SubResource("AnimationLibrary_lov7v")
 
-[node name="Ironium" parent="." unique_id=162563262 instance=ExtResource("9_vy1b6")]
+[node name="Ironium" parent="." unique_id=775796249 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3287475, 62.630882, -30.26353)
 
-[node name="Ironium2" parent="." unique_id=1574774778 instance=ExtResource("9_vy1b6")]
+[node name="Ironium2" parent="." unique_id=13723775 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.689659, 70.17957, -11.038817)
 
-[node name="Ironium3" parent="." unique_id=1251087416 instance=ExtResource("9_vy1b6")]
+[node name="Ironium3" parent="." unique_id=985339168 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.362488, 75.8607, -17.88415)
 
-[node name="Ironium4" parent="." unique_id=770405512 instance=ExtResource("9_vy1b6")]
+[node name="Ironium4" parent="." unique_id=766065140 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.062984, 81.16046, -11.773096)
 
-[node name="Ironium5" parent="." unique_id=1815414019 instance=ExtResource("9_vy1b6")]
+[node name="Ironium5" parent="." unique_id=1777922923 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.597324, 82.463905, -9.397735)
 
-[node name="Ironium6" parent="." unique_id=760552661 instance=ExtResource("9_vy1b6")]
+[node name="Ironium6" parent="." unique_id=1092777545 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.825466, 30.440603, 98.69084)
 
-[node name="Ironium7" parent="." unique_id=189283547 instance=ExtResource("9_vy1b6")]
+[node name="Ironium7" parent="." unique_id=623839427 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.629635, 28.54495, 120.71617)
 
-[node name="Ironium8" parent="." unique_id=529605617 instance=ExtResource("9_vy1b6")]
+[node name="Ironium8" parent="." unique_id=1999344642 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.04701, 32.81317, 118.02653)
 
-[node name="Ironium9" parent="." unique_id=302467186 instance=ExtResource("9_vy1b6")]
+[node name="Ironium9" parent="." unique_id=715613771 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.97135, 36.894993, 101.11014)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=2087760350 groups=["music_manager"]]
+bus = &"Music"
 script = ExtResource("49_wr76h")
 
 [connection signal="timeout" from="Control/InventoryHolder/InventoryRow1/HBoxContainer2/MissingItem/Timer" to="Control/InventoryHolder/InventoryRow1" method="_missing_item_text_timeout"]
