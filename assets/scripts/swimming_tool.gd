@@ -18,14 +18,14 @@ func _physics_process(delta: float) -> void:
 		is_active = false
 	
 	if is_active:
-		speed = move_toward(speed, 8, delta*3)
+		speed = move_toward(speed, 8, delta*5.5)
 	else:
-		speed = move_toward(speed, 0, delta*4)
+		speed = move_toward(speed, 0, delta*5.5)
 	
 	if visible:
 		velocity = velocity.lerp(-$"../../..".global_basis.z * speed, delta)
 		propellors.rotate_z(delta * speed*1.5)
+		$"../../../..".velocity = $"../../../..".velocity.lerp(velocity, delta * 2)
 	else:
 		velocity = velocity.lerp(Vector3.ZERO, delta)
 	
-	$"../../../..".velocity = $"../../../..".velocity.lerp(velocity, delta * 5)

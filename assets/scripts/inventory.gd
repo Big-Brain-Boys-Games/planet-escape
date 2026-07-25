@@ -4,6 +4,7 @@ extends Control
 @export var inventory_slots : Array[Node] = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 @export var total_text : RichTextLabel
 @export var missing_item_label : RichTextLabel
+@export var ore_icons : Array[Texture2D]
 
 var ironium_count : int = 99 :
 	set(value):
