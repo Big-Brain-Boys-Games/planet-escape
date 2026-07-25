@@ -80,6 +80,22 @@ offset_right = 98.0
 offset_bottom = 48.0
 text = "Air: "
 
+[node name="planet_text" type="RichTextLabel" parent="Control" unique_id=1040993616]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -168.0
+offset_top = -1.0
+offset_right = 139.0
+offset_bottom = 77.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[font_size=20] 
+Planet explodes in"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="blackening" type="ColorRect" parent="Control" unique_id=643188861]
 layout_mode = 1
 anchors_preset = 15
