@@ -752,7 +752,7 @@ waves_heightmap = ExtResource("7_3hs2x")
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
 visible = false
 
-[node name="Plane_001" parent="water_for_waves" index="1" unique_id=1595864485]
+[node name="Plane_001" parent="water_for_waves" index="1" unique_id=2049881502]
 visible = false
 
 [node name="spaceship" parent="." unique_id=370931199 instance=ExtResource("8_paggm")]
