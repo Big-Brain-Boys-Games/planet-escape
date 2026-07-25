@@ -27,13 +27,11 @@ uv2_scale = Vector3(2, 2, 2)
 environment = ExtResource("1_ep65y")
 
 [node name="planet" type="MeshInstance3D" parent="." unique_id=713553263]
+transform = Transform3D(327.31268, 0, 0, 0, 327.31268, 0, 0, 0, 327.31268, 0, 0, -8)
 mesh = SubResource("SphereMesh_khlrb")
 surface_material_override/0 = SubResource("StandardMaterial3D_f4hk2")
 
 [node name="clouds" type="MeshInstance3D" parent="." unique_id=1415294662]
-transform = Transform3D(1.07, 0, 0, 0, 1.07, 0, 0, 0, 1.07, 0, 0, 0)
+transform = Transform3D(350.22458, 0, 0, 0, 350.22458, 0, 0, 0, 350.22458, 0, 0, -8)
 mesh = SubResource("SphereMesh_khlrb")
 surface_material_override/0 = SubResource("StandardMaterial3D_86oiv")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1315415423]
-transform = Transform3D(-0.72726595, 0, 0.68635577, 0.16838722, 0.9694383, 0.17842393, -0.6653796, 0.24533519, -0.7050395, 8.803839, 0, -6.0261693)

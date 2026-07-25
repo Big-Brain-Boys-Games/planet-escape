@@ -5,19 +5,19 @@ extends Control
 @export var total_text : RichTextLabel
 @export var missing_item_label : RichTextLabel
 
-var ironium_count : int :
+var ironium_count : int = 99 :
 	set(value):
 		ironium_count = value
 		update_text()
-var quartz_count : int :
+var quartz_count : int = 99:
 	set(value):
 		quartz_count = value
 		update_text()
-var tarn_count : int :
+var tarn_count : int = 99:
 	set(value):
 		tarn_count = value
 		update_text()
-var redagon_count : int :
+var redagon_count : int = 99:
 	set(value):
 		redagon_count = value
 		update_text()

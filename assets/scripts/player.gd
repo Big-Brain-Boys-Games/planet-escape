@@ -83,7 +83,8 @@ func _physics_process(delta: float) -> void:
 	#print("player height ", global_position.y)
 	if(global_position.y > wave_height-1.5):
 		#above water
-		world_environment.set_env(1)
+		if (GameManager.world_state < GameManager.States.LIFTOFF):
+			world_environment.set_env(1)
 		
 		_air_meter = move_toward(_air_meter, _air_reset, delta*14)
 		if (GameManager.world_state != 6):

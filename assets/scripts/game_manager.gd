@@ -15,6 +15,7 @@ extends Node
 
 var notification_node : notification
 var player : Player
+var world_environment : WorldEnvironment
 
 # ALL VARIABLES FOR STAGE 1
 
@@ -34,6 +35,8 @@ var rocket_boosters : Node3D
 var seat_location : Node3D
 var planet_environment : Node3D
 var liftoff_animation : AnimationPlayer
+var transition_environment : Environment = preload("res://assets/worldEnvironments/transition_to_space.tres") as Environment
+var space_sky : Sky = preload("res://assets/worldEnvironments/Skies/space_sky.tres") as Sky
 
 func _ready() -> void:
 	notification_node = get_tree().get_first_node_in_group("notification")
@@ -45,39 +48,44 @@ func _ready() -> void:
 	seat_location = get_tree().get_first_node_in_group("seat_location")
 	planet_environment = get_tree().get_first_node_in_group("planet_environment")
 	liftoff_animation = get_tree().get_first_node_in_group("liftoff_animation")
+	world_environment = get_tree().get_first_node_in_group("world_environment")
+	
 
-var world_state : int = 1
+var world_state : States = 1
+enum States {WAKEUP,OCEAN,ROCKET_BODY,ROCKET_ENGINE,ROCKET_COCKPIT,ROCKET_BOOSTERS,LIFTOFF,SPACE,GOING,TRAVEL,END}
 
 func advanced_state() -> void:
 	world_state += 1
 	
 	match world_state:
-		0:
+		States.WAKEUP:
 			pass
-		1:
+		States.OCEAN:
 			pass
-		2:
+		States.ROCKET_BODY:
 			notification_node.play_notification("First stage build, commence second stage.")
 			rocket_body.visible = true
-		3:
+		States.ROCKET_ENGINE:
 			notification_node.play_notification("Second stage build, commence third stage")
 			rocket_engine.visible = true
-		4:
+		States.ROCKET_COCKPIT:
 			notification_node.play_notification("Third stage build, commence fourth stage")
 			rocket_cockpit.visible = true
-		5:
+		States.ROCKET_BOOSTERS:
 			notification_node.play_notification("fourth stage build, rocket ready for lift-off")
 			rocket_boosters.visible = true
-		6:
+		States.LIFTOFF:
 			notification_node.play_notification("Lift off!")
 			player.player_movement_enabled = false
 			player.global_position = seat_location.global_position
 			planet_environment.visible = false
-		7:
+			world_environment.environment = transition_environment
+			liftoff_animation.play("leaving_planet")
+		States.SPACE:
 			pass
-		8:
+		States.GOING:
 			pass
-		9:
+		States.TRAVEL:
 			pass
-		10:
+		States.END:
 			pass

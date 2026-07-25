@@ -19,7 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://dka4l3vrvmloo" path="res://assets/nodes/Prefabs/ironium.tscn" id="9_vy1b6"]
 [ext_resource type="PackedScene" uid="uid://ch7rs5nhrwkmu" path="res://assets/nodes/Prefabs/tarn.tscn" id="11_msuym"]
 [ext_resource type="PackedScene" uid="uid://duynw0xavhi65" path="res://assets/nodes/Prefabs/redegon.tscn" id="12_30aiw"]
+[ext_resource type="Environment" uid="uid://b4yj4uqw5nfgr" path="res://assets/worldEnvironments/space.tres" id="13_1b4ng"]
 [ext_resource type="PackedScene" uid="uid://pjr2qdlaqa61" path="res://assets/nodes/crusher.tscn" id="15_i03b5"]
+[ext_resource type="PackedScene" uid="uid://dsbjpycyfq5es" path="res://assets/nodes/space.tscn" id="25_dg37v"]
+[ext_resource type="Sky" uid="uid://b8vb2g0miif26" path="res://assets/worldEnvironments/Skies/above_water_sky.tres" id="25_pcorw"]
+[ext_resource type="Sky" uid="uid://bvdt8or8u2hn3" path="res://assets/worldEnvironments/Skies/space_sky.tres" id="26_dg37v"]
 [ext_resource type="Script" uid="uid://q5h6x3l8qblq" path="res://assets/scripts/rocket.gd" id="26_pcorw"]
 [ext_resource type="PackedScene" uid="uid://b6qrxe2l3engi" path="res://assets/models/scifi_screen.blend" id="27_ip4mf"]
 [ext_resource type="PackedScene" uid="uid://bjdrfqik7dd6s" path="res://assets/nodes/small_fish_school.tscn" id="31_22e5b"]
@@ -86,7 +90,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WorldEnvironment:environment:fog_sky_affect")
+tracks/1/path = NodePath("WorldEnvironment:environment:fog_density")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -98,31 +102,67 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WorldEnvironment:environment:fog_enabled")
+tracks/2/path = NodePath("WorldEnvironment:environment:fog_sky_affect")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WorldEnvironment:environment:fog_density")
+tracks/3/path = NodePath("WorldEnvironment:environment:sky")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("25_pcorw")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("space:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("space:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.1]
+"values": [Vector3(10.481403, 20.360619, -43.913254)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("space:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_l7i30"]
 resource_name = "leaving_planet"
-length = 20.0
+length = 30.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -130,7 +170,7 @@ tracks/0/path = NodePath("water_for_waves:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 20),
+"times": PackedFloat32Array(0, 30),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 122.02768, 0), Vector3(0, -2000, 0)]
@@ -138,38 +178,74 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WorldEnvironment:environment:fog_sky_affect")
+tracks/1/path = NodePath("WorldEnvironment:environment:fog_density")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(10, 15, 18),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(6.0000005, 13.000001, 17, 20.000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 1.0, 0.0]
+"values": [0.0, 1.0, 1.0, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WorldEnvironment:environment:fog_enabled")
+tracks/2/path = NodePath("WorldEnvironment:environment:fog_sky_affect")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(10, 18),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(6.0000005, 13.000001, 17, 20.000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WorldEnvironment:environment:fog_density")
+tracks/3/path = NodePath("WorldEnvironment:environment:sky")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(10, 15, 18),
+"times": PackedFloat32Array(14.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("26_dg37v")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("space:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 14.700001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("space:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(14.700001, 23.000002, 25.000002, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(10.481403, 20.360619, -43.913254), Vector3(10.481403, -118.66449, -43.913254), Vector3(10.481403, -55.48593, 91.426926), Vector3(10.481403, 102.46047, 174.39233)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("space:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(14.700001, 23.000002, 30),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 0.1, 0.0]
+"values": [Vector3(1.5707964, 0, 0), Vector3(1.5707964, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lov7v"]
@@ -676,7 +752,7 @@ waves_heightmap = ExtResource("7_3hs2x")
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
 visible = false
 
-[node name="Plane_001" parent="water_for_waves" index="1" unique_id=826907273]
+[node name="Plane_001" parent="water_for_waves" index="1" unique_id=1595864485]
 visible = false
 
 [node name="spaceship" parent="." unique_id=370931199 instance=ExtResource("8_paggm")]
@@ -752,10 +828,10 @@ transform = Transform3D(1, 0, 0, 0, 0.04539797, 0.998969, 0, -0.998969, 0.045397
 shadow_enabled = true
 script = ExtResource("1_yo1ht")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1426847499]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1426847499 groups=["world_environment"]]
 environment = ExtResource("9_l7i30")
 script = ExtResource("3_decpy")
-environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec")])
+environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec"), ExtResource("9_l7i30"), ExtResource("13_1b4ng")])
 
 [node name="planet_environment" type="Node3D" parent="." unique_id=530091447 groups=["planet_environment"]]
 
@@ -816,9 +892,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.817245, 91.41282, -27.680
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.005543, 91.68624, -28.848598)
 
 [node name="environment" parent="planet_environment" unique_id=928948361 instance=ExtResource("4_ohwjy")]
-transform = Transform3D(1.0191008, 0, 0, 0, 1.0191008, 0, 0, 0, 1.0191008, -0.8835449, -0.26218414, -0.22976685)
-
-[node name="environment2" parent="planet_environment" unique_id=1708307710 instance=ExtResource("4_ohwjy")]
 transform = Transform3D(1.0191008, 0, 0, 0, 1.0191008, 0, 0, 0, 1.0191008, -0.8835449, -0.26218414, -0.22976685)
 
 [node name="fish" type="Node3D" parent="planet_environment" unique_id=49585309]
@@ -888,6 +961,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.893974, 7.981041, 4.083683
 
 [node name="PathingNode5" parent="planet_environment/fish/fish_1_" unique_id=1881604124 instance=ExtResource("32_awsm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.25667, -11.235016, 9.696129)
+
+[node name="space" parent="." unique_id=461983772 instance=ExtResource("25_dg37v")]
+transform = Transform3D(1, 0, 0, 0, -4.371138e-08, -0.9999998, 0, 0.9999998, -4.371138e-08, 10.481403, 20.360619, -43.913254)
+visible = false
 
 [node name="LiftoffAnimation" type="AnimationPlayer" parent="." unique_id=1496739584 groups=["liftoff_animation"]]
 libraries/ = SubResource("AnimationLibrary_lov7v")
