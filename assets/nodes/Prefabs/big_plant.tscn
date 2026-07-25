@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cp8ne4tlnapro"]
 
 [ext_resource type="PackedScene" uid="uid://dnlwmqvx8nnym" path="res://assets/models/water_plant_big.blend" id="1_3lme6"]
+[ext_resource type="Script" uid="uid://ddpyhahnhlw15" path="res://assets/scripts/snap_down.gd" id="1_gebyp"]
 
 [node name="bigPlant" type="Node3D" unique_id=738046006]
+script = ExtResource("1_gebyp")
 
 [node name="water_plant_big" parent="." unique_id=1963054951 instance=ExtResource("1_3lme6")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.034654617, -1.1920929e-07, -0.07358432)

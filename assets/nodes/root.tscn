@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://dl5dfkrnbshg6"]
 
 [ext_resource type="Script" uid="uid://dguq1btrwrija" path="res://assets/scripts/day_night_cycle.gd" id="1_yo1ht"]
+[ext_resource type="Texture2D" uid="uid://ca7iqnakmcs00" path="res://assets/textures/ironium_icon.png" id="2_rwp4k"]
 [ext_resource type="PackedScene" uid="uid://2xrx1jtq3gqf" path="res://assets/nodes/player.tscn" id="2_yo1ht"]
 [ext_resource type="Texture2D" uid="uid://dlyjiuudv7vrn" path="res://assets/textures/notification_icon.png" id="3_1b4ng"]
 [ext_resource type="Script" uid="uid://he5j1ywl8t8c" path="res://assets/scripts/environment_manager.gd" id="3_decpy"]
+[ext_resource type="Texture2D" uid="uid://diu5y2fuw6c7i" path="res://assets/textures/quarts_icon.png" id="3_y2l1o"]
+[ext_resource type="Texture2D" uid="uid://b6wdiu38h23y5" path="res://assets/textures/tarn_icon.png" id="4_fpmfo"]
 [ext_resource type="PackedScene" uid="uid://e3ltekag20oj" path="res://assets/models/environment.blend" id="4_ohwjy"]
 [ext_resource type="Environment" uid="uid://byvfmbtn1pj28" path="res://assets/worldEnvironments/underwater_environment.tres" id="4_yria1"]
+[ext_resource type="Texture2D" uid="uid://ciujv4rudr3vi" path="res://assets/textures/redogon_icon.png" id="5_863g7"]
 [ext_resource type="PackedScene" uid="uid://cxolkbtjsajlb" path="res://assets/models/water_for_waves.blend" id="5_iaj12"]
 [ext_resource type="Texture2D" uid="uid://d2tolklvhwbas" path="res://assets/textures/tab_4x.png" id="5_paggm"]
 [ext_resource type="Texture2D" uid="uid://g77daqok7n7i" path="res://assets/textures/e_4x.png" id="6_dg37v"]
@@ -242,6 +246,7 @@ grow_vertical = 2
 script = ExtResource("6_msuym")
 total_text = NodePath("HBoxContainer2/TotalItems")
 missing_item_label = NodePath("HBoxContainer2/MissingItem")
+ore_icons = Array[Texture2D]([ExtResource("2_rwp4k"), ExtResource("3_y2l1o"), ExtResource("4_fpmfo"), ExtResource("5_863g7")])
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/InventoryHolder/InventoryRow1" unique_id=904517816]
 layout_mode = 2
@@ -282,11 +287,21 @@ size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect" unique_id=198420316]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
 [node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect" unique_id=1785529989]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_alignment = 1
@@ -296,318 +311,468 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect2" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=780052325]
+[node name="ColorRect2" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=659843882]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect2" unique_id=1152921523]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect2" unique_id=900568326]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect2" unique_id=2019883664]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control2" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=2041092820]
+[node name="Control2" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=389371519]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect3" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1452046113]
+[node name="ColorRect3" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=418644347]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect3" unique_id=1501747942]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect3" unique_id=84831981]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect3" unique_id=1490460523]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control3" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=189437534]
+[node name="Control3" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=2100464097]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect4" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=786489404]
+[node name="ColorRect4" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=911705129]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect4" unique_id=1896061616]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect4" unique_id=1155504970]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect4" unique_id=551813660]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control4" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1317788719]
+[node name="Control4" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1568695926]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect5" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=356492877]
+[node name="ColorRect5" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=27466717]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect5" unique_id=1165671289]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect5" unique_id=289498800]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect5" unique_id=1991073146]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control5" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=732207246]
+[node name="Control5" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=30363179]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect6" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1822700455]
+[node name="ColorRect6" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1546772528]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect6" unique_id=1324583185]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect6" unique_id=873607351]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect6" unique_id=600239468]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control6" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1717745689]
+[node name="Control6" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1203777784]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect7" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=484994022]
+[node name="ColorRect7" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1951950766]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect7" unique_id=40132156]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect7" unique_id=1265204947]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect7" unique_id=427324894]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control7" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=648353054]
+[node name="Control7" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=202892971]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect8" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=487013269]
+[node name="ColorRect8" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=749422673]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect8" unique_id=898997021]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect8" unique_id=1540712859]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect8" unique_id=1024596024]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control8" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=167116781]
+[node name="Control8" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1931849681]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect9" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=382710737]
+[node name="ColorRect9" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=171675151]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect9" unique_id=1732005975]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect9" unique_id=36994612]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect9" unique_id=1089499190]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control9" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1306386427]
+[node name="Control9" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=602563391]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect10" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=478542636]
+[node name="ColorRect10" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=2044699631]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect10" unique_id=80753864]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect10" unique_id=183790962]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect10" unique_id=266952619]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control10" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=494069446]
+[node name="Control10" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=699019048]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect11" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1071047541]
+[node name="ColorRect11" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1305637154]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect11" unique_id=1240019806]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect11" unique_id=563711075]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect11" unique_id=1769848275]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control11" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1183938479]
+[node name="Control11" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=674563054]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect12" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1621925100]
+[node name="ColorRect12" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1033290113]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect12" unique_id=2020665289]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect12" unique_id=749798316]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect12" unique_id=1844133255]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control12" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=673388237]
+[node name="Control12" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=867492817]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect13" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=5274204]
+[node name="ColorRect13" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1213236603]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect13" unique_id=1558021324]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect13" unique_id=262450547]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect13" unique_id=487287181]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control13" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1618960064]
+[node name="Control13" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1475235546]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect14" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=378361042]
+[node name="ColorRect14" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1607209854]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect14" unique_id=610684501]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect14" unique_id=1686273895]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect14" unique_id=740936524]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control14" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=93112166]
+[node name="Control14" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1788998194]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect15" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1293737516]
+[node name="ColorRect15" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=390902350]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect15" unique_id=575572100]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect15" unique_id=346301248]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect15" unique_id=150465848]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control15" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=247955918]
+[node name="Control15" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1794504474]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect16" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1965315498]
+[node name="ColorRect16" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1324328635]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect16" unique_id=2098287958]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect16" unique_id=1917611384]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer/ColorRect16" unique_id=142053412]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control16" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1156951091]
+[node name="Control16" type="Control" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer" unique_id=1897714209]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -742,31 +907,31 @@ waves_heightmap = ExtResource("7_3hs2x")
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
 
-[node name="Plane_001" parent="water_for_waves" index="1" unique_id=1610940029]
+[node name="Plane_001" parent="water_for_waves" index="1" unique_id=2049881502]
 visible = false
 
 [node name="spaceship" parent="." unique_id=370931199 instance=ExtResource("8_paggm")]
 transform = Transform3D(3.665, 0, 0, 0, 3.665, 0, 0, 0, 3.665, 4.609688, 115.83204, -42.697662)
 
-[node name="body" parent="spaceship" index="0" unique_id=1205751851 groups=["rocket_body"]]
+[node name="body" parent="spaceship" index="0" unique_id=1357966671 groups=["rocket_body"]]
 visible = false
 
-[node name="StaticBody3D" type="StaticBody3D" parent="spaceship/body/door" parent_id_path=PackedInt32Array(370931199, 2113303876) index="1" unique_id=1031059832 groups=["rocket_door"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="spaceship/body/door" parent_id_path=PackedInt32Array(370931199, 198762357) index="1" unique_id=1031059832 groups=["rocket_door"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="spaceship/body/door/StaticBody3D" unique_id=1354652375]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663563, -0.07388306, 0.059906006)
 shape = SubResource("BoxShape3D_41hqj")
 
-[node name="engine" parent="spaceship" index="1" unique_id=24999757 groups=["rocket_engine"]]
+[node name="engine" parent="spaceship" index="1" unique_id=2131401066 groups=["rocket_engine"]]
 visible = false
 
-[node name="head" parent="spaceship" index="2" unique_id=803472364 groups=["rocket_cockpit"]]
+[node name="head" parent="spaceship" index="2" unique_id=1131475679 groups=["rocket_cockpit"]]
 visible = false
 
 [node name="SeatLocation" type="Node3D" parent="spaceship/head" index="5" unique_id=1871916474 groups=["seat_location"]]
 transform = Transform3D(0.27285126, 0, 0, 0, 0.040955972, 0, 0, 0, 0.27285126, 0.012213588, 1.224606, -0.113640785)
 
-[node name="legs" parent="spaceship" index="3" unique_id=1913086705 groups=["rocket_boosters"]]
+[node name="legs" parent="spaceship" index="3" unique_id=1777601442 groups=["rocket_boosters"]]
 visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1754267840]
@@ -814,7 +979,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.817245, 91.41282, -27.680
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.005543, 91.68624, -28.848598)
 
 [node name="environment" parent="planet_environment" unique_id=928948361 instance=ExtResource("4_ohwjy")]
-transform = Transform3D(1.0191008, 0, 0, 0, 1.0191008, 0, 0, 0, 1.0191008, -0.8835449, -0.26218414, -0.22976685)
+transform = Transform3D(1.0191008, 0, 0, 0, 1.0191008, 0, 0, 0, 1.0191008, -0.82450867, -0.26218414, -0.23015785)
 
 [node name="fish" type="Node3D" parent="planet_environment" unique_id=49585309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.65063, 96.34411, -45.01071)
