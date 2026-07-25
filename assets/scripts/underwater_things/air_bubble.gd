@@ -16,6 +16,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	#todo: something here
 	
 	if(body.is_in_group("player")):
-		body.give_air(20)
+		body.give_air(30)
 		queue_free();
 	pass # Replace with function body.

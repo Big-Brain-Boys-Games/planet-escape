@@ -29,7 +29,7 @@ var camera_shake : float = 0
 var _air_meter : float = _air_reset;
 
 @export var waves_heightmap : Image;
-@export var planet_exploding_timer : float = 10
+@export var planet_exploding_timer : float = 60*3
 
 var _selected_tool : int = 0
 
@@ -70,8 +70,8 @@ func _process(delta : float) -> void:
 	
 	camera_shake = move_toward(camera_shake, 0, delta)
 	
-	$Camera3D.v_offset = randf_range(-1,1) * camera_shake
-	$Camera3D.h_offset = randf_range(-1,1) * camera_shake
+	$Camera3D.v_offset = randf_range(-1,1) * pow(camera_shake, 0.5)*0.15
+	$Camera3D.h_offset = randf_range(-1,1) * pow(camera_shake, 0.5)*0.15
 	
 	RenderingServer.global_shader_parameter_set("wave_time", Time.get_ticks_msec() / 1000.0)
 
@@ -111,8 +111,11 @@ func _physics_process(delta: float) -> void:
 	
 	if GameManager.world_state < GameManager.States.LIFTOFF:
 		planet_exploding_timer -= delta
+		$Control/planet_text.text = "[font_size=20] Planet explodes in " + str(planet_exploding_timer).pad_decimals(0)
+		
 		
 		if planet_exploding_timer < 0:
+			$Control/planet_text.text = ""
 			magma_geiser_spawn_timer -= delta
 			if magma_geiser_spawn_timer < 0:
 				magma_geiser_spawn_timer = magma_geiser_spawn_time
@@ -121,7 +124,7 @@ func _physics_process(delta: float) -> void:
 				camera_shake = 0.8
 				
 				var new_geiser = magma_geiser.instantiate()
-				get_node("../planet_environment").add_child(new_geiser)
+				get_node("../water_for_waves").add_child(new_geiser)
 				
 				new_geiser.global_position.y = 100
 				new_geiser.global_position.x = randf_range(-250, 250)
@@ -169,9 +172,10 @@ func _physics_process(delta: float) -> void:
 		
 		
 	$Control/blackening.color.a = clamp(1-_air_meter/10.0, 0, 1);
-	$Control/Air.text = "Air: " + str(_air_meter).pad_decimals(1)
+	$Control/Control/Air.text = "Air: " + str(_air_meter).pad_decimals(1)
+	$Control/Control/TextureProgressBar.value = _air_meter/_air_reset * 100.0
 	if(_air_meter > 10):
-		$Control/Air.text = "Air: " + str(_air_meter).pad_decimals(0)
+		$Control/Control/Air.text = "Air: " + str(_air_meter).pad_decimals(0)
 	
 	#make water follow player
 	water_waves.global_position.x = global_position.x;
