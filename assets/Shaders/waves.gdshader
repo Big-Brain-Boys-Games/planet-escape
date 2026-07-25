@@ -4,6 +4,7 @@ render_mode depth_draw_always;
 //render_mode diffuse_burley;
 
 global uniform float wave_time;
+global uniform vec4 sky_color;
 
 uniform sampler2D heightmap : filter_linear_mipmap_anisotropic;
 
@@ -99,7 +100,7 @@ void fragment() {
 		
 		if(f > 0.3 - (CAMERA_POSITION_WORLD.y-128.0)/80.0)
 		{
-			EMISSION = ALBEDO;
+			EMISSION = sky_color.rgb;
 		}
 	}
 }

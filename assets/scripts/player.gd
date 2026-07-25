@@ -95,8 +95,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.z = lerpf(velocity.z, -10, delta*4)
 	
-	if(global_position.y > wave_height-1.5):
+	
+	if global_position.y > wave_height + camera.global_basis.z.dot(Vector3.UP):
 		#above water
+		print(camera.global_basis.z.dot(Vector3.UP))
 		if (GameManager.world_state < GameManager.States.LIFTOFF):
 			world_environment.set_env(1)
 		
@@ -108,7 +110,8 @@ func _physics_process(delta: float) -> void:
 		camera.attributes = camera_attributes[1];
 	else:
 		#under water
-		world_environment.set_env(0)
+		if (GameManager.world_state < GameManager.States.LIFTOFF):
+			world_environment.set_env(0)
 		_air_meter -= delta
 		camera.attributes = camera_attributes[1];
 		

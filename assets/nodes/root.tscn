@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://ch7rs5nhrwkmu" path="res://assets/nodes/Prefabs/tarn.tscn" id="11_msuym"]
 [ext_resource type="PackedScene" uid="uid://duynw0xavhi65" path="res://assets/nodes/Prefabs/redegon.tscn" id="12_30aiw"]
 [ext_resource type="Environment" uid="uid://b4yj4uqw5nfgr" path="res://assets/worldEnvironments/space.tres" id="13_1b4ng"]
+[ext_resource type="Sky" uid="uid://d3sk18u2jtco0" path="res://assets/skies/day_night_sky.tres" id="14_kh2ao"]
 [ext_resource type="PackedScene" uid="uid://pjr2qdlaqa61" path="res://assets/nodes/crusher.tscn" id="15_i03b5"]
 [ext_resource type="PackedScene" uid="uid://dsbjpycyfq5es" path="res://assets/nodes/space.tscn" id="25_dg37v"]
 [ext_resource type="Sky" uid="uid://b8vb2g0miif26" path="res://assets/worldEnvironments/Skies/above_water_sky.tres" id="25_pcorw"]
@@ -63,6 +64,22 @@ albedo_color = Color(0.7411765, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_41hqj"]
 material = SubResource("StandardMaterial3D_fn7jt")
 size = Vector3(1, 5, 2)
+
+[sub_resource type="Environment" id="Environment_22e5b"]
+background_mode = 2
+sky = ExtResource("14_kh2ao")
+tonemap_mode = 2
+fog_light_color = Color(0.055717386, 0.29415643, 0.4024785, 1)
+fog_density = 0.0
+fog_sky_affect = 0.0
+fog_depth_curve = 0.5946074
+fog_depth_begin = 0.0
+fog_depth_end = 47.2
+volumetric_fog_density = 0.08
+volumetric_fog_albedo = Color(0, 0.9784731, 0.9825049, 1)
+volumetric_fog_emission = Color(0.016748713, 0.12049455, 0.13447726, 1)
+volumetric_fog_sky_affect = 0.0
+volumetric_fog_temporal_reprojection_enabled = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_41f5n"]
 size = Vector3(1, 1.97, 1)
@@ -750,7 +767,6 @@ waves_heightmap = ExtResource("7_3hs2x")
 
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
-visible = false
 
 [node name="Plane_001" parent="water_for_waves" index="1" unique_id=2049881502]
 visible = false
@@ -829,9 +845,9 @@ shadow_enabled = true
 script = ExtResource("1_yo1ht")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1426847499 groups=["world_environment"]]
-environment = ExtResource("9_l7i30")
+environment = ExtResource("2_8adec")
 script = ExtResource("3_decpy")
-environments = Array[Environment]([ExtResource("4_yria1"), ExtResource("2_8adec"), ExtResource("9_l7i30"), ExtResource("13_1b4ng")])
+environments = Array[Environment]([ExtResource("4_yria1"), SubResource("Environment_22e5b"), ExtResource("9_l7i30"), ExtResource("13_1b4ng")])
 
 [node name="planet_environment" type="Node3D" parent="." unique_id=530091447 groups=["planet_environment"]]
 

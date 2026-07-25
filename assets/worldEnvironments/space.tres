@@ -1,11 +1,29 @@
 [gd_resource type="Environment" format=3 uid="uid://b4yj4uqw5nfgr"]
 
-[ext_resource type="Sky" uid="uid://bvdt8or8u2hn3" path="res://assets/worldEnvironments/Skies/space_sky.tres" id="1_81c8p"]
+[ext_resource type="Shader" uid="uid://ck16a05ecl3yh" path="res://assets/Shaders/skyshader.gdshader" id="1_81c8p"]
+[ext_resource type="Texture2D" uid="uid://ddh32kcrbruh7" path="res://assets/textures/space_skybox.png" id="2_i4v8j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uaj2s"]
+shader = ExtResource("1_81c8p")
+shader_parameter/sky_top_color = Color(0.385, 0.454, 0.55, 1)
+shader_parameter/sky_horizon_color = Color(0.646, 0.656, 0.67, 1)
+shader_parameter/inv_sky_curve = 4.0
+shader_parameter/ground_bottom_color = Color(0.2, 0.169, 0.133, 1)
+shader_parameter/ground_horizon_color = Color(0.646, 0.656, 0.67, 1)
+shader_parameter/inv_ground_curve = 30.0
+shader_parameter/sun_angle_max = 0.877
+shader_parameter/inv_sun_curve = 22.78
+shader_parameter/exposure = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/source_panorama = ExtResource("2_i4v8j")
+
+[sub_resource type="Sky" id="Sky_mfj8h"]
+sky_material = SubResource("ShaderMaterial_uaj2s")
 
 [resource]
 background_mode = 2
 background_color = Color(0.0022227534, 0.0123358825, 0.05847176, 1)
-sky = ExtResource("1_81c8p")
+sky = SubResource("Sky_mfj8h")
 tonemap_mode = 2
 fog_enabled = true
 fog_light_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
