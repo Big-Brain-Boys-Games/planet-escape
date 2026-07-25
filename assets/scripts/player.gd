@@ -81,6 +81,20 @@ func _physics_process(delta: float) -> void:
 	var wave_height = water_waves.global_position.y+get_waves_height();
 	#print("wave height ", wave_height)
 	#print("player height ", global_position.y)
+	
+	#pushback force
+	if abs(global_position.x) > 200:
+		if velocity.x < 0:
+			velocity.x = lerpf(velocity.x, 10, delta*4)
+		else:
+			velocity.x = lerpf(velocity.x, -10, delta*4)
+	
+	if abs(global_position.z) > 200:
+		if velocity.z < 0:
+			velocity.z = lerpf(velocity.z, 10, delta*4)
+		else:
+			velocity.z = lerpf(velocity.z, -10, delta*4)
+	
 	if(global_position.y > wave_height-1.5):
 		#above water
 		if (GameManager.world_state < GameManager.States.LIFTOFF):
