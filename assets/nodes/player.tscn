@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cfrp6ywdeo8l6" path="res://assets/scripts/player.gd" id="1_wj3lj"]
 [ext_resource type="CameraAttributesPractical" uid="uid://107xh7h4w42s" path="res://assets/camera_attributes/underwater_attributes.tres" id="2_sysx0"]
+[ext_resource type="PackedScene" uid="uid://cmwaoac0hvt44" path="res://assets/nodes/Prefabs/magma_spewing.tscn" id="3_qi8v5"]
 [ext_resource type="Script" uid="uid://ugymbtta8gj7" path="res://assets/scripts/sway.gd" id="3_rhuuy"]
 [ext_resource type="PackedScene" uid="uid://cht6j5by3yydj" path="res://assets/models/mining_tool.blend" id="3_y07ac"]
 [ext_resource type="Script" uid="uid://hvujfog57bgq" path="res://assets/scripts/mining_tool.gd" id="4_tb2t1"]
@@ -19,6 +20,7 @@ input_ray_pickable = false
 motion_mode = 1
 script = ExtResource("1_wj3lj")
 camera_attributes = Array[CameraAttributes]([ExtResource("2_sysx0"), null])
+magma_geiser = ExtResource("3_qi8v5")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=594912348 groups=["camera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5870034, 0)
