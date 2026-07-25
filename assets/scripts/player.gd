@@ -97,8 +97,9 @@ func get_waves_height() -> float:
 	return (pow(z, 0.6)*0.15-0.05) * water_waves.scale.y * 103;
 
 func die():
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get_tree().change_scene_to_file("res://assets/nodes/death_menu.tscn");
+	if	(GameManager.world_state < GameManager.States.LIFTOFF):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		get_tree().change_scene_to_file("res://assets/nodes/death_menu.tscn");
 
 var magma_geiser_spawn_timer = 1
 var magma_geiser_spawn_time = 1

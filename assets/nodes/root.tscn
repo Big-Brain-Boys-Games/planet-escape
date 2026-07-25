@@ -212,7 +212,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="InventoryHolder" type="Control" parent="Control" unique_id=1234163766]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -248,6 +247,16 @@ script = ExtResource("6_msuym")
 total_text = NodePath("HBoxContainer2/TotalItems")
 missing_item_label = NodePath("HBoxContainer2/MissingItem")
 ore_icons = Array[Texture2D]([ExtResource("2_rwp4k"), ExtResource("3_y2l1o"), ExtResource("4_fpmfo"), ExtResource("5_863g7")])
+
+[node name="ObjectiveText" type="RichTextLabel" parent="Control/InventoryHolder/InventoryRow1" unique_id=2142572328 groups=["objective"]]
+custom_maximum_size = Vector2(-1, 100)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[font_size=23]Current objective[/font_size]
+Survive
+"
+horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/InventoryHolder/InventoryRow1" unique_id=904517816]
 layout_mode = 2

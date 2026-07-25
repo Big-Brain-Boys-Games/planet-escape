@@ -16,6 +16,7 @@ extends Node
 var notification_node : notification
 var player : Player
 var world_environment : EnvironmentManager
+var objective_text : RichTextLabel
 
 # ALL VARIABLES FOR STAGE 1
 
@@ -56,8 +57,10 @@ func _setup_world() -> void:
 		planet_environment = get_tree().get_first_node_in_group("planet_environment")
 		liftoff_animation = get_tree().get_first_node_in_group("liftoff_animation")
 		world_environment = get_tree().get_first_node_in_group("world_environment")
-	
-var world_state : States = 1
+		objective_text = get_tree().get_first_node_in_group("objective")
+		advanced_state()
+		
+var world_state : States = 0
 enum States {WAKEUP,OCEAN,ROCKET_BODY,ROCKET_ENGINE,ROCKET_COCKPIT,ROCKET_BOOSTERS,LIFTOFF,SPACE,GOING,TRAVEL,END}
 
 func advanced_state() -> void:
@@ -67,20 +70,26 @@ func advanced_state() -> void:
 		States.WAKEUP:
 			pass
 		States.OCEAN:
+			objective_text.text = "[font_size=23]Current objective[/font_size]\nBuild the rocket using the computer"
 			pass
 		States.ROCKET_BODY:
+			objective_text.text = "[font_size=23]Current objective[/font_size]\nBuild the rocket engine"
 			notification_node.play_notification("First stage build, commence second stage.")
 			rocket_body.visible = true
 		States.ROCKET_ENGINE:
+			objective_text.text = "[font_size=23]Current objective[/font_size]\nBuild the rocket cockpit"
 			notification_node.play_notification("Second stage build, commence third stage")
 			rocket_engine.visible = true
 		States.ROCKET_COCKPIT:
+			objective_text.text = "[font_size=23]Current objective[/font_size]\nBuild the rocket boosters"
 			notification_node.play_notification("Third stage build, commence fourth stage")
 			rocket_cockpit.visible = true
 		States.ROCKET_BOOSTERS:
+			objective_text.text = "[font_size=23]Current objective[/font_size]\n Enter the rocket and escape the planet"
 			notification_node.play_notification("fourth stage build, rocket ready for lift-off")
 			rocket_boosters.visible = true
 		States.LIFTOFF:
+			objective_text.text = "[font_size=23]Current objective[/font_size]\n Enjoy the view"
 			notification_node.play_notification("Lift off!")
 			player.player_movement_enabled = false
 			player.global_position = seat_location.global_position
@@ -88,6 +97,7 @@ func advanced_state() -> void:
 			world_environment.set_env(1)
 			liftoff_animation.play("leaving_planet")
 		States.SPACE:
+			objective_text.text = "[font_size=23]Current objective[/font_size]\n You Win!"
 			world_environment.environment = space_environment
 		States.GOING:
 			pass

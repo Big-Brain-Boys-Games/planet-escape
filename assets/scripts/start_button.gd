@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 			_fade_out -= delta
 			if _fade_out < 0:
 				get_tree().change_scene_to_file(scene);
-				GameManager.world_state = GameManager.States.OCEAN
+				GameManager.world_state = GameManager.States.WAKEUP
 
 func _on_pressed() -> void:
 	print("button pressed")
