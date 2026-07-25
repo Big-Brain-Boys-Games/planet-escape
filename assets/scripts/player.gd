@@ -70,8 +70,8 @@ func _process(delta : float) -> void:
 	
 	camera_shake = move_toward(camera_shake, 0, delta)
 	
-	$Camera3D.v_offset = randf_range(-1,1) * camera_shake
-	$Camera3D.h_offset = randf_range(-1,1) * camera_shake
+	$Camera3D.v_offset = randf_range(-1,1) * pow(camera_shake, 0.5)*0.5
+	$Camera3D.h_offset = randf_range(-1,1) * pow(camera_shake, 0.5)*0.5
 	
 	RenderingServer.global_shader_parameter_set("wave_time", Time.get_ticks_msec() / 1000.0)
 
