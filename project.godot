@@ -34,6 +34,7 @@ inventory="The main inventory"
 crusher="The crusher group"
 missing_item_label=""
 notification=""
+death_barrier=""
 
 [input]
 

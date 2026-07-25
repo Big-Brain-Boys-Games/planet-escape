@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cmwaoac0hvt44"]
+
+[ext_resource type="Shader" uid="uid://b7g8nvhixptba" path="res://assets/Shaders/magma_spewing.gdshader" id="1_5u2p7"]
+[ext_resource type="Script" uid="uid://dwkncsbm4ex2k" path="res://assets/scripts/mamga_growing.gd" id="1_gvttc"]
+[ext_resource type="Texture2D" uid="uid://c382qa683nfxy" path="res://assets/textures/lava_fire_texture.png" id="2_2mp2i"]
+[ext_resource type="Script" uid="uid://droenyydww5tc" path="res://assets/scripts/death_trigger_area.gd" id="3_2mp2i"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_khlrb"]
+height = 17.19629
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_alxf6"]
+render_priority = 0
+shader = ExtResource("1_5u2p7")
+shader_parameter/tex = ExtResource("2_2mp2i")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_khlrb"]
+radius = 1.6381836
+height = 17.343262
+
+[node name="magma" type="Node3D" unique_id=598758987]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+script = ExtResource("1_gvttc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=596361718]
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_khlrb")
+surface_material_override/0 = SubResource("ShaderMaterial_alxf6")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1619791955 groups=["death_barrier"]]
+script = ExtResource("3_2mp2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1941493985]
+shape = SubResource("CapsuleShape3D_khlrb")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

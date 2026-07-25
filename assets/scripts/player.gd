@@ -18,6 +18,8 @@ var inventory : Inventory
 var player_movement_enabled : bool = true
 var camera_movement_enabled : bool = true
 
+var camera_shake : float = 0
+
 @export var camera_attributes : Array[CameraAttributes];
 
 @export var world_environment : Node;
@@ -27,6 +29,7 @@ var camera_movement_enabled : bool = true
 var _air_meter : float = _air_reset;
 
 @export var waves_heightmap : Image;
+@export var planet_exploding_timer : float = 10
 
 var _selected_tool : int = 0
 
@@ -66,6 +69,11 @@ func _process(delta : float) -> void:
 		$Control/blackening.color.a = _fade_in/3.0
 		_fade_in -= min(delta, 0.02)
 	
+	camera_shake = move_toward(camera_shake, 0, delta)
+	
+	$Camera3D.v_offset = randf_range(-1,1) * camera_shake
+	$Camera3D.h_offset = randf_range(-1,1) * camera_shake
+	
 	RenderingServer.global_shader_parameter_set("wave_time", Time.get_ticks_msec() / 1000.0)
 
 func read_wave_image(v : Vector2i) -> float:
@@ -93,8 +101,33 @@ func die():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().change_scene_to_file("res://assets/nodes/death_menu.tscn");
 
+var magma_geiser_spawn_timer = 1
+var magma_geiser_spawn_time = 1
+
+@export var magma_geiser : PackedScene
+
 func _physics_process(delta: float) -> void:
 	var wave_height = water_waves.global_position.y+get_waves_height();
+	
+	if GameManager.world_state < GameManager.States.LIFTOFF:
+		planet_exploding_timer -= delta
+		
+		if planet_exploding_timer < 0:
+			magma_geiser_spawn_timer -= delta
+			if magma_geiser_spawn_timer < 0:
+				magma_geiser_spawn_timer = magma_geiser_spawn_time
+				magma_geiser_spawn_time *= 0.95
+				
+				camera_shake = 0.8
+				
+				var new_geiser = magma_geiser.instantiate()
+				get_node("../planet_environment").add_child(new_geiser)
+				
+				new_geiser.global_position.y = 100
+				new_geiser.global_position.x = randf_range(-250, 250)
+				new_geiser.global_position.z = randf_range(-250, 250)
+				new_geiser.scale *= randf_range(0.8, 1.2)
+			
 	#print("wave height ", wave_height)
 	#print("player height ", global_position.y)
 	
