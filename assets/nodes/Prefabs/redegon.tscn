@@ -2,14 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cp110278tkhih" path="res://assets/scripts/ore.gd" id="1_nf56m"]
 [ext_resource type="PackedScene" uid="uid://duvbm0s413cb0" path="res://assets/models/ores/ore4.blend" id="2_3yev8"]
+[ext_resource type="PackedScene" uid="uid://ba23bs6sorns" path="res://assets/models/underwater_things/rock1.blend" id="2_d04n1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
 radius = 0.7
 
 [node name="Redegon" type="RigidBody3D" unique_id=1179103699 groups=["rock"]]
+freeze = true
 linear_damp = 2.015
 script = ExtResource("1_nf56m")
 oretype = 4
+
+[node name="rock1" parent="." unique_id=674707448 instance=ExtResource("2_d04n1")]
+transform = Transform3D(1.3393028, 0, 0, 0, 2.1783397, 0, 0, 0, 1.3393028, 0.14996177, -0.3505929, -0.05535093)
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=1928284464]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07644352, 0.025728822)

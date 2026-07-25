@@ -3,7 +3,7 @@ extends CharacterBody3D
 ## Implements the player controller.
 
 ## Player movement speed.
-@export var speed : float = 4.0
+@export var speed : float = 2.7
 @export var acceleration : float = 4.0
 ## Player camera (gets automatically set in _ready()).
 @export var camera : Camera3D
@@ -28,6 +28,8 @@ var _air_meter : float = _air_reset;
 
 @export var waves_heightmap : Image;
 
+var _selected_tool : int = 0
+
 var _fade_in : float = 3;
 
 
@@ -44,6 +46,20 @@ func _ready() -> void:
 			camera = child
 			continue
 	notification_node.play_notification("Yes")
+	select_tool(0)
+
+func select_tool(tool : int):
+	print("select_tool(", tool, ")")
+	if tool < 0 || tool >= $Camera3D/sway/tools.get_child_count():
+		print("rejected")
+		return
+	
+	for child in $Camera3D/sway/tools.get_children():
+		child.visible = false
+	
+	_selected_tool = tool
+	print("_selected_tool ", _selected_tool)
+	$Camera3D/sway/tools.get_child(tool).visible = true
 
 func _process(delta : float) -> void:
 	if _fade_in > 0:
@@ -127,7 +143,7 @@ func _physics_process(delta: float) -> void:
 	#make water follow player
 	water_waves.global_position.x = global_position.x;
 	water_waves.global_position.z = global_position.z;
-		
+	
 	
 	# Movement code
 	var direction : Vector3 = Vector3(0,0,0)
@@ -150,7 +166,8 @@ func _physics_process(delta: float) -> void:
 			direction += Vector3.UP; #camera.global_transform.basis.y.normalized()
 		if(Input.is_action_pressed("down")):
 			direction -= Vector3.UP; #camera.global_transform.basis.y.normalized()
-		velocity = velocity.lerp(direction * speed, 0.05)
+		
+		velocity = velocity.lerp(direction.normalized() * speed, 0.05)
 		
 		# Camera tilt
 		var wanted_rotation : float = 0
@@ -167,14 +184,35 @@ func _physics_process(delta: float) -> void:
 	var collider : CollisionObject3D = ray.get_collider()
 	if(collider != null):
 		if (collider.is_in_group("rock")):
+			if !collider.freeze:
+				interact_label.text = "Collect rock " + collider.Ores.find_key(collider.oretype) + "\n [E]"
+			else:
+				interact_label.text = "Unmined rock " + collider.Ores.find_key(collider.oretype)
+			
 			interacting_with = "rock"
 			current_rock = collider
-			interact_label.text = "Collect rock " + collider.Ores.find_key(collider.oretype) + "\n [E]"
 			interact_label.visible = true
 		if (collider.is_in_group("crusher")):
 			interacting_with = "crusher"
 			interact_label.text = "Crush ores in inventory\n [E]"
 			interact_label.visible = true
+			
+			var found_ore = false
+			for slot in range(0,inventory.inventory_slots.size()):
+				match inventory.inventory_slots[slot].item:
+					Ore.Ores.IRONIUM:
+						found_ore = true
+					Ore.Ores.QUARTZ:
+						found_ore = true
+					Ore.Ores.TARN:
+						found_ore = true
+					Ore.Ores.REDOGON:
+						found_ore = true
+			
+			if !found_ore:
+				interact_label.text = "No ores in inventory for crusher"
+				
+			
 		if (collider.is_in_group("computer")):
 			interacting_with = "computer"
 			interact_label.text = "Submit resources\n [E]"
@@ -213,8 +251,25 @@ func _input(event: InputEvent) -> void:
 		if (event.pressed && event.button_index == 1):
 			if(Input.mouse_mode == Input.MOUSE_MODE_VISIBLE):
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		return
+			
+			if _selected_tool != 0:
+				$Camera3D/sway/tools.get_child(_selected_tool).do_action()
 		
+		if event.pressed && event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			#select next tool
+			var tool = _selected_tool + 1
+			select_tool(tool)
+			if _selected_tool != tool:
+				select_tool(0)
+		
+		if event.pressed && event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			#select next tool
+			var tool = _selected_tool - 1
+			select_tool(tool)
+			if _selected_tool != tool:
+				select_tool($Camera3D/sway/tools.get_child_count() - 1)
+		return
+	
 	# Escape mouse capture
 	if (event.is_action_pressed("escape")):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -222,7 +277,7 @@ func _input(event: InputEvent) -> void:
 	# Run interact
 	if(event.is_action_pressed("use")):
 		if(interact_label.visible):
-			if(current_rock != null):
+			if(current_rock != null) && !current_rock.freeze:
 				var success : bool = false
 				for slot in range(0,inventory.inventory_slots.size()):
 					if(inventory.inventory_slots[slot].item == 0):
@@ -251,6 +306,7 @@ func _input(event: InputEvent) -> void:
 				# build_array[0] is the Ore.Ores resource and build_array[1] is the total
 				var build_array : Array = rocket.get_rocket_world_state_variable()
 				if (build_array.size() == 0):
+					notification_node.play_notification("Nothing to build\nRocket is finished")
 					print("Nothing to build")
 					return
 				var success : Array[bool]

@@ -842,6 +842,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.258059, 92.49758, -27.164
 
 [node name="Tarn2" parent="planet_environment" unique_id=1094305308 instance=ExtResource("11_msuym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.838842, 92.381195, -24.328018)
+freeze = true
 
 [node name="Tarn3" parent="planet_environment" unique_id=201596883 instance=ExtResource("11_msuym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.234348, 91.93553, -23.643866)

@@ -2,14 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cp110278tkhih" path="res://assets/scripts/ore.gd" id="1_v1dna"]
 [ext_resource type="PackedScene" uid="uid://cpdn6qeiqd6rb" path="res://assets/models/ores/ore3.blend" id="2_eap1s"]
+[ext_resource type="PackedScene" uid="uid://ba23bs6sorns" path="res://assets/models/underwater_things/rock1.blend" id="2_nx5hk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
 radius = 0.89
 
 [node name="Tarn" type="RigidBody3D" unique_id=1616129071 groups=["rock"]]
+freeze = true
 linear_damp = 2.015
 script = ExtResource("1_v1dna")
 oretype = 3
+
+[node name="rock1" parent="." unique_id=674707448 instance=ExtResource("2_nx5hk")]
+transform = Transform3D(1.596481, 0, 0, 0, 2.5966332, 0, 0, 0, 1.596481, -0.11078483, -0.7780173, -0.19029841)
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=939311567]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07993972, 0.073648274)
