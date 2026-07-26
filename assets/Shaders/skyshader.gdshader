@@ -75,5 +75,5 @@ void sky() {
 
 	COLOR = sky; //mix(ground, sky, step(0.0, EYEDIR.y)) * exposure;
 	
-	COLOR = mix(COLOR, texture(source_panorama, SKY_COORDS).rgb * exposure, night_time);
+	COLOR = mix(COLOR, texture(source_panorama, SKY_COORDS+vec2(TIME, TIME*0.3)*0.001).rgb * exposure, night_time);
 }
