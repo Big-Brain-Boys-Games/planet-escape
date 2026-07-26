@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://0iatpanpca0w"]
 
+[ext_resource type="Theme" uid="uid://i73fcbbaxo55" path="res://assets/Theme/theme.tres" id="1_b6sen"]
 [ext_resource type="Texture2D" uid="uid://b8oqm2078eeuk" path="res://assets/textures/skull.png" id="1_vlsro"]
 [ext_resource type="Script" uid="uid://cxqgx13fdg8oe" path="res://assets/scripts/start_button.gd" id="2_b6sen"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_b6sen")
 
 [node name="background" type="ColorRect" parent="." unique_id=407430460]
 layout_mode = 1

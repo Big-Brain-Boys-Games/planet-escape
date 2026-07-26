@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://li2cpguce6p4"]
 
+[ext_resource type="Theme" uid="uid://i73fcbbaxo55" path="res://assets/Theme/theme.tres" id="1_eti06"]
 [ext_resource type="Texture2D" uid="uid://mw5aui078wgm" path="res://assets/Screens/title_screen.png" id="1_vn2oh"]
 [ext_resource type="Script" uid="uid://cxqgx13fdg8oe" path="res://assets/scripts/start_button.gd" id="2_eti06"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_eti06")
 
 [node name="background" type="TextureRect" parent="." unique_id=1291014777]
 layout_mode = 1

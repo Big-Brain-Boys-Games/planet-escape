@@ -184,17 +184,17 @@ func _physics_process(delta: float) -> void:
 	#print("player height ", global_position.y)
 	
 	#pushback force
-	if abs(global_position.x) > 200:
-		if velocity.x < 0:
-			velocity.x = lerpf(velocity.x, 10, delta*4)
-		else:
-			velocity.x = lerpf(velocity.x, -10, delta*4)
-	
-	if abs(global_position.z) > 200:
-		if velocity.z < 0:
-			velocity.z = lerpf(velocity.z, 10, delta*4)
-		else:
-			velocity.z = lerpf(velocity.z, -10, delta*4)
+	#if abs(global_position.x) > 200:
+		#if velocity.x < 0:
+			#velocity.x = lerpf(velocity.x, 10, delta*4)
+		#else:
+			#velocity.x = lerpf(velocity.x, -10, delta*4)
+	#
+	#if abs(global_position.z) > 200:
+		#if velocity.z < 0:
+			#velocity.z = lerpf(velocity.z, 10, delta*4)
+		#else:
+			#velocity.z = lerpf(velocity.z, -10, delta*4)
 	
 	
 	if camera.global_position.y + 0.2 > wave_height + camera.global_basis.z.dot(Vector3.UP):

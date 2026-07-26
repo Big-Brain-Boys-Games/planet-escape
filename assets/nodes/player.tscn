@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dhyowwjd533td" path="res://assets/textures/air_meter_filler.png" id="12_ejbuc"]
 [ext_resource type="AudioStream" uid="uid://ba1ba2tfa3qqh" path="res://assets/audio/sfx/366159__dcsfx__underwater-loop-amb.wav" id="13_ejbuc"]
 [ext_resource type="Script" uid="uid://mdlw20awx73q" path="res://assets/scripts/pause.gd" id="13_hme1o"]
+[ext_resource type="Theme" uid="uid://i73fcbbaxo55" path="res://assets/Theme/theme.tres" id="14_lxlpi"]
 [ext_resource type="Script" uid="uid://x03qikh8c1c4" path="res://assets/nodes/audio_slider.gd" id="15_ywewf"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
@@ -92,6 +93,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("14_lxlpi")
 
 [node name="planet_text" type="RichTextLabel" parent="Control" unique_id=1040993616]
 layout_mode = 1
