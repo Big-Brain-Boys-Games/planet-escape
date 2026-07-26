@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bkibybnvitghu"]
+
+[ext_resource type="PackedScene" uid="uid://dwakth1hrlusr" path="res://assets/models/underwater_things/enemies/angry_fish.blend" id="1_b1fi1"]
+[ext_resource type="Script" uid="uid://b05pw8xd3cxui" path="res://assets/scripts/underwater_things/small_fish.gd" id="2_1l1ns"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_41f5n"]
+size = Vector3(2.71875, 2.9429932, 2.5310059)
+
+[node name="angry_fish" unique_id=1801117198 instance=ExtResource("1_b1fi1")]
+script = ExtResource("2_1l1ns")
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1905290208) index="0" unique_id=1835272891]
+bones/0/position = Vector3(-0.4779285, 0, -0.20671847)
+bones/0/rotation = Quaternion(0, -0.04914269, 0, 0.9987919)
+bones/1/rotation = Quaternion(-0.7058141, -0.07036803, -0.07081844, 0.70132697)
+bones/2/rotation = Quaternion(0.003177357, 0.00027157713, -0.085162275, 0.9963621)
+bones/3/rotation = Quaternion(4.4289017e-08, -1.2039011e-08, -0.12546133, 0.99209857)
+bones/4/rotation = Quaternion(-0.011358643, -0.00025162136, 0.022141827, 0.9996903)
+bones/5/rotation = Quaternion(0.84046584, 0.004096352, 0.0031253612, 0.54183996)
+bones/5/scale = Vector3(1.0000001, 0.99999994, 0.99999994)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=1904725730]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=169110874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5745084, -0.08778691, 2.1271417)
+shape = SubResource("BoxShape3D_41f5n")
+
+[node name="target" type="Node3D" parent="." index="3" unique_id=1800236298]
+top_level = true
