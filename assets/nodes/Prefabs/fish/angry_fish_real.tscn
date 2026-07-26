@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://ckstug1g67cgd"]
+
+[ext_resource type="Script" uid="uid://bpvtyh082c8kr" path="res://assets/scripts/angry_fish.gd" id="1_esqtt"]
+[ext_resource type="PackedScene" uid="uid://dwakth1hrlusr" path="res://assets/models/underwater_things/enemies/angry_fish.blend" id="2_lvlpy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_khlrb"]
+radius = 1.0229363
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f4hk2"]
+radius = 0.7277389
+
+[node name="AngryFishReal" type="CharacterBody3D" unique_id=384136870]
+motion_mode = 1
+script = ExtResource("1_esqtt")
+speed = 2.5
+
+[node name="angry_fish" parent="." unique_id=148935694 instance=ExtResource("2_lvlpy")]
+transform = Transform3D(-0.4, 0, 3.4969112e-08, 0, 0.4, 0, -3.4969112e-08, 0, -0.4, 2.1801121e-08, 0, -0.3573438)
+
+[node name="Skeleton3D" parent="angry_fish/Armature" parent_id_path=PackedInt32Array(148935694, 493399769) index="0" unique_id=907923855]
+bones/0/position = Vector3(0.018366158, 0, -0.080477476)
+bones/0/rotation = Quaternion(0, 0.10779482, 0, 0.99417317)
+bones/1/rotation = Quaternion(-0.7088269, 0.027270269, 0.027444586, 0.7043206)
+bones/2/rotation = Quaternion(0.0031800033, -0.00023858796, 0.07481758, 0.99719214)
+bones/3/rotation = Quaternion(4.4581704e-08, -1.21185835e-08, 0.18974406, 0.9818336)
+bones/4/rotation = Quaternion(-0.010773847, -0.0036066454, 0.31742343, 0.94821584)
+bones/5/rotation = Quaternion(0.86730397, 0.031170875, 0.01860184, 0.49645373)
+bones/5/scale = Vector3(1, 1.0000001, 0.99999994)
+
+[node name="target" type="Node3D" parent="." unique_id=1947002934]
+top_level = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=33944318]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.1801121e-08, 0, 0.14140773)
+shape = SubResource("SphereShape3D_khlrb")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=448432683]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1325738848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.99245906)
+shape = SubResource("SphereShape3D_f4hk2")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="angry_fish"]

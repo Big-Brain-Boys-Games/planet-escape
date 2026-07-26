@@ -137,7 +137,7 @@ func _physics_process(delta: float) -> void:
 	var wave_height = water_waves.global_position.y+get_waves_height();
 	
 	if _health > 0:
-		_health = move_toward(_health, 100, delta*3)
+		_health = move_toward(_health, 100, delta)
 	else:
 		_health -= delta
 		$Control/blackening.color.a = -_health/2
@@ -234,7 +234,11 @@ func _physics_process(delta: float) -> void:
 		if _air_meter < -5:
 			die()
 		
-		
+	
+	$Control/Control2/Air.text = "Health: " + str(_health).pad_decimals(1)
+	$Control/Control2/TextureProgressBar.value = _health
+	$Control/reddening.color.a = clamp(1-_health/30.0, 0, 1);
+	
 	$Control/blackening.color.a = clamp(1-_air_meter/10.0, 0, 1);
 	$Control/Control/Air.text = "Air: " + str(_air_meter).pad_decimals(1)
 	$Control/Control/TextureProgressBar.value = _air_meter/_air_reset * 100.0
