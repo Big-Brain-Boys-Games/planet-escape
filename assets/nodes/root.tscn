@@ -818,32 +818,32 @@ meteor_prefab = ExtResource("14_o1vpn")
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
 
-[node name="Plane_001" parent="water_for_waves" index="1" unique_id=1610940029]
+[node name="Plane_001" parent="water_for_waves" index="1" unique_id=2049881502]
 visible = false
 
 [node name="spaceship" parent="." unique_id=370931199 groups=["rocket"] instance=ExtResource("8_paggm")]
 transform = Transform3D(3.665, 0, 0, 0, 3.665, 0, 0, 0, 3.665, 4.609688, 115.83204, -42.697662)
 script = ExtResource("16_22e5b")
 
-[node name="body" parent="spaceship" index="0" unique_id=1205751851 groups=["rocket_body"]]
+[node name="body" parent="spaceship" index="0" unique_id=1357966671 groups=["rocket_body"]]
 visible = false
 
-[node name="StaticBody3D" type="StaticBody3D" parent="spaceship/body/door" parent_id_path=PackedInt32Array(370931199, 2113303876) index="1" unique_id=1031059832 groups=["rocket_door"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="spaceship/body/door" parent_id_path=PackedInt32Array(370931199, 198762357) index="1" unique_id=1031059832 groups=["rocket_door"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="spaceship/body/door/StaticBody3D" unique_id=1354652375]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663563, -0.07388306, 0.059906006)
 shape = SubResource("BoxShape3D_41hqj")
 
-[node name="engine" parent="spaceship" index="1" unique_id=24999757 groups=["rocket_engine"]]
+[node name="engine" parent="spaceship" index="1" unique_id=2131401066 groups=["rocket_engine"]]
 visible = false
 
-[node name="head" parent="spaceship" index="2" unique_id=803472364 groups=["rocket_cockpit"]]
+[node name="head" parent="spaceship" index="2" unique_id=1131475679 groups=["rocket_cockpit"]]
 visible = false
 
 [node name="SeatLocation" type="Node3D" parent="spaceship/head" index="5" unique_id=1871916474 groups=["seat_location"]]
 transform = Transform3D(0.27285126, 0, 0, 0, 0.040955972, 0, 0, 0, 0.27285126, 0.012213588, 1.224606, -0.113640785)
 
-[node name="legs" parent="spaceship" index="3" unique_id=1913086705 groups=["rocket_boosters"]]
+[node name="legs" parent="spaceship" index="3" unique_id=1777601442 groups=["rocket_boosters"]]
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="spaceship" unique_id=267980407]

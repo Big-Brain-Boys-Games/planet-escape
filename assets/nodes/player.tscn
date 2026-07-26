@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://mdlw20awx73q" path="res://assets/scripts/pause.gd" id="13_hme1o"]
 [ext_resource type="Theme" uid="uid://i73fcbbaxo55" path="res://assets/Theme/theme.tres" id="14_lxlpi"]
 [ext_resource type="Script" uid="uid://x03qikh8c1c4" path="res://assets/nodes/audio_slider.gd" id="15_ywewf"]
+[ext_resource type="AudioStream" uid="uid://d1ff7u76yhe7t" path="res://assets/audio/sfx/65620__otherthings__inhale_10115a.wav" id="20_06wbn"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
 
@@ -242,6 +243,9 @@ text = "SFX    "
 stream = ExtResource("13_ejbuc")
 volume_db = -8.0
 autoplay = true
+
+[node name="gasp" type="AudioStreamPlayer" parent="." unique_id=959599253]
+stream = ExtResource("20_06wbn")
 
 [connection signal="value_changed" from="Control/pause/Control/VBoxContainer/HBoxContainer/MusicSlider" to="Control/pause/Control/VBoxContainer/HBoxContainer/MusicSlider" method="_on_value_changed" binds= ["music"]]
 [connection signal="value_changed" from="Control/pause/Control/VBoxContainer/HBoxContainer2/SFXSlider" to="Control/pause/Control/VBoxContainer/HBoxContainer2/SFXSlider" method="_on_value_changed" binds= ["SFX"]]

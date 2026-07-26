@@ -84,8 +84,9 @@ func _process(delta : float) -> void:
 	
 	RenderingServer.global_shader_parameter_set("wave_time", Time.get_ticks_msec() / 1000.0)
 
-func read_wave_image(v : Vector2i) -> float:
+func read_wave_image(uv : Vector2) -> float:
 	#v.y *= -1
+	var v : Vector2i = uv * Vector2(waves_heightmap.get_size())
 	v.x %= waves_heightmap.get_width()
 	v.y %= waves_heightmap.get_height()
 	
@@ -99,12 +100,12 @@ func read_wave_image(v : Vector2i) -> float:
 
 func get_waves_height() -> float:
 	var pos : Vector3 = global_position * 0.01
-	var uv : Vector2i = Vector2(pos.x, pos.z) * Vector2(waves_heightmap.get_size())
+	var uv : Vector2 = Vector2(pos.x, pos.z)
 	
 	var time : float = Time.get_ticks_msec() / 1000.0
 	var z : float = 1.0 - read_wave_image(uv*1.0 + Vector2(0, time*0.018));
 	z *= 1.0 - read_wave_image(uv/1.3 + Vector2(time*0.01, 0));
-	return (pow(z, 0.6)*0.15-0.05) * water_waves.scale.y * 103;
+	return (pow(z, 0.6)*0.15-0.05) * $"../water_for_waves/Plane".global_basis.y.length();
 
 var _health : float = 100
 
@@ -197,7 +198,7 @@ func _physics_process(delta: float) -> void:
 			#velocity.z = lerpf(velocity.z, -10, delta*4)
 	
 	
-	if camera.global_position.y + 0.2 > wave_height + camera.global_basis.z.dot(Vector3.UP):
+	if camera.global_position.y + 0.3 > wave_height + camera.global_basis.z.dot(Vector3.UP)*0.8:
 		#above water
 		if (GameManager.world_state < GameManager.States.LIFTOFF):
 			world_environment.set_env(1)
@@ -205,6 +206,10 @@ func _physics_process(delta: float) -> void:
 				playing_sound = "abovewater"
 				background_sfx.stream = background_abovewater
 				background_sfx.play()
+		
+		
+		if _air_meter < 30:
+			play_gasp()
 		
 		_air_meter = move_toward(_air_meter, _air_reset, delta* _air_reset / 1.5)
 		if (GameManager.world_state <= 5):
@@ -335,7 +340,12 @@ func _physics_process(delta: float) -> void:
 		current_rock = null
 		interact_label.visible = false
 
+func play_gasp():
+	if !$gasp.playing:
+		$gasp.play()
+
 func give_air(air : float):
+	play_gasp()
 	_air_meter += air
 	_air_meter = min(_air_meter, _air_reset)
 

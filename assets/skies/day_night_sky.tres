@@ -5,8 +5,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uaj2s"]
 shader = ExtResource("1_1tl6n")
-shader_parameter/sky_top_color = Color(0.385, 0.454, 0.55, 1)
-shader_parameter/sky_horizon_color = Color(0.38431373, 0.45490196, 0.54901963, 1)
+shader_parameter/sky_top_color = Color(0.18142244, 0.35732892, 0.8509945, 1)
+shader_parameter/sky_horizon_color = Color(0.576, 0.7866, 0.9, 1)
 shader_parameter/inv_sky_curve = 4.0
 shader_parameter/ground_bottom_color = Color(0.38431373, 0.45490196, 0.54901963, 1)
 shader_parameter/ground_horizon_color = Color(0.646, 0.656, 0.67, 1)
