@@ -54,7 +54,7 @@ void fragment() {
 	//}
 	
 	ALBEDO *= alpha;
-	ALPHA = alpha;
+	ALPHA = mix(alpha, 1, 0.7);
 	
 	SPECULAR = 0.7;
 	ROUGHNESS = 0.3;

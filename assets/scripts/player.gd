@@ -112,14 +112,20 @@ func get_waves_height() -> float:
 	return (pow(z, 0.6)*0.15-0.05) * $"../water_for_waves/Plane".global_basis.y.length();
 
 var _health : float = 100
+var _health_invincibility_time : float = 1
 
-func take_damage(damage : float):
+func take_damage(damage : float, bite : bool = false):
 	print("take damage(",damage,")")
-	if _health < 0:
+	if _health < 0 || _health_invincibility_time > 0:
 		return
 	
 	_health -= damage
+	if (bite):
+		$Bite.play()
 	$HurtSound.play()
+	
+	$Control/reddening.color.a = 1
+	
 	if _health < 0:
 		_health = 0
 
@@ -138,10 +144,11 @@ var rng_timer_rumbling : float = 10
 var allow_meteor_spawn : bool = true
 
 func _physics_process(delta: float) -> void:
+	_health_invincibility_time -= delta
 	var wave_height = water_waves.global_position.y+get_waves_height();
 	
 	if _health > 0:
-		_health = move_toward(_health, 100, delta*3)
+		_health = move_toward(_health, 100, delta)
 	else:
 		_health -= delta
 		$Control/blackening.color.a = -_health/2
@@ -238,8 +245,12 @@ func _physics_process(delta: float) -> void:
 		if _air_meter < -5:
 			die()
 		
-		
-	$Control/blackening.color.a = clamp(1-_air_meter/10.0, 0, 1);
+	
+	$Control/Control2/Air.text = "Health: " + str(_health).pad_decimals(1)
+	$Control/Control2/TextureProgressBar.value = _health
+	$Control/reddening.color.a = lerpf($Control/reddening.color.a, clamp(1-_health/30.0, 0, 1), delta*2);
+	
+	$Control/blackening.color.a = lerpf($Control/blackening.color.a, clamp(1-_air_meter/10.0, 0, 1), delta*2);
 	$Control/Control/Air.text = "Air: " + str(_air_meter).pad_decimals(1)
 	$Control/Control/TextureProgressBar.value = _air_meter/_air_reset * 100.0
 	if(_air_meter > 10):
@@ -458,7 +469,7 @@ func _input(event: InputEvent) -> void:
 						inventory.missing_item_label.get_child(0).start()
 						all_clear = false
 						notification_node.play_notification("Not enough resources")
-				if (all_clear) || true:
+				if (all_clear):
 					print("New gamestate")
 					camera_shake = 0.4
 					inventory.missing_item_label.text = ""

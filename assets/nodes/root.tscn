@@ -40,7 +40,10 @@
 [ext_resource type="PackedScene" uid="uid://ch7rs5nhrwkmu" path="res://assets/nodes/Prefabs/tarn.tscn" id="35_j4knf"]
 [ext_resource type="AudioStream" uid="uid://driod5s0km5ml" path="res://assets/audio/sfx/rocket_launch.wav" id="40_gnhfu"]
 [ext_resource type="AudioStream" uid="uid://cactol0x3mvnr" path="res://assets/audio/sfx/243355__vumseplutten1709__stonemachine.wav" id="41_1uluy"]
-[ext_resource type="PackedScene" uid="uid://bkibybnvitghu" path="res://assets/nodes/angry_fish.tscn" id="42_17v35"]
+[ext_resource type="PackedScene" uid="uid://ckstug1g67cgd" path="res://assets/nodes/Prefabs/fish/angry_fish_real.tscn" id="41_b7k6n"]
+[ext_resource type="PackedScene" uid="uid://cgxu01niopepl" path="res://assets/nodes/Prefabs/fish/spikes.tscn" id="42_5p3q8"]
+[ext_resource type="PackedScene" uid="uid://cp8ne4tlnapro" path="res://assets/nodes/Prefabs/big_plant.tscn" id="42_lrex4"]
+[ext_resource type="PackedScene" uid="uid://bvpjawajjjuhi" path="res://assets/models/underwater_things/stalectite.blend" id="43_1uluy"]
 [ext_resource type="AudioStream" uid="uid://dfgvsv7jomryk" path="res://assets/audio/sfx/361331__spoonsandlessspoons__computer-beeps.wav" id="43_o1vpn"]
 [ext_resource type="PackedScene" uid="uid://usda1em8x36c" path="res://assets/models/flag.blend" id="46_1uluy"]
 [ext_resource type="Script" uid="uid://bbu13bhltn4p1" path="res://assets/scripts/music_manager.gd" id="49_wr76h"]
@@ -561,6 +564,7 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -568,14 +572,14 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect2" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=659843882]
+[node name="ColorRect2" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1950488284]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect2" unique_id=900568326]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect2" unique_id=397303699]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -584,7 +588,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect2" unique_id=2019883664]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect2" unique_id=1733517511]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -592,21 +596,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control2" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=389371519]
+[node name="Control2" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=51709470]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect3" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=418644347]
+[node name="ColorRect3" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1059550292]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect3" unique_id=84831981]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect3" unique_id=1899268329]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -615,7 +620,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect3" unique_id=1490460523]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect3" unique_id=948962267]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -623,21 +628,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control3" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=2100464097]
+[node name="Control3" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1180424855]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect4" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=911705129]
+[node name="ColorRect4" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1131468160]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect4" unique_id=1155504970]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect4" unique_id=329315502]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -646,7 +652,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect4" unique_id=551813660]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect4" unique_id=1234535273]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -654,21 +660,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control4" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1568695926]
+[node name="Control4" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=718287924]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect5" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=27466717]
+[node name="ColorRect5" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=271948373]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect5" unique_id=289498800]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect5" unique_id=1628913002]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -677,7 +684,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect5" unique_id=1991073146]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect5" unique_id=997248327]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -685,21 +692,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control5" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=30363179]
+[node name="Control5" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1166298283]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect6" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1546772528]
+[node name="ColorRect6" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1433984650]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect6" unique_id=873607351]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect6" unique_id=1121172593]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -708,7 +716,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect6" unique_id=600239468]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect6" unique_id=1170025905]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -716,21 +724,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control6" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1203777784]
+[node name="Control6" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1130048906]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect7" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1951950766]
+[node name="ColorRect7" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1761873216]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect7" unique_id=1265204947]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect7" unique_id=1352293761]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -739,7 +748,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect7" unique_id=427324894]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect7" unique_id=466892957]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -747,21 +756,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control7" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=202892971]
+[node name="Control7" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=891716501]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect8" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=749422673]
+[node name="ColorRect8" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1421016417]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect8" unique_id=1540712859]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect8" unique_id=1452051290]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -770,7 +780,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect8" unique_id=1024596024]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect8" unique_id=1908969049]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -778,10 +788,11 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control8" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1931849681]
+[node name="Control8" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1279533203]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1891,16 +1902,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.5424, 105.55033, -103.403
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.84944, 87.36074, -99.08536)
 
 [node name="Ironium17" parent="planet_environment/Ores" unique_id=1712452335 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.19182, 94.38529, 152.29454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.91103, 94.38529, 152.29454)
 
 [node name="Ironium18" parent="planet_environment/Ores" unique_id=876935816 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.78835, 103.79749, 141.08304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.65437, 103.79749, 141.08304)
 
 [node name="Ironium19" parent="planet_environment/Ores" unique_id=2023032208 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.15317, 85.22075, 137.84471)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.2703, 85.22075, 137.84471)
 
 [node name="Ironium21" parent="planet_environment/Ores" unique_id=1891662198 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.02226, 91.24183, 141.80205)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.97687, 91.24183, 141.80205)
 
 [node name="Redegon3" parent="planet_environment/Ores" unique_id=208268914 instance=ExtResource("34_863g7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.510254, 3.3983388, 115.23791)
@@ -1915,16 +1926,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.571363, 49.803486, 20.6995
 transform = Transform3D(-0.9376331, 0, 0.3476265, 0, 1, 0, -0.3476265, 0, -0.9376331, -141.7529, 65.24176, 109.88232)
 
 [node name="Ironium23" parent="planet_environment/Ores" unique_id=319509034 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -180.24759, 67.374146, 105.305756)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -181.20033, 67.374146, 105.305756)
 
 [node name="Ironium24" parent="planet_environment/Ores" unique_id=1694536414 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -181.009, 61.490574, 78.67814)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -181.93881, 61.490574, 78.67814)
 
 [node name="Ironium25" parent="planet_environment/Ores" unique_id=20825789 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.58017, 58.387337, 96.44233)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.6483, 58.387337, 96.44233)
 
 [node name="Ironium26" parent="planet_environment/Ores" unique_id=1560003053 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -177.55972, 71.712036, 94.40147)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.16508, 71.712036, 94.40147)
 
 [node name="Tarn" parent="planet_environment/Ores" unique_id=1518314476 instance=ExtResource("35_j4knf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.368274, 94.21543, 32.480385)
@@ -2169,9 +2180,168 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.347492, 81.94882, 96.6684
 [node name="Ironium71" parent="planet_environment/Ores" unique_id=427402279 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, -0.7647044, -0.6443812, 0, 0.6443812, -0.7647044, -9.363575, 74.736145, 85.80058)
 
+[node name="spikes" parent="planet_environment/Ores" unique_id=827065756 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.50754, 92.95162, 145.81458)
+
+[node name="spikes2" parent="planet_environment/Ores" unique_id=883829436 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.31068, 98.766525, 146.26062)
+
+[node name="spikes3" parent="planet_environment/Ores" unique_id=231003420 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.7134, 83.82248, 134.66626)
+
+[node name="bigPlant" parent="planet_environment/Ores" unique_id=738046006 instance=ExtResource("42_lrex4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.22037, 89.25797, 136.00117)
+
+[node name="bigPlant2" parent="planet_environment/Ores" unique_id=974361892 instance=ExtResource("42_lrex4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.12161, 90.495155, 129.26439)
+
+[node name="bigPlant3" parent="planet_environment/Ores" unique_id=1239676530 instance=ExtResource("42_lrex4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.26912, 93.32641, 130.42177)
+
+[node name="bigPlant4" parent="planet_environment/Ores" unique_id=1328877751 instance=ExtResource("42_lrex4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.29193, 84.55259, -67.38048)
+
+[node name="bigPlant5" parent="planet_environment/Ores" unique_id=1751099832 instance=ExtResource("42_lrex4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.97508, 86.48821, -59.06355)
+
+[node name="bigPlant6" parent="planet_environment/Ores" unique_id=862770732 instance=ExtResource("42_lrex4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.25943, 85.15822, -63.387753)
+
+[node name="bigPlant7" parent="planet_environment/Ores" unique_id=1650291441 instance=ExtResource("42_lrex4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.77682, 84.58332, -58.10762)
+
+[node name="spikes4" parent="planet_environment/Ores" unique_id=1309465601 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.212105, 93.27455, -142.18527)
+
+[node name="spikes5" parent="planet_environment/Ores" unique_id=2050402457 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.22789, 94.66349, -148.29015)
+
+[node name="spikes6" parent="planet_environment/Ores" unique_id=740989693 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.766163, 96.487015, -140.26254)
+
+[node name="spikes7" parent="planet_environment/Ores" unique_id=2109214741 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.931076, 70.47692, -88.2759)
+
+[node name="spikes8" parent="planet_environment/Ores" unique_id=695732407 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.81989, 69.75659, -94.67179)
+
+[node name="spikes9" parent="planet_environment/Ores" unique_id=57100812 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.85326, 69.75659, -91.6637)
+
+[node name="spikes10" parent="planet_environment/Ores" unique_id=385862613 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.9681382, 0, -0.25041634, 0, 1, 0, 0.25041634, 0, 0.9681382, -81.278076, 74.04712, -81.403694)
+
+[node name="spikes11" parent="planet_environment/Ores" unique_id=596049582 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.9681382, 0, -0.25041634, 0, 1, 0, 0.25041634, 0, 0.9681382, -88.1023, 73.32679, -92.398)
+
+[node name="spikes12" parent="planet_environment/Ores" unique_id=1839641897 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.9681382, 0, -0.25041634, 0, 1, 0, 0.25041634, 0, 0.9681382, -84.22694, 73.32679, -85.665726)
+
+[node name="spikes13" parent="planet_environment/Ores" unique_id=2110962372 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.66765, 72.489914, -83.569176)
+
+[node name="spikes14" parent="planet_environment/Ores" unique_id=1866044805 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.027596, 71.769585, -92.50429)
+
+[node name="spikes15" parent="planet_environment/Ores" unique_id=118361324 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.58983, 71.769585, -86.95697)
+
+[node name="spikes16" parent="planet_environment/Ores" unique_id=2002645267 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.9681382, 0, -0.25041634, 0, 1, 0, 0.25041634, 0, 0.9681382, -85.01465, 76.06011, -76.69697)
+
+[node name="spikes17" parent="planet_environment/Ores" unique_id=1970542501 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.9681382, 0, -0.25041634, 0, 1, 0, 0.25041634, 0, 0.9681382, -91.838875, 75.33978, -87.69128)
+
+[node name="spikes18" parent="planet_environment/Ores" unique_id=964302242 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.9681382, 0, -0.25041634, 0, 1, 0, 0.25041634, 0, 0.9681382, -87.96351, 75.33978, -80.959)
+
+[node name="spikes19" parent="planet_environment/Ores" unique_id=408207154 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 0.97246104, -0.23306555, 0, 0.23306555, 0.97246104, -70.931076, 71.05293, -104.92879)
+
+[node name="spikes20" parent="planet_environment/Ores" unique_id=1161481366 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 0.97246104, -0.23306555, 0, 0.23306555, 0.97246104, -78.81989, 71.8431, -111.31642)
+
+[node name="spikes21" parent="planet_environment/Ores" unique_id=1537072828 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 0.97246104, -0.23306555, 0, 0.23306555, 0.97246104, -74.85326, 71.14202, -108.39117)
+
+[node name="spikes22" parent="planet_environment/Ores" unique_id=1646556706 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.96813834, 0, -0.25041637, -0.05836342, 0.97246104, -0.22563966, 0.24352017, 0.23306558, 0.9414768, -81.278076, 72.92314, -97.41374)
+
+[node name="spikes23" parent="planet_environment/Ores" unique_id=333831153 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.96813834, 0, -0.25041637, -0.05836342, 0.97246104, -0.22563966, 0.24352017, 0.23306558, 0.9414768, -88.1023, 74.78504, -108.27316)
+
+[node name="spikes24" parent="planet_environment/Ores" unique_id=251804568 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.96813834, 0, -0.25041637, -0.05836342, 0.97246104, -0.22563966, 0.24352017, 0.23306558, 0.9414768, -84.22694, 73.21598, -101.72629)
+
+[node name="spikes25" parent="planet_environment/Ores" unique_id=1245863733 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 0.97246104, -0.23306555, 0, 0.23306555, 0.97246104, -74.66765, 71.91351, -99.88252)
+
+[node name="spikes26" parent="planet_environment/Ores" unique_id=1923152380 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 0.97246104, -0.23306555, 0, 0.23306555, 0.97246104, -84.027596, 73.295494, -108.73945)
+
+[node name="spikes27" parent="planet_environment/Ores" unique_id=1403687091 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 0.97246104, -0.23306555, 0, 0.23306555, 0.97246104, -78.58983, 72.0026, -103.3449)
+
+[node name="spikes28" parent="planet_environment/Ores" unique_id=574704677 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.96813834, 0, -0.25041637, -0.05836342, 0.97246104, -0.22563966, 0.24352017, 0.23306558, 0.9414768, -85.01465, 73.78372, -92.36748)
+
+[node name="spikes29" parent="planet_environment/Ores" unique_id=924367882 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.96813834, 0, -0.25041637, -0.05836342, 0.97246104, -0.22563966, 0.24352017, 0.23306558, 0.9414768, -91.838875, 75.64562, -103.2269)
+
+[node name="spikes30" parent="planet_environment/Ores" unique_id=1614775682 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(0.96813834, 0, -0.25041637, -0.05836342, 0.97246104, -0.22563966, 0.24352017, 0.23306558, 0.9414768, -87.96351, 74.07656, -96.680016)
+
+[node name="stalectite" parent="planet_environment/Ores" unique_id=620374675 instance=ExtResource("43_1uluy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.23488, 80.593605, -85.39713)
+
+[node name="stalectite2" parent="planet_environment/Ores" unique_id=1821599128 instance=ExtResource("43_1uluy")]
+transform = Transform3D(-0.6648463, -5.812271e-08, 0, 5.812271e-08, -0.6648463, 0, 0, 0, 0.6648463, 137.06895, 111.07606, -84.45521)
+
+[node name="stalectite3" parent="planet_environment/Ores" unique_id=337410637 instance=ExtResource("43_1uluy")]
+transform = Transform3D(-0.6648463, -5.812271e-08, 0, 5.812271e-08, -0.6648463, 0, 0, 0, 0.6648463, 134.85713, 111.07606, -93.961105)
+
+[node name="stalectite4" parent="planet_environment/Ores" unique_id=1482115645 instance=ExtResource("43_1uluy")]
+transform = Transform3D(-0.6024447, -4.6549324e-08, 0, 5.2667385e-08, -0.53246224, 0, 0, 0, 0.6648463, 141.41653, 111.07606, -95.24742)
+
+[node name="stalectite5" parent="planet_environment/Ores" unique_id=395655954 instance=ExtResource("43_1uluy")]
+transform = Transform3D(1, 0, 0, 0, -0.999028, -0.044079, 0, 0.044079, -0.999028, 57.07867, 40.04538, 108.73113)
+
+[node name="stalectite7" parent="planet_environment/Ores" unique_id=1084976941 instance=ExtResource("43_1uluy")]
+transform = Transform3D(1, 0, 0, 0, -0.999028, -0.044079, 0, 0.044079, -0.999028, 57.07867, 41.954357, 103.18839)
+
+[node name="stalectite6" parent="planet_environment/Ores" unique_id=387614353 instance=ExtResource("43_1uluy")]
+transform = Transform3D(1, 0, 0, 0, -0.999028, -0.044079, 0, 0.044079, -0.999028, 60.69547, 36.02144, 102.2641)
+
+[node name="stalectite8" parent="planet_environment/Ores" unique_id=1507362221 instance=ExtResource("43_1uluy")]
+transform = Transform3D(0.6492562, 0, 0, 0, 0.6492562, 0, 0, 0, 0.6492562, 41.88298, 16.98367, 101.332565)
+
+[node name="stalectite9" parent="planet_environment/Ores" unique_id=457305325 instance=ExtResource("43_1uluy")]
+transform = Transform3D(0.6492562, 0, 0, 0, 0.6492562, 0, 0, 0, 0.6492562, 53.760574, 14.740955, 114.23431)
+
+[node name="stalectite10" parent="planet_environment/Ores" unique_id=1822627220 instance=ExtResource("43_1uluy")]
+transform = Transform3D(0.8070869, 0, 0, 0, 0.8070869, 0, 0, 0, 0.8070869, 53.783142, 15.022023, 115.94106)
+
+[node name="stalectite11" parent="planet_environment/Ores" unique_id=359462684 instance=ExtResource("43_1uluy")]
+transform = Transform3D(0.7258115, 0, 0, 0, 0.7258115, 0, 0, 0, 0.7258115, 3.0972905, 55.581535, -52.623234)
+
+[node name="stalectite12" parent="planet_environment/Ores" unique_id=1713151508 instance=ExtResource("43_1uluy")]
+transform = Transform3D(-0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, 0, 0, 0, 1, -55.734306, 55.815083, -44.393005)
+
+[node name="stalectite13" parent="planet_environment/Ores" unique_id=834802466 instance=ExtResource("43_1uluy")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, -27.441088, 60.824657, -49.532818)
+
+[node name="stalectite14" parent="planet_environment/Ores" unique_id=1410000511 instance=ExtResource("43_1uluy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -175.38263, 50.10318, 69.51788)
+
+[node name="stalectite15" parent="planet_environment/Ores" unique_id=1312869884 instance=ExtResource("43_1uluy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -179.23347, 46.117085, 62.696037)
+
+[node name="stalectite16" parent="planet_environment/Ores" unique_id=1003468424 instance=ExtResource("43_1uluy")]
+transform = Transform3D(2.1624112, 0, 0, 0, 2.1624112, 0, 0, 0, 2.1624112, -179.23347, 42.270344, 68.27105)
+
 [node name="angry_fish" parent="planet_environment" unique_id=2052518884 instance=ExtResource("31_22e5b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.798306, 102.554985, -25.639902)
-small_fish = ExtResource("42_17v35")
+small_fish = ExtResource("41_b7k6n")
 amount = 1
 
 [node name="PathingNode" parent="planet_environment/angry_fish" unique_id=1453468360 instance=ExtResource("32_awsm5")]
@@ -2185,6 +2355,67 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6074638, -0.8085861, -16.2
 
 [node name="PathingNode3" parent="planet_environment/angry_fish" unique_id=1448318484 instance=ExtResource("32_awsm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.620392, -0.8085861, -16.260588)
+
+[node name="angry_fish2" parent="planet_environment" unique_id=1696635886 instance=ExtResource("31_22e5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162.7947, 107.92912, 138.03886)
+small_fish = ExtResource("41_b7k6n")
+amount = 1
+
+[node name="PathingNode" parent="planet_environment/angry_fish2" unique_id=660450855 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4617577, -0.8454819, 7.4319344)
+
+[node name="PathingNode4" parent="planet_environment/angry_fish2" unique_id=1275560039 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.52338, -0.8454819, 7.4319344)
+
+[node name="PathingNode2" parent="planet_environment/angry_fish2" unique_id=1746582629 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6074638, -0.8085861, -16.260588)
+
+[node name="PathingNode3" parent="planet_environment/angry_fish2" unique_id=401345674 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.620392, -0.8085861, -16.260588)
+
+[node name="angry_fish3" parent="planet_environment" unique_id=328287097 instance=ExtResource("31_22e5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.53697, 88.83895, 102.65488)
+small_fish = ExtResource("41_b7k6n")
+amount = 1
+
+[node name="PathingNode" parent="planet_environment/angry_fish3" unique_id=1536250429 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4617577, -0.8454819, 7.4319344)
+
+[node name="PathingNode4" parent="planet_environment/angry_fish3" unique_id=1803430355 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.52338, -0.8454819, 7.4319344)
+
+[node name="PathingNode2" parent="planet_environment/angry_fish3" unique_id=1349044876 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6074638, -0.8085861, -16.260588)
+
+[node name="PathingNode3" parent="planet_environment/angry_fish3" unique_id=958418411 instance=ExtResource("32_awsm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.620392, -0.8085861, -16.260588)
+
+[node name="spikes" parent="planet_environment" unique_id=1463054063 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.893078, 60.800087, 23.287949)
+
+[node name="spikes2" parent="planet_environment" unique_id=1252085824 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.636692, 73.68767, 122.351234)
+
+[node name="spikes3" parent="planet_environment" unique_id=1236880254 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.909004, 61.794785, 104.730804)
+
+[node name="spikes4" parent="planet_environment" unique_id=622497055 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.905582, 50.605534, 121.19985)
+
+[node name="spikes5" parent="planet_environment" unique_id=1214186597 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.02738, 42.708534, 106.1204)
+
+[node name="spikes6" parent="planet_environment" unique_id=994081412 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.838623, 51.140965, 113.73026)
+
+[node name="spikes7" parent="planet_environment" unique_id=293186973 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.001152, 33.922863, 119.13553)
+
+[node name="spikes8" parent="planet_environment" unique_id=1606343069 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.682785, 25.460224, 101.99024)
+
+[node name="spikes9" parent="planet_environment" unique_id=297856352 instance=ExtResource("42_5p3q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.189243, 24.602522, 94.76373)
 
 [node name="space" parent="." unique_id=461983772 instance=ExtResource("25_dg37v")]
 transform = Transform3D(1, 0, 0, 0, -4.371138e-08, -0.9999998, 0, 0.9999998, -4.371138e-08, 10.481403, 20.360619, -43.913254)

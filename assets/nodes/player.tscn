@@ -19,8 +19,11 @@
 [ext_resource type="Script" uid="uid://mdlw20awx73q" path="res://assets/scripts/pause.gd" id="13_hme1o"]
 [ext_resource type="Theme" uid="uid://i73fcbbaxo55" path="res://assets/Theme/theme.tres" id="14_lxlpi"]
 [ext_resource type="Script" uid="uid://x03qikh8c1c4" path="res://assets/nodes/audio_slider.gd" id="15_ywewf"]
+[ext_resource type="Texture2D" uid="uid://cksmdqvkhqntj" path="res://assets/textures/health_meter.png" id="17_48f43"]
+[ext_resource type="Texture2D" uid="uid://bnkmmfdwa05cl" path="res://assets/textures/health_meter_filler.png" id="18_k0gkn"]
 [ext_resource type="AudioStream" uid="uid://d1ff7u76yhe7t" path="res://assets/audio/sfx/65620__otherthings__inhale_10115a.wav" id="20_06wbn"]
 [ext_resource type="AudioStream" uid="uid://cwd3iver82hhp" path="res://assets/audio/sfx/437650__dersuperanton__getting-hit-damage-scream.wav" id="21_prn67"]
+[ext_resource type="AudioStream" uid="uid://u6vupst1e8ot" path="res://assets/audio/sfx/bite.wav" id="24_1ubr1"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
 
@@ -147,6 +150,59 @@ fill_mode = 3
 texture_under = ExtResource("11_t1i24")
 texture_progress = ExtResource("12_ejbuc")
 
+[node name="Control2" type="Control" parent="Control" unique_id=1500607512]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -362.0
+offset_bottom = 161.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Air" type="Label" parent="Control/Control2" unique_id=1356458691]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -131.5
+offset_right = 76.0
+offset_bottom = -108.5
+grow_vertical = 2
+text = "Health:"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/Control2" unique_id=1633705036]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 27.0
+offset_top = -101.5
+offset_right = 155.0
+offset_bottom = 410.5
+grow_vertical = 2
+scale = Vector2(0.495, 0.495)
+step = 0.01
+value = 99.0
+fill_mode = 3
+texture_under = ExtResource("17_48f43")
+texture_progress = ExtResource("18_k0gkn")
+
+[node name="reddening" type="ColorRect" parent="Control" unique_id=1345650980]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.91, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
 [node name="blackening" type="ColorRect" parent="Control" unique_id=643188861]
 layout_mode = 1
 anchors_preset = 15
@@ -244,12 +300,19 @@ text = "SFX    "
 stream = ExtResource("13_ejbuc")
 volume_db = -8.0
 autoplay = true
+bus = &"SFX"
 
 [node name="gasp" type="AudioStreamPlayer" parent="." unique_id=959599253]
 stream = ExtResource("20_06wbn")
+bus = &"SFX"
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=2104990623]
 stream = ExtResource("21_prn67")
+volume_db = -16.0
+bus = &"SFX"
+
+[node name="Bite" type="AudioStreamPlayer" parent="." unique_id=1120926527]
+stream = ExtResource("24_1ubr1")
 
 [connection signal="value_changed" from="Control/pause/Control/VBoxContainer/HBoxContainer/MusicSlider" to="Control/pause/Control/VBoxContainer/HBoxContainer/MusicSlider" method="_on_value_changed" binds= ["music"]]
 [connection signal="value_changed" from="Control/pause/Control/VBoxContainer/HBoxContainer2/SFXSlider" to="Control/pause/Control/VBoxContainer/HBoxContainer2/SFXSlider" method="_on_value_changed" binds= ["SFX"]]
