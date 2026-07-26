@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://twgwamabb2n6"]
+
+[ext_resource type="Script" uid="uid://b05pw8xd3cxui" path="res://assets/scripts/underwater_things/small_fish.gd" id="1_10wys"]
+[ext_resource type="PackedScene" uid="uid://b4af743rwo42u" path="res://assets/models/underwater_things/enemies/fish_design_1.blend" id="2_hkmdm"]
+[ext_resource type="Script" uid="uid://cj4tl3im6mu8a" path="res://assets/scripts/autoplay_animation.gd" id="3_4sa1v"]
+
+[node name="Fish2Type" type="Node3D" unique_id=432995572]
+script = ExtResource("1_10wys")
+
+[node name="fish_design_1" parent="." unique_id=1525140910 instance=ExtResource("2_hkmdm")]
+transform = Transform3D(-0.11, 0, -9.616506e-09, 0, 0.11, 0, 9.616506e-09, 0, -0.11, 0, 0, 0)
+script = ExtResource("3_4sa1v")
+animationPlayer_path = "AnimationPlayer"
+animation = "swim"
+
+[node name="target" type="Node3D" parent="." unique_id=935313543]
+top_level = true
