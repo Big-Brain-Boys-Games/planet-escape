@@ -458,7 +458,7 @@ func _input(event: InputEvent) -> void:
 						inventory.missing_item_label.get_child(0).start()
 						all_clear = false
 						notification_node.play_notification("Not enough resources")
-				if (all_clear) || true:
+				if (all_clear):
 					print("New gamestate")
 					camera_shake = 0.4
 					inventory.missing_item_label.text = ""

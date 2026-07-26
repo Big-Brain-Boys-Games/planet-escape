@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		
 		if attack_timer > 6:
 			attack_timer = -1
-			animation.stop()
+			#animation.stop()
 		elif attack_timer > 4:
 			animation.current_animation = "bite"
 			speed_mul = 1.5
@@ -86,7 +86,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		if attack_timer > 4:
 			body.take_damage(35)
-			attack_timer = 0
+			body.velocity = (-global_basis.z + global_basis.x*0.5) * 10
 		
 		rotate_away_timer = 1.5
 	pass # Replace with function body.
