@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dxg4i1lss65j4" path="res://assets/nodes/plants_and_rocks.tscn" id="8_ffh1o"]
 [ext_resource type="PackedScene" uid="uid://cwss77li6b5b2" path="res://assets/models/spaceship.blend" id="8_paggm"]
 [ext_resource type="Script" uid="uid://dkrco57shy8gj" path="res://assets/scripts/notification.gd" id="9_ip4mf"]
+[ext_resource type="Texture2D" uid="uid://bl6vpwub3yufg" path="res://assets/textures/escape_4x.png" id="9_iu5po"]
 [ext_resource type="Environment" uid="uid://djxcms8ji6k6o" path="res://assets/worldEnvironments/transition_to_space.tres" id="9_l7i30"]
 [ext_resource type="PackedScene" uid="uid://dka4l3vrvmloo" path="res://assets/nodes/Prefabs/ironium.tscn" id="9_vy1b6"]
 [ext_resource type="Environment" uid="uid://b4yj4uqw5nfgr" path="res://assets/worldEnvironments/space.tres" id="13_1b4ng"]
@@ -748,6 +749,20 @@ anchor_bottom = 1.0
 offset_top = -23.0
 offset_right = 134.0
 grow_vertical = 0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=27101699]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer4" unique_id=1179241128]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+texture = ExtResource("9_iu5po")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer4" unique_id=1695076449]
+layout_mode = 2
+text = "Pause menu"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1928812342]
 custom_minimum_size = Vector2(100, 40)
