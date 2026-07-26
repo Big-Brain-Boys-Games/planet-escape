@@ -373,7 +373,15 @@ func _input(event: InputEvent) -> void:
 			if _selected_tool != tool:
 				select_tool($Camera3D/sway/tools.get_child_count() - 1)
 		return
-	
+	if (event.is_action_pressed("tool_1")):
+		select_tool(0)
+	if (event.is_action_pressed("tool_2")):
+		select_tool(1)
+	if (event.is_action_pressed("tool_3")):
+		select_tool(2)
+	if (event.is_action_pressed("tool_4")):
+		select_tool(3)
+		
 	# Escape mouse capture
 	#if (event.is_action_pressed("escape")):
 		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
