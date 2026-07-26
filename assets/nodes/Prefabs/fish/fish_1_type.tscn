@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://b05pw8xd3cxui" path="res://assets/scripts/underwater_things/small_fish.gd" id="1_br73j"]
 [ext_resource type="PackedScene" uid="uid://dd8oplb2cle02" path="res://assets/models/underwater_things/enemies/fish_design_2.blend" id="2_yunc5"]
 [ext_resource type="Script" uid="uid://cj4tl3im6mu8a" path="res://assets/scripts/autoplay_animation.gd" id="3_yunc5"]
+[ext_resource type="Script" uid="uid://nlcbl7b236wf" path="res://assets/scripts/underwater_things/fish_sound.gd" id="4_lgfcb"]
+[ext_resource type="AudioStream" uid="uid://c62jknk0giclk" path="res://assets/audio/sfx/dolphin1.wav" id="5_h8s3s"]
+[ext_resource type="AudioStream" uid="uid://5igkbfpelrk2" path="res://assets/audio/sfx/dolphin2.wav" id="6_iayl7"]
+[ext_resource type="AudioStream" uid="uid://4pxw8awmrmut" path="res://assets/audio/sfx/dolphin3.wav" id="7_52y0k"]
 
 [node name="fish_1_type" type="Node3D" unique_id=1499224752]
 script = ExtResource("1_br73j")
@@ -18,3 +22,10 @@ animation = "swim"
 
 [node name="target" type="Node3D" parent="." unique_id=701418125]
 top_level = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=189253499]
+max_distance = 20.0
+bus = &"SFX"
+script = ExtResource("4_lgfcb")
+sounds = Array[AudioStreamWAV]([ExtResource("5_h8s3s"), ExtResource("6_iayl7"), ExtResource("7_52y0k")])
+time_between_sound = 5.0

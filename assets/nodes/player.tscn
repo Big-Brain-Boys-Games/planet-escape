@@ -20,6 +20,7 @@
 [ext_resource type="Theme" uid="uid://i73fcbbaxo55" path="res://assets/Theme/theme.tres" id="14_lxlpi"]
 [ext_resource type="Script" uid="uid://x03qikh8c1c4" path="res://assets/nodes/audio_slider.gd" id="15_ywewf"]
 [ext_resource type="AudioStream" uid="uid://d1ff7u76yhe7t" path="res://assets/audio/sfx/65620__otherthings__inhale_10115a.wav" id="20_06wbn"]
+[ext_resource type="AudioStream" uid="uid://cwd3iver82hhp" path="res://assets/audio/sfx/437650__dersuperanton__getting-hit-damage-scream.wav" id="21_prn67"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
 
@@ -246,6 +247,9 @@ autoplay = true
 
 [node name="gasp" type="AudioStreamPlayer" parent="." unique_id=959599253]
 stream = ExtResource("20_06wbn")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=2104990623]
+stream = ExtResource("21_prn67")
 
 [connection signal="value_changed" from="Control/pause/Control/VBoxContainer/HBoxContainer/MusicSlider" to="Control/pause/Control/VBoxContainer/HBoxContainer/MusicSlider" method="_on_value_changed" binds= ["music"]]
 [connection signal="value_changed" from="Control/pause/Control/VBoxContainer/HBoxContainer2/SFXSlider" to="Control/pause/Control/VBoxContainer/HBoxContainer2/SFXSlider" method="_on_value_changed" binds= ["SFX"]]

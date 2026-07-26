@@ -119,7 +119,7 @@ func take_damage(damage : float):
 		return
 	
 	_health -= damage
-	
+	$HurtSound.play()
 	if _health < 0:
 		_health = 0
 

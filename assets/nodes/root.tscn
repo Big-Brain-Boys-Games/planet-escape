@@ -977,7 +977,7 @@ environments = Array[Environment]([ExtResource("4_yria1"), SubResource("Environm
 
 [node name="planet_environment" type="Node3D" parent="." unique_id=530091447 groups=["planet_environment"]]
 
-[node name="plants and rocks" parent="planet_environment" unique_id=728434295 instance=ExtResource("8_ffh1o")]
+[node name="plants and rocks" parent="planet_environment" unique_id=2061192284 instance=ExtResource("8_ffh1o")]
 
 [node name="crusher" parent="planet_environment" unique_id=343286013 instance=ExtResource("15_i03b5")]
 transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, -11.674262, 95.4298, -36.078613)
@@ -1800,9 +1800,6 @@ transform = Transform3D(1, 0, 0, 0, 0.81534004, 0.57898235, 0, -0.57898235, 0.81
 [node name="Ironium49" parent="planet_environment/Ores" unique_id=1577365553 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 0.860253, -0.5098674, 0, 0.5098674, 0.860253, -130.11511, 92.170006, 116.29933)
 
-[node name="Quartz25" parent="planet_environment/Ores" unique_id=864799709 instance=ExtResource("31_fpmfo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -147.76955, 109.554276, -30.783907)
-
 [node name="Ironium50" parent="planet_environment/Ores" unique_id=1188530337 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150.30855, 108.978165, -35.45842)
 
@@ -1853,6 +1850,18 @@ transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.1076
 
 [node name="Ironium4" parent="planet_environment/Ores" unique_id=117673560 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -18.660892, 66.744446, -89.42401)
+
+[node name="Ironium46" parent="planet_environment/Ores" unique_id=1242855307 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -8.533767, 66.744446, -89.87284)
+
+[node name="Ironium58" parent="planet_environment/Ores" unique_id=493456964 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -8.533767, 80.179054, -85.557304)
+
+[node name="Ironium56" parent="planet_environment/Ores" unique_id=1302698597 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -8.533767, 62.26468, -86.413765)
+
+[node name="Ironium57" parent="planet_environment/Ores" unique_id=178125582 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -4.1166177, 62.26468, -82.43661)
 
 [node name="Ironium6" parent="planet_environment/Ores" unique_id=814335543 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(-0.7015235, 0.6176473, -0.35549524, 0.55094546, 0.7864553, 0.2791902, 0.4520222, 0, -0.8920068, -202.7339, 52.19723, -190.11429)
@@ -1975,13 +1984,13 @@ transform = Transform3D(1, 0, 0, 0, 0.58283824, 0.8125882, 0, -0.8125882, 0.5828
 transform = Transform3D(0.2996407, -0.47139397, 0.8294596, 0, 0.869407, 0.49409667, -0.95405215, -0.14805146, 0.2605097, 97.56121, 90.074, -101.42377)
 
 [node name="Ironium5" parent="planet_environment/Ores" unique_id=447538537 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.240105, 85.699104, -8.177641)
+transform = Transform3D(-0.5292477, -0.84846735, 0, 0.84846735, -0.5292477, 0, 0, 0, 1, 82.240105, 85.699104, -8.177641)
 
 [node name="Ironium8" parent="planet_environment/Ores" unique_id=1784923123 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.016075, 85.084, 2.3398173)
+transform = Transform3D(-0.55804724, -0.8298092, 0, 0.8298092, -0.55804724, 0, 0, 0, 1, 82.016075, 84.81514, 2.3398173)
 
 [node name="Ironium10" parent="planet_environment/Ores" unique_id=273704199 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.32624, 86.354965, -3.4842784)
+transform = Transform3D(-0.81465197, -0.57995015, 0, 0.57995015, -0.81465197, 0, 0, 0, 1, 88.32624, 86.354965, -3.4842784)
 
 [node name="Ironium20" parent="planet_environment/Ores" unique_id=1136106022 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.83293, 75.73163, 173.4973)
@@ -2073,12 +2082,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.66484, 123.39075, -134.38
 [node name="Tarn19" parent="planet_environment/Ores" unique_id=1070179112 instance=ExtResource("35_j4knf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.37209, 122.4191, -138.66263)
 
-[node name="Quartz18" parent="planet_environment/Ores" unique_id=1994572305 instance=ExtResource("31_fpmfo")]
-transform = Transform3D(1, 0, 0, 0, 0.15317066, -0.9881998, 0, 0.9881998, 0.15317066, 84.83726, 80.18424, 187.54704)
-
-[node name="Quartz19" parent="planet_environment/Ores" unique_id=1636474756 instance=ExtResource("31_fpmfo")]
-transform = Transform3D(1, 0, 0, 0, -0.50986034, -0.8602572, 0, 0.8602572, -0.50986034, 87.85289, 76.43994, 186.42537)
-
 [node name="Tarn20" parent="planet_environment/Ores" unique_id=313409529 instance=ExtResource("35_j4knf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.790146, 60.886333, 55.184784)
 
@@ -2106,23 +2109,65 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.61661, 92.063896, 31.502
 [node name="Tarn25" parent="planet_environment/Ores" unique_id=703290624 instance=ExtResource("35_j4knf")]
 transform = Transform3D(0.42782146, 0.47261122, -0.77045923, -0.7413634, 0.6711038, 0, 0.5170581, 0.5711903, 0.63748926, -123.54319, 96.231544, 26.30723)
 
-[node name="Ironium46" parent="planet_environment/Ores" unique_id=775796249 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3287506, 62.630882, -30.263535)
-
-[node name="Quartz20" parent="planet_environment/Ores" unique_id=1373078189 instance=ExtResource("31_fpmfo")]
-transform = Transform3D(1, 0, 0, 0, 0.5984406, -0.8011672, 0, 0.8011672, 0.5984406, 91.15542, 82.99247, 186.05783)
-
 [node name="Tarn28" parent="planet_environment/Ores" unique_id=603519087 instance=ExtResource("35_j4knf")]
 transform = Transform3D(1, 0, 0, 0, 0.7539405, 0.6569427, 0, -0.6569427, 0.7539405, 36.583088, 78.07627, 78.686935)
 
 [node name="Tarn29" parent="planet_environment/Ores" unique_id=2001260813 instance=ExtResource("35_j4knf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.661552, 78.47345, 85.3886)
 
+[node name="Tarn32" parent="planet_environment/Ores" unique_id=7709931 instance=ExtResource("35_j4knf")]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -5.361046, 94.730484, -34.975327)
+
 [node name="Tarn30" parent="planet_environment/Ores" unique_id=489259583 instance=ExtResource("35_j4knf")]
 transform = Transform3D(1, 0, 0, 0, 0.57253784, -0.81987834, 0, 0.81987834, 0.57253784, 39.718983, 75.70881, 90.83668)
 
 [node name="Tarn31" parent="planet_environment/Ores" unique_id=2026970375 instance=ExtResource("35_j4knf")]
 transform = Transform3D(1, 0, 0, 0, 0.74425864, -0.6678915, 0, 0.6678915, 0.74425864, 38.282585, 68.891304, 96.530846)
+
+[node name="Ironium59" parent="planet_environment/Ores" unique_id=1187405308 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, -0.80480605, -0.59353787, 0, 0.59353787, -0.80480605, -95.38023, 88.74221, -139.51968)
+
+[node name="Ironium60" parent="planet_environment/Ores" unique_id=54278470 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.91974, 82.555016, -131.02019)
+
+[node name="Ironium61" parent="planet_environment/Ores" unique_id=293195604 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.364655, 80.87032, -127.86084)
+
+[node name="Ironium62" parent="planet_environment/Ores" unique_id=2060519205 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.78847, 92.689026, -147.07968)
+
+[node name="Ironium63" parent="planet_environment/Ores" unique_id=1777639537 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, -0.940989, 0.33843714, 0, -0.33843714, -0.940989, -78.93632, 91.15173, -142.7358)
+
+[node name="Ironium64" parent="planet_environment/Ores" unique_id=1906329898 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.32263, 89.7528, 90.11875)
+
+[node name="Ironium65" parent="planet_environment/Ores" unique_id=1172869126 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.37636, 91.28962, 85.08037)
+
+[node name="Ironium66" parent="planet_environment/Ores" unique_id=426526395 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.04527, 94.306625, 88.694244)
+
+[node name="Ironium67" parent="planet_environment/Ores" unique_id=699953685 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.13717, 87.259445, 85.19925)
+
+[node name="Ironium68" parent="planet_environment/Ores" unique_id=1520508096 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.823755, 78.36148, 92.75854)
+
+[node name="Ironium69" parent="planet_environment/Ores" unique_id=812263732 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.119845, 82.25807, 92.48584)
+
+[node name="Quartz18" parent="planet_environment/Ores" unique_id=185978276 instance=ExtResource("31_fpmfo")]
+transform = Transform3D(1, 0, 0, 0, 0.37050802, -0.92882925, 0, 0.92882925, 0.37050802, 53.64632, 24.011448, 94.910835)
+
+[node name="Quartz19" parent="planet_environment/Ores" unique_id=712323003 instance=ExtResource("31_fpmfo")]
+transform = Transform3D(1, 0, 0, 0, -0.24758337, 0.9688666, 0, -0.9688666, -0.24758337, 42.75155, 37.552948, 118.3267)
+
+[node name="Ironium70" parent="planet_environment/Ores" unique_id=2110449460 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.347492, 81.94882, 96.66842)
+
+[node name="Ironium71" parent="planet_environment/Ores" unique_id=427402279 instance=ExtResource("9_vy1b6")]
+transform = Transform3D(1, 0, 0, 0, -0.7647044, -0.6443812, 0, 0.6443812, -0.7647044, -9.363575, 74.736145, 85.80058)
 
 [node name="angry_fish" parent="planet_environment" unique_id=2052518884 instance=ExtResource("31_22e5b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.798306, 102.554985, -25.639902)
@@ -2151,9 +2196,6 @@ libraries/ = SubResource("AnimationLibrary_lov7v")
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=2087760350 groups=["music_manager"]]
 bus = &"Music"
 script = ExtResource("49_wr76h")
-
-[node name="Tarn" parent="." unique_id=7709931 instance=ExtResource("35_j4knf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3610454, 94.73047, -34.975323)
 
 [connection signal="timeout" from="Control/InventoryHolder/InventoryRow1/HBoxContainer2/MissingItem/Timer" to="Control/InventoryHolder/InventoryRow1" method="_missing_item_text_timeout"]
 
