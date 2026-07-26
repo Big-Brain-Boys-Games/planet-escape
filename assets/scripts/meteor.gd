@@ -23,7 +23,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	
 	if body.is_in_group("player"):
 		body.take_damage(40)
-		body.velocity = ((body.global_position-global_position).normalized() * Vector3(1, 0.01, 1)).normalized() * 80
+		body.velocity = ((body.global_position-global_position).normalized() * Vector3(1, 0.01, 1)).normalized() * 40
 	else:
 		queue_free()
 	pass # Replace with function body.
