@@ -3,8 +3,18 @@
 [ext_resource type="Environment" uid="uid://b4yj4uqw5nfgr" path="res://assets/worldEnvironments/space.tres" id="1_ep65y"]
 [ext_resource type="Script" uid="uid://cfhxfr0kqrqgl" path="res://assets/scripts/planet_exploding_animation.gd" id="2_86oiv"]
 [ext_resource type="Texture2D" uid="uid://c3ij2mgdvfbps" path="res://assets/textures/clouds.png" id="2_ep65y"]
+[ext_resource type="Shader" uid="uid://b7g8nvhixptba" path="res://assets/Shaders/magma_spewing.gdshader" id="3_dfakj"]
 [ext_resource type="PackedScene" uid="uid://mtwk4ben0jex" path="res://assets/models/planet_exploding.blend" id="3_i6cqx"]
+[ext_resource type="Texture2D" uid="uid://c382qa683nfxy" path="res://assets/textures/lava_fire_texture.png" id="4_rxgpj"]
 [ext_resource type="PackedScene" uid="uid://cci3batmutn8g" path="res://assets/models/planet_magma.blend" id="5_i6cqx"]
+[ext_resource type="PackedScene" uid="uid://ba23bs6sorns" path="res://assets/models/underwater_things/rock1.blend" id="6_vip83"]
+[ext_resource type="PackedScene" uid="uid://c3v6snaplc5gk" path="res://assets/models/anime_explosion_lights.blend" id="8_rxgpj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vip83"]
+render_priority = 0
+shader = ExtResource("3_dfakj")
+shader_parameter/tex = ExtResource("4_rxgpj")
+shader_parameter/vertex_factor = 0.99
 
 [sub_resource type="SphereMesh" id="SphereMesh_khlrb"]
 
@@ -34,6 +44,9 @@ environment = ExtResource("1_ep65y")
 [node name="planet" type="Node3D" parent="." unique_id=1890657310]
 transform = Transform3D(327.31268, 0, 0, 0, 327.31268, 0, 0, 0, 327.31268, 207.15614, -86.814514, -665.30615)
 script = ExtResource("2_86oiv")
+magma_material = SubResource("ShaderMaterial_vip83")
+anime_explosion_effect = ExtResource("8_rxgpj")
+meteor = ExtResource("6_vip83")
 
 [node name="planet_exploding" parent="planet" unique_id=1375534357 instance=ExtResource("3_i6cqx")]
 transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 0, 0, 0)
@@ -50,5 +63,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f4hk2")
 
 [node name="planet_magma" parent="planet" unique_id=1539178242 instance=ExtResource("5_i6cqx")]
 transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 0, 0, 0)
+
+[node name="effect" type="Node3D" parent="planet" unique_id=1664617650]
 
 [editable path="planet/planet_exploding"]

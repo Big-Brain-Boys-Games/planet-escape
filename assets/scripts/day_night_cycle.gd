@@ -12,5 +12,5 @@ func _physics_process(delta: float) -> void:
 		if (night_time <= 1.03):
 			night_time += delta * 0.1
 	RenderingServer.global_shader_parameter_set("night_time", night_time)
-	RenderingServer.global_shader_parameter_set("sky_color", Color(Color(0.424, 0.584, 0.808)).lerp(Color(0.147, 0.132, 0.176, 1.0), night_time))
+	RenderingServer.global_shader_parameter_set("sky_color", Color(Color(0.424, 0.584, 0.808)).lerp(Color(0.097, 0.086, 0.119, 1.0), night_time))
 		

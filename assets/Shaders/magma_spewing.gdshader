@@ -3,11 +3,12 @@ shader_type spatial;
 //render_mode unshaded;
 
 uniform sampler2D tex : filter_linear_mipmap_anisotropic;
+uniform float vertex_factor = 0;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
-	VERTEX.x *= 0.2 * (VERTEX.y + 17.0) + sin(TIME*8.0 - VERTEX.y*0.7)*0.3;
-	VERTEX.z *= 0.2 * (VERTEX.y + 17.0) + sin(TIME*8.0 - VERTEX.y*0.7)*0.3;
+	VERTEX.x *= mix(0.2 * (VERTEX.y + 17.0) + sin(TIME*8.0 - VERTEX.y*0.7)*0.3, 1, vertex_factor);
+	VERTEX.z *= mix(0.2 * (VERTEX.y + 17.0) + sin(TIME*8.0 - VERTEX.y*0.7)*0.3, 1, vertex_factor);
 }
 
 void fragment() {
