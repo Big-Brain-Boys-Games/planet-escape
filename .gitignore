@@ -23,3 +23,6 @@ mono_crash.*.json
 *.png~
 *.kra~
 *.blend1
+
+# build folder
+build

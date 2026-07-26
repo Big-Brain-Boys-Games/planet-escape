@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://elf2sqhmlqg2" path="res://assets/models/flashlight_tool.blend" id="5_mn4l5"]
 [ext_resource type="Script" uid="uid://dx2qpohy00yqp" path="res://assets/scripts/flashlight_tool.gd" id="6_rho1b"]
 [ext_resource type="PackedScene" uid="uid://cicgjk6gab5jd" path="res://assets/models/swimming_tool.blend" id="7_kcpvn"]
+[ext_resource type="AudioStream" uid="uid://ce1i6v3xx3wdx" path="res://assets/audio/sfx/533400__cmart94__drill-09.wav" id="7_wk3wd"]
 [ext_resource type="Script" uid="uid://dt7uam413xtk4" path="res://assets/scripts/swimming_tool.gd" id="8_ut8nu"]
+[ext_resource type="AudioStream" uid="uid://v8nvlkne5nul" path="res://assets/audio/sfx/502506__rudmer_rotteveel__small_flashlight_click_on_fast.wav" id="10_isog5"]
 [ext_resource type="AudioStream" uid="uid://c5h3m80vcperx" path="res://assets/audio/sfx/350549__fairhavencollection__bathroom-vent-hum.wav" id="11_6olem"]
 [ext_resource type="Texture2D" uid="uid://db5qsld260dyi" path="res://assets/textures/air_meter.png" id="11_t1i24"]
 [ext_resource type="Texture2D" uid="uid://dhyowwjd533td" path="res://assets/textures/air_meter_filler.png" id="12_ejbuc"]
@@ -59,9 +61,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5870034, 0)
 transform = Transform3D(-0.076120555, 0, 0.41855264, 0, 0.4254182, 0, -0.41855264, 0, -0.076120555, 0.6987856, 0.09037268, -0.9871203)
 script = ExtResource("4_tb2t1")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera3D/sway/tools/mining_tool" unique_id=1583261736]
+stream = ExtResource("7_wk3wd")
+pitch_scale = 0.5
+
 [node name="flashlight_tool" parent="Camera3D/sway/tools" unique_id=1067516877 instance=ExtResource("5_mn4l5")]
 transform = Transform3D(0.01166458, 0.0018522162, -0.093443274, -0.014770834, 0.093021296, 0, 0.09228705, 0.014654242, 0.01181072, 0.98696315, -0.321012, -0.9945115)
 script = ExtResource("6_rho1b")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera3D/sway/tools/flashlight_tool" unique_id=536291792]
+stream = ExtResource("10_isog5")
 
 [node name="swimming_tool" parent="Camera3D/sway/tools" unique_id=809923857 instance=ExtResource("7_kcpvn")]
 transform = Transform3D(0.4024414, 0, 0, 0, 0.4024414, 0, 0, 0, 0.4024414, 0, -0.13765232, -1.3788813)
@@ -147,6 +156,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="pause" type="ColorRect" parent="Control" unique_id=1311971175]
 process_mode = 3
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

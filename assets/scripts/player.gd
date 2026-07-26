@@ -205,7 +205,7 @@ func _physics_process(delta: float) -> void:
 				background_sfx.play()
 		
 		_air_meter = move_toward(_air_meter, _air_reset, delta* _air_reset / 1.5)
-		if (GameManager.world_state != 6):
+		if (GameManager.world_state <= 5):
 			if(global_position.y > wave_height+0.8):
 				global_position.y = wave_height+0.8
 		
@@ -221,7 +221,7 @@ func _physics_process(delta: float) -> void:
 		_air_meter -= delta
 		camera.attributes = camera_attributes[1];
 		
-		if _air_meter < 0:
+		if _air_meter < -5:
 			die()
 		
 		

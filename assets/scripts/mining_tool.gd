@@ -3,6 +3,7 @@ extends Node3D
 var attack : float = 0
 var attack_length : float = 1
 
+@onready var drill_sound : AudioStreamPlayer = $AudioStreamPlayer
 var cylinder : Node3D
 
 func _ready():
@@ -12,6 +13,7 @@ func do_action():
 	if attack > 0:
 		return
 	print("do mining attack")
+	drill_sound.play()
 	attack = attack_length
 
 func _process(delta: float) -> void:
@@ -20,6 +22,7 @@ func _process(delta: float) -> void:
 	time = pow(time, 0.5)
 	
 	if attack > 0:
+		
 		var over_half = (attack/attack_length) > 0.7
 		attack -= delta
 		if over_half and (attack/attack_length) < 0.7:
