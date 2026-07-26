@@ -71,6 +71,8 @@ func select_tool(tool : int):
 	$Camera3D/sway/tools.get_child(tool).visible = true
 
 func _process(delta : float) -> void:
+	if (GameManager.world_state >= GameManager.States.LIFTOFF):
+		$Control.visible = false
 	if _fade_in > 0:
 		$Control/blackening.color.a = _fade_in/3.0
 		_fade_in -= min(delta, 0.02)
