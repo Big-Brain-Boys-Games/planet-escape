@@ -1,16 +1,12 @@
 [gd_scene format=3 uid="uid://dsbjpycyfq5es"]
 
 [ext_resource type="Environment" uid="uid://b4yj4uqw5nfgr" path="res://assets/worldEnvironments/space.tres" id="1_ep65y"]
+[ext_resource type="Script" uid="uid://cfhxfr0kqrqgl" path="res://assets/scripts/planet_exploding_animation.gd" id="2_86oiv"]
 [ext_resource type="Texture2D" uid="uid://c3ij2mgdvfbps" path="res://assets/textures/clouds.png" id="2_ep65y"]
+[ext_resource type="PackedScene" uid="uid://mtwk4ben0jex" path="res://assets/models/planet_exploding.blend" id="3_i6cqx"]
+[ext_resource type="PackedScene" uid="uid://cci3batmutn8g" path="res://assets/models/planet_magma.blend" id="5_i6cqx"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_khlrb"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4hk2"]
-albedo_color = Color(0, 0.33433327, 0.59, 1)
-metallic = 0.15
-metallic_specular = 0.58
-roughness = 0.51
-disable_receive_shadows = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86oiv"]
 transparency = 1
@@ -23,17 +19,36 @@ uv1_scale = Vector3(3, 3, 3)
 uv2_scale = Vector3(2, 2, 2)
 disable_receive_shadows = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4hk2"]
+albedo_color = Color(0, 0.33433327, 0.59, 1)
+metallic = 0.15
+metallic_specular = 0.58
+roughness = 0.51
+disable_receive_shadows = true
+
 [node name="space" type="Node3D" unique_id=461983772]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=836674963]
 environment = ExtResource("1_ep65y")
 
-[node name="planet" type="MeshInstance3D" parent="." unique_id=713553263]
-transform = Transform3D(327.31268, 0, 0, 0, 327.31268, 0, 0, 0, 327.31268, 0, 0, -8)
+[node name="planet" type="Node3D" parent="." unique_id=1890657310]
+transform = Transform3D(327.31268, 0, 0, 0, 327.31268, 0, 0, 0, 327.31268, 207.15614, -86.814514, -665.30615)
+script = ExtResource("2_86oiv")
+
+[node name="planet_exploding" parent="planet" unique_id=1375534357 instance=ExtResource("3_i6cqx")]
+transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 0, 0, 0)
+
+[node name="clouds" type="MeshInstance3D" parent="planet" unique_id=1415294662]
+transform = Transform3D(1.07, 0, 0, 0, 1.07, 0, 0, 0, 1.07, 0, 0, 0)
+mesh = SubResource("SphereMesh_khlrb")
+surface_material_override/0 = SubResource("StandardMaterial3D_86oiv")
+
+[node name="planet" type="MeshInstance3D" parent="planet" unique_id=713553263]
+transform = Transform3D(1.0389698, 0, 0, 0, 1.0389698, 0, 0, 0, 1.0389698, 0, 0, 0)
 mesh = SubResource("SphereMesh_khlrb")
 surface_material_override/0 = SubResource("StandardMaterial3D_f4hk2")
 
-[node name="clouds" type="MeshInstance3D" parent="." unique_id=1415294662]
-transform = Transform3D(350.22458, 0, 0, 0, 350.22458, 0, 0, 0, 350.22458, 0, 0, -8)
-mesh = SubResource("SphereMesh_khlrb")
-surface_material_override/0 = SubResource("StandardMaterial3D_86oiv")
+[node name="planet_magma" parent="planet" unique_id=1539178242 instance=ExtResource("5_i6cqx")]
+transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 0, 0, 0)
+
+[editable path="planet/planet_exploding"]

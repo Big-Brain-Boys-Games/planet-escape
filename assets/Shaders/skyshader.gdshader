@@ -73,7 +73,7 @@ void sky() {
 	
 	vec3 ground = mix(ground_bottom_color.rgb, ground_horizon_color.rgb, clamp(pow(1.0 + v_angle, inv_ground_curve), 0.0, 1.0));
 
-	COLOR = mix(ground, sky, step(0.0, EYEDIR.y)) * exposure;
+	COLOR = sky; //mix(ground, sky, step(0.0, EYEDIR.y)) * exposure;
 	
 	COLOR = mix(COLOR, texture(source_panorama, SKY_COORDS).rgb * exposure, night_time);
 }

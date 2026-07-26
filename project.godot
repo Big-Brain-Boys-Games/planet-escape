@@ -129,5 +129,5 @@ sky_color={
 }
 night_time={
 "type": "float",
-"value": 1.0
+"value": 0.0
 }

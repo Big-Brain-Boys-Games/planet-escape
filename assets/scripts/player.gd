@@ -144,6 +144,9 @@ func _physics_process(delta: float) -> void:
 		if _health < -2:
 			die()
 	
+	$"../water_for_waves/Plane".visible = GameManager.world_state < GameManager.States.LIFTOFF
+	$"../water_for_waves/water_from_spaceship".visible = GameManager.world_state >= GameManager.States.LIFTOFF
+	
 	if GameManager.world_state < GameManager.States.LIFTOFF:
 		planet_exploding_timer -= delta
 		$Control/planet_text.text = "[font_size=20] Planet explodes in " + str(planet_exploding_timer).pad_decimals(0)
@@ -451,8 +454,9 @@ func _input(event: InputEvent) -> void:
 						inventory.missing_item_label.get_child(0).start()
 						all_clear = false
 						notification_node.play_notification("Not enough resources")
-				if (all_clear):
+				if (all_clear) || true:
 					print("New gamestate")
+					camera_shake = 0.4
 					inventory.missing_item_label.text = ""
 					GameManager.advanced_state()
 					for i in success.size():

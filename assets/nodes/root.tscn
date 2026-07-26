@@ -29,7 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://ceh2xlkt7gda4" path="res://assets/nodes/meteor.tscn" id="14_o1vpn"]
 [ext_resource type="PackedScene" uid="uid://pjr2qdlaqa61" path="res://assets/nodes/crusher.tscn" id="15_i03b5"]
 [ext_resource type="Script" uid="uid://q5h6x3l8qblq" path="res://assets/scripts/rocket.gd" id="16_22e5b"]
-[ext_resource type="Environment" uid="uid://csepf61phwt38" path="res://assets/worldEnvironments/abovewater_environment.tres" id="18_y2l1o"]
 [ext_resource type="PackedScene" uid="uid://dsbjpycyfq5es" path="res://assets/nodes/space.tscn" id="25_dg37v"]
 [ext_resource type="PackedScene" uid="uid://b6qrxe2l3engi" path="res://assets/models/scifi_screen.blend" id="27_ip4mf"]
 [ext_resource type="PackedScene" uid="uid://bjdrfqik7dd6s" path="res://assets/nodes/small_fish_school.tscn" id="31_22e5b"]
@@ -50,6 +49,16 @@ font_size = 32
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(1, 1, 1, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_khlrb"]
+radius = 500.0
+height = 800.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4hk2"]
+albedo_color = Color(0.2589151, 0.5725338, 0.7845579, 1)
+metallic = 0.1
+metallic_specular = 0.1
+roughness = 0.78
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_41hqj"]
 size = Vector3(1.8225098, 2.0366821, 0.15655518)
@@ -821,6 +830,12 @@ transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122
 [node name="Plane_001" parent="water_for_waves" index="1" unique_id=2049881502]
 visible = false
 
+[node name="water_from_spaceship" type="MeshInstance3D" parent="water_for_waves" unique_id=595882158]
+transform = Transform3D(3.6048477, 0, 0, 0, 5.5573497, 0, 0, 0, 3.6048477, 0, -2210.953, 0)
+visible = false
+mesh = SubResource("SphereMesh_khlrb")
+surface_material_override/0 = SubResource("StandardMaterial3D_f4hk2")
+
 [node name="spaceship" parent="." unique_id=370931199 groups=["rocket"] instance=ExtResource("8_paggm")]
 transform = Transform3D(3.665, 0, 0, 0, 3.665, 0, 0, 0, 3.665, 4.609688, 115.83204, -42.697662)
 script = ExtResource("16_22e5b")
@@ -854,7 +869,7 @@ shadow_enabled = true
 script = ExtResource("1_yo1ht")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1426847499 groups=["world_environment"]]
-environment = ExtResource("18_y2l1o")
+environment = SubResource("Environment_22e5b")
 script = ExtResource("3_decpy")
 environments = Array[Environment]([ExtResource("4_yria1"), SubResource("Environment_22e5b"), ExtResource("9_l7i30"), ExtResource("13_1b4ng")])
 

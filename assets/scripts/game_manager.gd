@@ -100,6 +100,8 @@ func advanced_state() -> void:
 		States.LIFTOFF:
 			objective_text.text = "[font_size=23]Current objective[/font_size]\n Enjoy the view"
 			notification_node.play_notification("Lift off!")
+			player.camera_shake = 1.2
+			player._fade_in = 3
 			player.player_movement_enabled = false
 			player.global_position = seat_location.global_position
 			planet_environment.visible = false
