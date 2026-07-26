@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dsbjpycyfq5es"]
 
-[ext_resource type="Environment" uid="uid://b4yj4uqw5nfgr" path="res://assets/worldEnvironments/space.tres" id="1_ep65y"]
 [ext_resource type="Script" uid="uid://cfhxfr0kqrqgl" path="res://assets/scripts/planet_exploding_animation.gd" id="2_86oiv"]
 [ext_resource type="Texture2D" uid="uid://c3ij2mgdvfbps" path="res://assets/textures/clouds.png" id="2_ep65y"]
 [ext_resource type="PackedScene" uid="uid://mtwk4ben0jex" path="res://assets/models/planet_exploding.blend" id="3_i6cqx"]
@@ -27,9 +26,6 @@ roughness = 0.51
 disable_receive_shadows = true
 
 [node name="space" type="Node3D" unique_id=461983772]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=836674963]
-environment = ExtResource("1_ep65y")
 
 [node name="planet" type="Node3D" parent="." unique_id=1890657310]
 transform = Transform3D(327.31268, 0, 0, 0, 327.31268, 0, 0, 0, 327.31268, 207.15614, -86.814514, -665.30615)

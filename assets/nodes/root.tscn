@@ -336,6 +336,107 @@ tracks/9/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Player")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(7, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 13.966666, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21, 21.5, 22, 22.4, 23, 23.5, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [5.0],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}, {
+"args": [0.5],
+"method": &"set_camera_shake"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lov7v"]
 _data = {
@@ -827,9 +928,8 @@ meteor_prefab = ExtResource("14_o1vpn")
 
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
-visible = false
 
-[node name="Plane_001" parent="water_for_waves" index="1" unique_id=2049881502]
+[node name="Plane_001" parent="water_for_waves" index="1" unique_id=1610940029]
 visible = false
 
 [node name="water_from_spaceship" type="MeshInstance3D" parent="water_for_waves" unique_id=595882158]
@@ -842,25 +942,25 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f4hk2")
 transform = Transform3D(3.665, 0, 0, 0, 3.665, 0, 0, 0, 3.665, 4.609688, 115.83204, -42.697662)
 script = ExtResource("16_22e5b")
 
-[node name="body" parent="spaceship" index="0" unique_id=1899001879 groups=["rocket_body"]]
+[node name="body" parent="spaceship" index="0" unique_id=1257326886 groups=["rocket_body"]]
 visible = false
 
-[node name="StaticBody3D" type="StaticBody3D" parent="spaceship/body/door" parent_id_path=PackedInt32Array(370931199, 1545277857) index="1" unique_id=1031059832 groups=["rocket_door"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="spaceship/body/door" parent_id_path=PackedInt32Array(370931199, 1010553350) index="1" unique_id=1031059832 groups=["rocket_door"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="spaceship/body/door/StaticBody3D" unique_id=1354652375]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663563, -0.07388306, 0.059906006)
 shape = SubResource("BoxShape3D_41hqj")
 
-[node name="engine" parent="spaceship" index="1" unique_id=1373474565 groups=["rocket_engine"]]
+[node name="engine" parent="spaceship" index="1" unique_id=634229460 groups=["rocket_engine"]]
 visible = false
 
-[node name="head" parent="spaceship" index="2" unique_id=138351926 groups=["rocket_cockpit"]]
+[node name="head" parent="spaceship" index="2" unique_id=192066171 groups=["rocket_cockpit"]]
 visible = false
 
 [node name="SeatLocation" type="Node3D" parent="spaceship/head" index="5" unique_id=1871916474 groups=["seat_location"]]
 transform = Transform3D(0.27285126, 0, 0, 0, 0.040955972, 0, 0, 0, 0.27285126, 0.012213588, 1.224606, -0.113640785)
 
-[node name="legs" parent="spaceship" index="3" unique_id=1126968967 groups=["rocket_boosters"]]
+[node name="legs" parent="spaceship" index="3" unique_id=1751835639 groups=["rocket_boosters"]]
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="spaceship" unique_id=267980407]

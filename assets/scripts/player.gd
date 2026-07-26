@@ -72,7 +72,8 @@ func select_tool(tool : int):
 
 func _process(delta : float) -> void:
 	if (GameManager.world_state >= GameManager.States.LIFTOFF):
-		$Control.visible = false
+		$Control/Control.visible = false
+		$Control/planet_text.visible = false
 	if _fade_in > 0:
 		$Control/blackening.color.a = _fade_in/3.0
 		_fade_in -= min(delta, 0.02)
@@ -84,6 +85,9 @@ func _process(delta : float) -> void:
 	
 	RenderingServer.global_shader_parameter_set("wave_time", Time.get_ticks_msec() / 1000.0)
 
+func set_camera_shake (value : float) -> void:
+	camera_shake = value
+	
 func read_wave_image(uv : Vector2) -> float:
 	#v.y *= -1
 	var v : Vector2i = uv * Vector2(waves_heightmap.get_size())
