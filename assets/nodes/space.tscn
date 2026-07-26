@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cci3batmutn8g" path="res://assets/models/planet_magma.blend" id="5_i6cqx"]
 [ext_resource type="PackedScene" uid="uid://ba23bs6sorns" path="res://assets/models/underwater_things/rock1.blend" id="6_vip83"]
 [ext_resource type="PackedScene" uid="uid://c3v6snaplc5gk" path="res://assets/models/anime_explosion_lights.blend" id="8_rxgpj"]
+[ext_resource type="AudioStream" uid="uid://bkg4s4phlcev5" path="res://assets/audio/sfx/explosion.wav" id="9_vip83"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vip83"]
 render_priority = 0
@@ -61,5 +62,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f4hk2")
 transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 0, 0, 0)
 
 [node name="effect" type="Node3D" parent="planet" unique_id=1664617650]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=941803310]
+stream = ExtResource("9_vip83")
+bus = &"SFX"
 
 [editable path="planet/planet_exploding"]

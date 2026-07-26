@@ -5,6 +5,7 @@ var rand_time = 3
 @export var magma_material : Material
 @export var anime_explosion_effect : PackedScene
 @export var meteor : PackedScene
+var explosion_played : bool = false
 
 func _ready():
 	for child in $planet_exploding.get_children():
@@ -32,7 +33,9 @@ func _physics_process(delta: float) -> void:
 		if magma_timer > 2.3:
 			for child in get_children():
 				child.queue_free()
-			
+			if(!explosion_played):
+				$"../AudioStreamPlayer".play()
+				explosion_played = true
 			#spawn meteors
 			for i in range(50):
 				var effect = meteor.instantiate()

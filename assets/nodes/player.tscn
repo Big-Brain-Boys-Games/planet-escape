@@ -168,12 +168,12 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 6.0
+offset_left = -4.025
 offset_top = -131.5
-offset_right = 76.0
+offset_right = 105.975
 offset_bottom = -108.5
 grow_vertical = 2
-text = "Health:"
+text = "Health: 100"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Control/Control2" unique_id=1633705036]
 layout_mode = 1
@@ -204,6 +204,7 @@ color = Color(0.91, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="blackening" type="ColorRect" parent="Control" unique_id=643188861]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

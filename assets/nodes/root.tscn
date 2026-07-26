@@ -940,7 +940,7 @@ meteor_prefab = ExtResource("14_o1vpn")
 [node name="water_for_waves" parent="." unique_id=805049837 instance=ExtResource("5_iaj12")]
 transform = Transform3D(2.2192338, 0, 0, 0, 1.439535, 0, 0, 0, 2.2192338, 0, 122.02768, 0)
 
-[node name="Plane_001" parent="water_for_waves" index="1" unique_id=2049881502]
+[node name="Plane_001" parent="water_for_waves" index="1" unique_id=1610940029]
 visible = false
 
 [node name="water_from_spaceship" type="MeshInstance3D" parent="water_for_waves" unique_id=595882158]
@@ -953,25 +953,25 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f4hk2")
 transform = Transform3D(3.665, 0, 0, 0, 3.665, 0, 0, 0, 3.665, 4.609688, 115.83204, -42.697662)
 script = ExtResource("16_22e5b")
 
-[node name="body" parent="spaceship" index="0" unique_id=1899001879 groups=["rocket_body"]]
+[node name="body" parent="spaceship" index="0" unique_id=1257326886 groups=["rocket_body"]]
 visible = false
 
-[node name="StaticBody3D" type="StaticBody3D" parent="spaceship/body/door" parent_id_path=PackedInt32Array(370931199, 1545277857) index="1" unique_id=1031059832 groups=["rocket_door"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="spaceship/body/door" parent_id_path=PackedInt32Array(370931199, 1010553350) index="1" unique_id=1031059832 groups=["rocket_door"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="spaceship/body/door/StaticBody3D" unique_id=1354652375]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663563, -0.07388306, 0.059906006)
 shape = SubResource("BoxShape3D_41hqj")
 
-[node name="engine" parent="spaceship" index="1" unique_id=1373474565 groups=["rocket_engine"]]
+[node name="engine" parent="spaceship" index="1" unique_id=634229460 groups=["rocket_engine"]]
 visible = false
 
-[node name="head" parent="spaceship" index="2" unique_id=138351926 groups=["rocket_cockpit"]]
+[node name="head" parent="spaceship" index="2" unique_id=192066171 groups=["rocket_cockpit"]]
 visible = false
 
 [node name="SeatLocation" type="Node3D" parent="spaceship/head" index="5" unique_id=1871916474 groups=["seat_location"]]
 transform = Transform3D(0.27285126, 0, 0, 0, 0.040955972, 0, 0, 0, 0.27285126, 0.012213588, 1.224606, -0.113640785)
 
-[node name="legs" parent="spaceship" index="3" unique_id=1126968967 groups=["rocket_boosters"]]
+[node name="legs" parent="spaceship" index="3" unique_id=1751835639 groups=["rocket_boosters"]]
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="spaceship" unique_id=267980407]
@@ -1776,13 +1776,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.281364, 5.8291473, -6.4841
 [node name="Ores" type="Node3D" parent="planet_environment" unique_id=1870041152]
 
 [node name="Quartz" parent="planet_environment/Ores" unique_id=883154995 instance=ExtResource("31_fpmfo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.29151, 45.745728, -46.4235)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.29151, 44.455185, -46.4235)
 
 [node name="Quartz2" parent="planet_environment/Ores" unique_id=1764525924 instance=ExtResource("31_fpmfo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.147785, 44.32681, -49.79824)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.147785, 43.521862, -49.79824)
 
 [node name="Quartz3" parent="planet_environment/Ores" unique_id=1007944164 instance=ExtResource("31_fpmfo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.52491, 42.668797, -54.93483)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.52491, 41.768444, -54.93483)
 
 [node name="Redegon" parent="planet_environment/Ores" unique_id=1179103699 instance=ExtResource("34_863g7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.531076, 49.7467, 23.621738)
@@ -1836,7 +1836,7 @@ transform = Transform3D(-0.8049319, 0, 0.5933673, 0, 1, 0, -0.5933673, 0, -0.804
 transform = Transform3D(-0.81278914, 0, -0.582558, 0.5686088, -0.2175228, -0.7933272, -0.12671964, -0.97605526, 0.17680013, 78.94049, 87.01917, 124.3886)
 
 [node name="Quartz5" parent="planet_environment/Ores" unique_id=1117139172 instance=ExtResource("31_fpmfo")]
-transform = Transform3D(0.72681636, -0.68683183, 0, 0.68683183, 0.72681636, 0, 0, 0, 1, -38.88498, 43.63152, -50.739944)
+transform = Transform3D(0.72681636, -0.68683183, 0, 0.68683183, 0.72681636, 0, 0, 0, 1, -38.88498, 42.76472, -50.739944)
 
 [node name="Quartz8" parent="planet_environment/Ores" unique_id=1559364529 instance=ExtResource("31_fpmfo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.501083, 58.567715, 16.132475)
@@ -1869,7 +1869,7 @@ transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.1076
 transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -8.533767, 80.179054, -85.557304)
 
 [node name="Ironium56" parent="planet_environment/Ores" unique_id=1302698597 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -8.533767, 62.26468, -86.413765)
+transform = Transform3D(-0.10716941, 0.09450987, 0.98973864, -0.010174107, -0.9955239, 0.09396065, 0.9941887, 0, 0.10765126, -8.533767, 62.74608, -86.413765)
 
 [node name="Ironium57" parent="planet_environment/Ores" unique_id=178125582 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -4.1166177, 62.26468, -82.43661)
@@ -2163,10 +2163,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.04527, 94.306625, 88.694
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.13717, 87.259445, 85.19925)
 
 [node name="Ironium68" parent="planet_environment/Ores" unique_id=1520508096 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.823755, 78.36148, 92.75854)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.823755, 78.36148, 92.25481)
 
 [node name="Ironium69" parent="planet_environment/Ores" unique_id=812263732 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.119845, 82.25807, 92.48584)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.119845, 82.25807, 91.95571)
 
 [node name="Quartz18" parent="planet_environment/Ores" unique_id=185978276 instance=ExtResource("31_fpmfo")]
 transform = Transform3D(1, 0, 0, 0, 0.37050802, -0.92882925, 0, 0.92882925, 0.37050802, 53.64632, 24.011448, 94.910835)
@@ -2175,10 +2175,10 @@ transform = Transform3D(1, 0, 0, 0, 0.37050802, -0.92882925, 0, 0.92882925, 0.37
 transform = Transform3D(1, 0, 0, 0, -0.24758337, 0.9688666, 0, -0.9688666, -0.24758337, 42.75155, 37.552948, 118.3267)
 
 [node name="Ironium70" parent="planet_environment/Ores" unique_id=2110449460 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.347492, 81.94882, 96.66842)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.347492, 81.94882, 96.31377)
 
 [node name="Ironium71" parent="planet_environment/Ores" unique_id=427402279 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(1, 0, 0, 0, -0.7647044, -0.6443812, 0, 0.6443812, -0.7647044, -9.363575, 74.736145, 85.80058)
+transform = Transform3D(1, 0, 0, 0, -0.7647044, -0.6443812, 0, 0.6443812, -0.7647044, -9.363575, 74.736145, 85.34415)
 
 [node name="spikes" parent="planet_environment/Ores" unique_id=827065756 instance=ExtResource("42_5p3q8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.50754, 92.95162, 145.81458)
