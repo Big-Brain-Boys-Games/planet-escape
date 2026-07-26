@@ -8,6 +8,8 @@ func _ready():
 	rot_vel = Vector3(randf_range(-1,1),randf_range(-1,1),randf_range(-1,1)).normalized()
 	#scale_object_local(Vector3(1.0/global_transform.basis.x.length(), 1.0/global_transform.basis.y.length(), 1.0/global_transform.basis.z.length()) * 0.7)
 
+var destroy_timer = 1000
+
 func _physics_process(delta: float) -> void:
 	global_position += vel * delta
 	
@@ -15,6 +17,11 @@ func _physics_process(delta: float) -> void:
 		global_position += vel * delta * 2
 	
 	rotate(rot_vel, delta)
+	
+	destroy_timer -= delta
+	
+	if destroy_timer < 0:
+		queue_free()
 	
 	if global_position.y < 80:
 		queue_free()
@@ -26,4 +33,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		body.velocity = ((body.global_position-global_position).normalized() * Vector3(1, 0.01, 1)).normalized() * 40
 	else:
 		queue_free()
+		destroy_timer = 3
 	pass # Replace with function body.

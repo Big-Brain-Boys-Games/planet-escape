@@ -54,9 +54,13 @@ func _setup_world() -> void:
 	if (get_tree().get_first_node_in_group("player")):
 		notification_node = get_tree().get_first_node_in_group("notification")
 		rocket_body = get_tree().get_first_node_in_group("rocket_body")
+		rocket_body.get_node("StaticBody3D").get_child(0).disabled = true
 		rocket_engine = get_tree().get_first_node_in_group("rocket_engine")
+		rocket_engine.get_node("StaticBody3D").get_child(0).disabled = true
 		rocket_cockpit = get_tree().get_first_node_in_group("rocket_cockpit")
+		rocket_cockpit.get_node("StaticBody3D").get_child(0).disabled = true
 		rocket_boosters = get_tree().get_first_node_in_group("rocket_boosters")
+		rocket_boosters.get_node("StaticBody3D").get_child(0).disabled = true
 		player = get_tree().get_first_node_in_group("player")
 		seat_location = get_tree().get_first_node_in_group("seat_location")
 		planet_environment = get_tree().get_first_node_in_group("planet_environment")
@@ -83,20 +87,24 @@ func advanced_state() -> void:
 			objective_text.text = "[font_size=23]Current objective[/font_size]\nBuild the rocket engine"
 			notification_node.play_notification("First stage build, commence second stage.")
 			rocket_body.visible = true
+			rocket_body.get_node("StaticBody3D").get_child(0).disabled = false
 		States.ROCKET_ENGINE:
 			music_player.change_music(music2,5,5)
 			objective_text.text = "[font_size=23]Current objective[/font_size]\nBuild the rocket cockpit"
 			notification_node.play_notification("Second stage build, commence third stage")
 			rocket_engine.visible = true
+			rocket_engine.get_node("StaticBody3D").get_child(0).disabled = false
 		States.ROCKET_COCKPIT:
 			objective_text.text = "[font_size=23]Current objective[/font_size]\nBuild the rocket boosters"
 			notification_node.play_notification("Third stage build, commence fourth stage")
 			rocket_cockpit.visible = true
+			rocket_cockpit.get_node("StaticBody3D").get_child(0).disabled = false
 		States.ROCKET_BOOSTERS:
 			music_player.change_music(music3,5,5)
 			objective_text.text = "[font_size=23]Current objective[/font_size]\n Enter the rocket and escape the planet"
 			notification_node.play_notification("fourth stage build, rocket ready for lift-off")
 			rocket_boosters.visible = true
+			rocket_boosters.get_node("StaticBody3D").get_child(0).disabled = false
 		States.LIFTOFF:
 			objective_text.text = "[font_size=23]Current objective[/font_size]\n Enjoy the view"
 			notification_node.play_notification("Lift off!")

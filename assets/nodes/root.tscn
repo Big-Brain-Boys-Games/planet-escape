@@ -360,7 +360,6 @@ grow_vertical = 2
 theme = ExtResource("1_b7k6n")
 
 [node name="InventoryHolder" type="Control" parent="Control" unique_id=1234163766]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -463,6 +462,7 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -470,14 +470,14 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect2" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=659843882]
+[node name="ColorRect2" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1950488284]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect2" unique_id=900568326]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect2" unique_id=397303699]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -486,7 +486,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect2" unique_id=2019883664]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect2" unique_id=1733517511]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -494,21 +494,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control2" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=389371519]
+[node name="Control2" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=51709470]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect3" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=418644347]
+[node name="ColorRect3" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1059550292]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect3" unique_id=84831981]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect3" unique_id=1899268329]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -517,7 +518,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect3" unique_id=1490460523]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect3" unique_id=948962267]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -525,21 +526,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control3" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=2100464097]
+[node name="Control3" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1180424855]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect4" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=911705129]
+[node name="ColorRect4" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1131468160]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect4" unique_id=1155504970]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect4" unique_id=329315502]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -548,7 +550,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect4" unique_id=551813660]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect4" unique_id=1234535273]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -556,21 +558,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control4" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1568695926]
+[node name="Control4" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=718287924]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect5" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=27466717]
+[node name="ColorRect5" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=271948373]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect5" unique_id=289498800]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect5" unique_id=1628913002]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -579,7 +582,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect5" unique_id=1991073146]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect5" unique_id=997248327]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -587,21 +590,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control5" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=30363179]
+[node name="Control5" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1166298283]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect6" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1546772528]
+[node name="ColorRect6" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1433984650]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect6" unique_id=873607351]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect6" unique_id=1121172593]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -610,7 +614,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect6" unique_id=600239468]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect6" unique_id=1170025905]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -618,21 +622,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control6" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1203777784]
+[node name="Control6" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1130048906]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect7" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1951950766]
+[node name="ColorRect7" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1761873216]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect7" unique_id=1265204947]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect7" unique_id=1352293761]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -641,7 +646,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect7" unique_id=427324894]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect7" unique_id=466892957]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -649,21 +654,22 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control7" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=202892971]
+[node name="Control7" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=891716501]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect8" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=749422673]
+[node name="ColorRect8" type="ColorRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1421016417]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 1, 1, 0.2509804)
 script = ExtResource("7_30aiw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect8" unique_id=1540712859]
+[node name="TextureRect" type="TextureRect" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect8" unique_id=1452051290]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -672,7 +678,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect8" unique_id=1024596024]
+[node name="Label" type="Label" parent="Control/InventoryHolder/InventoryRow1/InventoryItems/ColorRect8" unique_id=1908969049]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -680,10 +686,11 @@ anchor_bottom = 1.0
 offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control8" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1931849681]
+[node name="Control8" type="Control" parent="Control/InventoryHolder/InventoryRow1/InventoryItems" unique_id=1279533203]
 layout_mode = 2
 size_flags_horizontal = 3
 

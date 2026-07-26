@@ -108,13 +108,16 @@ func get_waves_height() -> float:
 	return (pow(z, 0.6)*0.15-0.05) * $"../water_for_waves/Plane".global_basis.y.length();
 
 var _health : float = 100
+var _health_invincibility_time : float = 1
 
 func take_damage(damage : float):
 	print("take damage(",damage,")")
-	if _health < 0:
+	if _health < 0 || _health_invincibility_time > 0:
 		return
 	
 	_health -= damage
+	
+	$Control/reddening.color.a = 1
 	
 	if _health < 0:
 		_health = 0
@@ -134,6 +137,7 @@ var rng_timer_rumbling : float = 10
 var allow_meteor_spawn : bool = true
 
 func _physics_process(delta: float) -> void:
+	_health_invincibility_time -= delta
 	var wave_height = water_waves.global_position.y+get_waves_height();
 	
 	if _health > 0:
@@ -237,9 +241,9 @@ func _physics_process(delta: float) -> void:
 	
 	$Control/Control2/Air.text = "Health: " + str(_health).pad_decimals(1)
 	$Control/Control2/TextureProgressBar.value = _health
-	$Control/reddening.color.a = clamp(1-_health/30.0, 0, 1);
+	$Control/reddening.color.a = lerpf($Control/reddening.color.a, clamp(1-_health/30.0, 0, 1), delta*2);
 	
-	$Control/blackening.color.a = clamp(1-_air_meter/10.0, 0, 1);
+	$Control/blackening.color.a = lerpf($Control/blackening.color.a, clamp(1-_air_meter/10.0, 0, 1), delta*2);
 	$Control/Control/Air.text = "Air: " + str(_air_meter).pad_decimals(1)
 	$Control/Control/TextureProgressBar.value = _air_meter/_air_reset * 100.0
 	if(_air_meter > 10):

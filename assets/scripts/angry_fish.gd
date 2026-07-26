@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	rotate_away_timer -= delta
 	var allow_rotate : float = 1
 	var speed_mul = 1
-	if player.global_position.distance_to(global_position) > 10:
+	if player.global_position.distance_to(global_position) > 15:
 		animation.current_animation = "swim"
 		
 		var diff : Vector3 = $target.global_position - global_position;
@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 		elif attack_timer > 4:
 			animation.current_animation = "bite"
 			speed_mul = 1.5
-			allow_rotate = 0.3
+			allow_rotate = 1.2
 			#print("attacking!")
 			#print("stopping")
 		elif attack_timer > 0:
