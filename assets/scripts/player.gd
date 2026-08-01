@@ -483,6 +483,7 @@ func _input(event: InputEvent) -> void:
 					for i in build_array[0].size():
 						inventory.set_new_resource_total(build_array[0][i], inventory.get_resource_total(build_array[0][i]) - build_array[1][i])
 					GameManager.advanced_state()
+					update_missing_items()
 				else:
 					update_missing_items()
 					inventory.get_parent().visible = true
