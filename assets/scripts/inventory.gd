@@ -35,6 +35,9 @@ func get_resource_total (ore : Ore.Ores) -> int:
 			return redagon_count
 	return 0
 
+func get_ore_icon (ore : Ore.Ores) -> Texture2D:
+	return ore_icons[ore]
+
 func set_new_resource_total (ore : Ore.Ores, value : int) -> void:
 	match ore:
 		1:

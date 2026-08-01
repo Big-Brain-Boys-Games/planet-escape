@@ -169,7 +169,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Control/VBoxContainer:visible")
+tracks/6/path = NodePath("Control/InstructionContainer:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -245,7 +245,7 @@ tracks/4/keys = {
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Control/CenterContainer/ColorRect/HBoxContainer/Notification")
+tracks/5/path = NodePath("Control/NotificationContainer/ColorRect/HBoxContainer/Notification")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -330,7 +330,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Control/VBoxContainer:visible")
+tracks/9/path = NodePath("Control/InstructionContainer:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -528,6 +528,7 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+bbcode_enabled = true
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="Control/InventoryHolder/InventoryRow1/HBoxContainer2/MissingItem" unique_id=919004848]
@@ -813,7 +814,7 @@ label_settings = SubResource("LabelSettings_41f5n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=2146664376]
+[node name="NotificationContainer" type="CenterContainer" parent="Control" unique_id=2146664376]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 1
@@ -824,12 +825,12 @@ offset_left = -500.0
 offset_bottom = 100.0
 grow_horizontal = 0
 
-[node name="ColorRect" type="ColorRect" parent="Control/CenterContainer" unique_id=1116509583]
+[node name="ColorRect" type="ColorRect" parent="Control/NotificationContainer" unique_id=1116509583]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 color = Color(0.3403393, 0.34033933, 0.3403393, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer/ColorRect" unique_id=493603347]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/NotificationContainer/ColorRect" unique_id=493603347]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -837,11 +838,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Control/CenterContainer/ColorRect/HBoxContainer" unique_id=1295836018]
+[node name="Control" type="Control" parent="Control/NotificationContainer/ColorRect/HBoxContainer" unique_id=1295836018]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/CenterContainer/ColorRect/HBoxContainer/Control" unique_id=762239844]
+[node name="TextureRect" type="TextureRect" parent="Control/NotificationContainer/ColorRect/HBoxContainer/Control" unique_id=762239844]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -857,7 +858,7 @@ grow_vertical = 2
 texture = ExtResource("3_1b4ng")
 expand_mode = 1
 
-[node name="Notification" type="RichTextLabel" parent="Control/CenterContainer/ColorRect/HBoxContainer" unique_id=939132305 groups=["notification"]]
+[node name="Notification" type="RichTextLabel" parent="Control/NotificationContainer/ColorRect/HBoxContainer" unique_id=939132305 groups=["notification"]]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEES"
@@ -865,7 +866,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("9_ip4mf")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=710273674]
+[node name="InstructionContainer" type="VBoxContainer" parent="Control" unique_id=710273674]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -874,59 +875,59 @@ offset_top = -23.0
 offset_right = 134.0
 grow_vertical = 0
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=27101699]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/InstructionContainer" unique_id=27101699]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer4" unique_id=1179241128]
+[node name="TextureRect" type="TextureRect" parent="Control/InstructionContainer/HBoxContainer4" unique_id=1179241128]
 custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 texture = ExtResource("9_iu5po")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer4" unique_id=1695076449]
+[node name="Label" type="Label" parent="Control/InstructionContainer/HBoxContainer4" unique_id=1695076449]
 layout_mode = 2
 text = "Pause menu"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1928812342]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/InstructionContainer" unique_id=1928812342]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer" unique_id=115805713]
+[node name="TextureRect" type="TextureRect" parent="Control/InstructionContainer/HBoxContainer" unique_id=115805713]
 custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 texture = ExtResource("5_paggm")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer" unique_id=1627269115]
+[node name="Label" type="Label" parent="Control/InstructionContainer/HBoxContainer" unique_id=1627269115]
 layout_mode = 2
 text = "Inventory"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=609493039]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/InstructionContainer" unique_id=609493039]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer2" unique_id=800342760]
+[node name="TextureRect" type="TextureRect" parent="Control/InstructionContainer/HBoxContainer2" unique_id=800342760]
 custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 texture = ExtResource("6_dg37v")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer2" unique_id=1633380816]
+[node name="Label" type="Label" parent="Control/InstructionContainer/HBoxContainer2" unique_id=1633380816]
 layout_mode = 2
 text = "Interact"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1840606202]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/InstructionContainer" unique_id=1840606202]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer3" unique_id=1574028727]
+[node name="TextureRect" type="TextureRect" parent="Control/InstructionContainer/HBoxContainer3" unique_id=1574028727]
 custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 texture = ExtResource("7_ip4mf")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer3" unique_id=1649966844]
+[node name="Label" type="Label" parent="Control/InstructionContainer/HBoxContainer3" unique_id=1649966844]
 layout_mode = 2
 text = "Change tool"
 
@@ -977,12 +978,12 @@ visible = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="spaceship" unique_id=267980407]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1754267840]
-transform = Transform3D(1, 0, 0, 0, -0.9974408, 0.071497336, 0, -0.071497336, -0.9974408, 2.5431213, 146.16304, -4.5085964)
+transform = Transform3D(1, 0, 0, 0, -0.53582674, 0.844328, 0, -0.844328, -0.53582674, 2.5431213, 146.16304, -4.5085964)
 shadow_enabled = true
 script = ExtResource("1_yo1ht")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1426847499 groups=["world_environment"]]
-environment = SubResource("Environment_22e5b")
+environment = ExtResource("13_1b4ng")
 script = ExtResource("3_decpy")
 environments = Array[Environment]([ExtResource("4_yria1"), SubResource("Environment_22e5b"), ExtResource("9_l7i30"), ExtResource("13_1b4ng")])
 
@@ -2430,5 +2431,6 @@ script = ExtResource("49_wr76h")
 
 [connection signal="timeout" from="Control/InventoryHolder/InventoryRow1/HBoxContainer2/MissingItem/Timer" to="Control/InventoryHolder/InventoryRow1" method="_missing_item_text_timeout"]
 
+[editable path="Player"]
 [editable path="water_for_waves"]
 [editable path="spaceship"]

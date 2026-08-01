@@ -13,7 +13,7 @@ var cockpit_count : Array[int] = [8,5]
 var booster_parts : Array[Ore.Ores] = [Ore.Ores.IRONIUM, Ore.Ores.TARN, Ore.Ores.REDOGON]
 var booster_count : Array[int] = [5,4,2]
 
-func get_rocket_world_state_variable() -> Array:
+func get_rocket_world_state_build_array() -> Array:
 	match GameManager.world_state:
 		1:
 			return [body_parts, body_count]

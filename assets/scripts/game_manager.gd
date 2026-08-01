@@ -80,6 +80,7 @@ func advanced_state() -> void:
 		States.WAKEUP:
 			pass
 		States.OCEAN:
+			player.update_missing_items()
 			music_player.change_music(music1,5,5)
 			objective_text.text = "[font_size=23]Current objective[/font_size]\nBuild the rocket using the computer"
 			pass

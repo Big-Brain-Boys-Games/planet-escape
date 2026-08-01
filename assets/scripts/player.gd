@@ -363,6 +363,24 @@ func _physics_process(delta: float) -> void:
 		current_rock = null
 		interact_label.visible = false
 
+func check_build_requirements() -> bool:
+	var build_array : Array = get_tree().get_first_node_in_group("rocket").get_rocket_world_state_build_array()
+	for i in range(0,build_array[0].size()):
+		#print(inventory.get_resource_total(build_array[0][i]))
+		if(build_array[1][i] <= inventory.get_resource_total(build_array[0][i])):
+			continue
+		else:
+			return false
+	return true
+
+func update_missing_items () -> void:
+	inventory.missing_item_label.clear()
+	var build_array : Array = get_tree().get_first_node_in_group("rocket").get_rocket_world_state_build_array()
+	inventory.missing_item_label.append_text("Missing resource:\n")
+	for i in build_array[0].size():
+		inventory.missing_item_label.add_image(inventory.get_ore_icon(build_array[0][i] - 1),1,1,Color(1,1,1,1),INLINE_ALIGNMENT_CENTER,Rect2(0,0,0,0),null,false,"",RichTextLabel.IMAGE_UNIT_EM,RichTextLabel.IMAGE_UNIT_EM)
+		inventory.missing_item_label.append_text(str(Ore.Ores.keys()[build_array[0][i]]) + " " + str(inventory.get_resource_total(build_array[0][i])) + "/" + str(build_array[1][i]) + "\n")
+
 func play_gasp():
 	if !$gasp.playing:
 		$gasp.play()
@@ -448,40 +466,29 @@ func _input(event: InputEvent) -> void:
 							inventory.redagon_count += 1
 					# Set inventory to empty
 					inventory.inventory_slots[slot].item = Ore.Ores.INVALID
+				update_missing_items()
 					
 			if (interacting_with == "computer"):
-				var rocket : Rocket = get_tree().get_first_node_in_group("rocket")
 				# build_array[0] is the Ore.Ores resource and build_array[1] is the total
-				var build_array : Array = rocket.get_rocket_world_state_variable()
+				var build_array : Array = get_tree().get_first_node_in_group("rocket").get_rocket_world_state_build_array()
+				
 				if (build_array.size() == 0):
 					notification_node.play_notification("Nothing to build\nRocket is finished")
 					print("Nothing to build")
 					return
-				var success : Array[bool]
-				for i in range(0,build_array[0].size()):
-					#print(inventory.get_resource_total(build_array[0][i]))
-					if(build_array[1][i] <= inventory.get_resource_total(build_array[0][i])):
-						success.append(true)
-					else:
-						success.append(false)
-				var missing_items : String = ""
-				var all_clear : bool = true
-				for i in success.size():
-					if (!success[i]):
-						missing_items += Ore.Ores.keys()[build_array[0][i]] + " " + str(build_array[1][i]) + "\n"
-						inventory.missing_item_label.text = "Missing resource:\n" + missing_items
-						inventory.get_parent().visible = true
-						inventory.missing_item_label.get_child(0).start()
-						all_clear = false
-						notification_node.play_notification("Not enough resources")
-				if (all_clear):
+					
+				if (check_build_requirements()):
 					print("New gamestate")
 					camera_shake = 0.4
-					inventory.missing_item_label.text = ""
-					GameManager.advanced_state()
-					for i in success.size():
+					for i in build_array[0].size():
 						inventory.set_new_resource_total(build_array[0][i], inventory.get_resource_total(build_array[0][i]) - build_array[1][i])
-			
+					GameManager.advanced_state()
+				else:
+					update_missing_items()
+					inventory.get_parent().visible = true
+					inventory.missing_item_label.get_child(0).start()
+					notification_node.play_notification("Not enough resources")
+					
 			if (interacting_with == "rocket_door"):
 				if (GameManager.world_state == 5):
 					GameManager.advanced_state()
