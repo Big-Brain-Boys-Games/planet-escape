@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://q5h6x3l8qblq" path="res://assets/scripts/rocket.gd" id="16_22e5b"]
 [ext_resource type="PackedScene" uid="uid://dsbjpycyfq5es" path="res://assets/nodes/space.tscn" id="25_dg37v"]
 [ext_resource type="PackedScene" uid="uid://b6qrxe2l3engi" path="res://assets/models/scifi_screen.blend" id="27_ip4mf"]
+[ext_resource type="Texture2D" uid="uid://c1ayl0r6xesjr" path="res://assets/textures/scfi_screen.png" id="30_o1vpn"]
 [ext_resource type="PackedScene" uid="uid://bjdrfqik7dd6s" path="res://assets/nodes/small_fish_school.tscn" id="31_22e5b"]
 [ext_resource type="PackedScene" uid="uid://254bq0vnnork" path="res://assets/nodes/Prefabs/quartz.tscn" id="31_fpmfo"]
 [ext_resource type="PackedScene" uid="uid://doy0bxstqqlwi" path="res://assets/nodes/Prefabs/pathing_node.tscn" id="32_awsm5"]
@@ -86,11 +87,85 @@ volumetric_fog_temporal_reprojection_enabled = false
 [sub_resource type="BoxMesh" id="BoxMesh_41f5n"]
 size = Vector3(1, 1.97, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr76h"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0, 2.8803515, 4.3315187, 1)
+albedo_texture = ExtResource("30_o1vpn")
+metallic = 0.46153846
+roughness = 0.16153845
+emission_enabled = true
+emission = Color(0.9546871, 0.9546871, 0.9546871, 1)
+emission_operator = 1
+emission_texture = ExtResource("30_o1vpn")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_be5qt"]
+_surfaces = [{
+"aabb": AABB(-0.063, 0, -0.063, 0.126, 1e-05, 0.126),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ej2ec"]
+resource_name = "scifi_screen_Plane"
+_surfaces = [{
+"aabb": AABB(-0.063, 0, -0.063, 0.126, 1e-05, 0.126),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_wr76h"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_be5qt")
+
 [sub_resource type="BoxMesh" id="BoxMesh_vjr50"]
 size = Vector3(1, 0.18, 2.075)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_41f5n"]
 size = Vector3(1, 0.18, 2.075)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmhfx"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0, 3.4255767, 0, 1)
+albedo_texture = ExtResource("30_o1vpn")
+metallic = 0.46153846
+roughness = 0.16153845
+emission_enabled = true
+emission = Color(0.9546871, 0.9546871, 0.9546871, 1)
+emission_operator = 1
+emission_texture = ExtResource("30_o1vpn")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xgn5i"]
+resource_name = "scifi_screen_Plane"
+_surfaces = [{
+"aabb": AABB(-0.063, 0, -0.063, 0.126, 1e-05, 0.126),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_gmhfx"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_be5qt")
 
 [sub_resource type="Animation" id="Animation_ffh1o"]
 length = 0.001
@@ -1010,6 +1085,9 @@ mesh = SubResource("BoxMesh_41f5n")
 [node name="scifi_screen" parent="planet_environment/Computer/StaticBody3D" unique_id=1096540437 instance=ExtResource("27_ip4mf")]
 transform = Transform3D(-0.70710677, 0.70710677, -6.181724e-08, 0.70710677, 0.70710677, 6.181724e-08, 8.742278e-08, 0, -1, -0.50486326, 0.92915344, 0)
 
+[node name="Plane" parent="planet_environment/Computer/StaticBody3D/scifi_screen" index="1" unique_id=596374847]
+mesh = SubResource("ArrayMesh_ej2ec")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="planet_environment/Computer/StaticBody3D" unique_id=1317960291]
 transform = Transform3D(0.72644264, -0.68722713, 0, 0.68722713, 0.72644264, 0, 0, 0, 1, -0.52934885, 0.8738327, 0)
 visible = false
@@ -1020,6 +1098,36 @@ transform = Transform3D(0.72644264, -0.68722713, 0, 0.68722713, 0.72644264, 0, 0
 shape = SubResource("BoxShape3D_41f5n")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="planet_environment/Computer/StaticBody3D" unique_id=182624360]
+stream = ExtResource("43_o1vpn")
+volume_db = -26.0
+max_db = 0.0
+pitch_scale = 0.1
+autoplay = true
+max_distance = 10.0
+bus = &"SFX"
+
+[node name="Computer2" type="MeshInstance3D" parent="planet_environment" unique_id=1200585720]
+transform = Transform3D(-0.061349154, 0, 0.9981164, 0, 1, 0, -0.9981164, 0, -0.061349154, -2.208473, 94.174904, -35.628925)
+mesh = SubResource("BoxMesh_41f5n")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="planet_environment/Computer2" unique_id=495733871 groups=["upgrade_computer"]]
+
+[node name="scifi_screen" parent="planet_environment/Computer2/StaticBody3D" unique_id=2058355681 instance=ExtResource("27_ip4mf")]
+transform = Transform3D(-0.70710677, 0.70710677, -6.181724e-08, 0.70710677, 0.70710677, 6.181724e-08, 8.742278e-08, 0, -1, -0.50486326, 0.92915344, 0)
+
+[node name="Plane" parent="planet_environment/Computer2/StaticBody3D/scifi_screen" index="1" unique_id=596374847]
+mesh = SubResource("ArrayMesh_xgn5i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="planet_environment/Computer2/StaticBody3D" unique_id=386156039]
+transform = Transform3D(0.72644264, -0.68722713, 0, 0.68722713, 0.72644264, 0, 0, 0, 1, -0.52934885, 0.8738327, 0)
+visible = false
+mesh = SubResource("BoxMesh_vjr50")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planet_environment/Computer2/StaticBody3D" unique_id=438096327 groups=["computer"]]
+transform = Transform3D(0.72644264, -0.68722713, 0, 0.68722713, 0.72644264, 0, 0, 0, 1, -0.52934885, 0.8738327, 0)
+shape = SubResource("BoxShape3D_41f5n")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="planet_environment/Computer2/StaticBody3D" unique_id=1041472183]
 stream = ExtResource("43_o1vpn")
 volume_db = -26.0
 max_db = 0.0
@@ -2434,3 +2542,5 @@ script = ExtResource("49_wr76h")
 [editable path="Player"]
 [editable path="water_for_waves"]
 [editable path="spaceship"]
+[editable path="planet_environment/Computer/StaticBody3D/scifi_screen"]
+[editable path="planet_environment/Computer2/StaticBody3D/scifi_screen"]
