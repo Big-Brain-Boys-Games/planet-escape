@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://ba1ba2tfa3qqh" path="res://assets/audio/sfx/366159__dcsfx__underwater-loop-amb.wav" id="13_ejbuc"]
 [ext_resource type="Script" uid="uid://mdlw20awx73q" path="res://assets/scripts/pause.gd" id="13_hme1o"]
 [ext_resource type="Theme" uid="uid://i73fcbbaxo55" path="res://assets/Theme/theme.tres" id="14_lxlpi"]
+[ext_resource type="Script" uid="uid://cphospw28hhrl" path="res://assets/scripts/ore_finder.gd" id="14_ph0g1"]
 [ext_resource type="Script" uid="uid://x03qikh8c1c4" path="res://assets/nodes/audio_slider.gd" id="15_ywewf"]
 [ext_resource type="Texture2D" uid="uid://cksmdqvkhqntj" path="res://assets/textures/health_meter.png" id="17_48f43"]
 [ext_resource type="Texture2D" uid="uid://bnkmmfdwa05cl" path="res://assets/textures/health_meter_filler.png" id="18_k0gkn"]
@@ -26,6 +27,9 @@
 [ext_resource type="AudioStream" uid="uid://u6vupst1e8ot" path="res://assets/audio/sfx/bite.wav" id="24_1ubr1"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
+radius = 25.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_41f5n"]
 
@@ -87,6 +91,18 @@ stream = ExtResource("11_6olem")
 volume_db = -32.0
 autoplay = true
 bus = &"SFX"
+
+[node name="OreFinder" type="Node3D" parent="Camera3D/sway/tools" unique_id=1452876267]
+script = ExtResource("14_ph0g1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera3D/sway/tools/OreFinder" unique_id=2095437059]
+bus = &"SFX"
+
+[node name="Area3D" type="Area3D" parent="Camera3D/sway/tools/OreFinder" unique_id=840952981]
+top_level = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/sway/tools/OreFinder/Area3D" unique_id=1865601920]
+shape = SubResource("SphereShape3D_41f5n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1980606818]
 shape = SubResource("CapsuleShape3D_41f5n")

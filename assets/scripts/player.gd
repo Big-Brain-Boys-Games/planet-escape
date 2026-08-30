@@ -358,6 +358,10 @@ func _physics_process(delta: float) -> void:
 			else:
 				interact_label.text = "Rocket not ready"
 			interact_label.visible = true
+		if (collider.is_in_group("upgrade_computer")):
+			interacting_with = "upgrade_computer"
+			interact_label.text = "Open upgrade menu\n [E]"
+			interact_label.visible = true
 	else:
 		interacting_with = ""
 		current_rock = null
@@ -423,6 +427,7 @@ func _input(event: InputEvent) -> void:
 			select_tool(tool)
 			if _selected_tool != tool:
 				select_tool($Camera3D/sway/tools.get_child_count() - 1)
+		
 		return
 	if (event.is_action_pressed("tool_1")):
 		select_tool(0)
