@@ -29,7 +29,7 @@
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
-radius = 25.0
+radius = 50.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_41f5n"]
 
