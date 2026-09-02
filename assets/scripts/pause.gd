@@ -8,5 +8,4 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		print("paused: ", get_tree().paused)
 		visible = get_tree().paused

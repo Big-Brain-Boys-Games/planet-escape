@@ -38,7 +38,8 @@ var background_sfx : AudioStreamPlayer
 @onready var background_underwater : AudioStreamWAV = preload("res://assets/audio/sfx/366159__dcsfx__underwater-loop-amb.wav")
 var playing_sound : String = "underwater"
 
-var _selected_tool : int = 0
+var _selected_tool_int : int = 0
+@onready var _selected_tool : Node3D = $Camera3D/sway/tools.get_child(0)
 
 var _fade_in : float = 3;
 
@@ -58,7 +59,7 @@ func _ready() -> void:
 	select_tool(0)
 
 func select_tool(tool : int):
-	print("select_tool(", tool, ")")
+	#print("select_tool(", tool, ")")
 	if tool < 0 || tool >= $Camera3D/sway/tools.get_child_count():
 		print("rejected")
 		return
@@ -66,9 +67,10 @@ func select_tool(tool : int):
 	for child in $Camera3D/sway/tools.get_children():
 		child.visible = false
 	
-	_selected_tool = tool
-	print("_selected_tool ", _selected_tool)
-	$Camera3D/sway/tools.get_child(tool).visible = true
+	_selected_tool_int = tool
+	_selected_tool = $Camera3D/sway/tools.get_child(tool)
+	#print("_selected_tool ", _selected_tool)
+	_selected_tool.visible = true
 
 func _process(delta : float) -> void:
 	if (GameManager.world_state >= GameManager.States.LIFTOFF):
@@ -115,7 +117,7 @@ var _health : float = 100
 var _health_invincibility_time : float = 1
 
 func take_damage(damage : float, bite : bool = false):
-	print("take damage(",damage,")")
+	#print("take damage(",damage,")")
 	if _health < 0 || _health_invincibility_time > 0:
 		return
 	
@@ -307,10 +309,13 @@ func _physics_process(delta: float) -> void:
 	var collider : CollisionObject3D = ray.get_collider()
 	if(collider != null):
 		if (collider.is_in_group("rock")):
+			# If the rock collider is not frozen then we know it is an already mined rock
 			if !collider.freeze:
 				interact_label.text = "Collect rock " + collider.Ores.find_key(collider.oretype) + "\n [E]"
 			else:
 				interact_label.text = "Unmined rock " + collider.Ores.find_key(collider.oretype)
+				if (_selected_tool_int == 1):
+					_selected_tool.change_icon_display(collider.oretype)
 			
 			interacting_with = "rock"
 			current_rock = collider
@@ -366,6 +371,8 @@ func _physics_process(delta: float) -> void:
 		interacting_with = ""
 		current_rock = null
 		interact_label.visible = false
+		if (_selected_tool_int == 1):
+			_selected_tool.change_icon_display(Ore.Ores.INVALID)
 
 func check_build_requirements() -> bool:
 	var build_array : Array = get_tree().get_first_node_in_group("rocket").get_rocket_world_state_build_array()
@@ -411,22 +418,24 @@ func _input(event: InputEvent) -> void:
 			if(Input.mouse_mode == Input.MOUSE_MODE_VISIBLE):
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			
-			if _selected_tool != 0:
-				$Camera3D/sway/tools.get_child(_selected_tool).do_action()
+			if _selected_tool_int != 0:
+				_selected_tool.do_action()
 		
 		if event.pressed && event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			#select next tool
-			var tool = _selected_tool + 1
-			select_tool(tool)
-			if _selected_tool != tool:
+			var tool = _selected_tool_int + 1
+			if (tool > $Camera3D/sway/tools.get_children().size() - 1):
 				select_tool(0)
-		
+			else:
+				select_tool(tool)
+			
 		if event.pressed && event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			#select next tool
-			var tool = _selected_tool - 1
-			select_tool(tool)
-			if _selected_tool != tool:
+			var tool = _selected_tool_int - 1
+			if (tool < 0):
 				select_tool($Camera3D/sway/tools.get_child_count() - 1)
+			else:
+				select_tool(tool)
 		
 		return
 	if (event.is_action_pressed("tool_1")):
@@ -479,11 +488,11 @@ func _input(event: InputEvent) -> void:
 				
 				if (build_array.size() == 0):
 					notification_node.play_notification("Nothing to build\nRocket is finished")
-					print("Nothing to build")
+					#print("Nothing to build")
 					return
 					
 				if (check_build_requirements()):
-					print("New gamestate")
+					#print("New gamestate")
 					camera_shake = 0.4
 					for i in build_array[0].size():
 						inventory.set_new_resource_total(build_array[0][i], inventory.get_resource_total(build_array[0][i]) - build_array[1][i])

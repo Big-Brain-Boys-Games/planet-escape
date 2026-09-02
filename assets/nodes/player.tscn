@@ -8,9 +8,13 @@
 [ext_resource type="Script" uid="uid://hvujfog57bgq" path="res://assets/scripts/mining_tool.gd" id="4_tb2t1"]
 [ext_resource type="PackedScene" uid="uid://elf2sqhmlqg2" path="res://assets/models/flashlight_tool.blend" id="5_mn4l5"]
 [ext_resource type="Script" uid="uid://dx2qpohy00yqp" path="res://assets/scripts/flashlight_tool.gd" id="6_rho1b"]
+[ext_resource type="Texture2D" uid="uid://ca7iqnakmcs00" path="res://assets/textures/ironium_icon.png" id="7_dgbfk"]
 [ext_resource type="PackedScene" uid="uid://cicgjk6gab5jd" path="res://assets/models/swimming_tool.blend" id="7_kcpvn"]
 [ext_resource type="AudioStream" uid="uid://ce1i6v3xx3wdx" path="res://assets/audio/sfx/533400__cmart94__drill-09.wav" id="7_wk3wd"]
+[ext_resource type="Texture2D" uid="uid://diu5y2fuw6c7i" path="res://assets/textures/quarts_icon.png" id="8_l1tbp"]
+[ext_resource type="Texture2D" uid="uid://ciujv4rudr3vi" path="res://assets/textures/redogon_icon.png" id="8_tvbk5"]
 [ext_resource type="Script" uid="uid://dt7uam413xtk4" path="res://assets/scripts/swimming_tool.gd" id="8_ut8nu"]
+[ext_resource type="Texture2D" uid="uid://b6wdiu38h23y5" path="res://assets/textures/tarn_icon.png" id="9_qd4bl"]
 [ext_resource type="AudioStream" uid="uid://v8nvlkne5nul" path="res://assets/audio/sfx/502506__rudmer_rotteveel__small_flashlight_click_on_fast.wav" id="10_isog5"]
 [ext_resource type="AudioStream" uid="uid://c5h3m80vcperx" path="res://assets/audio/sfx/350549__fairhavencollection__bathroom-vent-hum.wav" id="11_6olem"]
 [ext_resource type="Texture2D" uid="uid://db5qsld260dyi" path="res://assets/textures/air_meter.png" id="11_t1i24"]
@@ -27,6 +31,17 @@
 [ext_resource type="AudioStream" uid="uid://u6vupst1e8ot" path="res://assets/audio/sfx/bite.wav" id="24_1ubr1"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3aupp"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_41f5n"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fn7jt"]
+viewport_path = NodePath("Camera3D/sway/tools/mining_tool/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjr50"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_fn7jt")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_41f5n"]
 radius = 50.0
@@ -68,12 +83,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5870034, 0)
 [node name="none" type="Node3D" parent="Camera3D/sway/tools" unique_id=1540846642]
 
 [node name="mining_tool" parent="Camera3D/sway/tools" unique_id=956213280 instance=ExtResource("3_y07ac")]
-transform = Transform3D(-0.076120555, 0, 0.41855264, 0, 0.4254182, 0, -0.41855264, 0, -0.076120555, 0.6987856, 0.09037268, -0.9871203)
+transform = Transform3D(-0.076120555, 0, 0.41855264, 0, 0.4254182, 0, -0.41855264, 0, -0.076120555, 0.6987856, 0.27321583, -0.9871203)
 script = ExtResource("4_tb2t1")
+ore_icons = Array[Texture2D]([null, ExtResource("7_dgbfk"), ExtResource("8_l1tbp"), ExtResource("9_qd4bl"), ExtResource("8_tvbk5")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera3D/sway/tools/mining_tool" unique_id=1583261736]
 stream = ExtResource("7_wk3wd")
 pitch_scale = 0.5
+
+[node name="SubViewport" type="SubViewport" parent="Camera3D/sway/tools/mining_tool" unique_id=1401951794]
+disable_3d = true
+transparent_bg = true
+
+[node name="Control" type="Control" parent="Camera3D/sway/tools/mining_tool/SubViewport" unique_id=1104777922]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Camera3D/sway/tools/mining_tool/SubViewport/Control" unique_id=1688434627]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/sway/tools/mining_tool" unique_id=158008822]
+transform = Transform3D(2.9802322e-08, 0, -0.515, 0, 0.5150003, 0, 0.515, 0, 2.9802322e-08, -1.1731486, -0.08453356, -0.16304982)
+mesh = SubResource("QuadMesh_41f5n")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjr50")
 
 [node name="flashlight_tool" parent="Camera3D/sway/tools" unique_id=1067516877 instance=ExtResource("5_mn4l5")]
 transform = Transform3D(0.01166458, 0.0018522162, -0.093443274, -0.014770834, 0.093021296, 0, 0.09228705, 0.014654242, 0.01181072, 0.98696315, -0.321012, -0.9945115)

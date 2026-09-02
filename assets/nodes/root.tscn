@@ -127,6 +127,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rqda1")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_wr76h"]
+viewport_path = NodePath("Camera3D/sway/tools/mining_tool/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ej2ec"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_wr76h")
+
 [sub_resource type="SphereMesh" id="SphereMesh_khlrb"]
 radius = 500.0
 height = 800.0
@@ -1087,6 +1096,9 @@ meteor_prefab = ExtResource("14_o1vpn")
 
 [node name="Cube_002" parent="Player/Camera3D/sway/tools/mining_tool" parent_id_path=PackedInt32Array(1546401736, 956213280) index="3" unique_id=1335206288]
 mesh = SubResource("ArrayMesh_wr76h")
+
+[node name="MeshInstance3D" parent="Player/Camera3D/sway/tools/mining_tool" parent_id_path=PackedInt32Array(1546401736, 956213280) index="11" unique_id=158008822]
+surface_material_override/0 = SubResource("StandardMaterial3D_ej2ec")
 
 [node name="AudioStreamPlayer" parent="Player/Camera3D/sway/tools/OreFinder" parent_id_path=PackedInt32Array(1546401736, 1452876267) index="0" unique_id=2095437059]
 stream = ExtResource("18_wr76h")

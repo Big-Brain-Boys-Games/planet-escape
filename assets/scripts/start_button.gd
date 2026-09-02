@@ -5,7 +5,6 @@ var _fade_out : float = 2
 var _loading = false;
 
 func _process(delta: float) -> void:
-	#print("loading ", _loading)
 	if _loading:
 		if _fade_out > 0:
 			$"../fadeout".color.a = 1-_fade_out/2.0
@@ -15,6 +14,4 @@ func _process(delta: float) -> void:
 				GameManager.world_state = GameManager.States.WAKEUP
 
 func _on_pressed() -> void:
-	print("button pressed")
 	_loading = true
-	pass # Replace with function body.

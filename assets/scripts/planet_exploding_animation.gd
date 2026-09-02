@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	
 	else:
 		magma_timer += delta * 0.1
-		print("magma_timer ", magma_timer)
+		#print("magma_timer ", magma_timer)
 		if magma_timer > 2.3:
 			for child in get_children():
 				child.queue_free()

@@ -18,7 +18,6 @@ func _physics_process(delta: float) -> void:
 					ores.append(body)
 		if (ores.size() != 0):
 			var ore = get_closest_body(ores)
-			print(global_position.distance_to(ore.global_position))
 			
 			timer -= delta
 			if (timer <= 0):
