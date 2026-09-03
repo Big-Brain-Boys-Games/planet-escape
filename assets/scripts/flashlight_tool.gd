@@ -1,4 +1,4 @@
-extends Node3D
+extends Tool
 
 @onready var click_sound : AudioStreamPlayer = $AudioStreamPlayer
 

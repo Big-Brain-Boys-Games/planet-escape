@@ -1,4 +1,4 @@
-extends Node3D
+extends Tool
 
 var timer : float
 var current_rock : Ore.Ores = Ore.Ores.INVALID

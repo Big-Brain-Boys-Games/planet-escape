@@ -1,4 +1,4 @@
-extends Node3D
+extends Tool
 
 var attack : float = 0
 var attack_length : float = 1

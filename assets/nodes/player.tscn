@@ -86,6 +86,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5870034, 0)
 transform = Transform3D(-0.076120555, 0, 0.41855264, 0, 0.4254182, 0, -0.41855264, 0, -0.076120555, 0.6987856, 0.27321583, -0.9871203)
 script = ExtResource("4_tb2t1")
 ore_icons = Array[Texture2D]([null, ExtResource("7_dgbfk"), ExtResource("8_l1tbp"), ExtResource("9_qd4bl"), ExtResource("8_tvbk5")])
+unlocked = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera3D/sway/tools/mining_tool" unique_id=1583261736]
 stream = ExtResource("7_wk3wd")
@@ -127,6 +128,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vjr50")
 [node name="flashlight_tool" parent="Camera3D/sway/tools" unique_id=1067516877 instance=ExtResource("5_mn4l5")]
 transform = Transform3D(0.01166458, 0.0018522162, -0.093443274, -0.014770834, 0.093021296, 0, 0.09228705, 0.014654242, 0.01181072, 0.98696315, -0.321012, -0.9945115)
 script = ExtResource("6_rho1b")
+unlocked = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera3D/sway/tools/flashlight_tool" unique_id=536291792]
 stream = ExtResource("10_isog5")
@@ -134,6 +136,7 @@ stream = ExtResource("10_isog5")
 [node name="swimming_tool" parent="Camera3D/sway/tools" unique_id=809923857 instance=ExtResource("7_kcpvn")]
 transform = Transform3D(0.4024414, 0, 0, 0, 0.4024414, 0, 0, 0, 0.4024414, 0, -0.13765232, -1.3788813)
 script = ExtResource("8_ut8nu")
+unlocked = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera3D/sway/tools/swimming_tool" unique_id=1222150686]
 stream = ExtResource("11_6olem")
@@ -142,6 +145,7 @@ autoplay = true
 bus = &"SFX"
 
 [node name="OreFinder" type="Node3D" parent="Camera3D/sway/tools" unique_id=1452876267]
+visible = false
 script = ExtResource("14_ph0g1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera3D/sway/tools/OreFinder" unique_id=2095437059]

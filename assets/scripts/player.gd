@@ -58,7 +58,7 @@ func _ready() -> void:
 	background_sfx = get_tree().get_first_node_in_group("background_sfx")
 	select_tool(0)
 
-func select_tool(tool : int):
+func select_tool(tool : int) -> void:
 	#print("select_tool(", tool, ")")
 	if tool < 0 || tool >= $Camera3D/sway/tools.get_child_count():
 		print("rejected")
@@ -424,6 +424,8 @@ func _input(event: InputEvent) -> void:
 		if event.pressed && event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			#select next tool
 			var tool = _selected_tool_int + 1
+			if(!$Camera3D/sway/tools.get_children()[tool].unlocked):
+				tool += 1
 			if (tool > $Camera3D/sway/tools.get_children().size() - 1):
 				select_tool(0)
 			else:
@@ -432,12 +434,14 @@ func _input(event: InputEvent) -> void:
 		if event.pressed && event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			#select next tool
 			var tool = _selected_tool_int - 1
+			if(!$Camera3D/sway/tools.get_children()[tool].unlocked):
+				tool -= 1
 			if (tool < 0):
 				select_tool($Camera3D/sway/tools.get_child_count() - 1)
 			else:
 				select_tool(tool)
-		
 		return
+		
 	if (event.is_action_pressed("tool_1")):
 		select_tool(0)
 	if (event.is_action_pressed("tool_2")):

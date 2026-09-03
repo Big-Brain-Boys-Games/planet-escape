@@ -1,4 +1,4 @@
-extends Node3D
+extends Tool
 
 var is_active = false
 

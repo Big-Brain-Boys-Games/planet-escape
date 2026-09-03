@@ -2064,7 +2064,7 @@ transform = Transform3D(-0.123307586, -0.9923685, 0, 0.9923685, -0.123307586, 0,
 transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -26.355112, 70.674126, -88.26504)
 
 [node name="Ironium4" parent="planet_environment/Ores" unique_id=117673560 instance=ExtResource("9_vy1b6")]
-transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -18.660892, 66.744446, -89.42401)
+transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -18.660892, 66.744446, -89.10486)
 
 [node name="Ironium46" parent="planet_environment/Ores" unique_id=1242855307 instance=ExtResource("9_vy1b6")]
 transform = Transform3D(0.10765126, 0, -0.9941887, 0, 1, 0, 0.9941887, 0, 0.10765126, -8.533767, 66.744446, -89.87284)
